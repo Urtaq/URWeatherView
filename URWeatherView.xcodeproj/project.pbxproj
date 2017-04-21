@@ -20,6 +20,27 @@
 			remoteGlobalIDString = 974FFB4B1EAA072E00B2A3E7;
 			remoteInfo = URWeatherView;
 		};
+		974FFB6C1EAA07CE00B2A3E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 974FFAF81EA9E77500B2A3E7;
+			remoteInfo = URExampleWeatherView;
+		};
+		974FFB6E1EAA07CE00B2A3E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 974FFB0C1EA9E77500B2A3E7;
+			remoteInfo = URExampleWeatherViewTests;
+		};
+		974FFB701EAA07CE00B2A3E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 974FFB171EA9E77600B2A3E7;
+			remoteInfo = URExampleWeatherViewUITests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +50,7 @@
 		974FFB551EAA072E00B2A3E7 /* URWeatherViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URWeatherViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URWeatherViewTests.swift; sourceTree = "<group>"; };
 		974FFB5C1EAA072E00B2A3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = URExampleWeatherView.xcodeproj; path = Example/URExampleWeatherView.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +75,7 @@
 		974FFB421EAA072E00B2A3E7 = {
 			isa = PBXGroup;
 			children = (
+				974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */,
 				974FFB4E1EAA072E00B2A3E7 /* URWeatherView */,
 				974FFB591EAA072E00B2A3E7 /* URWeatherViewTests */,
 				974FFB4D1EAA072E00B2A3E7 /* Products */,
@@ -84,6 +107,16 @@
 				974FFB5C1EAA072E00B2A3E7 /* Info.plist */,
 			);
 			path = URWeatherViewTests;
+			sourceTree = "<group>";
+		};
+		974FFB671EAA07CE00B2A3E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				974FFB6D1EAA07CE00B2A3E7 /* URExampleWeatherView.app */,
+				974FFB6F1EAA07CE00B2A3E7 /* URExampleWeatherViewTests.xctest */,
+				974FFB711EAA07CE00B2A3E7 /* URExampleWeatherViewUITests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +201,12 @@
 			mainGroup = 974FFB421EAA072E00B2A3E7;
 			productRefGroup = 974FFB4D1EAA072E00B2A3E7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 974FFB671EAA07CE00B2A3E7 /* Products */;
+					ProjectRef = 974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				974FFB4B1EAA072E00B2A3E7 /* URWeatherView */,
@@ -175,6 +214,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		974FFB6D1EAA07CE00B2A3E7 /* URExampleWeatherView.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = URExampleWeatherView.app;
+			remoteRef = 974FFB6C1EAA07CE00B2A3E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		974FFB6F1EAA07CE00B2A3E7 /* URExampleWeatherViewTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = URExampleWeatherViewTests.xctest;
+			remoteRef = 974FFB6E1EAA07CE00B2A3E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		974FFB711EAA07CE00B2A3E7 /* URExampleWeatherViewUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = URExampleWeatherViewUITests.xctest;
+			remoteRef = 974FFB701EAA07CE00B2A3E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		974FFB4A1EAA072E00B2A3E7 /* Resources */ = {

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sEg-t2-ZA0">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zD2-F1-gQb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="222.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mN-ga-vgi">
+                                <rect key="frame" x="0.0" y="286.5" width="187.5" height="30"/>
+                                <state key="normal" title="1st"/>
+                                <connections>
+                                    <action selector="tabOne:" destination="BYZ-38-t0r" eventType="touchUpInside" id="isd-Lk-7Vi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imE-5t-NZw">
+                                <rect key="frame" x="187.5" y="286.5" width="187.5" height="30"/>
+                                <state key="normal" title="2nd"/>
+                                <connections>
+                                    <action selector="tabTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PaD-rw-HWu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zD2-F1-gQb" secondAttribute="trailing" id="3hB-iO-67S"/>
+                            <constraint firstItem="7mN-ga-vgi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8C3-BL-IZi"/>
+                            <constraint firstItem="7mN-ga-vgi" firstAttribute="width" secondItem="imE-5t-NZw" secondAttribute="width" id="9tJ-F4-Ikj"/>
+                            <constraint firstItem="zD2-F1-gQb" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:3" id="GgK-RO-bne"/>
+                            <constraint firstItem="imE-5t-NZw" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="Nk0-LF-mAN"/>
+                            <constraint firstAttribute="trailing" secondItem="imE-5t-NZw" secondAttribute="trailing" id="S07-XE-V3Y"/>
+                            <constraint firstItem="zD2-F1-gQb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="azB-rr-0qx"/>
+                            <constraint firstItem="zD2-F1-gQb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jJa-2F-ZM9"/>
+                            <constraint firstItem="7mN-ga-vgi" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="m2V-Y5-2NJ"/>
+                            <constraint firstItem="imE-5t-NZw" firstAttribute="leading" secondItem="7mN-ga-vgi" secondAttribute="trailing" id="seF-Is-xIb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vhE-ah-iPe">
+                        <barButtonItem key="rightBarButtonItem" title="Detail" id="OL0-BB-hpr">
+                            <connections>
+                                <action selector="tabDetail:" destination="BYZ-38-t0r" id="fzp-lg-s8Q"/>
+                                <segue destination="V8J-aU-o6v" kind="show" id="11k-xp-bD5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnOne" destination="7mN-ga-vgi" id="MSY-sV-bbG"/>
+                        <outlet property="btnTwo" destination="imE-5t-NZw" id="QHg-zn-rrb"/>
+                        <outlet property="mainView" destination="zD2-F1-gQb" id="4fO-8h-11j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="38.23088455772114"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="6hE-Pr-Eur">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" id="V8J-aU-o6v" customClass="DetailViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sRc-H4-Qt6"/>
+                        <viewControllerLayoutGuide type="bottom" id="qCZ-lQ-HTM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q8C-xg-exQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mfb-eA-yIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1712.8" y="47.226386806596707"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dbO-oa-3ns">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sEg-t2-ZA0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eRb-dY-ilf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iqC-oo-TYv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AlM-Na-4zO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="252" y="-635.53223388305855"/>
+        </scene>
+    </scenes>
+</document>
