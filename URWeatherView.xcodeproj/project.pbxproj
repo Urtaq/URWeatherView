@@ -465,6 +465,7 @@
 				974FFB621EAA072E00B2A3E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		974FFB631EAA072E00B2A3E7 /* Build configuration list for PBXNativeTarget "URWeatherViewTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +474,7 @@
 				974FFB651EAA072E00B2A3E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

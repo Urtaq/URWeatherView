@@ -23,6 +23,13 @@
 		974FFB3D1EA9F82B00B2A3E7 /* img_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB371EA9F82B00B2A3E7 /* img_4.png */; };
 		974FFB3E1EA9F82B00B2A3E7 /* img_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB381EA9F82B00B2A3E7 /* img_5.png */; };
 		974FFB401EAA017100B2A3E7 /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974FFB3F1EAA017100B2A3E7 /* RevealServer.framework */; };
+		974FFB771EAA0E0400B2A3E7 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB761EAA0E0400B2A3E7 /* MyScene.sks */; };
+		974FFB791EAA0E1200B2A3E7 /* MyParticleSnow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */; };
+		974FFB7B1EAA0E3800B2A3E7 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */; };
+		974FFB7D1EAD8F1300B2A3E7 /* MyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB7C1EAD8F1300B2A3E7 /* MyScene.swift */; };
+		974FFB7F1EADA4BF00B2A3E7 /* MyParticleRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */; };
+		974FFB811EADA78F00B2A3E7 /* MyParticleSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */; };
+		974FFB8D1EAE01C300B2A3E7 /* MyParticleSnowground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowground.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +73,13 @@
 		974FFB371EA9F82B00B2A3E7 /* img_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_4.png; sourceTree = "<group>"; };
 		974FFB381EA9F82B00B2A3E7 /* img_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_5.png; sourceTree = "<group>"; };
 		974FFB3F1EAA017100B2A3E7 /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
+		974FFB761EAA0E0400B2A3E7 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
+		974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnow.sks; sourceTree = "<group>"; };
+		974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyActions.sks; sourceTree = "<group>"; };
+		974FFB7C1EAD8F1300B2A3E7 /* MyScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScene.swift; sourceTree = "<group>"; };
+		974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleRain.sks; sourceTree = "<group>"; };
+		974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSmoke.sks; sourceTree = "<group>"; };
+		974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnowground.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +135,13 @@
 				974FFB2F1EA9F80B00B2A3E7 /* animationAssets */,
 				974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */,
 				974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */,
+				974FFB761EAA0E0400B2A3E7 /* MyScene.sks */,
+				974FFB7C1EAD8F1300B2A3E7 /* MyScene.swift */,
+				974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */,
+				974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */,
+				974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */,
+				974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowground.sks */,
+				974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */,
 				974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */,
 				974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */,
 				974FFB021EA9E77500B2A3E7 /* Assets.xcassets */,
@@ -292,13 +313,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				974FFB391EA9F82B00B2A3E7 /* img_0.png in Resources */,
+				974FFB771EAA0E0400B2A3E7 /* MyScene.sks in Resources */,
 				974FFB061EA9E77500B2A3E7 /* LaunchScreen.storyboard in Resources */,
 				974FFB031EA9E77500B2A3E7 /* Assets.xcassets in Resources */,
 				974FFB3C1EA9F82B00B2A3E7 /* img_3.png in Resources */,
 				974FFB011EA9E77500B2A3E7 /* Main.storyboard in Resources */,
+				974FFB7B1EAA0E3800B2A3E7 /* MyActions.sks in Resources */,
+				974FFB8D1EAE01C300B2A3E7 /* MyParticleSnowground.sks in Resources */,
 				974FFB3E1EA9F82B00B2A3E7 /* img_5.png in Resources */,
+				974FFB791EAA0E1200B2A3E7 /* MyParticleSnow.sks in Resources */,
 				974FFB3B1EA9F82B00B2A3E7 /* img_2.png in Resources */,
 				974FFB311EA9F81B00B2A3E7 /* data.json in Resources */,
+				974FFB811EADA78F00B2A3E7 /* MyParticleSmoke.sks in Resources */,
+				974FFB7F1EADA4BF00B2A3E7 /* MyParticleRain.sks in Resources */,
 				974FFB3A1EA9F82B00B2A3E7 /* img_1.png in Resources */,
 				974FFB3D1EA9F82B00B2A3E7 /* img_4.png in Resources */,
 			);
@@ -355,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				974FFB7D1EAD8F1300B2A3E7 /* MyScene.swift in Sources */,
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
 				974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */,
 				974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */,
@@ -630,6 +658,7 @@
 				974FFB221EA9E77600B2A3E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		974FFB231EA9E77600B2A3E7 /* Build configuration list for PBXNativeTarget "URExampleWeatherViewTests" */ = {
 			isa = XCConfigurationList;
@@ -638,6 +667,7 @@
 				974FFB251EA9E77600B2A3E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		974FFB261EA9E77600B2A3E7 /* Build configuration list for PBXNativeTarget "URExampleWeatherViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -646,6 +676,7 @@
 				974FFB281EA9E77600B2A3E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
