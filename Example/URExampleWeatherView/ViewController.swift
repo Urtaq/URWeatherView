@@ -13,6 +13,7 @@ import SpriteKit
 let DefaultSnowBirthRate: Float = 40.0
 let DefaultRainBirthRate: Float = 150.0
 let DefaultSmokeBirthRate: Float = 40.0
+let DefaultCometBirthRate: Float = 455.0
 
 class ViewController: UIViewController {
 
@@ -35,6 +36,10 @@ class ViewController: UIViewController {
     @IBOutlet var slSmokeBirthRate: UISlider!
     @IBOutlet var lbSmokeBirthRateCurrent: UILabel!
     @IBOutlet var lbSmokeBirthRateMax: UILabel!
+
+    @IBOutlet var slCometBirthRate: UISlider!
+    @IBOutlet var lbCometBirthRateCurrent: UILabel!
+    @IBOutlet var lbComentBirthRateMax: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,25 +103,39 @@ class ViewController: UIViewController {
             }
         }
     }
+    @IBAction func changeSpriteKitDebugOption(_ sender: Any) {
+        if let segment = sender as? UISegmentedControl {
+            let selected: Bool = segment.selectedSegmentIndex == 0
+            self.weatherScene.enableDebugOptions(needToShow: selected)
+        }
+    }
 
     @IBAction func changeBirthRate(_ sender: Any) {
         if let slider = sender as? UISlider {
+            var birthRate: Float = 0.0
+
             switch slider {
             case self.slSnowBirthRate:
                 self.lbSnowBirthRateCurrent.text = "\(self.slSnowBirthRate.value)"
-                self.weatherScene.setBirthRate(rate: CGFloat(self.slSnowBirthRate.value))
+                birthRate = self.slSnowBirthRate.value
 
             case self.slRainBirthRate:
                 self.lbRainBirthRateCurrent.text = "\(self.slRainBirthRate.value)"
-                self.weatherScene.setBirthRate(rate: CGFloat(self.slRainBirthRate.value))
+                birthRate = self.slRainBirthRate.value
 
             case self.slSmokeBirthRate:
                 self.lbSmokeBirthRateCurrent.text = "\(self.slSmokeBirthRate.value)"
-                self.weatherScene.setBirthRate(rate: CGFloat(self.slSmokeBirthRate.value))
+                birthRate = self.slSmokeBirthRate.value
+
+            case self.slCometBirthRate:
+                self.lbCometBirthRateCurrent.text = "\(self.slCometBirthRate.value)"
+                birthRate = self.slCometBirthRate.value
 
             default:
                 break
             }
+
+            self.weatherScene.setBirthRate(rate: CGFloat(birthRate))
         }
     }
 
@@ -138,6 +157,12 @@ class ViewController: UIViewController {
         self.weatherScene.setBirthRate(rate: CGFloat(self.slSmokeBirthRate.value))
     }
 
+    @IBAction func tabComet(_ sender: Any) {
+        self.weatherScene.stopEmitter()
+        self.weatherScene.startEmitter(weather: .comet)
+        self.weatherScene.setBirthRate(rate: CGFloat(self.slCometBirthRate.value))
+    }
+
     @IBAction func tabWeatherInit(_ sender: Any) {
         switch self.weatherScene.weatherType {
         case .snow:
@@ -149,6 +174,9 @@ class ViewController: UIViewController {
         case .dust:
             self.slSmokeBirthRate.value = DefaultSmokeBirthRate
             self.lbSmokeBirthRateCurrent.text = "\(self.slSmokeBirthRate.value)"
+        case .comet:
+            self.slCometBirthRate.value = DefaultCometBirthRate
+            self.lbCometBirthRateCurrent.text = "\(self.slCometBirthRate.value)"
         default:
             break
         }
