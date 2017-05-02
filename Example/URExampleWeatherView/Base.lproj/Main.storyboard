@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sEg-t2-ZA0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sEg-t2-ZA0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +26,9 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="223"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-DS-ws4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="223"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keu-1I-nTM">
                                 <rect key="frame" x="0.0" y="64" width="187.5" height="223"/>
                                 <connections>
@@ -66,13 +69,13 @@
                                     <action selector="tabDust:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qHl-IW-gho"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="150" minValue="0.0" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-bX-zQV">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="150" minValue="0.0" maxValue="1500" translatesAutoresizingMaskIntoConstraints="NO" id="aK2-bX-zQV">
                                 <rect key="frame" x="121" y="434" width="212" height="31"/>
                                 <connections>
                                     <action selector="changeBirthRate:" destination="BYZ-38-t0r" eventType="valueChanged" id="enJ-DM-AUd"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="8Ps-cW-Pwk">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="8Ps-cW-Pwk">
                                 <rect key="frame" x="121" y="482" width="212" height="31"/>
                                 <connections>
                                     <action selector="changeBirthRate:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vvd-Aj-nvS"/>
@@ -142,7 +145,7 @@
                                     <action selector="tabSnow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bX7-WV-KcD"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="Rh0-p0-Tcc">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="Rh0-p0-Tcc">
                                 <rect key="frame" x="121" y="387" width="212" height="31"/>
                                 <connections>
                                     <action selector="changeBirthRate:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ek3-mI-uIV"/>
@@ -173,7 +176,7 @@
                                     <action selector="tabComet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oef-fE-5Qw"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="455" minValue="0.0" maxValue="455" translatesAutoresizingMaskIntoConstraints="NO" id="mnv-an-vg7">
+                            <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="455" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="mnv-an-vg7">
                                 <rect key="frame" x="121" y="530" width="212" height="31"/>
                                 <connections>
                                     <action selector="changeBirthRate:" destination="BYZ-38-t0r" eventType="valueChanged" id="uLt-VK-tcB"/>
@@ -208,6 +211,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="keu-1I-nTM" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="top" id="0lE-H1-ppr"/>
+                            <constraint firstItem="aIo-DS-ws4" firstAttribute="leading" secondItem="zD2-F1-gQb" secondAttribute="leading" id="1aW-vE-JHT"/>
                             <constraint firstItem="DBQ-XE-uYf" firstAttribute="leading" secondItem="Rh0-p0-Tcc" secondAttribute="leading" id="1en-qd-wFs"/>
                             <constraint firstItem="U4K-d9-R9N" firstAttribute="centerX" secondItem="Rh0-p0-Tcc" secondAttribute="centerX" id="2a5-Tp-o7G"/>
                             <constraint firstItem="lmZ-5q-sra" firstAttribute="centerY" secondItem="8Ps-cW-Pwk" secondAttribute="centerY" id="2lx-NV-9YJ"/>
@@ -222,6 +226,7 @@
                             <constraint firstItem="bys-tI-vF8" firstAttribute="centerY" secondItem="V5V-rg-SPb" secondAttribute="centerY" id="7zv-KE-0SS"/>
                             <constraint firstItem="7mN-ga-vgi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8C3-BL-IZi"/>
                             <constraint firstItem="VaR-gh-Rfc" firstAttribute="leading" secondItem="wPK-6M-hrK" secondAttribute="trailing" constant="6" id="8Lx-zL-ZQZ"/>
+                            <constraint firstItem="aIo-DS-ws4" firstAttribute="bottom" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="8Uq-ow-vs4"/>
                             <constraint firstItem="6bC-l1-YF3" firstAttribute="top" secondItem="YiC-hM-z2l" secondAttribute="bottom" constant="17" id="8zA-bd-IKX"/>
                             <constraint firstItem="7mN-ga-vgi" firstAttribute="width" secondItem="imE-5t-NZw" secondAttribute="width" id="9tJ-F4-Ikj"/>
                             <constraint firstItem="YiC-hM-z2l" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="bottom" constant="100" id="Axz-V2-YxU"/>
@@ -241,6 +246,7 @@
                             <constraint firstItem="UMf-a9-sDE" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="top" id="PiV-va-iae"/>
                             <constraint firstItem="jR4-E5-spl" firstAttribute="centerY" secondItem="soz-KL-g67" secondAttribute="centerY" id="RWI-qk-vZP"/>
                             <constraint firstAttribute="trailing" secondItem="imE-5t-NZw" secondAttribute="trailing" id="S07-XE-V3Y"/>
+                            <constraint firstItem="aIo-DS-ws4" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="top" id="UIO-LB-wgc"/>
                             <constraint firstItem="8OU-zR-pP4" firstAttribute="centerX" secondItem="YiC-hM-z2l" secondAttribute="centerX" id="UcK-Uc-sNX"/>
                             <constraint firstItem="crZ-fk-7V8" firstAttribute="centerX" secondItem="VaR-gh-Rfc" secondAttribute="centerX" id="V1X-SR-OxO"/>
                             <constraint firstItem="yMh-U8-MzV" firstAttribute="centerY" secondItem="soz-KL-g67" secondAttribute="centerY" id="XRk-zg-z3d"/>
@@ -272,6 +278,7 @@
                             <constraint firstItem="keu-1I-nTM" firstAttribute="bottom" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="s1D-xK-X0G"/>
                             <constraint firstItem="V5V-rg-SPb" firstAttribute="bottom" secondItem="mnv-an-vg7" secondAttribute="bottom" constant="10" id="sAx-Ma-Kxn"/>
                             <constraint firstItem="imE-5t-NZw" firstAttribute="leading" secondItem="7mN-ga-vgi" secondAttribute="trailing" id="seF-Is-xIb"/>
+                            <constraint firstItem="aIo-DS-ws4" firstAttribute="trailing" secondItem="zD2-F1-gQb" secondAttribute="trailing" id="tcG-kq-2BP"/>
                             <constraint firstItem="JtW-yi-Yn0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="44" id="vNx-fx-Aph"/>
                             <constraint firstItem="8Ps-cW-Pwk" firstAttribute="leading" secondItem="Rh0-p0-Tcc" secondAttribute="leading" id="vpa-Ux-9LB"/>
                             <constraint firstItem="U4K-d9-R9N" firstAttribute="centerY" secondItem="DBQ-XE-uYf" secondAttribute="centerY" id="vph-5z-Tg0"/>
@@ -311,7 +318,9 @@
                         <outlet property="lbSmokeBirthRateMax" destination="jR4-E5-spl" id="BT9-xr-6Jp"/>
                         <outlet property="lbSnowBirthRateCurrent" destination="U4K-d9-R9N" id="uiB-uV-hqQ"/>
                         <outlet property="lbSnowBirthRateMax" destination="wPK-6M-hrK" id="qia-jo-15x"/>
+                        <outlet property="mainUpperImageView" destination="aIo-DS-ws4" id="52s-7z-cz7"/>
                         <outlet property="mainView" destination="zD2-F1-gQb" id="4fO-8h-11j"/>
+                        <outlet property="segment" destination="HKt-cV-lAb" id="iZA-0s-jED"/>
                         <outlet property="slCometBirthRate" destination="mnv-an-vg7" id="7sA-sC-1hZ"/>
                         <outlet property="slRainBirthRate" destination="aK2-bX-zQV" id="jZF-nZ-SHL"/>
                         <outlet property="slSmokeBirthRate" destination="8Ps-cW-Pwk" id="Iup-Ak-cl0"/>

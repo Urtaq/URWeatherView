@@ -32,6 +32,7 @@
 		974FFB8D1EAE01C300B2A3E7 /* MyParticleSnowGround.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */; };
 		974FFB8F1EAEE37D00B2A3E7 /* MyParticleRainGround.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */; };
 		974FFB911EAEE57C00B2A3E7 /* MyParticleBurningComet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */; };
+		974FFB931EAF148000B2A3E7 /* MyParticleDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnowGround.sks; sourceTree = "<group>"; };
 		974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleRainGround.sks; sourceTree = "<group>"; };
 		974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleBurningComet.sks; sourceTree = "<group>"; };
+		974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */,
 				974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */,
 				974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */,
+				974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */,
 				974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */,
 				974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */,
 				974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */,
@@ -332,6 +335,7 @@
 				974FFB3B1EA9F82B00B2A3E7 /* img_2.png in Resources */,
 				974FFB311EA9F81B00B2A3E7 /* data.json in Resources */,
 				974FFB8F1EAEE37D00B2A3E7 /* MyParticleRainGround.sks in Resources */,
+				974FFB931EAF148000B2A3E7 /* MyParticleDust.sks in Resources */,
 				974FFB811EADA78F00B2A3E7 /* MyParticleSmoke.sks in Resources */,
 				974FFB7F1EADA4BF00B2A3E7 /* MyParticleRain.sks in Resources */,
 				974FFB3A1EA9F82B00B2A3E7 /* img_1.png in Resources */,

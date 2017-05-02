@@ -11,12 +11,13 @@ import SpriteKit
 enum URWeatherType: String {
     case snow       = "MyParticleSnow.sks"
     case rain       = "MyParticleRain.sks"
-    case dust       = "MyParticleSmoke.sks"
+    case dust       = "MyParticleDust.sks"
     case comet      = "MyParticleBurningComet.sks"
+    case smoke       = "MyParticleSmoke.sks"
     case none       = "None"
 }
 
-enum URWeatherGroudType: String {
+enum URWeatherGroundType: String {
     case snow       = "MyParticleSnowGround.sks"
     case rain       = "MyParticleRainGround.sks"
     case none       = "None"
@@ -24,10 +25,15 @@ enum URWeatherGroudType: String {
 
 class MyScene: SKScene {
     private var emitter: SKEmitterNode!
+    private var subEmitter: SKEmitterNode!
     private var groundEmitter: SKEmitterNode!
+
+    private var timer: Timer!
 
     var weatherType: URWeatherType = .none
     var isGraphicsDebugOptionEnabled: Bool = false
+
+    var extraEffectBlock: (() -> Void)?
 
     override init(size: CGSize) {
         super.init(size: size)
@@ -69,7 +75,27 @@ class MyScene: SKScene {
             particlePositionRangeX *= 2.0
         }
         if self.weatherType == .comet {
-            self.emitter.position = CGPoint(x: 0, y: 0)
+            self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
+            self.subEmitter = SKEmitterNode(fileNamed: weatherType.rawValue)
+
+            self.subEmitter.position = CGPoint(x: self.view!.bounds.width, y: 0)
+            self.subEmitter.emissionAngle = 330.0 * CGFloat.pi / 180.0
+            self.subEmitter.yAcceleration = -100
+
+            self.subEmitter.targetNode = self
+            self.addChild(self.subEmitter)
+        } else if self.weatherType == .dust {
+            self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: self.view!.bounds.height)
+            self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.midY)
+            self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
+                if self.emitter.yAcceleration == -10 {
+                    self.emitter.yAcceleration = 10
+                } else {
+                    self.emitter.yAcceleration = -10
+                }
+            })
+
+//            self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
         } else {
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
@@ -83,14 +109,17 @@ class MyScene: SKScene {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.startGroundEmitter()
         }
+
+        guard let block = self.extraEffectBlock else { return }
+        block()
     }
 
     func startGroundEmitter() {
         switch self.weatherType {
-        case .snow:
-            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherGroudType.snow.rawValue)
+//        case .snow:
+//            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherGroundType.snow.rawValue)
         case .rain:
-            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherGroudType.rain.rawValue)
+            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherGroundType.rain.rawValue)
         default:
             self.groundEmitter = nil
         }
@@ -119,6 +148,11 @@ class MyScene: SKScene {
         self.enableDebugOptions(needToShow: false)
 
         self.stopGroundEmitter()
+
+        if self.timer != nil {
+            self.timer.invalidate()
+        }
+        self.backgroundColor = .clear
     }
 
     func stopGroundEmitter() {
@@ -129,5 +163,46 @@ class MyScene: SKScene {
         self.groundEmitter.removeFromParent()
 
         self.groundEmitter = nil
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.weatherType == .comet {
+            if let _ = self.emitter.parent {
+            } else {
+                self.addChild(self.emitter)
+            }
+            if let _ = self.subEmitter.parent {
+            } else {
+                self.addChild(self.subEmitter)
+            }
+
+            let moveAction: SKAction = SKAction.move(to: CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.midY), duration: 0.5)
+            let action: SKAction = SKAction.customAction(withDuration: 0.5, actionBlock: { (node, elapsedTime) in
+                if node === self.emitter {
+                    self.emitter.particlePositionRange = CGVector(dx: 100.0, dy: self.emitter.particlePositionRange.dy * 2.0)
+                    self.emitter.emissionAngle = 90.0 * CGFloat.pi / 180.0
+                }
+            })
+            let backAction: SKAction = SKAction.move(to: CGPoint(x: 0, y: self.view!.bounds.height), duration: 0.0)
+            let initAction: SKAction = SKAction.customAction(withDuration: 0.0, actionBlock: { (node, elapsedTime) in
+                if node === self.emitter {
+                    self.emitter.particlePositionRange = CGVector(dx: 5.0, dy: 5.0)
+                    self.emitter.emissionAngle = 150.0 * CGFloat.pi / 180.0
+                }
+            })
+
+            self.emitter.run(SKAction.sequence([moveAction, action, backAction, initAction]))
+
+            let move1Action: SKAction = SKAction.move(to: CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.midY), duration: 0.5)
+            let action1: SKAction = SKAction.customAction(withDuration: 0.5, actionBlock: { (node, elapsedTime) in
+                if node === self.emitter {
+                    self.emitter.particlePositionRange = CGVector(dx: 100.0, dy: self.emitter.particlePositionRange.dy * 2.0)
+                    self.emitter.emissionAngle = 270.0 * CGFloat.pi / 180.0
+                }
+            })
+            let back1Action: SKAction = SKAction.move(to: CGPoint(x: self.view!.bounds.width, y: 0), duration: 0.0)
+
+            self.subEmitter.run(SKAction.sequence([move1Action, action1, back1Action]))
+        }
     }
 }

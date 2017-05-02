@@ -12,14 +12,17 @@ import SpriteKit
 
 let DefaultSnowBirthRate: Float = 40.0
 let DefaultRainBirthRate: Float = 150.0
-let DefaultSmokeBirthRate: Float = 40.0
+let DefaultSmokeBirthRate: Float = 200.0
 let DefaultCometBirthRate: Float = 455.0
 
 class ViewController: UIViewController {
 
     @IBOutlet var mainView: UIView!
+    @IBOutlet var mainUpperImageView: UIImageView!
     @IBOutlet var btnOne: UIButton!
     @IBOutlet var btnTwo: UIButton!
+
+    @IBOutlet var segment: UISegmentedControl!
 
     var mainAnimationView: LOTAnimationView!
     var skView: SKView!
@@ -59,7 +62,7 @@ class ViewController: UIViewController {
 
         self.skView.backgroundColor = UIColor.clear
         self.skView.presentScene(self.weatherScene)
-        self.mainView.addSubview(self.skView)
+        self.mainView.insertSubview(self.skView, belowSubview: self.mainUpperImageView)
 
         self.skView.translatesAutoresizingMaskIntoConstraints = false
         self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.skView]))
@@ -69,6 +72,11 @@ class ViewController: UIViewController {
     }
 
     func initValues() {
+        self.slSnowBirthRate.value = DefaultSnowBirthRate
+        self.slRainBirthRate.value = DefaultRainBirthRate
+        self.slSmokeBirthRate.value = DefaultSmokeBirthRate
+        self.slCometBirthRate.value = DefaultCometBirthRate
+
         self.lbSnowBirthRateMax.text = "\(self.slSnowBirthRate.maximumValue)"
         self.lbRainBirthRateMax.text = "\(self.slRainBirthRate.maximumValue)"
         self.lbSmokeBirthRateMax.text = "\(self.slSmokeBirthRate.maximumValue)"
@@ -140,30 +148,51 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tabSnow(_ sender: Any) {
+        self.weatherScene.extraEffectBlock = {
+            self.mainUpperImageView.image = #imageLiteral(resourceName: "snow")
+        }
+
         self.weatherScene.stopEmitter()
+        self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
         self.weatherScene.startEmitter()
         self.weatherScene.setBirthRate(rate: CGFloat(self.slSnowBirthRate.value))
     }
 
     @IBAction func tabRain(_ sender: Any) {
+        self.weatherScene.extraEffectBlock = {
+            self.mainUpperImageView.image = nil
+        }
+
         self.weatherScene.stopEmitter()
+        self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
         self.weatherScene.startEmitter(weather: .rain)
         self.weatherScene.setBirthRate(rate: CGFloat(self.slRainBirthRate.value))
     }
 
     @IBAction func tabDust(_ sender: Any) {
+        self.weatherScene.extraEffectBlock = {
+            self.mainUpperImageView.image = nil
+        }
+
         self.weatherScene.stopEmitter()
+        self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
         self.weatherScene.startEmitter(weather: .dust)
         self.weatherScene.setBirthRate(rate: CGFloat(self.slSmokeBirthRate.value))
     }
 
     @IBAction func tabComet(_ sender: Any) {
+        self.weatherScene.extraEffectBlock = {
+            self.mainUpperImageView.image = nil
+        }
+
         self.weatherScene.stopEmitter()
         self.weatherScene.startEmitter(weather: .comet)
         self.weatherScene.setBirthRate(rate: CGFloat(self.slCometBirthRate.value))
     }
 
     @IBAction func tabWeatherInit(_ sender: Any) {
+        self.mainUpperImageView.image = nil
+
         switch self.weatherScene.weatherType {
         case .snow:
             self.slSnowBirthRate.value = DefaultSnowBirthRate
