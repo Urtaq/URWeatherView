@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		970E948E1EC44A5700DEEC86 /* ToneCurveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E948D1EC44A5700DEEC86 /* ToneCurveGraphView.swift */; };
 		974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */; };
 		974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */; };
 		974FFB011EA9E77500B2A3E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */; };
@@ -33,6 +34,8 @@
 		974FFB8F1EAEE37D00B2A3E7 /* MyParticleRainGround.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */; };
 		974FFB911EAEE57C00B2A3E7 /* MyParticleBurningComet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */; };
 		974FFB931EAF148000B2A3E7 /* MyParticleDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */; };
+		9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4AF1EC0631400FCD463 /* PageViewController.swift */; };
+		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		970E948D1EC44A5700DEEC86 /* ToneCurveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToneCurveGraphView.swift; sourceTree = "<group>"; };
 		974FFAF81EA9E77500B2A3E7 /* URExampleWeatherView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URExampleWeatherView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleRainGround.sks; sourceTree = "<group>"; };
 		974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleBurningComet.sks; sourceTree = "<group>"; };
 		974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust.sks; sourceTree = "<group>"; };
+		9754D4AF1EC0631400FCD463 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		970E948A1EC4499000DEEC86 /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				9754D4AF1EC0631400FCD463 /* PageViewController.swift */,
+				9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */,
+			);
+			name = PageView;
+			sourceTree = "<group>";
+		};
+		970E948B1EC449AB00DEEC86 /* SpriteKitAssets */ = {
+			isa = PBXGroup;
+			children = (
+				974FFB7C1EAD8F1300B2A3E7 /* MyScene.swift */,
+				974FFB761EAA0E0400B2A3E7 /* MyScene.sks */,
+				974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */,
+				974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */,
+				974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */,
+				974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */,
+				974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */,
+				974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */,
+				974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */,
+				974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */,
+			);
+			name = SpriteKitAssets;
+			sourceTree = "<group>";
+		};
+		970E948C1EC449ED00DEEC86 /* ToneCurve */ = {
+			isa = PBXGroup;
+			children = (
+				970E948D1EC44A5700DEEC86 /* ToneCurveGraphView.swift */,
+			);
+			name = ToneCurve;
+			sourceTree = "<group>";
+		};
 		974FFAEF1EA9E77500B2A3E7 = {
 			isa = PBXGroup;
 			children = (
@@ -139,19 +179,12 @@
 			isa = PBXGroup;
 			children = (
 				974FFB2F1EA9F80B00B2A3E7 /* animationAssets */,
+				970E948B1EC449AB00DEEC86 /* SpriteKitAssets */,
 				974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */,
 				974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */,
-				974FFB761EAA0E0400B2A3E7 /* MyScene.sks */,
-				974FFB7C1EAD8F1300B2A3E7 /* MyScene.swift */,
-				974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */,
-				974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */,
-				974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */,
-				974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */,
-				974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */,
-				974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */,
-				974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */,
-				974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */,
 				974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */,
+				970E948A1EC4499000DEEC86 /* PageView */,
+				970E948C1EC449ED00DEEC86 /* ToneCurve */,
 				974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */,
 				974FFB021EA9E77500B2A3E7 /* Assets.xcassets */,
 				974FFB041EA9E77500B2A3E7 /* LaunchScreen.storyboard */,
@@ -395,9 +428,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				974FFB7D1EAD8F1300B2A3E7 /* MyScene.swift in Sources */,
+				9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */,
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
+				9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */,
 				974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */,
 				974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */,
+				970E948E1EC44A5700DEEC86 /* ToneCurveGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

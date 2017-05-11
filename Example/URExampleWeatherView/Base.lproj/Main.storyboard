@@ -6,7 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -300,12 +302,19 @@
                                 <action selector="changeSpriteKitDebugOption:" destination="BYZ-38-t0r" eventType="valueChanged" id="eB9-Mv-hax"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Detail" id="OL0-BB-hpr">
-                            <connections>
-                                <action selector="tabDetail:" destination="BYZ-38-t0r" id="fzp-lg-s8Q"/>
-                                <segue destination="V8J-aU-o6v" kind="show" id="11k-xp-bD5"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Detail" id="OL0-BB-hpr">
+                                <connections>
+                                    <action selector="tabDetail:" destination="BYZ-38-t0r" id="fzp-lg-s8Q"/>
+                                    <segue destination="V8J-aU-o6v" kind="show" id="11k-xp-bD5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="??" id="cBB-X4-Ked">
+                                <connections>
+                                    <segue destination="Wbm-VK-7SN" kind="show" id="Lse-aC-7Kn"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="btnOne" destination="7mN-ga-vgi" id="MSY-sV-bbG"/>
@@ -334,7 +343,7 @@
         <!--Detail View Controller-->
         <scene sceneID="6hE-Pr-Eur">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="V8J-aU-o6v" customClass="DetailViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="flipHorizontal" id="V8J-aU-o6v" customClass="DetailViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sRc-H4-Qt6"/>
                         <viewControllerLayoutGuide type="bottom" id="qCZ-lQ-HTM"/>
@@ -342,12 +351,94 @@
                     <view key="view" contentMode="scaleToFill" id="q8C-xg-exQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NU7-nT-UfM">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4K-zh-kHC">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                        <connections>
+                                            <segue destination="Wbm-VK-7SN" kind="embed" id="Ms6-ze-dLR"/>
+                                        </connections>
+                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRC-6j-nVf">
+                                        <rect key="frame" x="0.0" y="301.5" width="375" height="603"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="luP-hx-kZF">
+                                                <rect key="frame" x="15" y="15" width="345" height="229"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="luP-hx-kZF" secondAttribute="height" multiplier="360:239" id="vQc-7P-DFT"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geO-1i-H92" customClass="ToneCurveGraphView" customModule="URExampleWeatherView" customModuleProvider="target">
+                                                <rect key="frame" x="15" y="15" width="345" height="229"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.054901960780000002" green="0.76862745099999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="geO-1i-H92" firstAttribute="top" secondItem="luP-hx-kZF" secondAttribute="top" id="0hK-o0-36m"/>
+                                            <constraint firstItem="luP-hx-kZF" firstAttribute="leading" secondItem="XRC-6j-nVf" secondAttribute="leading" constant="15" id="H4i-Jf-815"/>
+                                            <constraint firstItem="geO-1i-H92" firstAttribute="trailing" secondItem="luP-hx-kZF" secondAttribute="trailing" id="US1-cs-1yi"/>
+                                            <constraint firstItem="luP-hx-kZF" firstAttribute="top" secondItem="XRC-6j-nVf" secondAttribute="top" constant="15" id="X1L-oJ-Pf4"/>
+                                            <constraint firstAttribute="trailing" secondItem="luP-hx-kZF" secondAttribute="trailing" constant="15" id="ckZ-Ue-7cz"/>
+                                            <constraint firstItem="geO-1i-H92" firstAttribute="bottom" secondItem="luP-hx-kZF" secondAttribute="bottom" id="eyp-Vq-f0p"/>
+                                            <constraint firstItem="geO-1i-H92" firstAttribute="leading" secondItem="luP-hx-kZF" secondAttribute="leading" id="xr2-8R-0xf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="T4K-zh-kHC" firstAttribute="width" secondItem="NU7-nT-UfM" secondAttribute="width" id="15q-oa-RKh"/>
+                                    <constraint firstAttribute="bottom" secondItem="XRC-6j-nVf" secondAttribute="bottom" id="2g8-nO-Lkg"/>
+                                    <constraint firstAttribute="trailing" secondItem="T4K-zh-kHC" secondAttribute="trailing" id="AUz-2b-cpD"/>
+                                    <constraint firstItem="XRC-6j-nVf" firstAttribute="leading" secondItem="NU7-nT-UfM" secondAttribute="leading" id="Oas-lo-YJN"/>
+                                    <constraint firstItem="T4K-zh-kHC" firstAttribute="leading" secondItem="NU7-nT-UfM" secondAttribute="leading" id="PZQ-OT-dMu"/>
+                                    <constraint firstItem="XRC-6j-nVf" firstAttribute="height" secondItem="NU7-nT-UfM" secondAttribute="height" id="cs9-9I-CfB"/>
+                                    <constraint firstItem="T4K-zh-kHC" firstAttribute="height" secondItem="NU7-nT-UfM" secondAttribute="height" multiplier="1:2" id="dkB-dl-fu0"/>
+                                    <constraint firstAttribute="trailing" secondItem="XRC-6j-nVf" secondAttribute="trailing" id="hd5-bA-f7L"/>
+                                    <constraint firstItem="T4K-zh-kHC" firstAttribute="top" secondItem="NU7-nT-UfM" secondAttribute="top" id="lAF-UE-Sda"/>
+                                    <constraint firstItem="XRC-6j-nVf" firstAttribute="top" secondItem="T4K-zh-kHC" secondAttribute="bottom" id="r8t-xF-s3X"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NU7-nT-UfM" firstAttribute="leading" secondItem="q8C-xg-exQ" secondAttribute="leading" id="FOq-32-t8j"/>
+                            <constraint firstAttribute="trailing" secondItem="NU7-nT-UfM" secondAttribute="trailing" id="LHB-kh-QTe"/>
+                            <constraint firstItem="qCZ-lQ-HTM" firstAttribute="top" secondItem="NU7-nT-UfM" secondAttribute="bottom" id="bwa-kZ-WpY"/>
+                            <constraint firstItem="NU7-nT-UfM" firstAttribute="top" secondItem="sRc-H4-Qt6" secondAttribute="bottom" id="pxS-AP-jfm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfb-eA-yIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1796" y="-510"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="K5r-lu-t0x">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="10" navigationOrientation="horizontal" spineLocation="none" id="Wbm-VK-7SN" customClass="PageViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dCt-od-q7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1777" y="120"/>
+        </scene>
+        <!--Page Content View Controller-->
+        <scene sceneID="cHU-35-Md6">
+            <objects>
+                <viewController storyboardIdentifier="pageContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ota-M6-9NU" customClass="PageContentViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yfs-1I-EYk"/>
+                        <viewControllerLayoutGuide type="bottom" id="aen-B7-b20"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nlC-8u-dcU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RrD-1j-Xan" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1985" y="643"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dbO-oa-3ns">
@@ -368,4 +459,10 @@
             <point key="canvasLocation" x="228" y="-509"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="img_5.png" width="720" height="478"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ms6-ze-dLR"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -149,7 +149,12 @@ class ViewController: UIViewController {
 
     @IBAction func tabSnow(_ sender: Any) {
         self.weatherScene.extraEffectBlock = {
+            self.mainUpperImageView.alpha = 0.0
             self.mainUpperImageView.image = #imageLiteral(resourceName: "snow")
+
+            UIView.animate(withDuration: 1.0, animations: { 
+                self.mainUpperImageView.alpha = 1.0
+            })
         }
 
         self.weatherScene.stopEmitter()
@@ -160,7 +165,12 @@ class ViewController: UIViewController {
 
     @IBAction func tabRain(_ sender: Any) {
         self.weatherScene.extraEffectBlock = {
-            self.mainUpperImageView.image = nil
+            self.mainUpperImageView.alpha = 0.0
+            self.mainUpperImageView.image = #imageLiteral(resourceName: "rain")
+
+            UIView.animate(withDuration: 1.0, animations: {
+                self.mainUpperImageView.alpha = 1.0
+            })
         }
 
         self.weatherScene.stopEmitter()
