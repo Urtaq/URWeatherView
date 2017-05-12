@@ -36,6 +36,7 @@
 		974FFB931EAF148000B2A3E7 /* MyParticleDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */; };
 		9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4AF1EC0631400FCD463 /* PageViewController.swift */; };
 		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
+		979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust.sks; sourceTree = "<group>"; };
 		9754D4AF1EC0631400FCD463 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Interpolation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				970E948D1EC44A5700DEEC86 /* ToneCurveGraphView.swift */,
+				979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */,
 			);
 			name = ToneCurve;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */,
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
 				9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */,
+				979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */,
 				974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */,
 				974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */,
 				970E948E1EC44A5700DEEC86 /* ToneCurveGraphView.swift in Sources */,

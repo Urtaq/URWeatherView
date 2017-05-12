@@ -10,7 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet var graphView: ToneCurveGraphView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.graphView.drawLine()
     }
 }

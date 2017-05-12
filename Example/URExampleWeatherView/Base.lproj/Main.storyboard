@@ -409,6 +409,9 @@
                             <constraint firstItem="NU7-nT-UfM" firstAttribute="top" secondItem="sRc-H4-Qt6" secondAttribute="bottom" id="pxS-AP-jfm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="graphView" destination="geO-1i-H92" id="N6x-g4-DMn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfb-eA-yIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
