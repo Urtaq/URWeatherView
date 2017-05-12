@@ -8,19 +8,52 @@
 
 import UIKit
 
+fileprivate func < (left: CGPoint, right: CGPoint) -> Bool {
+    return left.x < right.x
+}
+
 class ToneCurveGraphView: UIView {
+    class GraphDotView: UIView {
+        var dotView: UIView!
+
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+
+            self.backgroundColor = UIColor.clear
+
+            self.initView()
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        func initView() {
+            self.dotView = UIView()
+            self.dotView.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
+            self.addSubview(self.dotView)
+            self.dotView.translatesAutoresizingMaskIntoConstraints = false
+
+            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.5, constant: 0.0))
+            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0.0))
+        }
+    }
+
     var tapGesture: UITapGestureRecognizer!
     var doubleTapGesture: UITapGestureRecognizer!
 
-    var curveVectorDots: [UIView] = [UIView]()
+    var curveVectorDots: [GraphDotView] = [GraphDotView]()
     var curveVectorPoints: [CGPoint] {
         var points: [CGPoint] = [CGPoint]()
 
         points.append(CGPoint(x: 0, y: self.bounds.height))
 
         for view in self.curveVectorDots {
-            points.append(view.frame.origin)
+            points.append(view.center)
         }
+        points.sort { $0 < $1 }
 
         points.append(CGPoint(x: self.bounds.width, y: 0))
 
@@ -110,9 +143,8 @@ class ToneCurveGraphView: UIView {
     }
 
     func drawDot(_ position: CGPoint) {
-        let dot: UIView = UIView()
-        dot.frame = CGRect(origin: position, size: CGSize(width: 10, height: 10))
-        dot.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
+        let dot: GraphDotView = GraphDotView(frame: CGRect(origin: position, size: CGSize(width: 16, height: 16)))
+        dot.center = position
         self.curveVectorDots.append(dot)
 
         self.addSubview(dot)

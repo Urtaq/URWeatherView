@@ -60,18 +60,25 @@ extension UIBezierPath {
 
         var mx: CGFloat = 0.0
         var my: CGFloat = 0.0
-        if condition {
-            mx = (nextPoint.x - curPoint.x) * 0.5 + (curPoint.x - prevPoint.x) * 0.5
-            my = (nextPoint.y - curPoint.y) * 0.5 + (curPoint.y - prevPoint.y) * 0.5
-        } else {
-            mx = (nextPoint.x - curPoint.x) * 0.5
-            my = (nextPoint.y - curPoint.y) * 0.5
-        }
 
         switch index {
         case 1:
+            if condition {
+                mx = (nextPoint.x - curPoint.x) * 0.5 + (curPoint.x - prevPoint.x) * 0.5
+                my = (nextPoint.y - curPoint.y) * 0.5 + (curPoint.y - prevPoint.y) * 0.5
+            } else {
+                mx = (nextPoint.x - curPoint.x) * 0.5
+                my = (nextPoint.y - curPoint.y) * 0.5
+            }
             return CGPoint(x: curPoint.x + mx / 3.0, y: curPoint.y + my / 3.0)
         case 2:
+            if condition {
+                mx = (nextPoint.x - curPoint.x) * 0.5 + (curPoint.x - prevPoint.x) * 0.5
+                my = (nextPoint.y - curPoint.y) * 0.5 + (curPoint.y - prevPoint.y) * 0.5
+            } else {
+                mx = (curPoint.x - prevPoint.x) * 0.5
+                my = (curPoint.y - prevPoint.y) * 0.5
+            }
             return CGPoint(x: curPoint.x - mx / 3.0, y: curPoint.y - my / 3.0)
         default:
             return .zero
