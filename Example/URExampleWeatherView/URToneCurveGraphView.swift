@@ -1,5 +1,5 @@
 //
-//  ToneCurveGraphView.swift
+//  URToneCurveGraphView.swift
 //  URExampleWeatherView
 //
 //  Created by DongSoo Lee on 2017. 5. 11..
@@ -12,7 +12,7 @@ fileprivate func < (left: CGPoint, right: CGPoint) -> Bool {
     return left.x < right.x
 }
 
-class ToneCurveGraphView: UIView {
+class URToneCurveGraphView: UIView {
     class GraphDotView: UIView {
         var dotView: UIView!
 
@@ -59,6 +59,36 @@ class ToneCurveGraphView: UIView {
 
         return points
     }
+    var curveReletiveVectorPoints: [CGPoint] {
+        var points: [CGPoint] = [CGPoint]()
+
+        points.append(CGPoint(x: 0, y: 0))
+
+        for rulerLine in self.rulerLinesForAxisX {
+            var offsetY: CGFloat = 0.0
+
+            var isIntersected: Bool = false
+            while offsetY < rulerLine.path!.boundingBox.height {
+                isIntersected = self.line.path!.contains(CGPoint(x: rulerLine.path!.boundingBox.minX, y: offsetY))
+                if isIntersected {
+                    print("offsetY : \(offsetY)")
+
+                    points.append(CGPoint(x: rulerLine.path!.boundingBox.minX / self.bounds.width, y: 1 - (offsetY / self.bounds.height)))
+
+                    break
+                }
+
+                offsetY += 0.1
+            }
+        }
+
+        points.append(CGPoint(x: 1.0, y: 1.0))
+        
+        return points
+    }
+
+    var rulerLinesForAxisX: [CAShapeLayer]!
+    var rulerLinesForAxisY: [CAShapeLayer]!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -77,9 +107,62 @@ class ToneCurveGraphView: UIView {
         self.addGestureRecognizer(self.doubleTapGesture)
     }
 
+    func drawRulerLine() {
+        self.layoutIfNeeded()
+
+        let numberOfRulerLine: CGFloat = 3.0
+
+        var index: CGFloat = 0.0
+
+        self.rulerLinesForAxisX = [CAShapeLayer]()
+        while index < numberOfRulerLine {
+            let rulerLine: CAShapeLayer = CAShapeLayer()
+
+            rulerLine.strokeColor = UIColor(white: 0.1, alpha: 0.2).cgColor
+            rulerLine.lineWidth = 2
+            rulerLine.fillColor = nil
+
+            let linePath = UIBezierPath()
+            linePath.move(to: CGPoint(x: self.bounds.width / 4.0 * (index + 1.0), y: 0))
+            linePath.addLine(to: CGPoint(x: self.bounds.width / 4.0 * (index + 1.0), y: self.bounds.height))
+
+            rulerLine.path = linePath.cgPath
+            rulerLine.drawsAsynchronously = true
+
+            self.layer.addSublayer(rulerLine)
+            self.rulerLinesForAxisX.append(rulerLine)
+
+            index += 1
+        }
+
+        index = 0.0
+
+        self.rulerLinesForAxisY = [CAShapeLayer]()
+        while index < numberOfRulerLine {
+            let rulerLine: CAShapeLayer = CAShapeLayer()
+            self.layoutIfNeeded()
+
+            rulerLine.strokeColor = UIColor(white: 0.1, alpha: 0.2).cgColor
+            rulerLine.lineWidth = 1
+            rulerLine.fillColor = nil
+
+            let linePath = UIBezierPath()
+            linePath.move(to: CGPoint(x: 0, y: self.bounds.height / 4.0 * (index + 1.0)))
+            linePath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height / 4.0 * (index + 1.0)))
+
+            rulerLine.path = linePath.cgPath
+            rulerLine.drawsAsynchronously = true
+
+            self.layer.addSublayer(rulerLine)
+            self.rulerLinesForAxisY.append(rulerLine)
+            
+            index += 1
+        }
+    }
+
     var line: CAShapeLayer!
 
-    func drawLine() {
+    func drawLine(_ withRuler: Bool = false) {
         if let layer = self.line, let _ = layer.superlayer {
             self.line.removeFromSuperlayer()
             self.line = nil
@@ -87,7 +170,7 @@ class ToneCurveGraphView: UIView {
 
         self.line = CAShapeLayer()
         self.layoutIfNeeded()
-        self.line.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+//        self.line.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
 
         self.line.strokeColor = UIColor(white: 0.1, alpha: 0.4).cgColor
         self.line.lineWidth = 3
@@ -109,6 +192,10 @@ class ToneCurveGraphView: UIView {
         self.line.drawsAsynchronously = true
 
         self.layer.addSublayer(self.line)
+
+        if withRuler {
+            self.drawRulerLine()
+        }
     }
 
     func handleTap(_ gesture: UITapGestureRecognizer) {
@@ -190,7 +277,7 @@ class ToneCurveGraphView: UIView {
 
             guard let _ = self.hitTest(origin, with: nil) else { return }
 
-            gesture.view!.frame.origin = origin
+            gesture.view!.center = origin
         case .ended, .cancelled, .failed:
             //
             print("at the end")

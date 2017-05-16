@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		970E948E1EC44A5700DEEC86 /* ToneCurveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E948D1EC44A5700DEEC86 /* ToneCurveGraphView.swift */; };
+		970E948E1EC44A5700DEEC86 /* URToneCurveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E948D1EC44A5700DEEC86 /* URToneCurveGraphView.swift */; };
 		974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */; };
 		974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */; };
 		974FFB011EA9E77500B2A3E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */; };
@@ -36,7 +36,9 @@
 		974FFB931EAF148000B2A3E7 /* MyParticleDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */; };
 		9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4AF1EC0631400FCD463 /* PageViewController.swift */; };
 		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
+		976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */; };
 		979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */; };
+		979BAE6B1EC55626003E9322 /* URToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		970E948D1EC44A5700DEEC86 /* ToneCurveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToneCurveGraphView.swift; sourceTree = "<group>"; };
+		970E948D1EC44A5700DEEC86 /* URToneCurveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveGraphView.swift; sourceTree = "<group>"; };
 		974FFAF81EA9E77500B2A3E7 /* URExampleWeatherView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URExampleWeatherView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +95,9 @@
 		974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust.sks; sourceTree = "<group>"; };
 		9754D4AF1EC0631400FCD463 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveImageView.swift; sourceTree = "<group>"; };
 		979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Interpolation.swift"; sourceTree = "<group>"; };
+		979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +155,9 @@
 		970E948C1EC449ED00DEEC86 /* ToneCurve */ = {
 			isa = PBXGroup;
 			children = (
-				970E948D1EC44A5700DEEC86 /* ToneCurveGraphView.swift */,
+				970E948D1EC44A5700DEEC86 /* URToneCurveGraphView.swift */,
+				979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */,
+				976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */,
 				979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */,
 			);
 			name = ToneCurve;
@@ -431,13 +437,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				974FFB7D1EAD8F1300B2A3E7 /* MyScene.swift in Sources */,
+				976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */,
 				9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */,
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
 				9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */,
 				979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */,
+				979BAE6B1EC55626003E9322 /* URToneCurveFilter.swift in Sources */,
 				974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */,
 				974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */,
-				970E948E1EC44A5700DEEC86 /* ToneCurveGraphView.swift in Sources */,
+				970E948E1EC44A5700DEEC86 /* URToneCurveGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
