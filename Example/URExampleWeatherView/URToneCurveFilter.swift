@@ -37,10 +37,19 @@ class URToneCurveFilter: CIFilter {
         }
     }
 
+    override var outputImage: CIImage? {
+        return self.applyFilter()
+    }
+
     func applyFilter() -> CIImage {
         var inputParameters: [String: Any] = [String: Any]()
         for (index, vector) in self.curveVectors.enumerated() {
             inputParameters["inputPoint\(index)"] = vector
+        }
+        inputParameters[kCIInputImageKey] = self.inputImage!
+
+        if let filter = CIFilter(name: "CIToneCurve", withInputParameters: inputParameters) {
+
         }
 
         return self.inputImage!.applyingFilter("CIToneCurve", withInputParameters: inputParameters)

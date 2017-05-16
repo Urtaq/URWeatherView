@@ -12,15 +12,38 @@ fileprivate func < (left: CGPoint, right: CGPoint) -> Bool {
     return left.x < right.x
 }
 
+enum URToneCurveGraphControlMode {
+    case prepared
+    case custom
+}
+
+let DefaultToneCurveInputs: [CGPoint] = [.zero
+    , CGPoint(x: 0.25, y: 0.25)
+    , CGPoint(x: 0.5, y: 0.5)
+    , CGPoint(x: 0.75, y: 0.75)
+    , CGPoint(x: 1.0, y: 1.0)]
+
 class URToneCurveGraphView: UIView {
+    enum URToneCurveGraphDotPosition {
+        case `default`
+        case TopLeft
+        case TopCenter
+        case TopRight
+        case CenterLeft
+        case CenterRight
+        case BottomLeft
+        case BottomCenter
+        case BottomRight
+    }
+
     class GraphDotView: UIView {
         var dotView: UIView!
+        var dotPosition: URToneCurveGraphDotPosition = .default
 
         override init(frame: CGRect) {
             super.init(frame: frame)
 
             self.backgroundColor = UIColor.clear
-
             self.initView()
         }
         
@@ -33,13 +56,72 @@ class URToneCurveGraphView: UIView {
             self.dotView.backgroundColor = UIColor(white: 0.2, alpha: 0.8)
             self.addSubview(self.dotView)
             self.dotView.translatesAutoresizingMaskIntoConstraints = false
+        }
 
-            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
-            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.5, constant: 0.0))
-            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0.0))
+        func initDotConstraints() {
+            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.3, constant: 0.0))
+            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.3, constant: 0.0))
+
+            switch self.dotPosition {
+            case .TopLeft:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+            case .TopCenter:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+            case .TopRight:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+            case .CenterLeft:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+            case .CenterRight:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+            case .BottomLeft:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
+            case .BottomCenter:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
+            case .BottomRight:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
+            default:
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+            }
+        }
+
+        func alignDot(centerPoint: CGPoint, position: URToneCurveGraphDotPosition = .default) {
+            self.dotPosition = position
+
+            switch self.dotPosition {
+            case .TopLeft:
+                self.center = CGPoint(x: centerPoint.x - self.bounds.width / 2.0,   y: centerPoint.y - self.bounds.height / 2.0)
+            case .TopCenter:
+                self.center = CGPoint(x: centerPoint.x,                             y: centerPoint.y - self.bounds.height / 2.0)
+            case .TopRight:
+                self.center = CGPoint(x: centerPoint.x + self.bounds.width / 2.0,   y: centerPoint.y - self.bounds.height / 2.0)
+            case .CenterLeft:
+                self.center = CGPoint(x: centerPoint.x - self.bounds.width / 2.0,   y: centerPoint.y)
+            case .CenterRight:
+                self.center = CGPoint(x: centerPoint.x + self.bounds.width / 2.0,   y: centerPoint.y)
+            case .BottomLeft:
+                self.center = CGPoint(x: centerPoint.x - self.bounds.width / 2.0,   y: centerPoint.y + self.bounds.height / 2.0)
+            case .BottomCenter:
+                self.center = CGPoint(x: centerPoint.x,                             y: centerPoint.y + self.bounds.height / 2.0)
+            case .BottomRight:
+                self.center = CGPoint(x: centerPoint.x + self.bounds.width / 2.0,   y: centerPoint.y + self.bounds.height / 2.0)
+            default:
+                self.center = centerPoint
+            }
+
+            self.initDotConstraints()
         }
     }
+
+    var controlMode: URToneCurveGraphControlMode = .prepared
 
     var tapGesture: UITapGestureRecognizer!
     var doubleTapGesture: UITapGestureRecognizer!
@@ -62,27 +144,14 @@ class URToneCurveGraphView: UIView {
     var curveReletiveVectorPoints: [CGPoint] {
         var points: [CGPoint] = [CGPoint]()
 
-        points.append(CGPoint(x: 0, y: 0))
-
-        for rulerLine in self.rulerLinesForAxisX {
-            var offsetY: CGFloat = 0.0
-
-            var isIntersected: Bool = false
-            while offsetY < rulerLine.path!.boundingBox.height {
-                isIntersected = self.line.path!.contains(CGPoint(x: rulerLine.path!.boundingBox.minX, y: offsetY))
-                if isIntersected {
-                    print("offsetY : \(offsetY)")
-
-                    points.append(CGPoint(x: rulerLine.path!.boundingBox.minX / self.bounds.width, y: 1 - (offsetY / self.bounds.height)))
-
-                    break
-                }
-
-                offsetY += 0.1
+        if self.curveVectorDots.count == 0 {
+            points = DefaultToneCurveInputs
+        } else {
+            for view in self.curveVectorDots {
+                points.append(CGPoint(x: view.center.x / self.bounds.width, y: 1 - (view.center.y / self.bounds.height)))
             }
+            points.sort { $0 < $1 }
         }
-
-        points.append(CGPoint(x: 1.0, y: 1.0))
         
         return points
     }
@@ -99,8 +168,14 @@ class URToneCurveGraphView: UIView {
     func initView() {
         self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1)
 
-        self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        self.addGestureRecognizer(self.tapGesture)
+        self.initGestures()
+    }
+
+    func initGestures() {
+        if self.controlMode == .custom {
+            self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+            self.addGestureRecognizer(self.tapGesture)
+        }
 
         self.doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
         self.doubleTapGesture.numberOfTapsRequired = 2
@@ -114,6 +189,11 @@ class URToneCurveGraphView: UIView {
 
         var index: CGFloat = 0.0
 
+        if self.rulerLinesForAxisX != nil {
+            for ruler in self.rulerLinesForAxisX {
+                ruler.removeFromSuperlayer()
+            }
+        }
         self.rulerLinesForAxisX = [CAShapeLayer]()
         while index < numberOfRulerLine {
             let rulerLine: CAShapeLayer = CAShapeLayer()
@@ -137,6 +217,11 @@ class URToneCurveGraphView: UIView {
 
         index = 0.0
 
+        if self.rulerLinesForAxisY != nil {
+            for ruler in self.rulerLinesForAxisY {
+                ruler.removeFromSuperlayer()
+            }
+        }
         self.rulerLinesForAxisY = [CAShapeLayer]()
         while index < numberOfRulerLine {
             let rulerLine: CAShapeLayer = CAShapeLayer()
@@ -162,7 +247,7 @@ class URToneCurveGraphView: UIView {
 
     var line: CAShapeLayer!
 
-    func drawLine(_ withRuler: Bool = false) {
+    func drawLine(_ withRuler: Bool = false, needToInit: Bool = false) {
         if let layer = self.line, let _ = layer.superlayer {
             self.line.removeFromSuperlayer()
             self.line = nil
@@ -195,7 +280,34 @@ class URToneCurveGraphView: UIView {
 
         if withRuler {
             self.drawRulerLine()
+            self.drawBasicLine()
         }
+
+        if needToInit {
+            if self.controlMode == .prepared {
+                for point in DefaultToneCurveInputs {
+                    self.drawDot(CGPoint(x: point.x * self.bounds.width, y: (1 - point.y) * self.bounds.height))
+                }
+            }
+        }
+    }
+
+    func drawBasicLine() {
+        let basicLine = CAShapeLayer()
+        self.layoutIfNeeded()
+
+        basicLine.strokeColor = UIColor(white: 0.1, alpha: 0.2).cgColor
+        basicLine.lineWidth = 2
+        basicLine.fillColor = nil
+
+        let linePath = UIBezierPath()
+        linePath.move(to: CGPoint(x: 0, y: self.bounds.height))
+        linePath.addLine(to: CGPoint(x: self.bounds.width, y: 0))
+        basicLine.path = linePath.cgPath
+
+        basicLine.drawsAsynchronously = true
+        
+        self.layer.addSublayer(basicLine)
     }
 
     func handleTap(_ gesture: UITapGestureRecognizer) {
@@ -230,8 +342,14 @@ class URToneCurveGraphView: UIView {
     }
 
     func drawDot(_ position: CGPoint) {
-        let dot: GraphDotView = GraphDotView(frame: CGRect(origin: position, size: CGSize(width: 16, height: 16)))
-        dot.center = position
+        let dot: GraphDotView = GraphDotView(frame: CGRect(origin: position, size: CGSize(width: 24, height: 24)))
+        if self.curveVectorDots.count == 0 {
+            dot.alignDot(centerPoint: position, position: .TopRight)
+        } else if self.curveVectorDots.count == DefaultToneCurveInputs.count - 1 {
+            dot.alignDot(centerPoint: position, position: .BottomLeft)
+        } else {
+            dot.alignDot(centerPoint: position)
+        }
         self.curveVectorDots.append(dot)
 
         self.addSubview(dot)
@@ -244,7 +362,7 @@ class URToneCurveGraphView: UIView {
         print(#function)
 
         defer {
-            self.drawLine()
+            self.drawLine(true, needToInit: true)
         }
 
         for dot in self.curveVectorDots {
@@ -279,7 +397,6 @@ class URToneCurveGraphView: UIView {
 
             gesture.view!.center = origin
         case .ended, .cancelled, .failed:
-            //
             print("at the end")
         default:
             break

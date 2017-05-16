@@ -21,7 +21,7 @@ extension URToneCurveAppliable where Self: UIImageView {
         let filter = URToneCurveFilter(self, with: curvePoints)
         filter.extractInputImage(self.originalImage)
 
-        let filteredImage = filter.applyFilter()
+        let filteredImage = filter.outputImage! //.applyFilter()
 
         self.image = UIImage(ciImage: filteredImage)
     }

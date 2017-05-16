@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.graphView.drawLine(true)
+        self.graphView.drawLine(true, needToInit: true)
     }
 
     @IBAction func tapApplyToneCurve(_ sender: Any) {
