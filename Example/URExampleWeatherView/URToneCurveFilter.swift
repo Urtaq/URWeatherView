@@ -14,8 +14,20 @@ public protocol URToneCurveAppliable: class {
 }
 
 class URToneCurveFilter: CIFilter {
-    private var inputImage: CIImage?
+    var inputImage: CIImage?
     private var curveVectors: [CIVector]!
+
+    public static var colorKernelForRGB: CIColorKernel = CIColorKernel(string:
+        "kernel vec4 combineRGBChannel(__sample rgb)" +
+        "{" +
+        "   return vec4(rgb.rgb, 1.0);" +
+        "}")!
+
+    public static var colorKernel: CIColorKernel = CIColorKernel(string:
+        "kernel vec4 combineRGBChannel(__sample red, __sample green, __sample blue)" +
+            "{" +
+            "   return vec4(red.r, green.g, blue.b, 1.0);" +
+        "}")!
 
     override init() {
         super.init()
@@ -41,7 +53,7 @@ class URToneCurveFilter: CIFilter {
         return self.applyFilter()
     }
 
-    func applyFilter() -> CIImage {
+    private func applyFilter() -> CIImage {
         var inputParameters: [String: Any] = [String: Any]()
         for (index, vector) in self.curveVectors.enumerated() {
             inputParameters["inputPoint\(index)"] = vector

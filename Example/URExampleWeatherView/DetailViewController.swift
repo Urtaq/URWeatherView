@@ -11,16 +11,20 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet var originalImageView: URToneCurveImageView!
-    @IBOutlet var graphView: URToneCurveGraphView!
+//    @IBOutlet var graphView: URToneCurveGraphView!
+    @IBOutlet var toneCurveView: URToneCurveView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.graphView.drawLine(true, needToInit: true)
-    }
-
-    @IBAction func tapApplyToneCurve(_ sender: Any) {
-        print(#function)
-        self.originalImageView.setFilteredImage(curvePoints: self.graphView.curveReletiveVectorPoints)
+//        self.graphView.drawLine(true, needToInit: true)
+        self.toneCurveView.initView()
+        self.toneCurveView.applyBlock = {
+            self.originalImageView.setFilteredImage(
+                curvePoints: self.toneCurveView.vectorPoints
+                , pointsForRed: self.toneCurveView.vectorPointsForRed
+                , pointsForGreen: self.toneCurveView.vectorPointsForGreen
+                , pointsForBlue: self.toneCurveView.vectorPointsForBlue)
+        }
     }
 }
