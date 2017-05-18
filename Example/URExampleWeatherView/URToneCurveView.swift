@@ -143,13 +143,47 @@ class URToneCurveView: UIView {
         }
     }
 
+    var applyInfoLabel: UILabel!
     @IBAction func tapApply(_ sender: Any) {
         print(#function)
+
+        self.applyInfoLabel = UILabel()
+        self.applyInfoLabel.isUserInteractionEnabled = true
+        self.applyInfoLabel.numberOfLines = 0
+        self.applyInfoLabel.backgroundColor = UIColor.white
+        self.applyInfoLabel.lineBreakMode = .byWordWrapping
+        self.applyInfoLabel.text = "RGB filter value is \(self.vectorPoints)\n"
+            + "Red filter value is \(self.vectorPointsForRed)\n"
+            + "Green filter value is \(self.vectorPointsForBlue)\n"
+            + "Blue filter value is \(self.vectorPointsForGreen)\n"
+        self.addSubview(self.applyInfoLabel)
+
+        self.applyInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-15-[label]-15-|", options: [], metrics: nil, views: ["label" : self.applyInfoLabel]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-100)-[label(>=200)]", options: [], metrics: nil, views: ["label" : self.applyInfoLabel]))
+
+        let labelGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleAlertLabel(_:)))
+        self.applyInfoLabel.addGestureRecognizer(labelGesture)
+
+        let labelCopyGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleAlertLabelLongTap(_:)))
+        self.applyInfoLabel.addGestureRecognizer(labelCopyGesture)
 
         guard let block = self.applyBlock else { return }
         block()
 
         self.tapRGB(nil)
+    }
+
+    func handleAlertLabel(_ gesture: UITapGestureRecognizer) {
+        if gesture.state == .ended {
+            self.applyInfoLabel.removeFromSuperview()
+        }
+    }
+
+    func handleAlertLabelLongTap(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .ended {
+            self.applyInfoLabel.removeFromSuperview()
+        }
     }
 
     @IBAction func tapRGB(_ sender: Any?) {

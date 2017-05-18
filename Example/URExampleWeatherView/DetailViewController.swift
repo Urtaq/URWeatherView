@@ -14,6 +14,8 @@ class DetailViewController: UIViewController {
 //    @IBOutlet var graphView: URToneCurveGraphView!
     @IBOutlet var toneCurveView: URToneCurveView!
 
+    @IBOutlet var lbResultCurve: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +27,8 @@ class DetailViewController: UIViewController {
                 , pointsForRed: self.toneCurveView.vectorPointsForRed
                 , pointsForGreen: self.toneCurveView.vectorPointsForGreen
                 , pointsForBlue: self.toneCurveView.vectorPointsForBlue)
+
+            
         }
     }
 }

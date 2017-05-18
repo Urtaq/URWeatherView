@@ -371,7 +371,7 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geO-1i-H92" customClass="URToneCurveView" customModule="URExampleWeatherView" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="15" width="345" height="279"/>
+                                                <rect key="frame" x="15" y="15" width="345" height="317"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -382,21 +382,32 @@
                                             <constraint firstItem="geO-1i-H92" firstAttribute="trailing" secondItem="luP-hx-kZF" secondAttribute="trailing" id="US1-cs-1yi"/>
                                             <constraint firstItem="luP-hx-kZF" firstAttribute="top" secondItem="XRC-6j-nVf" secondAttribute="top" constant="15" id="X1L-oJ-Pf4"/>
                                             <constraint firstAttribute="trailing" secondItem="luP-hx-kZF" secondAttribute="trailing" constant="15" id="ckZ-Ue-7cz"/>
-                                            <constraint firstItem="geO-1i-H92" firstAttribute="bottom" secondItem="luP-hx-kZF" secondAttribute="bottom" constant="50" id="eyp-Vq-f0p"/>
+                                            <constraint firstItem="geO-1i-H92" firstAttribute="bottom" secondItem="luP-hx-kZF" secondAttribute="bottom" constant="88" id="eyp-Vq-f0p"/>
                                             <constraint firstItem="geO-1i-H92" firstAttribute="leading" secondItem="luP-hx-kZF" secondAttribute="leading" id="xr2-8R-0xf"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3k-t0-SIB">
+                                        <rect key="frame" x="15" y="15" width="345" height="271.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="T4K-zh-kHC" firstAttribute="width" secondItem="NU7-nT-UfM" secondAttribute="width" id="15q-oa-RKh"/>
                                     <constraint firstAttribute="bottom" secondItem="XRC-6j-nVf" secondAttribute="bottom" id="2g8-nO-Lkg"/>
                                     <constraint firstAttribute="trailing" secondItem="T4K-zh-kHC" secondAttribute="trailing" id="AUz-2b-cpD"/>
+                                    <constraint firstItem="E3k-t0-SIB" firstAttribute="leading" secondItem="T4K-zh-kHC" secondAttribute="leading" constant="15" id="DC1-AS-jbf"/>
+                                    <constraint firstItem="E3k-t0-SIB" firstAttribute="trailing" secondItem="T4K-zh-kHC" secondAttribute="trailing" constant="-15" id="LKm-Lr-Odj"/>
                                     <constraint firstItem="XRC-6j-nVf" firstAttribute="leading" secondItem="NU7-nT-UfM" secondAttribute="leading" id="Oas-lo-YJN"/>
                                     <constraint firstItem="T4K-zh-kHC" firstAttribute="leading" secondItem="NU7-nT-UfM" secondAttribute="leading" id="PZQ-OT-dMu"/>
                                     <constraint firstItem="XRC-6j-nVf" firstAttribute="height" secondItem="NU7-nT-UfM" secondAttribute="height" id="cs9-9I-CfB"/>
                                     <constraint firstItem="T4K-zh-kHC" firstAttribute="height" secondItem="NU7-nT-UfM" secondAttribute="height" multiplier="1:2" id="dkB-dl-fu0"/>
                                     <constraint firstAttribute="trailing" secondItem="XRC-6j-nVf" secondAttribute="trailing" id="hd5-bA-f7L"/>
+                                    <constraint firstItem="E3k-t0-SIB" firstAttribute="top" secondItem="T4K-zh-kHC" secondAttribute="top" constant="15" id="iZX-CK-fwE"/>
                                     <constraint firstItem="T4K-zh-kHC" firstAttribute="top" secondItem="NU7-nT-UfM" secondAttribute="top" id="lAF-UE-Sda"/>
+                                    <constraint firstItem="E3k-t0-SIB" firstAttribute="bottom" secondItem="T4K-zh-kHC" secondAttribute="bottom" constant="-15" id="oYK-Uy-xZT"/>
                                     <constraint firstItem="XRC-6j-nVf" firstAttribute="top" secondItem="T4K-zh-kHC" secondAttribute="bottom" id="r8t-xF-s3X"/>
                                 </constraints>
                             </scrollView>
@@ -410,6 +421,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lbResultCurve" destination="E3k-t0-SIB" id="xHh-ER-WvE"/>
                         <outlet property="originalImageView" destination="luP-hx-kZF" id="o98-YD-UsA"/>
                         <outlet property="toneCurveView" destination="geO-1i-H92" id="KPX-MM-mQH"/>
                     </connections>

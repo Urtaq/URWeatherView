@@ -31,57 +31,57 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="308"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ihj-i2-6Dw" customClass="URToneCurveGraphView" customModule="URExampleWeatherView" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9NE-z0-jjr" customClass="URToneCurveGraphView" customModule="URExampleWeatherView" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-gE-CiA" customClass="URToneCurveGraphView" customModule="URExampleWeatherView" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="md3-CU-Sfz" customClass="URToneCurveGraphView" customModule="URExampleWeatherView" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0, 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTB-vw-TcI">
-                    <rect key="frame" x="0.0" y="230" width="22" height="14.5"/>
+                    <rect key="frame" x="0.0" y="222" width="22" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.25, 0.25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tan-Pi-ER8">
-                    <rect key="frame" x="65.5" y="230" width="57" height="14.5"/>
+                    <rect key="frame" x="65.5" y="222" width="57" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5, 0.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56q-va-ApF">
-                    <rect key="frame" x="166.5" y="230" width="42" height="14.5"/>
+                    <rect key="frame" x="166.5" y="222" width="42" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.75, 0.75" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxs-Bg-IOv">
-                    <rect key="frame" x="253" y="230" width="57" height="14.5"/>
+                    <rect key="frame" x="253" y="222" width="57" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0, 1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh3-f2-nJr">
-                    <rect key="frame" x="336.5" y="230" width="38.5" height="14.5"/>
+                    <rect key="frame" x="336.5" y="222" width="38.5" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qi-Qi-c8M">
-                    <rect key="frame" x="317" y="244" width="54" height="30"/>
+                    <rect key="frame" x="317" y="236" width="54" height="30"/>
                     <color key="backgroundColor" red="0.054901960780000002" green="0.76862745099999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="54" id="VRZ-AW-LnR"/>
@@ -95,7 +95,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VE-x0-cRb" customClass="URSelectableButton" customModule="URExampleWeatherView" customModuleProvider="target">
-                    <rect key="frame" x="165.5" y="244" width="44" height="30"/>
+                    <rect key="frame" x="165.5" y="236" width="44" height="30"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="K14-3m-w8v"/>
@@ -112,7 +112,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hez-dr-cMM" customClass="URSelectableButton" customModule="URExampleWeatherView" customModuleProvider="target">
-                    <rect key="frame" x="219.5" y="244" width="44" height="30"/>
+                    <rect key="frame" x="219.5" y="236" width="44" height="30"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="bSZ-Xf-A7F"/>
@@ -129,7 +129,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Oi-kz-Nca" customClass="URSelectableButton" customModule="URExampleWeatherView" customModuleProvider="target">
-                    <rect key="frame" x="111.5" y="244" width="44" height="30"/>
+                    <rect key="frame" x="111.5" y="236" width="44" height="30"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="lZQ-dj-xNF"/>
@@ -146,7 +146,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUK-2p-iTn" customClass="URSelectableButton" customModule="URExampleWeatherView" customModuleProvider="target">
-                    <rect key="frame" x="4" y="244" width="54" height="30"/>
+                    <rect key="frame" x="4" y="236" width="54" height="30"/>
                     <color key="backgroundColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="54" id="by0-FA-DPj"/>
@@ -162,6 +162,24 @@
                         <action selector="tapRGB:" destination="-1" eventType="touchUpInside" id="1IC-DS-ZHW"/>
                     </connections>
                 </button>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P3e-jo-v7t">
+                    <rect key="frame" x="4" y="270" width="51" height="31"/>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BoxPerCurve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1G-8o-mrI">
+                    <rect key="frame" x="57" y="275" width="99.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34v-84-w1e">
+                    <rect key="frame" x="165.5" y="270" width="51" height="31"/>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BoxPerDot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8g-Jr-hr7">
+                    <rect key="frame" x="218.5" y="275" width="82" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -170,21 +188,27 @@
                 <constraint firstAttribute="trailing" secondItem="md3-CU-Sfz" secondAttribute="trailing" id="4OT-RS-oF5"/>
                 <constraint firstAttribute="trailing" secondItem="vh3-f2-nJr" secondAttribute="trailing" id="4gU-sC-F3v"/>
                 <constraint firstItem="1VE-x0-cRb" firstAttribute="leading" secondItem="2Oi-kz-Nca" secondAttribute="trailing" constant="10" id="5Ra-EN-Uar"/>
-                <constraint firstAttribute="bottom" secondItem="1qi-Qi-c8M" secondAttribute="bottom" constant="4" id="5fn-tm-hKf"/>
                 <constraint firstItem="1qi-Qi-c8M" firstAttribute="top" secondItem="md3-CU-Sfz" secondAttribute="bottom" constant="16" id="5h8-px-SGG"/>
                 <constraint firstItem="Gsm-gE-CiA" firstAttribute="top" secondItem="md3-CU-Sfz" secondAttribute="top" id="6Y7-Ag-ntz"/>
                 <constraint firstItem="9NE-z0-jjr" firstAttribute="trailing" secondItem="md3-CU-Sfz" secondAttribute="trailing" id="7Gq-s8-HjJ"/>
                 <constraint firstItem="9NE-z0-jjr" firstAttribute="top" secondItem="md3-CU-Sfz" secondAttribute="top" id="86D-g3-7zT"/>
                 <constraint firstItem="GTB-vw-TcI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8aE-n9-cv3"/>
+                <constraint firstItem="34v-84-w1e" firstAttribute="centerY" secondItem="f8g-Jr-hr7" secondAttribute="centerY" id="8wc-id-RG3"/>
                 <constraint firstItem="56q-va-ApF" firstAttribute="centerX" secondItem="md3-CU-Sfz" secondAttribute="centerX" id="AeA-qV-SGi"/>
+                <constraint firstItem="ZUK-2p-iTn" firstAttribute="centerY" secondItem="1VE-x0-cRb" secondAttribute="centerY" id="BEs-Qk-7nB"/>
                 <constraint firstItem="Fxs-Bg-IOv" firstAttribute="centerX" secondItem="md3-CU-Sfz" secondAttribute="centerX" multiplier="1.5" id="BO2-cW-mDV"/>
+                <constraint firstItem="f8g-Jr-hr7" firstAttribute="leading" secondItem="34v-84-w1e" secondAttribute="trailing" constant="4" id="CAP-Rl-31F"/>
                 <constraint firstItem="Hez-dr-cMM" firstAttribute="leading" secondItem="1VE-x0-cRb" secondAttribute="trailing" constant="10" id="Cck-ie-cd6"/>
+                <constraint firstItem="P3e-jo-v7t" firstAttribute="top" secondItem="ZUK-2p-iTn" secondAttribute="bottom" constant="4" id="Cki-tU-07X"/>
+                <constraint firstItem="ZUK-2p-iTn" firstAttribute="leading" secondItem="P3e-jo-v7t" secondAttribute="leading" id="EB4-Hj-R2c"/>
                 <constraint firstItem="Fxs-Bg-IOv" firstAttribute="centerY" secondItem="GTB-vw-TcI" secondAttribute="centerY" id="EXd-ye-ICA"/>
                 <constraint firstItem="md3-CU-Sfz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Kf0-5M-wz6"/>
+                <constraint firstItem="e1G-8o-mrI" firstAttribute="leading" secondItem="P3e-jo-v7t" secondAttribute="trailing" constant="4" id="N54-wc-Jq3"/>
                 <constraint firstItem="Tan-Pi-ER8" firstAttribute="centerX" secondItem="md3-CU-Sfz" secondAttribute="centerX" multiplier="0.5" id="NNq-l3-O6b"/>
                 <constraint firstItem="1VE-x0-cRb" firstAttribute="centerY" secondItem="Hez-dr-cMM" secondAttribute="centerY" id="Qaf-rl-mr8"/>
                 <constraint firstItem="Gsm-gE-CiA" firstAttribute="bottom" secondItem="md3-CU-Sfz" secondAttribute="bottom" id="RZi-eY-wHD"/>
                 <constraint firstItem="1VE-x0-cRb" firstAttribute="centerY" secondItem="2Oi-kz-Nca" secondAttribute="centerY" id="UE4-Ft-q3z"/>
+                <constraint firstItem="P3e-jo-v7t" firstAttribute="centerY" secondItem="34v-84-w1e" secondAttribute="centerY" id="WiM-oM-lOX"/>
                 <constraint firstItem="vh3-f2-nJr" firstAttribute="centerY" secondItem="GTB-vw-TcI" secondAttribute="centerY" id="XbF-1I-uqj"/>
                 <constraint firstItem="Ihj-i2-6Dw" firstAttribute="trailing" secondItem="md3-CU-Sfz" secondAttribute="trailing" id="XcC-p4-MOp"/>
                 <constraint firstItem="Ihj-i2-6Dw" firstAttribute="top" secondItem="md3-CU-Sfz" secondAttribute="top" id="aUh-Lv-iZ1"/>
@@ -192,16 +216,17 @@
                 <constraint firstItem="56q-va-ApF" firstAttribute="centerY" secondItem="GTB-vw-TcI" secondAttribute="centerY" id="bCa-ey-gZK"/>
                 <constraint firstItem="Gsm-gE-CiA" firstAttribute="leading" secondItem="md3-CU-Sfz" secondAttribute="leading" id="cHp-m7-6Dd"/>
                 <constraint firstItem="9NE-z0-jjr" firstAttribute="bottom" secondItem="md3-CU-Sfz" secondAttribute="bottom" id="dPu-U8-EsJ"/>
-                <constraint firstAttribute="bottom" secondItem="md3-CU-Sfz" secondAttribute="bottom" constant="50" id="g9O-wF-UTn"/>
+                <constraint firstAttribute="bottom" secondItem="md3-CU-Sfz" secondAttribute="bottom" constant="88" id="g9O-wF-UTn"/>
                 <constraint firstAttribute="trailing" secondItem="1qi-Qi-c8M" secondAttribute="trailing" constant="4" id="gAh-iz-Amm"/>
                 <constraint firstItem="1VE-x0-cRb" firstAttribute="centerY" secondItem="1qi-Qi-c8M" secondAttribute="centerY" id="jEV-y9-Nqv"/>
                 <constraint firstItem="ZUK-2p-iTn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="k8N-oq-6Bx"/>
                 <constraint firstItem="Gsm-gE-CiA" firstAttribute="trailing" secondItem="md3-CU-Sfz" secondAttribute="trailing" id="pye-e4-1gj"/>
                 <constraint firstItem="Tan-Pi-ER8" firstAttribute="centerY" secondItem="GTB-vw-TcI" secondAttribute="centerY" id="qhM-cl-w9B"/>
                 <constraint firstItem="GTB-vw-TcI" firstAttribute="top" secondItem="md3-CU-Sfz" secondAttribute="bottom" constant="2" id="rN5-RA-tpE"/>
-                <constraint firstAttribute="bottom" secondItem="ZUK-2p-iTn" secondAttribute="bottom" constant="4" id="uKn-qS-z9D"/>
                 <constraint firstItem="1VE-x0-cRb" firstAttribute="centerX" secondItem="md3-CU-Sfz" secondAttribute="centerX" id="w8c-Fb-5Kw"/>
                 <constraint firstItem="Ihj-i2-6Dw" firstAttribute="bottom" secondItem="md3-CU-Sfz" secondAttribute="bottom" id="wq8-Nt-rJH"/>
+                <constraint firstItem="P3e-jo-v7t" firstAttribute="centerY" secondItem="e1G-8o-mrI" secondAttribute="centerY" id="zDU-cs-FVv"/>
+                <constraint firstItem="34v-84-w1e" firstAttribute="leading" secondItem="1VE-x0-cRb" secondAttribute="leading" id="zry-yl-Gzc"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

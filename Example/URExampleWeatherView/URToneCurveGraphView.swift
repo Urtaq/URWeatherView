@@ -153,6 +153,8 @@ class URToneCurveGraphView: UIView {
 
     var controlMode: URToneCurveGraphControlMode = .prepared
     var rgbMode: URToneCurveColor = .default
+    var isShowCurveArea: Bool = true
+    var isShowAreaBetweenDots: Bool = true
 
     var tapGesture: UITapGestureRecognizer!
     var doubleTapGesture: UITapGestureRecognizer!
@@ -222,7 +224,7 @@ class URToneCurveGraphView: UIView {
     func drawRulerLine() {
         self.layoutIfNeeded()
 
-        let numberOfRulerLine: CGFloat = 3.0
+        let numberOfRulerLine: CGFloat = 4.0
 
         var index: CGFloat = 0.0
 
@@ -283,7 +285,33 @@ class URToneCurveGraphView: UIView {
     }
 
     var line: CAShapeLayer!
+    var previousPoint: CGPoint = .zero
+    var boundingRectangles: [CAShapeLayer]! {
+        didSet {
+            let numberOfScope: Int = self.rulerLinesForAxisX.count
 
+            if self.boundingRectangles.count >= (numberOfScope + 2) {
+                if self.intersectedRectangles != nil {
+                    for rect in self.intersectedRectangles {
+                        rect.removeFromSuperlayer()
+                    }
+                }
+                self.intersectedRectangles = [CAShapeLayer]()
+                for rect in self.boundingRectangles {
+                    for ruler in self.rulerLinesForAxisX {
+                        let isIntersected: Bool = ruler.path!.isIntersectedRect(with: rect.path!.boundingBox)
+
+                        if isIntersected {
+                            let layer = self.drawRect(ruler.path!.intersectBounds(with: rect.path!.boundingBox), number: numberOfScope, isIntersected: true)
+                            self.intersectedRectangles.append(layer)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    let IntersectedColor: UIColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    var intersectedRectangles: [CAShapeLayer]!
     func drawLine(_ withRuler: Bool = false, needToInit: Bool = false) {
         if let layer = self.line, let _ = layer.superlayer {
             self.line.removeFromSuperlayer()
@@ -308,26 +336,61 @@ class URToneCurveGraphView: UIView {
         self.line.fillColor = nil
         var linePath = UIBezierPath()
         if self.curveVectorDots.count > 0 {
-//            for dot in self.curveVectorDots {
-//                linePath.addLine(to: dot.frame.origin)
-//            }
+
+            if self.boundingRectangles != nil {
+                for layer in self.boundingRectangles {
+                    layer.removeFromSuperlayer()
+                }
+            }
+            self.boundingRectangles = [CAShapeLayer]()
+
+            if self.isShowAreaBetweenDots {
+                for (index, point) in self.curveVectorPoints.enumerated() {
+                    if index != 0 {
+                        let boundingRectWidth: CGFloat = point.x - self.curveVectorPoints[index - 1].x
+                        let boundingRectHeight: CGFloat = point.y - self.curveVectorPoints[index - 1].y
+
+                        let rect: CGRect = CGRect(origin: self.curveVectorPoints[index - 1], size: CGSize(width: boundingRectWidth, height: boundingRectHeight))
+                        let layer = self.drawRect(rect, number: index + 10)
+                        self.boundingRectangles.append(layer)
+                    }
+                }
+            }
+
             if let curvePath = UIBezierPath.interpolateCGPointsWithHermite(self.curveVectorPoints) {
                 linePath = curvePath
 
 //                linePath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
 //                linePath.addLine(to: CGPoint(x: 0, y: self.bounds.height))
 
-//                let viewPointer = UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())
-//                linePath.cgPath.apply(info: viewPointer, function: { (info, pathElement) in
-//
-//                    let view = Unmanaged<URToneCurveGraphView>.fromOpaque(info!).takeUnretainedValue()
-//                    view.drawDot(pathElement.pointee.points.pointee, needSave: false)
-//
-//                    print("apply")
-//                })
-                self.drawDot(linePath.point(atPercentOfLength: 0.25), needSave: false)
-                self.drawDot(linePath.point(atPercentOfLength: 0.5), needSave: false)
-                self.drawDot(linePath.point(atPercentOfLength: 0.75), needSave: false)
+                if self.isShowCurveArea {
+                    let viewPointer = UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())
+                    linePath.cgPath.apply(info: viewPointer, function: { (info, pathElement) in
+
+                        print("type is: \(pathElement.pointee.type.rawValue), point is: \(pathElement.pointee.points.pointee)")
+
+                        let view = Unmanaged<URToneCurveGraphView>.fromOpaque(info!).takeUnretainedValue()
+                        switch pathElement.pointee.type {
+                        case .addCurveToPoint:
+                            if view.previousPoint != .zero {
+                                let boundingRectWidth: CGFloat = pathElement.pointee.points.pointee.x - view.previousPoint.x
+                                let boundingRectHeight: CGFloat = pathElement.pointee.points.pointee.y - view.previousPoint.y
+
+                                let layer = view.drawRect(CGRect(origin: view.previousPoint, size: CGSize(width: boundingRectWidth, height: boundingRectHeight)), number: view.boundingRectangles.count)
+
+                                view.boundingRectangles.append(layer)
+                            }
+
+                            view.previousPoint = pathElement.pointee.points.pointee
+                        case .moveToPoint:
+                            view.previousPoint = pathElement.pointee.points.pointee
+                        default:
+                            break
+                        }
+                        
+                        print("apply")
+                    })
+                }
             }
         } else {
             linePath.move(to: CGPoint(x: 0, y: self.bounds.height))
@@ -353,6 +416,48 @@ class URToneCurveGraphView: UIView {
         }
     }
 
+    func drawRect(_ rect: CGRect, number: Int, needLine: Bool = false, isIntersected: Bool = false) -> CAShapeLayer {
+        if needLine {
+            let layer = CAShapeLayer()
+
+            let points: [CGPoint] = [rect.origin, self.curveVectorPoints[number], CGPoint(x: rect.maxX, y: rect.minY)]
+            if let path = UIBezierPath.interpolateCGPointsWithHermite(points) {
+                layer.path = path.cgPath
+            }
+
+            layer.strokeColor = UIColor(red: 0.1*CGFloat(number), green: 0.1*CGFloat(number), blue: 0.1*CGFloat(number), alpha: 0.5).cgColor
+            layer.fillColor = nil
+            layer.lineWidth = 2
+
+            layer.drawsAsynchronously = true
+
+            self.layer.addSublayer(layer)
+
+            return layer
+        } else {
+            let layer = CAShapeLayer()
+            layer.path = UIBezierPath(rect: rect).cgPath
+
+            if isIntersected {
+                layer.strokeColor = self.IntersectedColor.cgColor
+            } else {
+                if number >= 10 {
+                    layer.strokeColor = UIColor(red: 0.1*CGFloat(number % 10), green: 0.1, blue: 0.1, alpha: 0.5).cgColor
+                } else {
+                    layer.strokeColor = UIColor(red: 0.1*CGFloat(number), green: 0.1*CGFloat(number), blue: 0.1*CGFloat(number), alpha: 0.5).cgColor
+                }
+            }
+            layer.fillColor = nil
+            layer.lineWidth = 2
+
+            layer.drawsAsynchronously = true
+
+            self.layer.addSublayer(layer)
+            
+            return layer
+        }
+    }
+
     var basicLine: CAShapeLayer!
 
     func drawBasicLine() {
@@ -371,8 +476,8 @@ class URToneCurveGraphView: UIView {
         linePath.move(to: CGPoint(x: 0, y: self.bounds.height))
         linePath.addLine(to: CGPoint(x: self.bounds.width, y: 0))
 
-        linePath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
-        linePath.addLine(to: CGPoint(x: 0, y: self.bounds.height))
+//        linePath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
+//        linePath.addLine(to: CGPoint(x: 0, y: self.bounds.height))
         self.basicLine.path = linePath.cgPath
 
         self.basicLine.drawsAsynchronously = true
@@ -442,10 +547,28 @@ class URToneCurveGraphView: UIView {
             }
         }
 
+        // remove dots
         for dot in self.curveVectorDots {
             dot.removeFromSuperview()
         }
         self.curveVectorDots.removeAll()
+
+        // remove bounding rectangles
+        if self.boundingRectangles != nil {
+            for rectangle in self.boundingRectangles {
+                rectangle.removeFromSuperlayer()
+            }
+            self.boundingRectangles.removeAll()
+        }
+
+        self.previousPoint = .zero
+
+        if self.intersectedRectangles != nil {
+            for rectangle in self.intersectedRectangles {
+                rectangle.removeFromSuperlayer()
+            }
+            self.intersectedRectangles.removeAll()
+        }
     }
 
     var preLocation: CGPoint = .zero
@@ -474,6 +597,9 @@ class URToneCurveGraphView: UIView {
             guard let _ = self.hitTest(origin, with: nil) else { return }
 
             gesture.view!.center = origin
+
+            // reset the bounding rectangle point
+            self.previousPoint = .zero
 
             if let block = self.pointDidChanged {
                 block()

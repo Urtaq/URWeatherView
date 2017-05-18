@@ -86,3 +86,37 @@ extension UIBezierPath {
     }
 }
 
+extension CGPath {
+    func intersectBounds(with other: CGRect) -> CGRect {
+        var rawBoundingBox: CGRect = self.boundingBox
+        if rawBoundingBox.width == 0.0 {
+            rawBoundingBox.size.width = 1.0
+        }
+        if rawBoundingBox.height == 0.0 {
+            rawBoundingBox.size.height = 1.0
+        }
+        
+        var intersectionRect: CGRect = rawBoundingBox.intersection(other)
+        if intersectionRect == .null {
+            return .zero
+        }
+
+        if intersectionRect.width == 0.0 {
+            intersectionRect.size.width = 1.0
+        }
+        if intersectionRect.height == 0.0 {
+            intersectionRect.size.height = 1.0
+        }
+        return intersectionRect
+    }
+
+    func isIntersectedRect(with other: CGRect) -> Bool {
+        let intersecttionBounds = self.intersectBounds(with: other)
+
+        if intersecttionBounds == .zero {
+            return false
+        } else {
+            return true
+        }
+    }
+}
