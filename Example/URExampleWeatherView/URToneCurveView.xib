@@ -15,6 +15,7 @@
                 <outlet property="btnApply" destination="1qi-Qi-c8M" id="X11-4t-eF6"/>
                 <outlet property="btnBlue" destination="Hez-dr-cMM" id="GOb-VG-fkC"/>
                 <outlet property="btnGreen" destination="1VE-x0-cRb" id="cq6-dB-Yjf"/>
+                <outlet property="btnOpenFile" destination="aBC-c2-SfF" id="v2F-w3-2e6"/>
                 <outlet property="btnRGB" destination="ZUK-2p-iTn" id="SYg-aT-ctJ"/>
                 <outlet property="btnRed" destination="2Oi-kz-Nca" id="yr0-wQ-ahU"/>
                 <outlet property="graphView" destination="md3-CU-Sfz" id="cDP-cS-e6s"/>
@@ -26,6 +27,8 @@
                 <outlet property="lbInput2" destination="56q-va-ApF" id="tlm-aN-hGa"/>
                 <outlet property="lbInput3" destination="Fxs-Bg-IOv" id="Tci-t3-mkz"/>
                 <outlet property="lbInput4" destination="vh3-f2-nJr" id="d4c-PB-yU7"/>
+                <outlet property="swBoxPerCurve" destination="P3e-jo-v7t" id="jzI-g1-0pt"/>
+                <outlet property="swBoxPerDot" destination="34v-84-w1e" id="v9c-aF-rAl"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1bw-cV-SfD"/>
             </connections>
         </placeholder>
@@ -164,6 +167,9 @@
                 </button>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P3e-jo-v7t">
                     <rect key="frame" x="4" y="270" width="51" height="31"/>
+                    <connections>
+                        <action selector="changedValue:" destination="-1" eventType="valueChanged" id="Jme-RM-Kcs"/>
+                    </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BoxPerCurve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1G-8o-mrI">
                     <rect key="frame" x="57" y="275" width="99.5" height="21"/>
@@ -173,6 +179,9 @@
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34v-84-w1e">
                     <rect key="frame" x="165.5" y="270" width="51" height="31"/>
+                    <connections>
+                        <action selector="changedValue:" destination="-1" eventType="valueChanged" id="ueF-qB-ino"/>
+                    </connections>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BoxPerDot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8g-Jr-hr7">
                     <rect key="frame" x="218.5" y="275" width="82" height="21"/>
@@ -180,6 +189,17 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBC-c2-SfF">
+                    <rect key="frame" x="317" y="274" width="54" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="S6o-iQ-TJE"/>
+                    </constraints>
+                    <state key="normal" title="File"/>
+                    <connections>
+                        <action selector="tapOpenFile:" destination="-1" eventType="touchUpInside" id="pFn-4y-eRp"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -191,6 +211,7 @@
                 <constraint firstItem="1qi-Qi-c8M" firstAttribute="top" secondItem="md3-CU-Sfz" secondAttribute="bottom" constant="16" id="5h8-px-SGG"/>
                 <constraint firstItem="Gsm-gE-CiA" firstAttribute="top" secondItem="md3-CU-Sfz" secondAttribute="top" id="6Y7-Ag-ntz"/>
                 <constraint firstItem="9NE-z0-jjr" firstAttribute="trailing" secondItem="md3-CU-Sfz" secondAttribute="trailing" id="7Gq-s8-HjJ"/>
+                <constraint firstAttribute="trailing" secondItem="aBC-c2-SfF" secondAttribute="trailing" constant="4" id="7zM-eY-pzg"/>
                 <constraint firstItem="9NE-z0-jjr" firstAttribute="top" secondItem="md3-CU-Sfz" secondAttribute="top" id="86D-g3-7zT"/>
                 <constraint firstItem="GTB-vw-TcI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8aE-n9-cv3"/>
                 <constraint firstItem="34v-84-w1e" firstAttribute="centerY" secondItem="f8g-Jr-hr7" secondAttribute="centerY" id="8wc-id-RG3"/>
@@ -218,6 +239,7 @@
                 <constraint firstItem="9NE-z0-jjr" firstAttribute="bottom" secondItem="md3-CU-Sfz" secondAttribute="bottom" id="dPu-U8-EsJ"/>
                 <constraint firstAttribute="bottom" secondItem="md3-CU-Sfz" secondAttribute="bottom" constant="88" id="g9O-wF-UTn"/>
                 <constraint firstAttribute="trailing" secondItem="1qi-Qi-c8M" secondAttribute="trailing" constant="4" id="gAh-iz-Amm"/>
+                <constraint firstAttribute="bottom" secondItem="aBC-c2-SfF" secondAttribute="bottom" constant="4" id="iiX-gY-kld"/>
                 <constraint firstItem="1VE-x0-cRb" firstAttribute="centerY" secondItem="1qi-Qi-c8M" secondAttribute="centerY" id="jEV-y9-Nqv"/>
                 <constraint firstItem="ZUK-2p-iTn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="k8N-oq-6Bx"/>
                 <constraint firstItem="Gsm-gE-CiA" firstAttribute="trailing" secondItem="md3-CU-Sfz" secondAttribute="trailing" id="pye-e4-1gj"/>

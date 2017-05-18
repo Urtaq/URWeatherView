@@ -8,7 +8,7 @@
 
 import UIKit
 
-class URToneCurveView: UIView {
+class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var view: UIView!
 
     @IBOutlet var graphView: URToneCurveGraphView!
@@ -27,9 +27,17 @@ class URToneCurveView: UIView {
     @IBOutlet var lbInput3: UILabel!
     @IBOutlet var lbInput4: UILabel!
 
-    var selectedGraphView: URToneCurveGraphView!
+    @IBOutlet var btnOpenFile: UIButton!
 
-    var applyBlock: (() -> Void)?
+    var selectedGraphView: URToneCurveGraphView! {
+        didSet {
+            self.setInputText()
+        }
+    }
+
+    var setImageBlock: ((UIImage) -> Void)?
+    var applyBlock: ((String) -> Void)?
+    var parentViewController: UIViewController!
 
     var vectorPoints: [CGPoint] {
         return self.graphView.curveRelativeVectorPoints
@@ -91,27 +99,63 @@ class URToneCurveView: UIView {
         self.btnBlue.backgroundColorForNormal = self.btnBlue.titleColor(for: .selected)
         self.btnBlue.backgroundColorForSelected = self.btnBlue.titleColor(for: .normal)
 
+        self.btnOpenFile.layer.cornerRadius = 4.0
+        self.btnOpenFile.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1).cgColor
+        self.btnOpenFile.layer.borderWidth = 0.4
+
         self.graphView.drawLine(true, needToInit: true)
         self.graphView.pointDidChanged = {
             self.setInputText()
+
+            DispatchQueue.main.async {
+                guard let block = self.applyBlock else { return }
+                block("RGB filter value :\n\(self.vectorPoints)\n"
+                    + "Red filter value :\n\(self.vectorPointsForRed)\n"
+                    + "Green filter value :\n\(self.vectorPointsForGreen)\n"
+                    + "Blue filter value :\n\(self.vectorPointsForBlue)\n")
+            }
         }
 
         self.graphViewForRed.rgbMode = .red
         self.graphViewForRed.drawLine(true, needToInit: true)
         self.graphViewForRed.pointDidChanged = {
             self.setInputText()
+
+            DispatchQueue.main.async {
+                guard let block = self.applyBlock else { return }
+                block("RGB filter value :\n\(self.vectorPoints)\n"
+                    + "Red filter value :\n\(self.vectorPointsForRed)\n"
+                    + "Green filter value :\n\(self.vectorPointsForGreen)\n"
+                    + "Blue filter value :\n\(self.vectorPointsForBlue)\n")
+            }
         }
 
         self.graphViewForGreen.rgbMode = .green
         self.graphViewForGreen.drawLine(true, needToInit: true)
         self.graphViewForGreen.pointDidChanged = {
             self.setInputText()
+
+            DispatchQueue.main.async {
+                guard let block = self.applyBlock else { return }
+                block("RGB filter value :\n\(self.vectorPoints)\n"
+                    + "Red filter value :\n\(self.vectorPointsForRed)\n"
+                    + "Green filter value :\n\(self.vectorPointsForGreen)\n"
+                    + "Blue filter value :\n\(self.vectorPointsForBlue)\n")
+            }
         }
 
         self.graphViewForBlue.rgbMode = .blue
         self.graphViewForBlue.drawLine(true, needToInit: true)
         self.graphViewForBlue.pointDidChanged = {
             self.setInputText()
+
+            DispatchQueue.main.async {
+                guard let block = self.applyBlock else { return }
+                block("RGB filter value :\n\(self.vectorPoints)\n"
+                    + "Red filter value :\n\(self.vectorPointsForRed)\n"
+                    + "Green filter value :\n\(self.vectorPointsForGreen)\n"
+                    + "Blue filter value :\n\(self.vectorPointsForBlue)\n")
+            }
         }
     }
 
@@ -147,43 +191,13 @@ class URToneCurveView: UIView {
     @IBAction func tapApply(_ sender: Any) {
         print(#function)
 
-        self.applyInfoLabel = UILabel()
-        self.applyInfoLabel.isUserInteractionEnabled = true
-        self.applyInfoLabel.numberOfLines = 0
-        self.applyInfoLabel.backgroundColor = UIColor.white
-        self.applyInfoLabel.lineBreakMode = .byWordWrapping
-        self.applyInfoLabel.text = "RGB filter value is \(self.vectorPoints)\n"
-            + "Red filter value is \(self.vectorPointsForRed)\n"
-            + "Green filter value is \(self.vectorPointsForBlue)\n"
-            + "Blue filter value is \(self.vectorPointsForGreen)\n"
-        self.addSubview(self.applyInfoLabel)
-
-        self.applyInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-15-[label]-15-|", options: [], metrics: nil, views: ["label" : self.applyInfoLabel]))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-100)-[label(>=200)]", options: [], metrics: nil, views: ["label" : self.applyInfoLabel]))
-
-        let labelGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleAlertLabel(_:)))
-        self.applyInfoLabel.addGestureRecognizer(labelGesture)
-
-        let labelCopyGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleAlertLabelLongTap(_:)))
-        self.applyInfoLabel.addGestureRecognizer(labelCopyGesture)
-
         guard let block = self.applyBlock else { return }
-        block()
+        block("RGB filter value :\n\(self.vectorPoints)\n"
+            + "Red filter value :\n\(self.vectorPointsForRed)\n"
+            + "Green filter value :\n\(self.vectorPointsForGreen)\n"
+            + "Blue filter value :\n\(self.vectorPointsForBlue)\n")
 
         self.tapRGB(nil)
-    }
-
-    func handleAlertLabel(_ gesture: UITapGestureRecognizer) {
-        if gesture.state == .ended {
-            self.applyInfoLabel.removeFromSuperview()
-        }
-    }
-
-    func handleAlertLabelLongTap(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state == .ended {
-            self.applyInfoLabel.removeFromSuperview()
-        }
     }
 
     @IBAction func tapRGB(_ sender: Any?) {
@@ -262,6 +276,44 @@ class URToneCurveView: UIView {
         self.selectedGraphView = self.graphViewForBlue
     }
 
+    @IBAction func tapOpenFile(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        self.parentViewController.present(picker, animated: true, completion: nil)
+    }
+
+    @IBOutlet var swBoxPerCurve: UISwitch!
+    @IBOutlet var swBoxPerDot: UISwitch!
+    @IBAction func changedValue(_ sender: Any) {
+        guard let sw: UISwitch = sender as? UISwitch else { return }
+        switch sw {
+        case self.swBoxPerCurve:
+            self.graphView.isShowCurveArea = self.swBoxPerCurve.isOn
+            self.graphViewForRed.isShowCurveArea = self.swBoxPerCurve.isOn
+            self.graphViewForGreen.isShowCurveArea = self.swBoxPerCurve.isOn
+            self.graphViewForBlue.isShowCurveArea = self.swBoxPerCurve.isOn
+        case self.swBoxPerDot:
+            self.graphView.isShowAreaBetweenDots = self.swBoxPerDot.isOn
+            self.graphViewForRed.isShowAreaBetweenDots = self.swBoxPerDot.isOn
+            self.graphViewForGreen.isShowAreaBetweenDots = self.swBoxPerDot.isOn
+            self.graphViewForBlue.isShowAreaBetweenDots = self.swBoxPerDot.isOn
+        default:
+            break
+        }
+    }
+
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print("info is \(info)")
+
+        defer {
+            picker.dismiss(animated: true, completion: nil)
+        }
+
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        guard let block = self.setImageBlock else { return }
+        block(image)
+    }
 }
 
 class URSelectableButton: UIButton {

@@ -153,8 +153,16 @@ class URToneCurveGraphView: UIView {
 
     var controlMode: URToneCurveGraphControlMode = .prepared
     var rgbMode: URToneCurveColor = .default
-    var isShowCurveArea: Bool = true
-    var isShowAreaBetweenDots: Bool = true
+    var isShowCurveArea: Bool = true {
+        didSet {
+            self.drawLine()
+        }
+    }
+    var isShowAreaBetweenDots: Bool = true {
+        didSet {
+            self.drawLine()
+        }
+    }
 
     var tapGesture: UITapGestureRecognizer!
     var doubleTapGesture: UITapGestureRecognizer!
@@ -286,23 +294,23 @@ class URToneCurveGraphView: UIView {
 
     var line: CAShapeLayer!
     var previousPoint: CGPoint = .zero
-    var boundingRectangles: [CAShapeLayer]! {
+    var boundingRectangles: [URShapeLayer]! {
         didSet {
             let numberOfScope: Int = self.rulerLinesForAxisX.count
 
-            if self.boundingRectangles.count >= (numberOfScope + 2) {
-                if self.intersectedRectangles != nil {
-                    for rect in self.intersectedRectangles {
-                        rect.removeFromSuperlayer()
-                    }
+            if self.intersectedRectangles != nil {
+                for rect in self.intersectedRectangles {
+                    rect.removeFromSuperlayer()
                 }
+            }
+            if self.boundingRectangles.count >= (numberOfScope + 2) {
                 self.intersectedRectangles = [CAShapeLayer]()
                 for rect in self.boundingRectangles {
                     for ruler in self.rulerLinesForAxisX {
                         let isIntersected: Bool = ruler.path!.isIntersectedRect(with: rect.path!.boundingBox)
 
                         if isIntersected {
-                            let layer = self.drawRect(ruler.path!.intersectBounds(with: rect.path!.boundingBox), number: numberOfScope, isIntersected: true)
+                            let layer = self.drawRect(ruler.path!.intersectBounds(with: rect.path!.boundingBox), number: numberOfScope, isIntersected: true, customColor: rect.boundingBoxStyle.strokeColor)
                             self.intersectedRectangles.append(layer)
                         }
                     }
@@ -310,7 +318,6 @@ class URToneCurveGraphView: UIView {
             }
         }
     }
-    let IntersectedColor: UIColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
     var intersectedRectangles: [CAShapeLayer]!
     func drawLine(_ withRuler: Bool = false, needToInit: Bool = false) {
         if let layer = self.line, let _ = layer.superlayer {
@@ -342,7 +349,7 @@ class URToneCurveGraphView: UIView {
                     layer.removeFromSuperlayer()
                 }
             }
-            self.boundingRectangles = [CAShapeLayer]()
+            self.boundingRectangles = [URShapeLayer]()
 
             if self.isShowAreaBetweenDots {
                 for (index, point) in self.curveVectorPoints.enumerated() {
@@ -352,6 +359,8 @@ class URToneCurveGraphView: UIView {
 
                         let rect: CGRect = CGRect(origin: self.curveVectorPoints[index - 1], size: CGSize(width: boundingRectWidth, height: boundingRectHeight))
                         let layer = self.drawRect(rect, number: index + 10)
+                        layer.boundingBoxStyle = .forDots
+
                         self.boundingRectangles.append(layer)
                     }
                 }
@@ -377,6 +386,7 @@ class URToneCurveGraphView: UIView {
                                 let boundingRectHeight: CGFloat = pathElement.pointee.points.pointee.y - view.previousPoint.y
 
                                 let layer = view.drawRect(CGRect(origin: view.previousPoint, size: CGSize(width: boundingRectWidth, height: boundingRectHeight)), number: view.boundingRectangles.count)
+                                layer.boundingBoxStyle = .forCurves
 
                                 view.boundingRectangles.append(layer)
                             }
@@ -416,9 +426,9 @@ class URToneCurveGraphView: UIView {
         }
     }
 
-    func drawRect(_ rect: CGRect, number: Int, needLine: Bool = false, isIntersected: Bool = false) -> CAShapeLayer {
+    func drawRect(_ rect: CGRect, number: Int, needLine: Bool = false, isIntersected: Bool = false, customColor: UIColor! = nil) -> URShapeLayer {
         if needLine {
-            let layer = CAShapeLayer()
+            let layer = URShapeLayer()
 
             let points: [CGPoint] = [rect.origin, self.curveVectorPoints[number], CGPoint(x: rect.maxX, y: rect.minY)]
             if let path = UIBezierPath.interpolateCGPointsWithHermite(points) {
@@ -435,11 +445,11 @@ class URToneCurveGraphView: UIView {
 
             return layer
         } else {
-            let layer = CAShapeLayer()
+            let layer = URShapeLayer()
             layer.path = UIBezierPath(rect: rect).cgPath
 
             if isIntersected {
-                layer.strokeColor = self.IntersectedColor.cgColor
+                layer.strokeColor = customColor.cgColor
             } else {
                 if number >= 10 {
                     layer.strokeColor = UIColor(red: 0.1*CGFloat(number % 10), green: 0.1, blue: 0.1, alpha: 0.5).cgColor
@@ -610,4 +620,22 @@ class URToneCurveGraphView: UIView {
             break
         }
     }
+}
+
+enum URBoundingBoxStyle {
+    case forCurves
+    case forDots
+
+    var strokeColor: UIColor {
+        switch self {
+        case .forCurves:
+            return UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        case .forDots:
+            return UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        }
+    }
+}
+
+class URShapeLayer: CAShapeLayer {
+    var boundingBoxStyle: URBoundingBoxStyle = .forCurves
 }

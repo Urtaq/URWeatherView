@@ -356,15 +356,15 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4K-zh-kHC">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
                                         <connections>
                                             <segue destination="Wbm-VK-7SN" kind="embed" id="Ms6-ze-dLR"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRC-6j-nVf">
-                                        <rect key="frame" x="0.0" y="301.5" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="151" width="375" height="603"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="luP-hx-kZF" customClass="URToneCurveImageView" customModule="URExampleWeatherView" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="luP-hx-kZF" customClass="URToneCurveImageView" customModule="URExampleWeatherView" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="15" width="345" height="229"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="luP-hx-kZF" secondAttribute="height" multiplier="360:239" id="vQc-7P-DFT"/>
@@ -386,30 +386,35 @@
                                             <constraint firstItem="geO-1i-H92" firstAttribute="leading" secondItem="luP-hx-kZF" secondAttribute="leading" id="xr2-8R-0xf"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3k-t0-SIB">
-                                        <rect key="frame" x="15" y="15" width="345" height="271.5"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="a6n-Bc-i66">
+                                        <rect key="frame" x="15" y="15" width="345" height="121"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="V8J-aU-o6v" id="cKK-ry-cX7"/>
+                                        </connections>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="T4K-zh-kHC" firstAttribute="width" secondItem="NU7-nT-UfM" secondAttribute="width" id="15q-oa-RKh"/>
                                     <constraint firstAttribute="bottom" secondItem="XRC-6j-nVf" secondAttribute="bottom" id="2g8-nO-Lkg"/>
+                                    <constraint firstItem="a6n-Bc-i66" firstAttribute="top" secondItem="T4K-zh-kHC" secondAttribute="top" constant="15" id="ARY-iv-drh"/>
                                     <constraint firstAttribute="trailing" secondItem="T4K-zh-kHC" secondAttribute="trailing" id="AUz-2b-cpD"/>
-                                    <constraint firstItem="E3k-t0-SIB" firstAttribute="leading" secondItem="T4K-zh-kHC" secondAttribute="leading" constant="15" id="DC1-AS-jbf"/>
-                                    <constraint firstItem="E3k-t0-SIB" firstAttribute="trailing" secondItem="T4K-zh-kHC" secondAttribute="trailing" constant="-15" id="LKm-Lr-Odj"/>
                                     <constraint firstItem="XRC-6j-nVf" firstAttribute="leading" secondItem="NU7-nT-UfM" secondAttribute="leading" id="Oas-lo-YJN"/>
                                     <constraint firstItem="T4K-zh-kHC" firstAttribute="leading" secondItem="NU7-nT-UfM" secondAttribute="leading" id="PZQ-OT-dMu"/>
+                                    <constraint firstItem="a6n-Bc-i66" firstAttribute="trailing" secondItem="T4K-zh-kHC" secondAttribute="trailing" constant="-15" id="WEt-2O-dJQ"/>
+                                    <constraint firstItem="a6n-Bc-i66" firstAttribute="bottom" secondItem="T4K-zh-kHC" secondAttribute="bottom" constant="-15" id="bX4-Us-Up5"/>
                                     <constraint firstItem="XRC-6j-nVf" firstAttribute="height" secondItem="NU7-nT-UfM" secondAttribute="height" id="cs9-9I-CfB"/>
-                                    <constraint firstItem="T4K-zh-kHC" firstAttribute="height" secondItem="NU7-nT-UfM" secondAttribute="height" multiplier="1:2" id="dkB-dl-fu0"/>
+                                    <constraint firstItem="T4K-zh-kHC" firstAttribute="height" secondItem="NU7-nT-UfM" secondAttribute="height" multiplier="1:4" id="dkB-dl-fu0"/>
                                     <constraint firstAttribute="trailing" secondItem="XRC-6j-nVf" secondAttribute="trailing" id="hd5-bA-f7L"/>
-                                    <constraint firstItem="E3k-t0-SIB" firstAttribute="top" secondItem="T4K-zh-kHC" secondAttribute="top" constant="15" id="iZX-CK-fwE"/>
                                     <constraint firstItem="T4K-zh-kHC" firstAttribute="top" secondItem="NU7-nT-UfM" secondAttribute="top" id="lAF-UE-Sda"/>
-                                    <constraint firstItem="E3k-t0-SIB" firstAttribute="bottom" secondItem="T4K-zh-kHC" secondAttribute="bottom" constant="-15" id="oYK-Uy-xZT"/>
                                     <constraint firstItem="XRC-6j-nVf" firstAttribute="top" secondItem="T4K-zh-kHC" secondAttribute="bottom" id="r8t-xF-s3X"/>
+                                    <constraint firstItem="a6n-Bc-i66" firstAttribute="leading" secondItem="T4K-zh-kHC" secondAttribute="leading" constant="15" id="vD8-4R-qDX"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="V8J-aU-o6v" id="cRB-8e-3wN"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -421,9 +426,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lbResultCurve" destination="E3k-t0-SIB" id="xHh-ER-WvE"/>
                         <outlet property="originalImageView" destination="luP-hx-kZF" id="o98-YD-UsA"/>
+                        <outlet property="scrollView" destination="NU7-nT-UfM" id="uK9-1b-kNS"/>
                         <outlet property="toneCurveView" destination="geO-1i-H92" id="KPX-MM-mQH"/>
+                        <outlet property="txtResultCurve" destination="a6n-Bc-i66" id="t6G-lB-Obn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfb-eA-yIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
