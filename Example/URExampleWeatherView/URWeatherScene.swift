@@ -12,8 +12,9 @@ enum URWeatherType: String {
     case snow       = "MyParticleSnow.sks"
     case rain       = "MyParticleRain.sks"
     case dust       = "MyParticleDust.sks"
+    case dust2      = "MyParticleDust2.sks"
     case comet      = "MyParticleBurningComet.sks"
-    case smoke       = "MyParticleSmoke.sks"
+    case smoke      = "MyParticleSmoke.sks"
     case none       = "None"
 
     var ground: URWeatherGroundType {
@@ -35,6 +36,19 @@ enum URWeatherType: String {
             return #imageLiteral(resourceName: "rain")
         case .dust:
             return #imageLiteral(resourceName: "yellowDust")
+        case .dust2:
+            return #imageLiteral(resourceName: "dustFrame")
+        default:
+            return nil
+        }
+    }
+
+    var startBirthRate: CGFloat? {
+        switch self {
+        case .dust:
+            return 200.0
+        case .dust2:
+            return 3.0
         default:
             return nil
         }
@@ -90,15 +104,22 @@ class URWeatherScene: SKScene {
         }
     }
 
+    var particleColor: UIColor!
+//    func setParticleColor(_ color: UIColor) {
+//        if self.emitter != nil {
+//            self.emitter.particleColorSequence?.setKeyframeValue(color, for: 0)
+//        }
+//    }
+
     func startEmitter(weather: URWeatherType = .snow) {
         self.weatherType = weather
         self.emitter = SKEmitterNode(fileNamed: weather.rawValue)
 
         var particlePositionRangeX: CGFloat = self.view!.bounds.width
-        if self.weatherType == .rain {
+        switch self.weatherType {
+        case .rain:
             particlePositionRangeX *= 2.0
-        }
-        if self.weatherType == .comet {
+        case .comet:
             self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
             self.subEmitter = SKEmitterNode(fileNamed: weatherType.rawValue)
 
@@ -108,7 +129,11 @@ class URWeatherScene: SKScene {
 
             self.subEmitter.targetNode = self
             self.addChild(self.subEmitter)
-        } else if self.weatherType == .dust {
+        case .dust, .dust2:
+            if let startBirthRate = self.weatherType.startBirthRate {
+                self.emitter.particleBirthRate = startBirthRate
+            }
+
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: self.view!.bounds.height)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.midY)
             self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
@@ -120,12 +145,15 @@ class URWeatherScene: SKScene {
             })
 
 //            self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
-        } else {
+        default:
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
         }
         self.emitter.targetNode = self
 
+        if self.particleColor != nil {
+            self.emitter.particleColorSequence?.setKeyframeValue(self.particleColor, for: 0)
+        }
         self.addChild(self.emitter)
 
         self.enableDebugOptions(needToShow: self.isGraphicsDebugOptionEnabled)
@@ -160,6 +188,7 @@ class URWeatherScene: SKScene {
 
     func stopEmitter() {
         self.weatherType = .none
+        self.particleColor = nil
 
         guard let _ = self.emitter else { return }
 

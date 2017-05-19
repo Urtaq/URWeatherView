@@ -181,7 +181,7 @@ class ViewController: UIViewController {
         self.weatherScene.setBirthRate(rate: CGFloat(self.slRainBirthRate.value))
     }
 
-    @IBAction func tabDust(_ sender: Any) {
+    @IBAction func tabDust(_ sender: Any?) {
         self.weatherScene.extraEffectBlock = { (backgroundImage) in
             self.mainUpperImageView.alpha = 0.0
             self.mainUpperImageView.image = backgroundImage
@@ -193,8 +193,36 @@ class ViewController: UIViewController {
 
         self.weatherScene.stopEmitter()
         self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
-        self.weatherScene.startEmitter(weather: .dust)
+        if self.btnDustColor1.isSelected {
+//            self.weatherScene.particleColor = self.btnDustColor1.backgroundColor!
+
+            self.weatherScene.startEmitter(weather: .dust)
+            if let startBirthRate = URWeatherType.dust.startBirthRate {
+                self.slSmokeBirthRate.value = Float(startBirthRate)
+                self.changeBirthRate(self.slSmokeBirthRate)
+            }
+        }
+        if self.btnDustColor2.isSelected {
+//            self.weatherScene.particleColor = self.btnDustColor2.backgroundColor!
+
+            self.weatherScene.startEmitter(weather: .dust2)
+            if let startBirthRate = URWeatherType.dust2.startBirthRate {
+                self.slSmokeBirthRate.value = Float(startBirthRate)
+                self.changeBirthRate(self.slSmokeBirthRate)
+            }
+        }
         self.weatherScene.setBirthRate(rate: CGFloat(self.slSmokeBirthRate.value))
+    }
+
+    @IBOutlet var btnDustColor1: UIButton!
+    @IBOutlet var btnDustColor2: UIButton!
+    @IBAction func tapDustColor(_ sender: Any) {
+        self.btnDustColor1.isSelected = !self.btnDustColor1.isSelected
+        self.btnDustColor2.isSelected = !self.btnDustColor2.isSelected
+//        if let button = sender as? UIButton {
+//            self.weatherScene.setParticleColor(button.backgroundColor!)
+            self.tabDust(nil)
+//        }
     }
 
     @IBAction func tabComet(_ sender: Any) {
@@ -218,6 +246,9 @@ class ViewController: UIViewController {
             self.slRainBirthRate.value = DefaultRainBirthRate
             self.lbRainBirthRateCurrent.text = "\(self.slRainBirthRate.value)"
         case .dust:
+            self.slSmokeBirthRate.value = DefaultSmokeBirthRate
+            self.lbSmokeBirthRateCurrent.text = "\(self.slSmokeBirthRate.value)"
+        case .dust2:
             self.slSmokeBirthRate.value = DefaultSmokeBirthRate
             self.lbSmokeBirthRateCurrent.text = "\(self.slSmokeBirthRate.value)"
         case .comet:

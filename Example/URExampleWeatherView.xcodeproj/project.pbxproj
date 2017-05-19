@@ -37,6 +37,7 @@
 		9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4AF1EC0631400FCD463 /* PageViewController.swift */; };
 		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
 		976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */; };
+		9780EC001ECEBE9000F26C4C /* MyParticleDust2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */; };
 		979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */; };
 		979BAE6B1EC55626003E9322 /* URToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */; };
 		97DF1F901ECAC9D900427CED /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */; };
@@ -99,6 +100,7 @@
 		9754D4AF1EC0631400FCD463 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveImageView.swift; sourceTree = "<group>"; };
+		9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust2.sks; sourceTree = "<group>"; };
 		979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Interpolation.swift"; sourceTree = "<group>"; };
 		979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveFilter.swift; sourceTree = "<group>"; };
 		97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */,
 				974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */,
 				974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */,
+				9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */,
 				974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */,
 			);
 			name = SpriteKitAssets;
@@ -381,6 +384,7 @@
 				974FFB911EAEE57C00B2A3E7 /* MyParticleBurningComet.sks in Resources */,
 				974FFB011EA9E77500B2A3E7 /* Main.storyboard in Resources */,
 				974FFB7B1EAA0E3800B2A3E7 /* MyActions.sks in Resources */,
+				9780EC001ECEBE9000F26C4C /* MyParticleDust2.sks in Resources */,
 				974FFB8D1EAE01C300B2A3E7 /* MyParticleSnowGround.sks in Resources */,
 				974FFB3E1EA9F82B00B2A3E7 /* img_5.png in Resources */,
 				974FFB791EAA0E1200B2A3E7 /* MyParticleSnow.sks in Resources */,

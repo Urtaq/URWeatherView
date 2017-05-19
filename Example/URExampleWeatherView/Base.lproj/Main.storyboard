@@ -77,7 +77,7 @@
                                     <action selector="changeBirthRate:" destination="BYZ-38-t0r" eventType="valueChanged" id="enJ-DM-AUd"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="8Ps-cW-Pwk">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="8Ps-cW-Pwk">
                                 <rect key="frame" x="121" y="482" width="124" height="31"/>
                                 <connections>
                                     <action selector="changeBirthRate:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vvd-Aj-nvS"/>
@@ -209,13 +209,19 @@
                                     <action selector="tabWeatherInit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8P3-Eg-UI5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VM9-JF-6im">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VM9-JF-6im">
                                 <rect key="frame" x="301" y="482" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.69175584153888892" green="0.56185798680833332" blue="0.11989599695277775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.80784313725490198" green="0.56470588235294117" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="tapDustColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1dV-lG-ZXm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgq-HT-LRr">
                                 <rect key="frame" x="263" y="482" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.69175584150000002" green="0.56185798679999999" blue="0.119895997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.37254901960784315" green="0.33333333333333331" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="tapDustColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bji-2V-5YF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -328,6 +334,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnDustColor1" destination="Dgq-HT-LRr" id="bEU-rJ-pM5"/>
+                        <outlet property="btnDustColor2" destination="VM9-JF-6im" id="qDB-Ui-8Ds"/>
                         <outlet property="btnOne" destination="7mN-ga-vgi" id="MSY-sV-bbG"/>
                         <outlet property="btnTwo" destination="imE-5t-NZw" id="QHg-zn-rrb"/>
                         <outlet property="lbComentBirthRateMax" destination="bys-tI-vF8" id="UTG-4y-Kpc"/>
