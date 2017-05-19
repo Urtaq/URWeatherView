@@ -310,7 +310,7 @@ class URToneCurveGraphView: UIView {
                         let isIntersected: Bool = ruler.path!.isIntersectedRect(with: rect.path!.boundingBox)
 
                         if isIntersected {
-                            let layer = self.drawRect(ruler.path!.intersectBounds(with: rect.path!.boundingBox), number: numberOfScope, isIntersected: true, customColor: rect.boundingBoxStyle.strokeColor)
+                            let layer = self.drawRect(ruler.path!.intersectBounds(with: rect.path!.boundingBox), number: numberOfScope, isIntersected: true, customColor: rect.boundingBoxStyle.strokeColor, lineWidth: rect.boundingBoxStyle.lineWidth)
                             self.intersectedRectangles.append(layer)
                         }
                     }
@@ -426,7 +426,7 @@ class URToneCurveGraphView: UIView {
         }
     }
 
-    func drawRect(_ rect: CGRect, number: Int, needLine: Bool = false, isIntersected: Bool = false, customColor: UIColor! = nil) -> URShapeLayer {
+    func drawRect(_ rect: CGRect, number: Int, needLine: Bool = false, isIntersected: Bool = false, customColor: UIColor! = nil, lineWidth: CGFloat = 2.0) -> URShapeLayer {
         if needLine {
             let layer = URShapeLayer()
 
@@ -458,7 +458,11 @@ class URToneCurveGraphView: UIView {
                 }
             }
             layer.fillColor = nil
-            layer.lineWidth = 2
+            if isIntersected {
+                layer.lineWidth = lineWidth
+            } else {
+                layer.lineWidth = 2
+            }
 
             layer.drawsAsynchronously = true
 
@@ -632,6 +636,15 @@ enum URBoundingBoxStyle {
             return UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
         case .forDots:
             return UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        }
+    }
+
+    var lineWidth: CGFloat {
+        switch self {
+        case .forCurves:
+            return 1.0
+        case .forDots:
+            return 2.0
         }
     }
 }
