@@ -194,7 +194,6 @@ class ViewController: UIViewController {
         self.weatherScene.stopEmitter()
         self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
         if self.btnDustColor1.isSelected {
-//            self.weatherScene.particleColor = self.btnDustColor1.backgroundColor!
 
             self.weatherScene.startEmitter(weather: .dust)
             if let startBirthRate = URWeatherType.dust.startBirthRate {
@@ -203,7 +202,6 @@ class ViewController: UIViewController {
             }
         }
         if self.btnDustColor2.isSelected {
-//            self.weatherScene.particleColor = self.btnDustColor2.backgroundColor!
 
             self.weatherScene.startEmitter(weather: .dust2)
             if let startBirthRate = URWeatherType.dust2.startBirthRate {
@@ -219,10 +217,8 @@ class ViewController: UIViewController {
     @IBAction func tapDustColor(_ sender: Any) {
         self.btnDustColor1.isSelected = !self.btnDustColor1.isSelected
         self.btnDustColor2.isSelected = !self.btnDustColor2.isSelected
-//        if let button = sender as? UIButton {
-//            self.weatherScene.setParticleColor(button.backgroundColor!)
-            self.tabDust(nil)
-//        }
+
+        self.tabDust(nil)
     }
 
     @IBAction func tabComet(_ sender: Any) {

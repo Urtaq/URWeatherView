@@ -98,8 +98,8 @@ class URWeatherScene: SKScene {
         guard let _ = self.emitter else { return }
         self.emitter.particleBirthRate = rate
 
-        guard let _ = self.groundEmitter else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            guard let _ = self.groundEmitter else { return }
             self.groundEmitter.particleBirthRate = rate / 2.0
         }
     }
@@ -116,9 +116,10 @@ class URWeatherScene: SKScene {
         self.emitter = SKEmitterNode(fileNamed: weather.rawValue)
 
         var particlePositionRangeX: CGFloat = self.view!.bounds.width
-        switch self.weatherType {
-        case .rain:
+        if self.weatherType == .rain {
             particlePositionRangeX *= 2.0
+        }
+        switch self.weatherType {
         case .comet:
             self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
             self.subEmitter = SKEmitterNode(fileNamed: weatherType.rawValue)
