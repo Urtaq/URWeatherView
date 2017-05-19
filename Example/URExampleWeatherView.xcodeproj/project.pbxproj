@@ -201,11 +201,11 @@
 			children = (
 				974FFB2F1EA9F80B00B2A3E7 /* animationAssets */,
 				970E948B1EC449AB00DEEC86 /* SpriteKitAssets */,
+				970E948A1EC4499000DEEC86 /* PageView */,
+				970E948C1EC449ED00DEEC86 /* ToneCurve */,
 				974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */,
 				974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */,
 				974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */,
-				970E948A1EC4499000DEEC86 /* PageView */,
-				970E948C1EC449ED00DEEC86 /* ToneCurve */,
 				974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */,
 				974FFB021EA9E77500B2A3E7 /* Assets.xcassets */,
 				974FFB041EA9E77500B2A3E7 /* LaunchScreen.storyboard */,

@@ -28,6 +28,33 @@ enum URWeatherType: String {
         }
     }
 
+    var imageFilterValues: [String: [CGPoint]]? {
+        switch self {
+        case .snow:
+            let r: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
+                                CGPoint(x: 0.25, y: 0.0875816794002757),
+                                CGPoint(x: 0.5, y: 0.202614339192708),
+                                CGPoint(x: 0.75, y: 0.571241850011489),
+                                CGPoint(x: 1.0, y: 1.0)]
+            let g: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
+                                CGPoint(x: 0.25, y: 0.206535967658548),
+                                CGPoint(x: 0.5, y: 0.5),
+                                CGPoint(x: 0.75, y: 0.945098039215686),
+                                CGPoint(x: 1.0, y: 1.0)]
+            let b: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
+                                CGPoint(x: 0.25, y: 0.454902020622702),
+                                CGPoint(x: 0.5, y: 0.903268013748468),
+                                CGPoint(x: 0.75, y: 0.972549019607843),
+                                CGPoint(x: 1.0, y: 1.0)]
+            return ["R": r,
+                    "G": g,
+                    "B": b
+            ]
+        default:
+            return nil
+        }
+    }
+
     var backgroundImage: UIImage? {
         switch self {
         case .snow:

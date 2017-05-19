@@ -192,10 +192,10 @@ class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigationCont
         print(#function)
 
         guard let block = self.applyBlock else { return }
-        block("RGB filter value :\n\(self.vectorPoints)\n"
-            + "Red filter value :\n\(self.vectorPointsForRed)\n"
-            + "Green filter value :\n\(self.vectorPointsForGreen)\n"
-            + "Blue filter value :\n\(self.vectorPointsForBlue)\n")
+        block("[\"RGB\": [\(self.vectorPoints)]]\n"
+            + "[\"R\": [\(self.vectorPointsForRed)]]\n"
+            + "[\"G\": [\(self.vectorPointsForGreen)]]\n"
+            + "[\"B\": [\(self.vectorPointsForBlue)]]\n")
 
         self.tapRGB(nil)
     }

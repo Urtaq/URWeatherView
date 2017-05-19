@@ -18,7 +18,7 @@ extension URToneCurveAppliable where Self: UIImageView {
             self.originalImage = self.image
         }
 
-        var filter = URToneCurveFilter(self, with: curvePoints)
+        var filter = URToneCurveFilter(imageView: self, with: curvePoints)
         filter.extractInputImage(self.originalImage)
 
         let filteredImage = filter.outputImage!
@@ -29,7 +29,7 @@ extension URToneCurveAppliable where Self: UIImageView {
             && pointsForBlue == DefaultToneCurveInputs) {
             var filteredImageForRed: CIImage!
             if let points = pointsForRed, points != DefaultToneCurveInputs {
-                filter = URToneCurveFilter(self, with: points)
+                filter = URToneCurveFilter(curvePoints: points)
                 filter.extractInputImage(self.originalImage)
 
                 filteredImageForRed = filter.outputImage!
@@ -40,7 +40,7 @@ extension URToneCurveAppliable where Self: UIImageView {
 
             var filteredImageForGreen: CIImage!
             if let points = pointsForGreen, points != DefaultToneCurveInputs {
-                filter = URToneCurveFilter(self, with: points)
+                filter = URToneCurveFilter(curvePoints: points)
                 filter.extractInputImage(self.originalImage)
 
                 filteredImageForGreen = filter.outputImage!
@@ -51,7 +51,7 @@ extension URToneCurveAppliable where Self: UIImageView {
 
             var filteredImageForBlue: CIImage!
             if let points = pointsForBlue, points != DefaultToneCurveInputs {
-                filter = URToneCurveFilter(self, with: points)
+                filter = URToneCurveFilter(curvePoints: points)
                 filter.extractInputImage(self.originalImage)
 
                 filteredImageForBlue = filter.outputImage!
@@ -73,10 +73,7 @@ extension URToneCurveAppliable where Self: UIImageView {
     }
 
     func removeFilter() {
-        let filter = URToneCurveFilter(self)
-
-        let rollbackImage = filter.rollbackFilter()
-        self.image = UIImage(ciImage: rollbackImage)
+        self.image = self.originalImage
     }
 }
 

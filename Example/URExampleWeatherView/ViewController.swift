@@ -57,6 +57,7 @@ class ViewController: UIViewController {
             self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
 
             print("\(animationView.sceneModel)")
+//            print("\(animationView.imageSolidLayers)")
         }
 
         self.skView = SKView(frame: self.mainView.frame)

@@ -11,6 +11,9 @@ import CoreImage
 
 public protocol URToneCurveAppliable: class {
     var originalImage: UIImage! { get set }
+
+    func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!)
+    func removeFilter()
 }
 
 class URToneCurveFilter: CIFilter {
@@ -37,10 +40,33 @@ class URToneCurveFilter: CIFilter {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(_ image: UIImageView, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
+    /// Must call the function "extractInputImage" on the instance, after calling this init method
+    convenience init(curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
         self.init()
 
-        self.extractInputImage(imageView: image)
+        self.curveVectors = [CIVector]()
+        for point in curvePoints {
+            let vector = CIVector(cgPoint: point)
+            self.curveVectors.append(vector)
+        }
+    }
+
+    convenience init(cgImage: CGImage, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
+        self.init()
+
+        self.extractInputImage(cgImage: cgImage)
+
+        self.curveVectors = [CIVector]()
+        for point in curvePoints {
+            let vector = CIVector(cgPoint: point)
+            self.curveVectors.append(vector)
+        }
+    }
+
+    convenience init(imageView: UIImageView, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
+        self.init()
+
+        self.extractInputImage(imageView: imageView)
 
         self.curveVectors = [CIVector]()
         for point in curvePoints {
@@ -60,8 +86,9 @@ class URToneCurveFilter: CIFilter {
         }
         inputParameters[kCIInputImageKey] = self.inputImage!
 
+        // for checking the filter values
         if let filter = CIFilter(name: "CIToneCurve", withInputParameters: inputParameters) {
-
+            print(filter)
         }
 
         return self.inputImage!.applyingFilter("CIToneCurve", withInputParameters: inputParameters)
@@ -71,6 +98,11 @@ class URToneCurveFilter: CIFilter {
         self.setDefaults()
 
         return self.outputImage!
+    }
+
+    func extractInputImage(cgImage: CGImage) {
+        let ciImage = CIImage(cgImage: cgImage)
+        self.inputImage = ciImage
     }
 
     func extractInputImage(_ image: UIImage) {
