@@ -1,5 +1,5 @@
 //
-//  MyScene.swift
+//  URWeatherScene.swift
 //  URExampleWeatherView
 //
 //  Created by DongSoo Lee on 2017. 4. 24..
@@ -15,6 +15,30 @@ enum URWeatherType: String {
     case comet      = "MyParticleBurningComet.sks"
     case smoke       = "MyParticleSmoke.sks"
     case none       = "None"
+
+    var ground: URWeatherGroundType {
+        switch self {
+        case .snow:
+            return .snow
+        case .rain:
+            return .rain
+        default:
+            return .none
+        }
+    }
+
+    var backgroundImage: UIImage? {
+        switch self {
+        case .snow:
+            return #imageLiteral(resourceName: "snow")
+        case .rain:
+            return #imageLiteral(resourceName: "rain")
+        case .dust:
+            return #imageLiteral(resourceName: "yellowDust")
+        default:
+            return nil
+        }
+    }
 }
 
 enum URWeatherGroundType: String {
@@ -23,7 +47,7 @@ enum URWeatherGroundType: String {
     case none       = "None"
 }
 
-class MyScene: SKScene {
+class URWeatherScene: SKScene {
     private var emitter: SKEmitterNode!
     private var subEmitter: SKEmitterNode!
     private var groundEmitter: SKEmitterNode!
@@ -33,7 +57,7 @@ class MyScene: SKScene {
     var weatherType: URWeatherType = .none
     var isGraphicsDebugOptionEnabled: Bool = false
 
-    var extraEffectBlock: (() -> Void)?
+    var extraEffectBlock: ((UIImage?) -> Void)?
 
     override init(size: CGSize) {
         super.init(size: size)
@@ -111,7 +135,7 @@ class MyScene: SKScene {
         }
 
         guard let block = self.extraEffectBlock else { return }
-        block()
+        block(self.weatherType.backgroundImage)
     }
 
     func startGroundEmitter() {
@@ -119,7 +143,7 @@ class MyScene: SKScene {
 //        case .snow:
 //            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherGroundType.snow.rawValue)
         case .rain:
-            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherGroundType.rain.rawValue)
+            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherType.rain.ground.rawValue)
         default:
             self.groundEmitter = nil
         }

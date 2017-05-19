@@ -27,7 +27,7 @@
 		974FFB771EAA0E0400B2A3E7 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB761EAA0E0400B2A3E7 /* MyScene.sks */; };
 		974FFB791EAA0E1200B2A3E7 /* MyParticleSnow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */; };
 		974FFB7B1EAA0E3800B2A3E7 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */; };
-		974FFB7D1EAD8F1300B2A3E7 /* MyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB7C1EAD8F1300B2A3E7 /* MyScene.swift */; };
+		974FFB7D1EAD8F1300B2A3E7 /* URWeatherScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB7C1EAD8F1300B2A3E7 /* URWeatherScene.swift */; };
 		974FFB7F1EADA4BF00B2A3E7 /* MyParticleRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */; };
 		974FFB811EADA78F00B2A3E7 /* MyParticleSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */; };
 		974FFB8D1EAE01C300B2A3E7 /* MyParticleSnowGround.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */; };
@@ -89,7 +89,7 @@
 		974FFB761EAA0E0400B2A3E7 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnow.sks; sourceTree = "<group>"; };
 		974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyActions.sks; sourceTree = "<group>"; };
-		974FFB7C1EAD8F1300B2A3E7 /* MyScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScene.swift; sourceTree = "<group>"; };
+		974FFB7C1EAD8F1300B2A3E7 /* URWeatherScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URWeatherScene.swift; sourceTree = "<group>"; };
 		974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleRain.sks; sourceTree = "<group>"; };
 		974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSmoke.sks; sourceTree = "<group>"; };
 		974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnowGround.sks; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		970E948B1EC449AB00DEEC86 /* SpriteKitAssets */ = {
 			isa = PBXGroup;
 			children = (
-				974FFB7C1EAD8F1300B2A3E7 /* MyScene.swift */,
+				974FFB7C1EAD8F1300B2A3E7 /* URWeatherScene.swift */,
 				974FFB761EAA0E0400B2A3E7 /* MyScene.sks */,
 				974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */,
 				974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */,
@@ -447,7 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				974FFB7D1EAD8F1300B2A3E7 /* MyScene.swift in Sources */,
+				974FFB7D1EAD8F1300B2A3E7 /* URWeatherScene.swift in Sources */,
 				976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */,
 				9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */,
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,

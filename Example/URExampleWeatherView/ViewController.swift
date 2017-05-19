@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 
     var mainAnimationView: LOTAnimationView!
     var skView: SKView!
-    var weatherScene: MyScene!
+    var weatherScene: URWeatherScene!
 
     @IBOutlet var slSnowBirthRate: UISlider!
     @IBOutlet var lbSnowBirthRateCurrent: UILabel!
@@ -55,10 +55,12 @@ class ViewController: UIViewController {
 
             self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
             self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
+
+            print("\(animationView.sceneModel)")
         }
 
         self.skView = SKView(frame: self.mainView.frame)
-        self.weatherScene = MyScene(size: self.skView.bounds.size)
+        self.weatherScene = URWeatherScene(size: self.skView.bounds.size)
 
         self.skView.backgroundColor = UIColor.clear
         self.skView.presentScene(self.weatherScene)
@@ -148,9 +150,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tabSnow(_ sender: Any) {
-        self.weatherScene.extraEffectBlock = {
+        self.weatherScene.extraEffectBlock = { (backgroundImage) in
             self.mainUpperImageView.alpha = 0.0
-            self.mainUpperImageView.image = #imageLiteral(resourceName: "snow")
+            self.mainUpperImageView.image = backgroundImage
 
             UIView.animate(withDuration: 1.0, animations: { 
                 self.mainUpperImageView.alpha = 1.0
@@ -164,9 +166,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tabRain(_ sender: Any) {
-        self.weatherScene.extraEffectBlock = {
+        self.weatherScene.extraEffectBlock = { (backgroundImage) in
             self.mainUpperImageView.alpha = 0.0
-            self.mainUpperImageView.image = #imageLiteral(resourceName: "rain")
+            self.mainUpperImageView.image = backgroundImage
 
             UIView.animate(withDuration: 1.0, animations: {
                 self.mainUpperImageView.alpha = 1.0
@@ -180,8 +182,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tabDust(_ sender: Any) {
-        self.weatherScene.extraEffectBlock = {
-            self.mainUpperImageView.image = nil
+        self.weatherScene.extraEffectBlock = { (backgroundImage) in
+            self.mainUpperImageView.alpha = 0.0
+            self.mainUpperImageView.image = backgroundImage
+
+            UIView.animate(withDuration: 1.0, animations: {
+                self.mainUpperImageView.alpha = 1.0
+            })
         }
 
         self.weatherScene.stopEmitter()
@@ -191,8 +198,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tabComet(_ sender: Any) {
-        self.weatherScene.extraEffectBlock = {
-            self.mainUpperImageView.image = nil
+        self.weatherScene.extraEffectBlock = { (backgroundImage) in
+            self.mainUpperImageView.image = backgroundImage
         }
 
         self.weatherScene.stopEmitter()
