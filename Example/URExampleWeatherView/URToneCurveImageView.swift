@@ -9,17 +9,18 @@
 import UIKit
 
 class URToneCurveImageView: UIImageView, URToneCurveAppliable {
-    var originalImage: UIImage!
+    var originalImages: [UIImage]!
 }
 
 extension URToneCurveAppliable where Self: UIImageView {
     func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]! = DefaultToneCurveInputs, pointsForGreen: [CGPoint]! = DefaultToneCurveInputs, pointsForBlue: [CGPoint]! = DefaultToneCurveInputs) {
-        if self.originalImage == nil {
-            self.originalImage = self.image
+        if self.originalImages == nil {
+            self.originalImages = [UIImage]()
+            self.originalImages.append(self.image!)
         }
 
         var filter = URToneCurveFilter(imageView: self, with: curvePoints)
-        filter.extractInputImage(self.originalImage)
+        filter.extractInputImage(self.originalImages[0])
 
         let filteredImage = filter.outputImage!
 
@@ -30,7 +31,7 @@ extension URToneCurveAppliable where Self: UIImageView {
             var filteredImageForRed: CIImage!
             if let points = pointsForRed, points != DefaultToneCurveInputs {
                 filter = URToneCurveFilter(curvePoints: points)
-                filter.extractInputImage(self.originalImage)
+                filter.extractInputImage(self.originalImages[0])
 
                 filteredImageForRed = filter.outputImage!
             } else {
@@ -41,7 +42,7 @@ extension URToneCurveAppliable where Self: UIImageView {
             var filteredImageForGreen: CIImage!
             if let points = pointsForGreen, points != DefaultToneCurveInputs {
                 filter = URToneCurveFilter(curvePoints: points)
-                filter.extractInputImage(self.originalImage)
+                filter.extractInputImage(self.originalImages[0])
 
                 filteredImageForGreen = filter.outputImage!
             } else {
@@ -52,7 +53,7 @@ extension URToneCurveAppliable where Self: UIImageView {
             var filteredImageForBlue: CIImage!
             if let points = pointsForBlue, points != DefaultToneCurveInputs {
                 filter = URToneCurveFilter(curvePoints: points)
-                filter.extractInputImage(self.originalImage)
+                filter.extractInputImage(self.originalImages[0])
 
                 filteredImageForBlue = filter.outputImage!
             } else {
@@ -72,8 +73,8 @@ extension URToneCurveAppliable where Self: UIImageView {
         }
     }
 
-    func removeFilter() {
-        self.image = self.originalImage
+    func removeToneCurveFilter() {
+        self.image = self.originalImages[0]
     }
 }
 

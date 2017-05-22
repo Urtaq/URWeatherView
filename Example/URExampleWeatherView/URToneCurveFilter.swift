@@ -10,10 +10,21 @@ import UIKit
 import CoreImage
 
 public protocol URToneCurveAppliable: class {
-    var originalImage: UIImage! { get set }
+    var originalImages: [UIImage]! { get set }
 
     func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!)
-    func removeFilter()
+    func applyToneCurveFilter(filterValues: [String: [CGPoint]])
+    func removeToneCurveFilter()
+}
+
+extension URToneCurveAppliable {
+    func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!) {
+
+    }
+
+    func applyToneCurveFilter(filterValues: [String: [CGPoint]]) {
+        
+    }
 }
 
 class URToneCurveFilter: CIFilter {
@@ -21,15 +32,33 @@ class URToneCurveFilter: CIFilter {
     private var curveVectors: [CIVector]!
 
     public static var colorKernelForRGB: CIColorKernel = CIColorKernel(string:
-        "kernel vec4 combineRGBChannel(__sample rgb)" +
-        "{" +
+        "kernel vec4 combineRGBChannel(__sample rgb) {" +
         "   return vec4(rgb.rgb, 1.0);" +
         "}")!
 
     public static var colorKernel: CIColorKernel = CIColorKernel(string:
-        "kernel vec4 combineRGBChannel(__sample red, __sample green, __sample blue)" +
-            "{" +
-            "   return vec4(red.r, green.g, blue.b, 1.0);" +
+        "kernel vec4 combineRGBChannel(__sample red, __sample green, __sample blue) {" +
+            "   vec4 result = vec4(red.r, green.g, blue.b, 1.0);" +
+            "   bool isTransparency = true;" +
+            "   if (red.r == 0.0 && red.g == 0.0 && red.b == 0.0 && red.a == 0.0) {" +
+            "       result.r = 0.0;" +
+            "   } else {" +
+            "       isTransparency = false;" +
+            "   }" +
+            "   if (green.r == 0.0 && green.g == 0.0 && green.b == 0.0 && green.a == 0.0) {" +
+            "       result.g = 0.0;" +
+            "   } else {" +
+            "       isTransparency = false;" +
+            "   }" +
+            "   if (blue.r == 0.0 && blue.g == 0.0 && blue.b == 0.0 && blue.a == 0.0) {" +
+            "       result.b = 0.0;" +
+            "   } else {" +
+            "       isTransparency = false;" +
+            "   }" +
+            "   if (isTransparency) {" +
+            "       result.a = 0.0;" +
+            "   }" +
+            "   return result;" +
         "}")!
 
     override init() {
@@ -87,9 +116,9 @@ class URToneCurveFilter: CIFilter {
         inputParameters[kCIInputImageKey] = self.inputImage!
 
         // for checking the filter values
-        if let filter = CIFilter(name: "CIToneCurve", withInputParameters: inputParameters) {
-            print(filter)
-        }
+//        if let filter = CIFilter(name: "CIToneCurve", withInputParameters: inputParameters) {
+//            print(filter)
+//        }
 
         return self.inputImage!.applyingFilter("CIToneCurve", withInputParameters: inputParameters)
     }
