@@ -29,18 +29,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        if let animationView = URLOTAnimationView(name: "data") {
-            self.mainAnimationView = animationView
-            self.mainView.addSubview(animationView)
-            self.mainAnimationView.translatesAutoresizingMaskIntoConstraints = false
-
-            self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
-            self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
-
-//            print("\(animationView.sceneModel)")
-//            print("\(animationView.imageSolidLayers)")
-        }
-
         self.skView = SKView(frame: self.mainView.frame)
         self.weatherScene = URWeatherScene(size: self.skView.bounds.size)
 
@@ -51,6 +39,34 @@ class ViewController: UIViewController {
         self.skView.translatesAutoresizingMaskIntoConstraints = false
         self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.skView]))
         self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.skView]))
+
+        self.initMainAnimation()
+    }
+
+    func initMainAnimation() {
+        var animationProgress: CGFloat = 0.0
+        if let prevAnimationView = self.mainAnimationView {
+            animationProgress = prevAnimationView.animationProgress
+            if animationProgress == 1.0 {
+                animationProgress = 0.0
+            }
+            prevAnimationView.removeFromSuperview()
+
+            self.mainAnimationView = nil
+        }
+
+        if let animationView = URLOTAnimationView(name: "data") {
+            self.mainAnimationView = animationView
+            self.mainView.insertSubview(animationView, belowSubview: self.skView)
+            self.mainAnimationView.animationProgress = animationProgress
+            self.mainAnimationView.translatesAutoresizingMaskIntoConstraints = false
+
+            self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
+            self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
+
+            print("\(animationView.sceneModel)")
+//            print("\(animationView.imageSolidLayers)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +91,7 @@ class ViewController: UIViewController {
             self.mainAnimationView.play()
             Timer.scheduledTimer(withTimeInterval: 0.32, repeats: false) { (timer) in
                 self.mainAnimationView.pause()
+                print("self.mainAnimationView.animationProgress is \(self.mainAnimationView.animationProgress)")
             }
         }
     }
@@ -99,6 +116,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configCell(URWeatherType.all[indexPath.row])
 
             cell.applyWeatherBlock = {
+                self.initMainAnimation()
+
                 switch cell.weather {
                 case .dust, .dust2:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
@@ -153,6 +172,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configCell(URWeatherType.all[indexPath.row])
 
             cell.applyWeatherBlock = {
+                self.initMainAnimation()
+
                 switch cell.weather {
                 case .snow:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
@@ -165,8 +186,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     }
 
                     print("layers before ======= > \(self.mainAnimationView.imageSolidLayers)")
-                    if let filterValues = URWeatherType.snow.imageFilterValues {
-                        self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
+                    if let filterValues = URWeatherType.snow.imageFilterValues, let filterValuesSub = URWeatherType.snow.imageFilterValuesSub {
+                        self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
                     }
                     print("layers after ======= > \(self.mainAnimationView.imageSolidLayers)")
 
@@ -205,7 +226,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             cell.removeToneFilterBlock = {
-                self.mainAnimationView.removeToneCurveFilter()
+                self.initMainAnimation()
             }
 
             cell.birthRateDidChange = { (birthRate) in

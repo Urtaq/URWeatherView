@@ -13,8 +13,10 @@ public protocol URToneCurveAppliable: class {
     var originalImages: [UIImage]! { get set }
 
     func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!)
-    func applyToneCurveFilter(filterValues: [String: [CGPoint]])
+    func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]?)
     func removeToneCurveFilter()
+
+    func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage)
 }
 
 extension URToneCurveAppliable {
@@ -22,8 +24,10 @@ extension URToneCurveAppliable {
 
     }
 
-    func applyToneCurveFilter(filterValues: [String: [CGPoint]]) {
-        
+    func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
+    }
+
+    func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage) {
     }
 }
 

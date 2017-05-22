@@ -36,12 +36,12 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
         return originals
     }
 
-    func applyToneCurveFilter(filterValues: [String: [CGPoint]]) {
+    func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
         if self.imageSolidLayers != nil {
 //            if self.rawImages == nil {
 //                self.rawImages = [UIImage]() as NSArray
 //            }
-            for imageLayer in self.imageSolidLayers {
+            for (index, imageLayer) in self.imageSolidLayers.enumerated() {
                 guard imageLayer.contents != nil else { continue }
                 print("imageLayer before ====> \(imageLayer.contents!)")
                 let cgImage = imageLayer.contents as! CGImage
@@ -49,9 +49,13 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
                 self.originals.rawImages.append(UIImage(cgImage: cgImage))
 //                self.originals.rawImages[self.originalImages.count] = UIImage(cgImage: cgImage)
 
-                let red = URToneCurveFilter(cgImage: cgImage, with: filterValues["R"]!).outputImage!
-                let green = URToneCurveFilter(cgImage: cgImage, with: filterValues["G"]!).outputImage!
-                let blue = URToneCurveFilter(cgImage: cgImage, with: filterValues["B"]!).outputImage!
+                var values = filterValues
+                if let subValues = filterValuesSub, index != 0 && index != (self.imageSolidLayers.count - 1) {
+                    values = subValues
+                }
+                let red = URToneCurveFilter(cgImage: cgImage, with: values["R"]!).outputImage!
+                let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
+                let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
 
                 guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: red.extent, arguments: [red, green, blue]) else {
                     return
@@ -62,20 +66,30 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
                     fatalError("Not able to make CGImage of the result Filtered Image!!")
                 }
                 imageLayer.contents = resultCGImage
+                self.replaceLayer(imageLayer, with: resultCGImage)
                 print("imageLayer after  ====> \(imageLayer.contents!)")
-//                break
+//                guard let superLayer = imageLayer.superlayer else { return }
+//                superLayer.display()
             }
         }
     }
 
+    func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage) {
+        guard let superLayer = targetLayer.superlayer else { return }
+        let newLayer: CALayer = CALayer()
+        newLayer.frame = targetLayer.frame
+        newLayer.masksToBounds = targetLayer.masksToBounds
+        newLayer.contents = cgImage
+        superLayer.addSublayer(newLayer)
+        superLayer.display()
+    }
+
     func removeToneCurveFilter() {
         if self.imageSolidLayers != nil {
-            let tx = self.originals.rawImages
-            print(tx)
             for (index, imageLayer) in self.imageSolidLayers.enumerated() {
                 guard imageLayer.contents != nil else { continue }
-                imageLayer.contents = self.originals.rawImages[index].cgImage
-                print("\(self.originals.rawImages[index].cgImage!)")
+//                imageLayer.contents = self.originals.rawImages[index].cgImage
+                self.replaceLayer(imageLayer, with: self.originals.rawImages[index].cgImage!)
             }
         }
     }
