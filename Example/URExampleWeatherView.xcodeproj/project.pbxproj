@@ -38,6 +38,9 @@
 		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
 		976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */; };
 		9780EC001ECEBE9000F26C4C /* MyParticleDust2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */; };
+		9780EC0A1ECEFBE600F26C4C /* LOTAnimationView+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC091ECEFBE600F26C4C /* LOTAnimationView+Filter.swift */; };
+		9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */; };
+		9780EC101ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */; };
 		979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */; };
 		979BAE6B1EC55626003E9322 /* URToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */; };
 		97DF1F901ECAC9D900427CED /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */; };
@@ -101,6 +104,9 @@
 		9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveImageView.swift; sourceTree = "<group>"; };
 		9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust2.sks; sourceTree = "<group>"; };
+		9780EC091ECEFBE600F26C4C /* LOTAnimationView+Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LOTAnimationView+Filter.swift"; sourceTree = "<group>"; };
+		9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherTableViewCell.swift; sourceTree = "<group>"; };
+		9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherTableViewCell2.swift; sourceTree = "<group>"; };
 		979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Interpolation.swift"; sourceTree = "<group>"; };
 		979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveFilter.swift; sourceTree = "<group>"; };
 		97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveView.swift; sourceTree = "<group>"; };
@@ -205,6 +211,9 @@
 				970E948C1EC449ED00DEEC86 /* ToneCurve */,
 				974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */,
 				974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */,
+				9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */,
+				9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */,
+				9780EC091ECEFBE600F26C4C /* LOTAnimationView+Filter.swift */,
 				974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */,
 				974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */,
 				974FFB021EA9E77500B2A3E7 /* Assets.xcassets */,
@@ -457,11 +466,14 @@
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
 				9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */,
 				979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */,
+				9780EC101ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift in Sources */,
 				979BAE6B1EC55626003E9322 /* URToneCurveFilter.swift in Sources */,
 				974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */,
 				97DF1F901ECAC9D900427CED /* URToneCurveView.swift in Sources */,
 				974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */,
+				9780EC0A1ECEFBE600F26C4C /* LOTAnimationView+Filter.swift in Sources */,
 				970E948E1EC44A5700DEEC86 /* URToneCurveGraphView.swift in Sources */,
+				9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */,
 				97DF1F941ECAD53000427CED /* URToneCurveUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

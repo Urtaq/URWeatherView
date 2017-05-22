@@ -11,11 +11,49 @@ import SpriteKit
 enum URWeatherType: String {
     case snow       = "MyParticleSnow.sks"
     case rain       = "MyParticleRain.sks"
+    case lightning = "0"
     case dust       = "MyParticleDust.sks"
     case dust2      = "MyParticleDust2.sks"
     case comet      = "MyParticleBurningComet.sks"
+    case shiny      = "1"
+    case hot        = "2"
     case smoke      = "MyParticleSmoke.sks"
     case none       = "None"
+
+    static let all: [URWeatherType] = [.snow,
+                                       .rain,
+                                       .lightning,
+                                       .dust,
+                                       .dust2,
+                                       .comet,
+                                       .shiny,
+                                       .hot,
+                                       .smoke]
+
+    var name: String {
+        switch self {
+        case .snow:
+            return "Snow"
+        case .rain:
+            return "Rain"
+        case .lightning:
+            return "lightning"
+        case .dust:
+            return "Dust"
+        case .dust2:
+            return "Dust2"
+        case .comet:
+            return "Comet"
+        case .shiny:
+            return "Shiny"
+        case .hot:
+            return "Hot"
+        case .smoke:
+            return "Smoke"
+        default:
+            return ""
+        }
+    }
 
     var ground: URWeatherGroundType {
         switch self {
@@ -62,7 +100,7 @@ enum URWeatherType: String {
         case .rain:
             return #imageLiteral(resourceName: "rain")
         case .dust:
-            return #imageLiteral(resourceName: "yellowDust")
+            return #imageLiteral(resourceName: "yellowDust2")
         case .dust2:
             return #imageLiteral(resourceName: "dustFrame")
         default:
@@ -73,11 +111,39 @@ enum URWeatherType: String {
     var startBirthRate: CGFloat? {
         switch self {
         case .dust:
-            return 200.0
+            return 15.0
         case .dust2:
             return 3.0
         default:
             return nil
+        }
+    }
+
+    var defaultBirthRate: CGFloat {
+        switch self {
+        case .snow:
+            return 40.0
+        case .rain:
+            return 150.0
+        case .dust, .dust2, .smoke:
+            return 200.0
+        case .comet:
+            return 455.0
+        default:
+            return 50.0
+        }
+    }
+
+    var maxBirthRate: CGFloat {
+        switch self {
+        case .snow:
+            return 500.0
+        case .rain:
+            return 1500.0
+        case .dust, .dust2:
+            return 300.0
+        default:
+            return 300.0
         }
     }
 }
@@ -138,8 +204,27 @@ class URWeatherScene: SKScene {
 //        }
 //    }
 
-    func startEmitter(weather: URWeatherType = .snow) {
+    func makeScene(weather: URWeatherType = .shiny) {
+        let node = SKLightNode(fileNamed: "MyScene.sks")
+
+        self.addChild(node!)
+
+        guard let block = self.extraEffectBlock else { return }
+        block(self.weatherType.backgroundImage)
+    }
+
+    func startScene(_ weather: URWeatherType = .snow) {
         self.weatherType = weather
+
+        switch weather {
+        case .shiny:
+            self.makeScene(weather: weather)
+        default:
+            self.startEmitter(weather: weather)
+        }
+    }
+
+    func startEmitter(weather: URWeatherType = .snow) {
         self.emitter = SKEmitterNode(fileNamed: weather.rawValue)
 
         var particlePositionRangeX: CGFloat = self.view!.bounds.width
