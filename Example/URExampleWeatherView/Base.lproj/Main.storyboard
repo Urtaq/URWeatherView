@@ -58,7 +58,7 @@
                                     <action selector="tabTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PaD-rw-HWu"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMG-0D-fJP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMG-0D-fJP">
                                 <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -70,38 +70,38 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eat-Ud-AeB">
-                                                    <rect key="frame" x="12" y="6.5" width="38" height="30"/>
+                                                    <rect key="frame" x="12" y="17" width="38" height="30"/>
                                                     <state key="normal" title="Snow"/>
                                                     <connections>
                                                         <action selector="tapApplyWeather:" destination="5bI-lS-aTe" eventType="touchUpInside" id="Rwc-PH-X5v"/>
                                                     </connections>
                                                 </button>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="aig-oO-GoX">
-                                                    <rect key="frame" x="92" y="6.5" width="237" height="31"/>
+                                                    <rect key="frame" x="92" y="17" width="237" height="31"/>
                                                     <connections>
                                                         <action selector="changeBirthRate:" destination="5bI-lS-aTe" eventType="valueChanged" id="1Pw-wH-GWB"/>
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7f-QF-aF9">
-                                                    <rect key="frame" x="94" y="25.5" width="24" height="21"/>
+                                                    <rect key="frame" x="94" y="36" width="24" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lix-y4-7Lv">
-                                                    <rect key="frame" x="198.5" y="25.5" width="24" height="21"/>
+                                                    <rect key="frame" x="198.5" y="36" width="24" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKO-fI-6ON">
-                                                    <rect key="frame" x="303" y="25.5" width="24" height="21"/>
+                                                    <rect key="frame" x="303" y="36" width="24" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQA-0W-RJO">
-                                                    <rect key="frame" x="333" y="6.5" width="30" height="30"/>
+                                                    <rect key="frame" x="333" y="17" width="30" height="30"/>
                                                     <state key="normal" title="Init"/>
                                                     <connections>
                                                         <action selector="tapWeatherInit:" destination="5bI-lS-aTe" eventType="touchUpInside" id="Jo6-Le-yWv"/>
@@ -139,52 +139,52 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lT-Rd-DjO">
-                                                    <rect key="frame" x="12" y="6.5" width="32" height="30"/>
+                                                    <rect key="frame" x="12" y="17" width="32" height="30"/>
                                                     <state key="normal" title="Dust"/>
                                                     <connections>
                                                         <action selector="tapApplyWeather:" destination="zUs-pb-ouP" eventType="touchUpInside" id="h68-TQ-v5c"/>
                                                     </connections>
                                                 </button>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="fNR-gr-gIH">
-                                                    <rect key="frame" x="92" y="6.5" width="157" height="31"/>
+                                                    <rect key="frame" x="92" y="17" width="157" height="31"/>
                                                     <connections>
                                                         <action selector="changeBirthRate:" destination="zUs-pb-ouP" eventType="valueChanged" id="9SJ-hJ-TEa"/>
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAk-rT-RnJ">
-                                                    <rect key="frame" x="94" y="25.5" width="24" height="21"/>
+                                                    <rect key="frame" x="94" y="36" width="24" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ne-nf-fDw">
-                                                    <rect key="frame" x="158.5" y="25.5" width="24" height="21"/>
+                                                    <rect key="frame" x="158.5" y="36" width="24" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bi-Y9-jV4">
-                                                    <rect key="frame" x="223" y="25.5" width="24" height="21"/>
+                                                    <rect key="frame" x="223" y="36" width="24" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-V0-iBd">
-                                                    <rect key="frame" x="333" y="6.5" width="30" height="30"/>
+                                                    <rect key="frame" x="333" y="17" width="30" height="30"/>
                                                     <state key="normal" title="Init"/>
                                                     <connections>
                                                         <action selector="tapWeatherInit:" destination="zUs-pb-ouP" eventType="touchUpInside" id="Ofc-Gk-Zky"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T35-TM-6XG">
-                                                    <rect key="frame" x="259" y="6.5" width="30" height="30"/>
+                                                    <rect key="frame" x="259" y="17" width="30" height="30"/>
                                                     <color key="backgroundColor" red="0.37254901959999998" green="0.33333333329999998" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="tapDustColor:" destination="zUs-pb-ouP" eventType="touchUpInside" id="Lkh-am-X3l"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQl-xx-yHk">
-                                                    <rect key="frame" x="297" y="6.5" width="30" height="30"/>
+                                                    <rect key="frame" x="297" y="17" width="30" height="30"/>
                                                     <color key="backgroundColor" red="0.80784313730000001" green="0.56470588239999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="tapDustColor:" destination="zUs-pb-ouP" eventType="touchUpInside" id="v02-bi-UGS"/>

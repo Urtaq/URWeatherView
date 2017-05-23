@@ -41,8 +41,8 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
 //            if self.rawImages == nil {
 //                self.rawImages = [UIImage]() as NSArray
 //            }
-            for (index, imageLayer) in self.imageSolidLayers.enumerated() {
-                guard imageLayer.contents != nil else { continue }
+            for (_, imageLayerDic) in self.imageSolidLayers.enumerated() {
+                guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
                 print("imageLayer before ====> \(imageLayer.contents!)")
                 let cgImage = imageLayer.contents as! CGImage
 //                self.originalImages[self.originalImages.count] = UIImage(cgImage: cgImage)
@@ -50,7 +50,8 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
 //                self.originals.rawImages[self.originalImages.count] = UIImage(cgImage: cgImage)
 
                 var values = filterValues
-                if let subValues = filterValuesSub, index != 0 && index != (self.imageSolidLayers.count - 1) {
+                print("imageLayerDic[kLOTAssetImageName] : \(imageLayerDic[kLOTAssetImageName])")
+                if let subValues = filterValuesSub, let imageName = imageLayerDic[kLOTAssetImageName] as? String, imageName != "img_0" && imageName != "img_5" {
                     values = subValues
                 }
                 let red = URToneCurveFilter(cgImage: cgImage, with: values["R"]!).outputImage!
@@ -86,8 +87,8 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
 
     func removeToneCurveFilter() {
         if self.imageSolidLayers != nil {
-            for (index, imageLayer) in self.imageSolidLayers.enumerated() {
-                guard imageLayer.contents != nil else { continue }
+            for (index, imageLayerDic) in self.imageSolidLayers.enumerated() {
+                guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
 //                imageLayer.contents = self.originals.rawImages[index].cgImage
                 self.replaceLayer(imageLayer, with: self.originals.rawImages[index].cgImage!)
             }

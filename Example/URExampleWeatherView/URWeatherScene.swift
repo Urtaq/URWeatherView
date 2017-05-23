@@ -11,10 +11,10 @@ import SpriteKit
 enum URWeatherType: String {
     case snow       = "MyParticleSnow.sks"
     case rain       = "MyParticleRain.sks"
-    case lightning = "0"
     case dust       = "MyParticleDust.sks"
     case dust2      = "MyParticleDust2.sks"
     case comet      = "MyParticleBurningComet.sks"
+    case lightning  = "0"
     case shiny      = "1"
     case hot        = "2"
     case smoke      = "MyParticleSmoke.sks"
@@ -22,10 +22,10 @@ enum URWeatherType: String {
 
     static let all: [URWeatherType] = [.snow,
                                        .rain,
-                                       .lightning,
                                        .dust,
                                        .dust2,
                                        .comet,
+                                       .lightning,
                                        .shiny,
                                        .hot,
                                        .smoke]
@@ -36,14 +36,14 @@ enum URWeatherType: String {
             return "Snow"
         case .rain:
             return "Rain"
-        case .lightning:
-            return "lightning"
         case .dust:
             return "Dust"
         case .dust2:
             return "Dust2"
         case .comet:
             return "Comet"
+        case .lightning:
+            return "Lightning"
         case .shiny:
             return "Shiny"
         case .hot:
@@ -97,9 +97,9 @@ enum URWeatherType: String {
         switch self {
         case .snow:
             let r: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
-                                CGPoint(x: 0.25, y: 0.0875816794002757),
-                                CGPoint(x: 0.5, y: 0.202614339192708),
-                                CGPoint(x: 0.75, y: 0.571241850011489),
+                                CGPoint(x: 0.25, y: 0.25),
+                                CGPoint(x: 0.5, y: 0.5),
+                                CGPoint(x: 0.75, y: 0.75),
                                 CGPoint(x: 1.0, y: 1.0)]
             let g: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
                                 CGPoint(x: 0.25, y: 0.25),
