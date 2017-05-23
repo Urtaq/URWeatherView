@@ -298,7 +298,7 @@ class URWeatherScene: SKScene {
 
         self.enableDebugOptions(needToShow: self.isGraphicsDebugOptionEnabled)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.startGroundEmitter()
         }
 
