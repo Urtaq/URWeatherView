@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
             self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
 
-            print("\(animationView.sceneModel)")
+//            print("\(animationView.sceneModel)")
 //            print("\(animationView.imageSolidLayers)")
         }
     }
@@ -91,7 +91,6 @@ class ViewController: UIViewController {
             self.mainAnimationView.play()
             Timer.scheduledTimer(withTimeInterval: 0.32, repeats: false) { (timer) in
                 self.mainAnimationView.pause()
-                print("self.mainAnimationView.animationProgress is \(self.mainAnimationView.animationProgress)")
             }
         }
     }
@@ -133,7 +132,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     if cell.btnDustColor1.isSelected {
 
-                        self.weatherScene.startScene(.dust)
+                        self.skView.presentScene(self.weatherScene)
+                        if let scene = self.weatherScene.startScene(.dust) {
+                            self.skView.presentScene(scene)
+                        }
                         if let startBirthRate = URWeatherType.dust.startBirthRate {
                             cell.slBirthRate.value = Float(startBirthRate)
                             cell.changeBirthRate(cell.slBirthRate)
@@ -141,7 +143,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                     if cell.btnDustColor2.isSelected {
 
-                        self.weatherScene.startScene(.dust2)
+                        self.skView.presentScene(self.weatherScene)
+                        if let scene = self.weatherScene.startScene(.dust2) {
+                            self.skView.presentScene(scene)
+                        }
                         if let startBirthRate = URWeatherType.dust2.startBirthRate {
                             cell.slBirthRate.value = Float(startBirthRate)
                             cell.changeBirthRate(cell.slBirthRate)
@@ -185,15 +190,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                         })
                     }
 
-                    print("layers before ======= > \(self.mainAnimationView.imageSolidLayers)")
                     if let filterValues = URWeatherType.snow.imageFilterValues, let filterValuesSub = URWeatherType.snow.imageFilterValuesSub {
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
                     }
-                    print("layers after ======= > \(self.mainAnimationView.imageSolidLayers)")
 
                     self.weatherScene.stopEmitter()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
-                    self.weatherScene.startScene()
+                    self.skView.presentScene(self.weatherScene)
+                    if let scene = self.weatherScene.startScene() {
+                        self.skView.presentScene(scene)
+                    }
                 case .rain:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.alpha = 0.0
@@ -206,14 +212,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     self.weatherScene.stopEmitter()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
-                    self.weatherScene.startScene(.rain)
+                    if let scene = self.weatherScene.startScene(.rain) {
+                        self.skView.presentScene(scene)
+                    }
                 case .comet:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.image = backgroundImage
                     }
 
                     self.weatherScene.stopEmitter()
-                    self.weatherScene.startScene(.comet)
+                    self.skView.presentScene(self.weatherScene)
+                    if let scene = self.weatherScene.startScene(.comet) {
+                        self.skView.presentScene(scene)
+                    }
+                case .hot:
+                    if let filterValues = URWeatherType.hot.imageFilterValues {
+                        self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
+                    }
+                    self.weatherScene.stopEmitter()
+                    self.skView.presentScene(self.weatherScene)
+                    if let scene = self.weatherScene.startScene(.hot) {
+                        self.skView.presentScene(scene)
+                    }
                 default:
                     break
                 }

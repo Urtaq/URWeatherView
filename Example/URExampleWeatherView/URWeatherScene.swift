@@ -181,8 +181,8 @@ enum URWeatherGroundType: String {
     case none       = "None"
 }
 
-class URWeatherScene: SKScene {
-    private var emitter: SKEmitterNode!
+class URWeatherScene: SKScene, URScene {
+    internal var emitter: SKEmitterNode!
     private var subEmitter: SKEmitterNode!
     private var groundEmitter: SKEmitterNode!
 
@@ -203,17 +203,6 @@ class URWeatherScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func enableDebugOptions(needToShow: Bool) {
-        self.isGraphicsDebugOptionEnabled = needToShow
-        guard self.emitter != nil else { return }
-
-        self.view!.showsFPS = self.isGraphicsDebugOptionEnabled
-        self.view!.showsNodeCount = self.isGraphicsDebugOptionEnabled
-        self.view!.showsFields = self.isGraphicsDebugOptionEnabled
-        self.view!.showsPhysics = self.isGraphicsDebugOptionEnabled
-        self.view!.showsDrawCount = self.isGraphicsDebugOptionEnabled
-    }
-
     func setBirthRate(rate: CGFloat) {
         guard let _ = self.emitter else { return }
         self.emitter.particleBirthRate = rate
@@ -231,23 +220,30 @@ class URWeatherScene: SKScene {
 //        }
 //    }
 
-    func makeScene(weather: URWeatherType = .shiny) {
-        let node = SKLightNode(fileNamed: "MyScene.sks")
+    func makeScene(weather: URWeatherType = .shiny) -> SKScene? {
+        guard let scene = SKScene(fileNamed: "MyScene.sks") as? MyScene else { return nil }
+        scene.size = self.size
+        _ = scene.startScene()
 
-        self.addChild(node!)
-
-        guard let block = self.extraEffectBlock else { return }
+        guard let block = self.extraEffectBlock else { return scene }
         block(self.weatherType.backgroundImage)
+
+        return scene
     }
 
-    func startScene(_ weather: URWeatherType = .snow) {
+    func startScene() -> SKScene? {
+        return self.startScene(.snow)
+    }
+
+    func startScene(_ weather: URWeatherType) -> SKScene? {
         self.weatherType = weather
 
         switch weather {
-        case .shiny:
-            self.makeScene(weather: weather)
+        case .shiny, .lightning, .hot:
+            return self.makeScene(weather: weather)
         default:
             self.startEmitter(weather: weather)
+            return nil
         }
     }
 
