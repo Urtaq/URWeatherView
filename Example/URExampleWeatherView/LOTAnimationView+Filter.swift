@@ -50,7 +50,6 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
 //                self.originals.rawImages[self.originalImages.count] = UIImage(cgImage: cgImage)
 
                 var values = filterValues
-                print("imageLayerDic[kLOTAssetImageName] : \(imageLayerDic[kLOTAssetImageName])")
                 if let subValues = filterValuesSub, let imageName = imageLayerDic[kLOTAssetImageName] as? String, imageName != "img_0" && imageName != "img_5" {
                     values = subValues
                 }

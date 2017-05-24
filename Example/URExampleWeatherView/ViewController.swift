@@ -214,6 +214,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     self.weatherScene.stopEmitter()
                     self.weatherScene.startScene(.comet)
+                case .hot:
+                    if let filterValues = URWeatherType.hot.imageFilterValues {
+                        self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
+                    }
+                    self.weatherScene.stopEmitter()
+//                    self.weatherScene.startScene(.hot)
                 default:
                     break
                 }

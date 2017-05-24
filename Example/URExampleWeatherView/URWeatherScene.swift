@@ -88,6 +88,26 @@ enum URWeatherType: String {
                     "G": g,
                     "B": b
             ]
+        case .hot:
+            let r: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
+                                CGPoint(x: 0.25, y: 0.281045771580116),
+                                CGPoint(x: 0.5, y: 0.596078431372549),
+                                CGPoint(x: 0.75, y: 0.920261457854626),
+                                CGPoint(x: 1.0, y: 1.0)]
+            let g: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
+                                CGPoint(x: 0.25, y: 0.25),
+                                CGPoint(x: 0.5, y: 0.5),
+                                CGPoint(x: 0.75, y: 0.75),
+                                CGPoint(x: 1.0, y: 1.0)]
+            let b: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
+                                CGPoint(x: 0.25, y: 0.25),
+                                CGPoint(x: 0.5, y: 0.5),
+                                CGPoint(x: 0.75, y: 0.75),
+                                CGPoint(x: 1.0, y: 1.0)]
+            return ["R": r,
+                    "G": g,
+                    "B": b
+            ]
         default:
             return nil
         }
@@ -97,19 +117,19 @@ enum URWeatherType: String {
         switch self {
         case .snow:
             let r: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
-                                CGPoint(x: 0.25, y: 0.25),
-                                CGPoint(x: 0.5, y: 0.5),
-                                CGPoint(x: 0.75, y: 0.75),
+                                CGPoint(x: 0.25, y: 0.20392160851971),
+                                CGPoint(x: 0.5, y: 0.377777757831648),
+                                CGPoint(x: 0.75, y: 0.670588235294118),
                                 CGPoint(x: 1.0, y: 1.0)]
             let g: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
-                                CGPoint(x: 0.25, y: 0.25),
+                                CGPoint(x: 0.25, y: 0.277124183006536),
                                 CGPoint(x: 0.5, y: 0.5),
-                                CGPoint(x: 0.75, y: 0.75),
+                                CGPoint(x: 0.75, y: 0.81437908496732),
                                 CGPoint(x: 1.0, y: 1.0)]
             let b: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
-                                CGPoint(x: 0.25, y: 0.266666666666667),
-                                CGPoint(x: 0.5, y: 0.512418260761336),
-                                CGPoint(x: 0.75, y: 0.905882352941176),
+                                CGPoint(x: 0.25, y: 0.491503287919986),
+                                CGPoint(x: 0.5, y: 0.709803961460886),
+                                CGPoint(x: 0.75, y: 0.958169914694393),
                                 CGPoint(x: 1.0, y: 1.0)]
             return ["R": r,
                     "G": g,
@@ -244,7 +264,7 @@ class URWeatherScene: SKScene {
         self.weatherType = weather
 
         switch weather {
-        case .shiny:
+        case .shiny, .lightning, .hot:
             self.makeScene(weather: weather)
         default:
             self.startEmitter(weather: weather)
@@ -259,6 +279,20 @@ class URWeatherScene: SKScene {
             particlePositionRangeX *= 2.0
         }
         switch self.weatherType {
+        case .snow:
+            self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
+            self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
+            self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
+                if self.emitter.particleBirthRate <= 40.0 {
+                    if self.emitter.xAcceleration == -10 {
+                        self.emitter.xAcceleration = 10
+                    } else {
+                        self.emitter.xAcceleration = -10
+                    }
+                } else {
+                    self.emitter.xAcceleration = 0
+                }
+            })
         case .comet:
             self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
             self.subEmitter = SKEmitterNode(fileNamed: weatherType.rawValue)
