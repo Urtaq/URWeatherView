@@ -57,7 +57,7 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
                 let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
                 let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
 
-                guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: red.extent, arguments: [red, green, blue]) else {
+                guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: red.extent, arguments: [red, green, blue, CIImage(cgImage: cgImage)]) else {
                     return
                 }
 

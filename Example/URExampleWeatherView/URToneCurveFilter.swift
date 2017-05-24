@@ -41,8 +41,8 @@ class URToneCurveFilter: CIFilter {
         "}")!
 
     public static var colorKernel: CIColorKernel = CIColorKernel(string:
-        "kernel vec4 combineRGBChannel(__sample red, __sample green, __sample blue) {" +
-            "   vec4 result = vec4(red.r, green.g, blue.b, 1.0);" +
+        "kernel vec4 combineRGBChannel(__sample red, __sample green, __sample blue, __sample rgb) {" +
+            "   vec4 result = vec4(red.r, green.g, blue.b, rgb.a);" +
             "   bool isTransparency = true;" +
             "   if (red.r == 0.0 && red.g == 0.0 && red.b == 0.0 && red.a == 0.0) {" +
             "       result.r = 0.0;" +

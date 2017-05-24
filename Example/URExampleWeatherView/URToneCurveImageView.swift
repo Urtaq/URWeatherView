@@ -25,6 +25,7 @@ extension URToneCurveAppliable where Self: UIImageView {
         let filteredImage = filter.outputImage!
 
         var arguments: [CIImage] = [CIImage]()
+        arguments.append(CIImage(image: self.originalImages[0])!)
         if !(pointsForRed == DefaultToneCurveInputs
             && pointsForGreen == DefaultToneCurveInputs
             && pointsForBlue == DefaultToneCurveInputs) {
@@ -62,7 +63,7 @@ extension URToneCurveAppliable where Self: UIImageView {
             arguments.append(filteredImageForBlue)
         }
 
-        if arguments.count == 3 {
+        if arguments.count == 4 {
             guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: filteredImage.extent, arguments: arguments) else {
                 fatalError("Filtered Image merging is failed!!")
             }
