@@ -37,10 +37,14 @@
 		9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4AF1EC0631400FCD463 /* PageViewController.swift */; };
 		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
 		976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */; };
+		977506AB1ED5624D00FA1B51 /* RoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 977506AA1ED5624D00FA1B51 /* RoomScene.sks */; };
 		9780EC001ECEBE9000F26C4C /* MyParticleDust2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */; };
 		9780EC0A1ECEFBE600F26C4C /* LOTAnimationView+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC091ECEFBE600F26C4C /* LOTAnimationView+Filter.swift */; };
 		9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */; };
 		9780EC101ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */; };
+		9780EC131ED4285400F26C4C /* MyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC121ED4285400F26C4C /* MyScene.swift */; };
+		9780EC151ED4288A00F26C4C /* URScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC141ED4288A00F26C4C /* URScene.swift */; };
+		9780EC171ED43E6D00F26C4C /* WallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9780EC161ED43E6D00F26C4C /* WallScene.sks */; };
 		979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */; };
 		979BAE6B1EC55626003E9322 /* URToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */; };
 		97DF1F901ECAC9D900427CED /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */; };
@@ -103,10 +107,14 @@
 		9754D4AF1EC0631400FCD463 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveImageView.swift; sourceTree = "<group>"; };
+		977506AA1ED5624D00FA1B51 /* RoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RoomScene.sks; sourceTree = "<group>"; };
 		9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust2.sks; sourceTree = "<group>"; };
 		9780EC091ECEFBE600F26C4C /* LOTAnimationView+Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LOTAnimationView+Filter.swift"; sourceTree = "<group>"; };
 		9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherTableViewCell2.swift; sourceTree = "<group>"; };
+		9780EC121ED4285400F26C4C /* MyScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScene.swift; sourceTree = "<group>"; };
+		9780EC141ED4288A00F26C4C /* URScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URScene.swift; sourceTree = "<group>"; };
+		9780EC161ED43E6D00F26C4C /* WallScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WallScene.sks; sourceTree = "<group>"; };
 		979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Interpolation.swift"; sourceTree = "<group>"; };
 		979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveFilter.swift; sourceTree = "<group>"; };
 		97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveView.swift; sourceTree = "<group>"; };
@@ -152,8 +160,12 @@
 		970E948B1EC449AB00DEEC86 /* SpriteKitAssets */ = {
 			isa = PBXGroup;
 			children = (
+				9780EC141ED4288A00F26C4C /* URScene.swift */,
 				974FFB7C1EAD8F1300B2A3E7 /* URWeatherScene.swift */,
 				974FFB761EAA0E0400B2A3E7 /* MyScene.sks */,
+				9780EC121ED4285400F26C4C /* MyScene.swift */,
+				9780EC161ED43E6D00F26C4C /* WallScene.sks */,
+				977506AA1ED5624D00FA1B51 /* RoomScene.sks */,
 				974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */,
 				974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */,
 				974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */,
@@ -385,11 +397,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9780EC171ED43E6D00F26C4C /* WallScene.sks in Resources */,
 				974FFB391EA9F82B00B2A3E7 /* img_0.png in Resources */,
 				974FFB771EAA0E0400B2A3E7 /* MyScene.sks in Resources */,
 				974FFB061EA9E77500B2A3E7 /* LaunchScreen.storyboard in Resources */,
 				974FFB031EA9E77500B2A3E7 /* Assets.xcassets in Resources */,
 				974FFB3C1EA9F82B00B2A3E7 /* img_3.png in Resources */,
+				977506AB1ED5624D00FA1B51 /* RoomScene.sks in Resources */,
 				974FFB911EAEE57C00B2A3E7 /* MyParticleBurningComet.sks in Resources */,
 				974FFB011EA9E77500B2A3E7 /* Main.storyboard in Resources */,
 				974FFB7B1EAA0E3800B2A3E7 /* MyActions.sks in Resources */,
@@ -460,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9780EC151ED4288A00F26C4C /* URScene.swift in Sources */,
 				974FFB7D1EAD8F1300B2A3E7 /* URWeatherScene.swift in Sources */,
 				976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */,
 				9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */,
@@ -472,6 +487,7 @@
 				97DF1F901ECAC9D900427CED /* URToneCurveView.swift in Sources */,
 				974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */,
 				9780EC0A1ECEFBE600F26C4C /* LOTAnimationView+Filter.swift in Sources */,
+				9780EC131ED4285400F26C4C /* MyScene.swift in Sources */,
 				970E948E1EC44A5700DEEC86 /* URToneCurveGraphView.swift in Sources */,
 				9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */,
 				97DF1F941ECAD53000427CED /* URToneCurveUtil.swift in Sources */,
