@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
             self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
 
-            print("\(animationView.sceneModel)")
+//            print("\(animationView.sceneModel)")
 //            print("\(animationView.imageSolidLayers)")
         }
     }
@@ -91,7 +91,6 @@ class ViewController: UIViewController {
             self.mainAnimationView.play()
             Timer.scheduledTimer(withTimeInterval: 0.32, repeats: false) { (timer) in
                 self.mainAnimationView.pause()
-                print("self.mainAnimationView.animationProgress is \(self.mainAnimationView.animationProgress)")
             }
         }
     }
@@ -215,11 +214,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.stopEmitter()
                     self.weatherScene.startScene(.comet)
                 case .hot:
+                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                        self.mainUpperImageView.alpha = 0.0
+                        self.mainUpperImageView.image = backgroundImage
+
+                        UIView.animate(withDuration: 1.0, animations: {
+                            self.mainUpperImageView.alpha = 1.0
+                        })
+                    }
+
                     if let filterValues = URWeatherType.hot.imageFilterValues {
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
                     }
                     self.weatherScene.stopEmitter()
-//                    self.weatherScene.startScene(.hot)
+                    self.weatherScene.startScene(.hot)
                 default:
                     break
                 }

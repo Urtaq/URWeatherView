@@ -150,6 +150,8 @@ enum URWeatherType: String {
             return #imageLiteral(resourceName: "yellowDust2")
         case .dust2:
             return #imageLiteral(resourceName: "dustFrame")
+        case .hot:
+            return #imageLiteral(resourceName: "sunHot")
         default:
             return nil
         }
@@ -252,10 +254,6 @@ class URWeatherScene: SKScene {
 //    }
 
     func makeScene(weather: URWeatherType = .shiny) {
-        let node = SKLightNode(fileNamed: "MyScene.sks")
-
-        self.addChild(node!)
-
         guard let block = self.extraEffectBlock else { return }
         block(self.weatherType.backgroundImage)
     }
