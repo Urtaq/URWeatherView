@@ -254,8 +254,6 @@ class URWeatherScene: SKScene {
 //    }
 
     func makeScene(weather: URWeatherType = .shiny) {
-        guard let block = self.extraEffectBlock else { return }
-        block(self.weatherType.backgroundImage)
     }
 
     func startScene(_ weather: URWeatherType = .snow) {
@@ -267,6 +265,9 @@ class URWeatherScene: SKScene {
         default:
             self.startEmitter(weather: weather)
         }
+
+        guard let block = self.extraEffectBlock else { return }
+        block(self.weatherType.backgroundImage)
     }
 
     func startEmitter(weather: URWeatherType = .snow) {
@@ -333,9 +334,6 @@ class URWeatherScene: SKScene {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.startGroundEmitter()
         }
-
-        guard let block = self.extraEffectBlock else { return }
-        block(self.weatherType.backgroundImage)
     }
 
     func startGroundEmitter() {

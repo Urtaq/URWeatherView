@@ -213,6 +213,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     self.weatherScene.stopEmitter()
                     self.weatherScene.startScene(.comet)
+                case .lightning:
+                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                        self.mainUpperImageView.image = backgroundImage
+                    }
+
+                    if let filterValues = URWeatherType.lightning.imageFilterValues {
+                        self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
+                    }
+                    self.weatherScene.stopEmitter()
+                    self.weatherScene.startScene(.lightning)
                 case .hot:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.alpha = 0.0
@@ -229,7 +239,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.stopEmitter()
                     self.weatherScene.startScene(.hot)
                 default:
-                    break
+                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                        self.mainUpperImageView.image = backgroundImage
+                    }
+
+                    self.weatherScene.stopEmitter()
                 }
             }
 
