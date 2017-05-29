@@ -252,17 +252,17 @@ class URWeatherScene: SKScene {
         var lightningNode: UREffectLigthningNode
         var lightningNode2: UREffectLigthningNode
         if isDirectionInvertable {
-            lightningNode = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.596), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.404)),
+            lightningNode = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.34, y: self.size.height * 0.568), size: CGSize(width: self.size.width * 0.35, height: self.size.height * 0.432)),
                                                   startPosition: UREffectLigthningPosition.topRight,
                                                   targetPosition: UREffectLigthningPosition.bottomLeft)
-            lightningNode2 = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.596), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.404)),
+            lightningNode2 = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.34, y: self.size.height * 0.568), size: CGSize(width: self.size.width * 0.35, height: self.size.height * 0.432)),
                                                    startPosition: UREffectLigthningPosition.topRight,
                                                    targetPosition: UREffectLigthningPosition.bottomLeft)
         } else {
-            lightningNode = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.596), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.404)),
+            lightningNode = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.600), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.400)),
                                                   startPosition: UREffectLigthningPosition.topLeft,
                                                   targetPosition: UREffectLigthningPosition.bottomRight)
-            lightningNode2 = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.596), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.404)),
+            lightningNode2 = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.600), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.400)),
                                                    startPosition: UREffectLigthningPosition.topLeft,
                                                    targetPosition: UREffectLigthningPosition.bottomRight)
         }
@@ -284,12 +284,26 @@ class URWeatherScene: SKScene {
         switch weather {
         case .lightning:
             self.timers = [Timer]()
+            var actions = [SKAction]()
             for (index, time) in times.enumerated() {
-                let timer = Timer.scheduledTimer(withTimeInterval: duration * time, repeats: false, block: { (timer) in
+                var waiting: SKAction
+                if index == 0 {
+                    waiting = SKAction.wait(forDuration: duration * time)
+                } else {
+                    waiting = SKAction.wait(forDuration: duration * (time - times[index - 1]))
+                }
+                let drawLightning: SKAction = SKAction.run {
                     self.drawLightningEffect(isDirectionInvertable: Double(index) >= (Double(times.count) / 2.0))
-                })
-                self.timers.append(timer)
+                }
+                actions.append(waiting)
+                actions.append(drawLightning)
+
+                if index == times.count - 1 {
+                    let waitingForFinish = SKAction.wait(forDuration: duration * (1.0 - time))
+                    actions.append(waitingForFinish)
+                }
             }
+            self.run(SKAction.repeatForever(SKAction.sequence(actions)), withKey: weather.name)
         default:
             break
         }
@@ -400,6 +414,10 @@ class URWeatherScene: SKScene {
     func stopScene() {
         self.weatherType = .none
         self.particleColor = nil
+
+        for weather in URWeatherType.all {
+            self.removeAction(forKey: weather.name)
+        }
 
         for subNode in self.children {
             subNode.removeFromParent()

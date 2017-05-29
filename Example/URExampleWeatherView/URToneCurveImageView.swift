@@ -39,22 +39,19 @@ extension URToneCurveAppliable where Self: UIImageView {
 
         self.layer.addSublayer(layer2)
 
-        let invisibleOpacity: Float = 0.0
-        let visibleOpacity: Float = 1.0
-
-        let values = [invisibleOpacity, visibleOpacity, invisibleOpacity,
-
-                      invisibleOpacity, visibleOpacity, invisibleOpacity,
-
-                      invisibleOpacity, visibleOpacity, invisibleOpacity,
-
-                      invisibleOpacity, visibleOpacity, invisibleOpacity,
-
-                      invisibleOpacity, visibleOpacity, invisibleOpacity,
-
-                      invisibleOpacity, visibleOpacity, invisibleOpacity]
+        let invisibleOpacity = 0.0
+        let visibleOpacity = 1.0
 
         let times = userInfo["times"] as! [NSNumber]
+
+        var values: [Double] = [Double]()
+        for i in 0 ..< times.count {
+            if (i != 0) && ((i + 1) % 3 == 0) {
+                values.append(invisibleOpacity)
+                values.append(visibleOpacity)
+                values.append(invisibleOpacity)
+            }
+        }
 
         let blinkAnimation = CAKeyframeAnimation(keyPath: "opacity")
         blinkAnimation.values = values

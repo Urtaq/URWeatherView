@@ -139,7 +139,7 @@ class UREffectLigthningNode: SKSpriteNode {
 
         let branchDepth = parentBolt.depth + 1
         if branchDepth < parentBolt.option.branchDepthLimit {
-            let numberOfBranches: Int = Int(arc4random_uniform(4))
+            let numberOfBranches: Int = Int(arc4random_uniform(3))
 
             var branchPositions: [Double] = [Double](repeating: 0.0, count: numberOfBranches)
             for i in 0 ..< numberOfBranches {
@@ -185,7 +185,7 @@ fileprivate extension CGPoint {
     }
 }
 
-fileprivate extension FloatingPoint {
+extension FloatingPoint {
     var degreesToRadians: Self { return self * .pi / 180 }
     var radiansToDegrees: Self { return self * 180 / .pi }
 }
