@@ -83,6 +83,8 @@ class ViewController: UIViewController {
             self.btnTwo.isSelected = false
 
             self.mainAnimationView.play()
+
+            self.changedMainState()
         }
     }
 
@@ -94,6 +96,8 @@ class ViewController: UIViewController {
             self.mainAnimationView.play()
             Timer.scheduledTimer(withTimeInterval: 0.32, repeats: false) { (timer) in
                 self.mainAnimationView.pause()
+
+                self.changedMainState()
             }
         }
     }
@@ -210,6 +214,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.rain)
+                    self.changedMainState()
                 case .comet:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.image = backgroundImage
@@ -284,6 +289,33 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             return cell
+        }
+    }
+
+    func changedMainState() {
+        switch self.weatherScene.weatherType {
+        case .rain:
+            let sceneSize: CGSize = self.weatherScene.size
+            if self.btnOne.isSelected {
+                self.weatherScene.subGroundEmitterOptions = [URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.307, y: sceneSize.height * 0.590)),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.261, y: sceneSize.height * 0.544)),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.208, y: sceneSize.height * 0.497)),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.122, y: sceneSize.height * 0.481), rangeRatio: 0.038),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.778, y: sceneSize.height * 0.761), rangeRatio: 0.088, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.855, y: sceneSize.height * 0.614), rangeRatio: 0.088, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.684, y: sceneSize.height * 0.565), rangeRatio: 0.074, degree: -27.0)]
+            } else {
+                let diffY: CGFloat = 0.07
+                self.weatherScene.subGroundEmitterOptions = [URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.307, y: sceneSize.height * (0.590 - diffY))),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.261, y: sceneSize.height * (0.544 - diffY))),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.208, y: sceneSize.height * (0.497 - diffY))),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.122, y: sceneSize.height * (0.481 - diffY)), rangeRatio: 0.038),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.778, y: sceneSize.height * (0.761 + diffY)), rangeRatio: 0.088, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.855, y: sceneSize.height * (0.614 + diffY)), rangeRatio: 0.088, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.684, y: sceneSize.height * (0.565 + diffY)), rangeRatio: 0.074, degree: -27.0)]
+            }
+        default:
+            break
         }
     }
 }
