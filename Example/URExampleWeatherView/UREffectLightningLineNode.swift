@@ -18,11 +18,13 @@ class UREffectLightningLineNode: SKNode {
 
     var lineThickness = 1.3
 
-    init(start startPoint: CGPoint, end endPoint: CGPoint) {
+    init(start startPoint: CGPoint, end endPoint: CGPoint, thickness: Double = 1.3) {
         super.init()
 
         self.startPoint = startPoint
         self.endPoint = endPoint
+
+        self.lineThickness = thickness
     }
 
     required init?(coder aDecoder: NSCoder) {

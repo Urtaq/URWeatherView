@@ -29,6 +29,13 @@ class URExampleWeatherTableViewCell: UITableViewCell {
         self.slBirthRate.maximumValue = Float(weather.maxBirthRate)
         self.lbBirthRateCurrent.text = "\(self.slBirthRate.value)"
         self.lbBirthRateMax.text = "\(self.slBirthRate.maximumValue)"
+
+        switch weather {
+        case .lightning:
+            self.slBirthRate.isEnabled = false
+        default:
+            break
+        }
     }
 
     @IBAction func tapApplyWeather(_ sender: Any) {

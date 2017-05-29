@@ -227,12 +227,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                         })
                     }
 
-                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: [#imageLiteral(resourceName: "darkCity_00000"), #imageLiteral(resourceName: "darkCity2_00006")], duration: 2)
+                    let times = [0.1, 0.103, 0.14,
+                                 0.17, 0.173, 0.20,
+                                 0.25, 0.253, 0.28,
+                                 0.49, 0.493, 0.52,
+                                 0.54, 0.543, 0.57,
+                                 0.69, 0.693, 0.72]
+
+                    let lightningShowTimes = [0.095, 0.165, 0.245, 0.485, 0.535, 0.685]
+                    let duration: TimeInterval = 10.0
+                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: [#imageLiteral(resourceName: "darkCity_00000"), #imageLiteral(resourceName: "darkCity2_00006")], duration: duration,
+                                                                       userInfo: ["times": times])
                     if let filterValues = URWeatherType.lightning.imageFilterValues {
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
                     }
                     self.weatherScene.stopScene()
-                    self.weatherScene.startScene(.lightning)
+                    self.weatherScene.startScene(.lightning, duration: duration, showTimes: lightningShowTimes)
                 case .hot:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.alpha = 0.0

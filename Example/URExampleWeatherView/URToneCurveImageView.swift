@@ -24,7 +24,7 @@ class URToneCurveImageView: UIImageView, URToneCurveAppliable {
 }
 
 extension URToneCurveAppliable where Self: UIImageView {
-    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval) {
+    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval, userInfo: [String: Any]! = nil) {
         guard imageAssets.count >= 2 else { return }
         let layer1: CALayer = CALayer()
         layer1.frame = self.bounds
@@ -54,12 +54,7 @@ extension URToneCurveAppliable where Self: UIImageView {
 
                       invisibleOpacity, visibleOpacity, invisibleOpacity]
 
-        let times = [0.1, 0.11, 0.14,
-                     0.17, 0.18, 0.20,
-                     0.25, 0.26, 0.28,
-                     0.49, 0.5, 0.52,
-                     0.54, 0.55, 0.57,
-                     0.69, 0.7, 0.72]
+        let times = userInfo["times"] as! [NSNumber]
 
         let blinkAnimation = CAKeyframeAnimation(keyPath: "opacity")
         blinkAnimation.values = values

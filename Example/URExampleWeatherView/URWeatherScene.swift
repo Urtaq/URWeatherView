@@ -210,7 +210,7 @@ class URWeatherScene: SKScene {
     private var subEmitter: SKEmitterNode!
     private var groundEmitter: SKEmitterNode!
 
-    private var timer: Timer!
+    private lazy var timers: [Timer] = [Timer]()
 
     var weatherType: URWeatherType = .none
     var isGraphicsDebugOptionEnabled: Bool = false
@@ -248,6 +248,31 @@ class URWeatherScene: SKScene {
         }
     }
 
+    func drawLightningEffect(isDirectionInvertable: Bool = false) {
+        var lightningNode: UREffectLigthningNode
+        var lightningNode2: UREffectLigthningNode
+        if isDirectionInvertable {
+            lightningNode = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.596), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.404)),
+                                                  startPosition: UREffectLigthningPosition.topRight,
+                                                  targetPosition: UREffectLigthningPosition.bottomLeft)
+            lightningNode2 = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.596), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.404)),
+                                                   startPosition: UREffectLigthningPosition.topRight,
+                                                   targetPosition: UREffectLigthningPosition.bottomLeft)
+        } else {
+            lightningNode = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.596), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.404)),
+                                                  startPosition: UREffectLigthningPosition.topLeft,
+                                                  targetPosition: UREffectLigthningPosition.bottomRight)
+            lightningNode2 = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.596), size: CGSize(width: self.size.width * 0.39, height: self.size.height * 0.404)),
+                                                   startPosition: UREffectLigthningPosition.topLeft,
+                                                   targetPosition: UREffectLigthningPosition.bottomRight)
+        }
+
+        self.addChild(lightningNode)
+        self.addChild(lightningNode2)
+        lightningNode.startLightning()
+        lightningNode2.startLightning()
+    }
+
     var particleColor: UIColor!
 //    func setParticleColor(_ color: UIColor) {
 //        if self.emitter != nil {
@@ -255,26 +280,27 @@ class URWeatherScene: SKScene {
 //        }
 //    }
 
-    func makeScene(weather: URWeatherType = .shiny, showTimes times: [Double]! = nil) {
+    func makeScene(weather: URWeatherType = .shiny, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
         switch weather {
         case .lightning:
-            let lightningNode = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.4), size: CGSize(width: self.size.width * 0.5, height: self.size.height * 0.6)), startPosition: UREffectLigthningPosition.topLeft, targetPosition: UREffectLigthningPosition.bottomRight)
-            let lightningNode2 = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.4), size: CGSize(width: self.size.width * 0.5, height: self.size.height * 0.6)), startPosition: UREffectLigthningPosition.topLeft, targetPosition: UREffectLigthningPosition.bottomRight)
-            self.addChild(lightningNode)
-            self.addChild(lightningNode2)
-            lightningNode.startLightning()
-            lightningNode2.startLightning()
+            self.timers = [Timer]()
+            for (index, time) in times.enumerated() {
+                let timer = Timer.scheduledTimer(withTimeInterval: duration * time, repeats: false, block: { (timer) in
+                    self.drawLightningEffect(isDirectionInvertable: Double(index) >= (Double(times.count) / 2.0))
+                })
+                self.timers.append(timer)
+            }
         default:
             break
         }
     }
 
-    func startScene(_ weather: URWeatherType = .snow, showTimes times: [Double]! = nil) {
+    func startScene(_ weather: URWeatherType = .snow, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
         self.weatherType = weather
 
         switch weather {
         case .shiny, .lightning, .hot:
-            self.makeScene(weather: weather, showTimes: times)
+            self.makeScene(weather: weather, duration: duration, showTimes: times)
         default:
             self.startEmitter(weather: weather)
         }
@@ -294,7 +320,7 @@ class URWeatherScene: SKScene {
         case .snow:
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
-            self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
+            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
                 if self.emitter.particleBirthRate <= 40.0 {
                     if self.emitter.xAcceleration == -10 {
                         self.emitter.xAcceleration = 10
@@ -305,6 +331,7 @@ class URWeatherScene: SKScene {
                     self.emitter.xAcceleration = 0
                 }
             })
+            self.timers.append(timer)
         case .comet:
             self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
             self.subEmitter = SKEmitterNode(fileNamed: weatherType.rawValue)
@@ -322,13 +349,14 @@ class URWeatherScene: SKScene {
 
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: self.view!.bounds.height)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.midY)
-            self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
+            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
                 if self.emitter.yAcceleration == -10 {
                     self.emitter.yAcceleration = 10
                 } else {
                     self.emitter.yAcceleration = -10
                 }
             })
+            self.timers.append(timer)
 
 //            self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
         default:
@@ -388,8 +416,8 @@ class URWeatherScene: SKScene {
 
         self.stopGroundEmitter()
 
-        if self.timer != nil {
-            self.timer.invalidate()
+        for timer in self.timers {
+            timer.invalidate()
         }
         self.backgroundColor = .clear
     }

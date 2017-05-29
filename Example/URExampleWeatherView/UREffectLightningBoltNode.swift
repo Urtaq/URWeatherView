@@ -13,6 +13,9 @@ class UREffectLightningBoltNode: SKNode {
 
     var option: UREffectLightningOption!
     var pathArray = [CGPoint]()
+    var depth: Int = 0
+    var startPoint: CGPoint!
+    var endPoint: CGPoint!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -22,6 +25,8 @@ class UREffectLightningBoltNode: SKNode {
         super.init()
 
         self.option = drawOption
+        self.startPoint = startPoint
+        self.endPoint = endPoint
         self.drawBolt(start: startPoint, end: endPoint)
     }
 
@@ -62,7 +67,7 @@ class UREffectLightningBoltNode: SKNode {
     }
 
     func addLineToBolt(start startPoint: CGPoint, end endPoint: CGPoint, delay: Double) {
-        let line = UREffectLightningLineNode(start: startPoint, end: endPoint)
+        let line = UREffectLightningLineNode(start: startPoint, end: endPoint, thickness: self.option.lineThickness)
         self.addChild(line)
         if delay == 0.0 {
             line.draw()
