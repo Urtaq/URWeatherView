@@ -13,10 +13,10 @@ enum URWeatherType: String {
     case rain       = "MyParticleRain.sks"
     case dust       = "MyParticleDust.sks"
     case dust2      = "MyParticleDust2.sks"
-    case comet      = "MyParticleBurningComet.sks"
     case lightning  = "0"
-    case shiny      = "1"
     case hot        = "2"
+    case shiny      = "1"
+    case comet      = "MyParticleBurningComet.sks"
     case smoke      = "MyParticleSmoke.sks"
     case none       = "None"
 
@@ -24,10 +24,10 @@ enum URWeatherType: String {
                                        .rain,
                                        .dust,
                                        .dust2,
-                                       .comet,
                                        .lightning,
-                                       .shiny,
                                        .hot,
+                                       .shiny,
+                                       .comet,
                                        .smoke]
 
     var name: String {
@@ -40,14 +40,14 @@ enum URWeatherType: String {
             return "Dust"
         case .dust2:
             return "Dust2"
-        case .comet:
-            return "Comet"
         case .lightning:
             return "Lightning"
-        case .shiny:
-            return "Shiny"
         case .hot:
             return "Hot"
+        case .shiny:
+            return "Shiny"
+        case .comet:
+            return "Comet"
         case .smoke:
             return "Smoke"
         default:
@@ -150,6 +150,8 @@ enum URWeatherType: String {
             return #imageLiteral(resourceName: "yellowDust2")
         case .dust2:
             return #imageLiteral(resourceName: "dustFrame")
+        case .lightning:
+            return #imageLiteral(resourceName: "darkCloud_00000")
         case .hot:
             return #imageLiteral(resourceName: "sunHot")
         default:
@@ -253,15 +255,26 @@ class URWeatherScene: SKScene {
 //        }
 //    }
 
-    func makeScene(weather: URWeatherType = .shiny) {
+    func makeScene(weather: URWeatherType = .shiny, showTimes times: [Double]! = nil) {
+        switch weather {
+        case .lightning:
+            let lightningNode = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.4), size: CGSize(width: self.size.width * 0.5, height: self.size.height * 0.6)), startPosition: UREffectLigthningPosition.topLeft, targetPosition: UREffectLigthningPosition.bottomRight)
+            let lightningNode2 = UREffectLigthningNode(frame: CGRect(origin: CGPoint(x: self.size.width * 0.25, y: self.size.height * 0.4), size: CGSize(width: self.size.width * 0.5, height: self.size.height * 0.6)), startPosition: UREffectLigthningPosition.topLeft, targetPosition: UREffectLigthningPosition.bottomRight)
+            self.addChild(lightningNode)
+            self.addChild(lightningNode2)
+            lightningNode.startLightning()
+            lightningNode2.startLightning()
+        default:
+            break
+        }
     }
 
-    func startScene(_ weather: URWeatherType = .snow) {
+    func startScene(_ weather: URWeatherType = .snow, showTimes times: [Double]! = nil) {
         self.weatherType = weather
 
         switch weather {
         case .shiny, .lightning, .hot:
-            self.makeScene(weather: weather)
+            self.makeScene(weather: weather, showTimes: times)
         default:
             self.startEmitter(weather: weather)
         }
@@ -356,15 +369,18 @@ class URWeatherScene: SKScene {
         self.addChild(self.groundEmitter)
     }
 
-    func stopEmitter() {
+    func stopScene() {
         self.weatherType = .none
         self.particleColor = nil
+
+        for subNode in self.children {
+            subNode.removeFromParent()
+        }
 
         guard let _ = self.emitter else { return }
 
         self.emitter.particleBirthRate = 0.0
         self.emitter.targetNode = nil
-        self.emitter.removeFromParent()
 
         self.emitter = nil
 

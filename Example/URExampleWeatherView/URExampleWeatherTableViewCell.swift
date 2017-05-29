@@ -44,7 +44,7 @@ class URExampleWeatherTableViewCell: UITableViewCell {
         self.lbBirthRateCurrent.text = "\(self.slBirthRate.value)"
 
         switch self.weather {
-        case .snow, .hot:
+        case .snow, .lightning, .hot:
             guard let block = self.removeToneFilterBlock else { return }
             block()
         default:

@@ -10,6 +10,7 @@ import Lottie
 
 class URLOTAnimationView: LOTAnimationView, URToneCurveAppliable {
     var originalImages: [UIImage]!
+    var effectTimer: Timer!
 }
 
 struct AssociatedKey {
@@ -38,16 +39,11 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
 
     func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
         if self.imageSolidLayers != nil {
-//            if self.rawImages == nil {
-//                self.rawImages = [UIImage]() as NSArray
-//            }
             for (_, imageLayerDic) in self.imageSolidLayers.enumerated() {
                 guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
                 print("imageLayer before ====> \(imageLayer.contents!)")
                 let cgImage = imageLayer.contents as! CGImage
-//                self.originalImages[self.originalImages.count] = UIImage(cgImage: cgImage)
                 self.originals.rawImages.append(UIImage(cgImage: cgImage))
-//                self.originals.rawImages[self.originalImages.count] = UIImage(cgImage: cgImage)
 
                 var values = filterValues
                 if let subValues = filterValuesSub, let imageName = imageLayerDic[kLOTAssetImageName] as? String, imageName != "img_0" && imageName != "img_5" {
@@ -58,7 +54,7 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
                 let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
 
                 guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: red.extent, arguments: [red, green, blue, CIImage(cgImage: cgImage)]) else {
-                    return
+                    fatalError("Filtered Image merging is failed!!")
                 }
 
                 let context = CIContext(options: nil)
@@ -68,8 +64,6 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
                 imageLayer.contents = resultCGImage
                 self.replaceLayer(imageLayer, with: resultCGImage)
                 print("imageLayer after  ====> \(imageLayer.contents!)")
-//                guard let superLayer = imageLayer.superlayer else { return }
-//                superLayer.display()
             }
         }
     }

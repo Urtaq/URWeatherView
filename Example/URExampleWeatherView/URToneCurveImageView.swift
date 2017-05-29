@@ -10,9 +10,66 @@ import UIKit
 
 class URToneCurveImageView: UIImageView, URToneCurveAppliable {
     var originalImages: [UIImage]!
+    var effectTimer: Timer!
+
+    override var image: UIImage? {
+        didSet {
+            if let effectLayers = self.layer.sublayers {
+                for sublayer in effectLayers {
+                    sublayer.removeFromSuperlayer()
+                }
+            }
+        }
+    }
 }
 
 extension URToneCurveAppliable where Self: UIImageView {
+    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval) {
+        guard imageAssets.count >= 2 else { return }
+        let layer1: CALayer = CALayer()
+        layer1.frame = self.bounds
+        layer1.contents = imageAssets[0].cgImage
+
+        self.layer.addSublayer(layer1)
+
+        let layer2: CALayer = CALayer()
+        layer2.frame = self.bounds
+        layer2.contents = imageAssets[1].cgImage
+        layer2.opacity = 0.0
+
+        self.layer.addSublayer(layer2)
+
+        let invisibleOpacity: Float = 0.0
+        let visibleOpacity: Float = 1.0
+
+        let values = [invisibleOpacity, visibleOpacity, invisibleOpacity,
+
+                      invisibleOpacity, visibleOpacity, invisibleOpacity,
+
+                      invisibleOpacity, visibleOpacity, invisibleOpacity,
+
+                      invisibleOpacity, visibleOpacity, invisibleOpacity,
+
+                      invisibleOpacity, visibleOpacity, invisibleOpacity,
+
+                      invisibleOpacity, visibleOpacity, invisibleOpacity]
+
+        let times = [0.1, 0.11, 0.14,
+                     0.17, 0.18, 0.20,
+                     0.25, 0.26, 0.28,
+                     0.49, 0.5, 0.52,
+                     0.54, 0.55, 0.57,
+                     0.69, 0.7, 0.72]
+
+        let blinkAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        blinkAnimation.values = values
+        blinkAnimation.keyTimes = times as [NSNumber]
+        blinkAnimation.duration = duration
+        blinkAnimation.repeatCount = .infinity
+
+        layer2.add(blinkAnimation, forKey: nil)
+    }
+
     func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]! = DefaultToneCurveInputs, pointsForGreen: [CGPoint]! = DefaultToneCurveInputs, pointsForBlue: [CGPoint]! = DefaultToneCurveInputs) {
         if self.originalImages == nil {
             self.originalImages = [UIImage]()
@@ -72,6 +129,26 @@ extension URToneCurveAppliable where Self: UIImageView {
         } else {
             self.image = UIImage(ciImage: filteredImage)
         }
+    }
+
+    func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
+        if self.originalImages == nil {
+            self.originalImages = [UIImage]()
+            self.originalImages.append(self.image!)
+        }
+
+        let cgImage = self.image!.cgImage!
+
+        var values = filterValues
+        let red = URToneCurveFilter(cgImage: cgImage, with: values["R"]!).outputImage!
+        let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
+        let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
+
+        guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: red.extent, arguments: [red, green, blue, CIImage(cgImage: cgImage)]) else {
+            fatalError("Filtered Image merging is failed!!")
+        }
+
+        self.image = UIImage(ciImage: resultImage)
     }
 
     func removeToneCurveFilter() {

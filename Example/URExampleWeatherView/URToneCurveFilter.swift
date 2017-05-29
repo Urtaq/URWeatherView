@@ -11,6 +11,9 @@ import CoreImage
 
 public protocol URToneCurveAppliable: class {
     var originalImages: [UIImage]! { get set }
+    var effectTimer: Timer! { get set }
+
+    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval)
 
     func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!)
     func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]?)
@@ -20,8 +23,10 @@ public protocol URToneCurveAppliable: class {
 }
 
 extension URToneCurveAppliable {
-    func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!) {
+    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval) {
+    }
 
+    func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!) {
     }
 
     func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {

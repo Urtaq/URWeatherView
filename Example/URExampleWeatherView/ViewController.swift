@@ -19,6 +19,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var segment: UISegmentedControl!
 
+    @IBOutlet var mainBackgroundImageView: URToneCurveImageView!
     var mainAnimationView: URLOTAnimationView!
     var skView: SKView!
     var weatherScene: URWeatherScene!
@@ -44,6 +45,8 @@ class ViewController: UIViewController {
     }
 
     func initMainAnimation() {
+        self.mainBackgroundImageView.image = #imageLiteral(resourceName: "img_back")
+
         var animationProgress: CGFloat = 0.0
         if let prevAnimationView = self.mainAnimationView {
             animationProgress = prevAnimationView.animationProgress
@@ -128,7 +131,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                         })
                     }
 
-                    self.weatherScene.stopEmitter()
+                    self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     if cell.btnDustColor1.isSelected {
 
@@ -154,7 +157,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.stopWeatherBlock = {
                 self.mainUpperImageView.image = nil
 
-                self.weatherScene.stopEmitter()
+                self.weatherScene.stopScene()
             }
 
             cell.removeToneFilterBlock = {
@@ -186,11 +189,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     print("layers before ======= > \(self.mainAnimationView.imageSolidLayers)")
                     if let filterValues = URWeatherType.snow.imageFilterValues, let filterValuesSub = URWeatherType.snow.imageFilterValuesSub {
+                        self.mainBackgroundImageView.applyToneCurveFilter(filterValues: filterValues)
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
                     }
                     print("layers after ======= > \(self.mainAnimationView.imageSolidLayers)")
 
-                    self.weatherScene.stopEmitter()
+                    self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene()
                 case .rain:
@@ -203,7 +207,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                         })
                     }
 
-                    self.weatherScene.stopEmitter()
+                    self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.rain)
                 case .comet:
@@ -211,17 +215,23 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                         self.mainUpperImageView.image = backgroundImage
                     }
 
-                    self.weatherScene.stopEmitter()
+                    self.weatherScene.stopScene()
                     self.weatherScene.startScene(.comet)
                 case .lightning:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                        self.mainUpperImageView.alpha = 0.0
                         self.mainUpperImageView.image = backgroundImage
+
+                        UIView.animate(withDuration: 1.0, animations: {
+                            self.mainUpperImageView.alpha = 1.0
+                        })
                     }
 
+                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: [#imageLiteral(resourceName: "darkCity_00000"), #imageLiteral(resourceName: "darkCity2_00006")], duration: 2)
                     if let filterValues = URWeatherType.lightning.imageFilterValues {
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
                     }
-                    self.weatherScene.stopEmitter()
+                    self.weatherScene.stopScene()
                     self.weatherScene.startScene(.lightning)
                 case .hot:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
@@ -236,21 +246,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     if let filterValues = URWeatherType.hot.imageFilterValues {
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
                     }
-                    self.weatherScene.stopEmitter()
+                    self.weatherScene.stopScene()
                     self.weatherScene.startScene(.hot)
                 default:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.image = backgroundImage
                     }
 
-                    self.weatherScene.stopEmitter()
+                    self.weatherScene.stopScene()
                 }
             }
 
             cell.stopWeatherBlock = {
                 self.mainUpperImageView.image = nil
 
-                self.weatherScene.stopEmitter()
+                self.weatherScene.stopScene()
             }
 
             cell.removeToneFilterBlock = {
