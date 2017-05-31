@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+/// weather type enumeration & each type's the setting options
 enum URWeatherType: String {
     case snow       = "MyParticleSnow.sks"
     case rain       = "MyParticleRain.sks"
@@ -203,20 +204,31 @@ enum URWeatherGroundType: String {
     case snow       = "MyParticleSnowGround.sks"
     case rain       = "MyParticleRainGround.sks"
     case none       = "None"
+
+    var delayTime: TimeInterval {
+        switch self {
+        case .snow:
+            return 2.0
+        case .rain:
+            return 2.0
+        default:
+            return 2.0
+        }
+    }
 }
 
 struct URWeatherGroundEmitterOption {
     var position: CGPoint
-    var rangeRatio: CGFloat = 0.115
+    var rangeRatio: CGFloat = 0.117
     var angle: CGFloat
 
-    init(position: CGPoint, rangeRatio: CGFloat = 0.115, degree: CGFloat = -29.0) {
+    init(position: CGPoint, rangeRatio: CGFloat = 0.117, degree: CGFloat = -29.0) {
         self.position = position
         self.rangeRatio = rangeRatio
         self.angle = degree.degreesToRadians
     }
 
-    init(position: CGPoint, rangeRatio: CGFloat = 0.115, radian: CGFloat) {
+    init(position: CGPoint, rangeRatio: CGFloat = 0.117, radian: CGFloat) {
         self.position = position
         self.rangeRatio = rangeRatio
         self.angle = radian
@@ -231,7 +243,9 @@ class URWeatherScene: SKScene {
     var subGroundEmitterOptions: [URWeatherGroundEmitterOption]! {
         didSet {
             self.stopGroundEmitter()
-            self.startGroundEmitter()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.startGroundEmitter()
+            }
         }
     }
 
@@ -252,6 +266,7 @@ class URWeatherScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// switch the SpriteKit debug options
     func enableDebugOptions(needToShow: Bool) {
         self.isGraphicsDebugOptionEnabled = needToShow
         guard self.emitter != nil else { return }
@@ -263,13 +278,15 @@ class URWeatherScene: SKScene {
         self.view!.showsDrawCount = self.isGraphicsDebugOptionEnabled
     }
 
+    /// setter of the particle birth rate
     func setBirthRate(rate: CGFloat) {
         guard let _ = self.emitter else { return }
         self.emitter.particleBirthRate = rate
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            guard let _ = self.groundEmitter else { return }
-            self.groundEmitter.particleBirthRate = rate / 2.0
+            if self.groundEmitter != nil {
+                self.groundEmitter.particleBirthRate = rate / 2.0
+            }
 
             guard let _ = self.subGroundEmitters, self.subGroundEmitters.count > 0 else { return }
             for subGroundEmitter in self.subGroundEmitters {
@@ -278,6 +295,7 @@ class URWeatherScene: SKScene {
         }
     }
 
+    /// draw the lightnings
     func drawLightningEffect(isDirectionInvertable: Bool = false) {
         var lightningNode: UREffectLigthningNode
         var lightningNode2: UREffectLigthningNode
@@ -310,6 +328,7 @@ class URWeatherScene: SKScene {
 //        }
 //    }
 
+    /// make the weather effect scene
     func makeScene(weather: URWeatherType = .shiny, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
         switch weather {
         case .lightning:
@@ -339,6 +358,7 @@ class URWeatherScene: SKScene {
         }
     }
 
+    /// start the whole weather scene
     func startScene(_ weather: URWeatherType = .snow, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
         self.weatherType = weather
 
@@ -353,6 +373,7 @@ class URWeatherScene: SKScene {
         block(self.weatherType.backgroundImage)
     }
 
+    /// start the particle effects by the weather type
     func startEmitter(weather: URWeatherType = .snow) {
         self.emitter = SKEmitterNode(fileNamed: weather.rawValue)
 
@@ -416,22 +437,40 @@ class URWeatherScene: SKScene {
 
         self.enableDebugOptions(needToShow: self.isGraphicsDebugOptionEnabled)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.startGroundEmitter()
         }
     }
 
+    /// start the particle effect around ground
     func startGroundEmitter() {
         switch self.weatherType {
-//        case .snow:
+        case .snow:
 //            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherGroundType.snow.rawValue)
+
+            self.subGroundEmitters = [SKEmitterNode]()
+            for i in 0 ..< self.subGroundEmitterOptions.count {
+                let subGroundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)!
+
+                subGroundEmitter.particlePositionRange = CGVector(dx: self.size.width * self.subGroundEmitterOptions[i].rangeRatio, dy: subGroundEmitter.particlePositionRange.dy)
+                subGroundEmitter.position = self.subGroundEmitterOptions[i].position
+                subGroundEmitter.targetNode = self
+                subGroundEmitter.particleBirthRate = self.emitter.particleBirthRate / 13.0
+                subGroundEmitter.zRotation = CGFloat(30.0).degreesToRadians
+
+                self.addChild(subGroundEmitter)
+
+                subGroundEmitter.run(SKAction.rotate(toAngle: self.subGroundEmitterOptions[i].angle, duration: 0.0))
+
+                self.subGroundEmitters.append(subGroundEmitter)
+            }
         case .rain:
-            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherType.rain.ground.rawValue)
+            self.groundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)
             self.groundEmitter.particleScaleRange = 0.2
 
             self.subGroundEmitters = [SKEmitterNode]()
             for i in 0 ..< self.subGroundEmitterOptions.count {
-                let subGroundEmitter = SKEmitterNode(fileNamed: URWeatherType.rain.ground.rawValue)!
+                let subGroundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)!
 
                 subGroundEmitter.particlePositionRange = CGVector(dx: self.size.width * self.subGroundEmitterOptions[i].rangeRatio, dy: 0)
                 subGroundEmitter.position = self.subGroundEmitterOptions[i].position
@@ -459,6 +498,7 @@ class URWeatherScene: SKScene {
         self.addChild(self.groundEmitter)
     }
 
+    /// remove the whole scene
     func stopScene() {
         self.weatherType = .none
         self.particleColor = nil
@@ -488,14 +528,15 @@ class URWeatherScene: SKScene {
         self.backgroundColor = .clear
     }
 
+    /// remove the particle effects around ground
     func stopGroundEmitter() {
-        guard self.groundEmitter != nil else { return }
+        if self.groundEmitter != nil {
+            self.groundEmitter.particleBirthRate = 0.0
+            self.groundEmitter.targetNode = nil
+            self.groundEmitter.removeFromParent()
 
-        self.groundEmitter.particleBirthRate = 0.0
-        self.groundEmitter.targetNode = nil
-        self.groundEmitter.removeFromParent()
-
-        self.groundEmitter = nil
+            self.groundEmitter = nil
+        }
 
         guard self.subGroundEmitters != nil else { return }
 

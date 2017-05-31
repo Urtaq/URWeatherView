@@ -407,7 +407,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="10" navigationOrientation="horizontal" spineLocation="none" id="Wbm-VK-7SN" customClass="PageViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCt-od-q7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="120"/>
+            <point key="canvasLocation" x="1562" y="241"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="cHU-35-Md6">
@@ -425,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrD-1j-Xan" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="643"/>
+            <point key="canvasLocation" x="2353" y="229"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dbO-oa-3ns">

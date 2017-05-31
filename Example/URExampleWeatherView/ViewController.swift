@@ -201,6 +201,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene()
+                    self.changedMainState()
                 case .rain:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.alpha = 0.0
@@ -294,25 +295,45 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func changedMainState() {
         switch self.weatherScene.weatherType {
+        case .snow:
+            let sceneSize: CGSize = self.weatherScene.size
+            if self.btnOne.isSelected {
+                self.weatherScene.subGroundEmitterOptions = [URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.290, y: sceneSize.height * 0.572)),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.237, y: sceneSize.height * 0.530)),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.188, y: sceneSize.height * 0.484)),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.101, y: sceneSize.height * 0.475), rangeRatio: 0.042),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.752, y: sceneSize.height * 0.748), rangeRatio: 0.094, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.829, y: sceneSize.height * 0.602), rangeRatio: 0.094, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.663, y: sceneSize.height * 0.556), rangeRatio: 0.078, degree: -27.0)]
+            } else {
+                let diffY: CGFloat = 0.07
+                self.weatherScene.subGroundEmitterOptions = [URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.290, y: sceneSize.height * (0.572 - diffY))),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.237, y: sceneSize.height * (0.530 - diffY))),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.188, y: sceneSize.height * (0.484 - diffY))),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.101, y: sceneSize.height * (0.475 - diffY)), rangeRatio: 0.042),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.752, y: sceneSize.height * (0.748 + diffY)), rangeRatio: 0.094, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.829, y: sceneSize.height * (0.602 + diffY)), rangeRatio: 0.094, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.663, y: sceneSize.height * (0.556 + diffY)), rangeRatio: 0.078, degree: -27.0)]
+            }
         case .rain:
             let sceneSize: CGSize = self.weatherScene.size
             if self.btnOne.isSelected {
                 self.weatherScene.subGroundEmitterOptions = [URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.307, y: sceneSize.height * 0.590)),
                                                              URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.261, y: sceneSize.height * 0.544)),
                                                              URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.208, y: sceneSize.height * 0.497)),
-                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.122, y: sceneSize.height * 0.481), rangeRatio: 0.038),
-                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.778, y: sceneSize.height * 0.761), rangeRatio: 0.088, degree: -27.0),
-                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.855, y: sceneSize.height * 0.614), rangeRatio: 0.088, degree: -27.0),
-                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.684, y: sceneSize.height * 0.565), rangeRatio: 0.074, degree: -27.0)]
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.122, y: sceneSize.height * 0.481), rangeRatio: 0.042),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.778, y: sceneSize.height * 0.761), rangeRatio: 0.094, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.855, y: sceneSize.height * 0.614), rangeRatio: 0.094, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.684, y: sceneSize.height * 0.565), rangeRatio: 0.078, degree: -27.0)]
             } else {
                 let diffY: CGFloat = 0.07
                 self.weatherScene.subGroundEmitterOptions = [URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.307, y: sceneSize.height * (0.590 - diffY))),
                                                              URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.261, y: sceneSize.height * (0.544 - diffY))),
                                                              URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.208, y: sceneSize.height * (0.497 - diffY))),
-                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.122, y: sceneSize.height * (0.481 - diffY)), rangeRatio: 0.038),
-                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.778, y: sceneSize.height * (0.761 + diffY)), rangeRatio: 0.088, degree: -27.0),
-                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.855, y: sceneSize.height * (0.614 + diffY)), rangeRatio: 0.088, degree: -27.0),
-                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.684, y: sceneSize.height * (0.565 + diffY)), rangeRatio: 0.074, degree: -27.0)]
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.122, y: sceneSize.height * (0.481 - diffY)), rangeRatio: 0.042),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.778, y: sceneSize.height * (0.761 + diffY)), rangeRatio: 0.094, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.855, y: sceneSize.height * (0.614 + diffY)), rangeRatio: 0.094, degree: -27.0),
+                                                             URWeatherGroundEmitterOption(position: CGPoint(x: sceneSize.width * 0.684, y: sceneSize.height * (0.565 + diffY)), rangeRatio: 0.078, degree: -27.0)]
             }
         default:
             break
