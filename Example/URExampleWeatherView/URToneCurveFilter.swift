@@ -40,12 +40,12 @@ class URToneCurveFilter: CIFilter {
     var inputImage: CIImage?
     private var curveVectors: [CIVector]!
 
-    public static var colorKernelForRGB: CIColorKernel = CIColorKernel(string:
+    public static let colorKernelForRGB: CIColorKernel = CIColorKernel(string:
         "kernel vec4 combineRGBChannel(__sample rgb) {" +
         "   return vec4(rgb.rgb, 1.0);" +
         "}")!
 
-    public static var colorKernel: CIColorKernel = CIColorKernel(string:
+    public static let colorKernel: CIColorKernel = CIColorKernel(string:
         "kernel vec4 combineRGBChannel(__sample red, __sample green, __sample blue, __sample rgb) {" +
             "   vec4 result = vec4(red.r, green.g, blue.b, rgb.a);" +
             "   bool isTransparency = true;" +
@@ -69,6 +69,39 @@ class URToneCurveFilter: CIFilter {
             "   }" +
             "   return result;" +
         "}")!
+
+    public static let kernel: CIKernel = CIKernel(string:
+        "kernel vec4 brightenEffect (sampler src, float k)\n" +
+        "{\n" +
+        "    vec4 currentSource = sample (src, samplerCoord (src));         // 1\n" +
+        "    currentSource.rgb = currentSource.rgb + k * currentSource.a;   // 2\n" +
+        "    return currentSource;                                          // 3\n" +
+        "}")!
+
+    public static let holeDistortionKernel: CIKernel = CIKernel(string:
+        "kernel vec4 holeDistortion (sampler src, vec2 center, vec2 params)   // 1\n" +
+        "{\n" +
+        "    vec2 t1;\n" +
+        "    float distance0, distance1;\n" +
+        "\n" +
+        "    t1 = destCoord () - center;                                        // 2\n" +
+        "    distance0 = dot (t1, t1);                                          // 3\n" +
+        "    t1 = t1 * inversesqrt (distance0);                                 // 4\n" +
+        "    distance0 = distance0 * inversesqrt (distance0) * params.x;        // 5\n" +
+        "    distance1 = distance0 - (1.0 / distance0);                         // 6\n" +
+        "    distance0 = (distance0 < 1.0 ? 0.0 : distance1) * params.y;        // 7\n" +
+        "    t1 = t1 * distance0 + center;                                      // 8\n" +
+        "\n" +
+        "    return sample (src, samplerTransform (src, t1));                   // 9\n" +
+        "}"
+        )!
+
+    public static let multiplyKernel: CIKernel = CIKernel(string:
+        "kernel vec4 multiplyEffect (sampler src, __color mul)\n" +
+        "{\n" +
+        "    return sample (src, samplerCoord (src)) * mul;\n" +
+        "}"
+    )!
 
     override init() {
         super.init()
