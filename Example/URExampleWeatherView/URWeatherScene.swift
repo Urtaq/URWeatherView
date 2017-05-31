@@ -15,8 +15,9 @@ enum URWeatherType: String {
     case dust       = "MyParticleDust.sks"
     case dust2      = "MyParticleDust2.sks"
     case lightning  = "0"
-    case hot        = "2"
-    case shiny      = "1"
+    case hot        = "1"
+    case cloudy     = "2"
+    case shiny      = "3"
     case comet      = "MyParticleBurningComet.sks"
     case smoke      = "MyParticleSmoke.sks"
     case none       = "None"
@@ -27,6 +28,7 @@ enum URWeatherType: String {
                                        .dust2,
                                        .lightning,
                                        .hot,
+                                       .cloudy,
                                        .shiny,
                                        .comet,
                                        .smoke]
@@ -45,6 +47,8 @@ enum URWeatherType: String {
             return "Lightning"
         case .hot:
             return "Hot"
+        case .cloudy:
+            return "Cloudy"
         case .shiny:
             return "Shiny"
         case .comet:
@@ -252,6 +256,7 @@ class URWeatherScene: SKScene {
     private lazy var timers: [Timer] = [Timer]()
 
     var weatherType: URWeatherType = .none
+    var particleColor: UIColor!
     var isGraphicsDebugOptionEnabled: Bool = false
 
     var extraEffectBlock: ((UIImage?) -> Void)?
@@ -320,13 +325,6 @@ class URWeatherScene: SKScene {
         lightningNode.startLightning()
         lightningNode2.startLightning()
     }
-
-    var particleColor: UIColor!
-//    func setParticleColor(_ color: UIColor) {
-//        if self.emitter != nil {
-//            self.emitter.particleColorSequence?.setKeyframeValue(color, for: 0)
-//        }
-//    }
 
     /// make the weather effect scene
     func makeScene(weather: URWeatherType = .shiny, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
@@ -442,6 +440,21 @@ class URWeatherScene: SKScene {
         }
     }
 
+    public let HazeFragmentShader =
+    "varying highp vec2 textureCoordinate;\n \n "
+    +"uniform sampler2D inputImageTexture;\n \n "+
+    "uniform lowp float hazeDistance;\n "+
+    "uniform highp float slope;\n \n "+
+    "void main()\n {\n "+
+    "//todo reconsider precision modifiers\n"+
+    "  highp vec4 color = vec4(1.0);//todo reimplement as a parameter\n  \n"+
+    "  highp float  d = textureCoordinate.y * slope  +  hazeDistance;\n  \n"+
+    "  highp vec4 c = texture2D(inputImageTexture, textureCoordinate) ; // consider using unpremultiply\n  \n"+
+    "  c = (c - d * color) / (1.0 -d);\n  \n"+
+    "  gl_FragColor = c; //consider using premultiply(c);\n "+
+    "}\n "
+
+
     /// start the particle effect around ground
     func startGroundEmitter() {
         switch self.weatherType {
@@ -457,6 +470,7 @@ class URWeatherScene: SKScene {
                 subGroundEmitter.targetNode = self
                 subGroundEmitter.particleBirthRate = self.emitter.particleBirthRate / 13.0
                 subGroundEmitter.zRotation = CGFloat(30.0).degreesToRadians
+                subGroundEmitter.numParticlesToEmit = 0
 
                 self.addChild(subGroundEmitter)
 
@@ -472,7 +486,7 @@ class URWeatherScene: SKScene {
             for i in 0 ..< self.subGroundEmitterOptions.count {
                 let subGroundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)!
 
-                subGroundEmitter.particlePositionRange = CGVector(dx: self.size.width * self.subGroundEmitterOptions[i].rangeRatio, dy: 0)
+                subGroundEmitter.particlePositionRange = CGVector(dx: self.size.width * self.subGroundEmitterOptions[i].rangeRatio, dy: 7.5)
                 subGroundEmitter.position = self.subGroundEmitterOptions[i].position
                 subGroundEmitter.targetNode = self
                 subGroundEmitter.particleBirthRate = self.emitter.particleBirthRate / 13.0
