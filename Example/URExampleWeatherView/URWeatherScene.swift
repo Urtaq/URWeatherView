@@ -440,21 +440,6 @@ class URWeatherScene: SKScene {
         }
     }
 
-    public let HazeFragmentShader =
-    "varying highp vec2 textureCoordinate;\n \n "
-    +"uniform sampler2D inputImageTexture;\n \n "+
-    "uniform lowp float hazeDistance;\n "+
-    "uniform highp float slope;\n \n "+
-    "void main()\n {\n "+
-    "//todo reconsider precision modifiers\n"+
-    "  highp vec4 color = vec4(1.0);//todo reimplement as a parameter\n  \n"+
-    "  highp float  d = textureCoordinate.y * slope  +  hazeDistance;\n  \n"+
-    "  highp vec4 c = texture2D(inputImageTexture, textureCoordinate) ; // consider using unpremultiply\n  \n"+
-    "  c = (c - d * color) / (1.0 -d);\n  \n"+
-    "  gl_FragColor = c; //consider using premultiply(c);\n "+
-    "}\n "
-
-
     /// start the particle effect around ground
     func startGroundEmitter() {
         switch self.weatherType {
