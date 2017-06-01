@@ -341,6 +341,34 @@ class URWeatherScene: SKScene, URNodeMovable {
         lightningNode2.startLightning()
     }
 
+    /// draw clouds
+    func drawCloudEffect(duration: TimeInterval, interval: TimeInterval = 0.0, index: Int) {
+        var cloudNodes: [UREffectCloudNode] = [UREffectCloudNode]()
+
+        let makeAction = SKAction.run {
+            cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: 0.0, y: 0.5, width: 1.0, height: 0.15), on: self.view!, movingAngleInDegree: 30.0, movingDuration: duration)
+            cloudNodes = cloudNodes.sorted(by: >)
+
+            for cloudNode in cloudNodes {
+                self.addChild(cloudNode)
+
+                cloudNode.makeStreamingAction()
+
+//                    self.movableNodes.append(cloudNode)
+            }
+        }
+        let waitAction = SKAction.wait(forDuration: duration * 2.5)
+        let destroyAction = SKAction.run {
+            for cloudNode in cloudNodes {
+                cloudNode.removeFromParent()
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+            self.run(SKAction.repeatForever(SKAction.sequence([makeAction, waitAction, destroyAction])), withKey: self.weatherType.name + "\(index)")
+        }
+    }
+
     /// make the weather effect scene
     func makeScene(weather: URWeatherType = .shiny, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
         switch weather {
@@ -366,28 +394,8 @@ class URWeatherScene: SKScene, URNodeMovable {
             }
             self.run(SKAction.repeatForever(SKAction.sequence(actions)), withKey: weather.name)
         case .cloudy:
-            var cloudNodes: [UREffectCloudNode] = [UREffectCloudNode]()
-
-            let makeAction = SKAction.run {
-                cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: 0.1, y: 0.5, width: 0.8, height: 0.4), on: self.view!, movingAngleInDegree: 30.0, movingDuration: 7.0)
-                cloudNodes = cloudNodes.sorted(by: >)
-
-                for cloudNode in cloudNodes {
-                    self.addChild(cloudNode)
-
-                    cloudNode.makeStreamingAction()
-
-//                    self.movableNodes.append(cloudNode)
-                }
-            }
-            let waitAction = SKAction.wait(forDuration: 5.5)
-            let destroyAction = SKAction.run {
-                for cloudNode in cloudNodes {
-                    cloudNode.removeFromParent()
-                }
-            }
-
-            self.run(SKAction.repeatForever(SKAction.sequence([makeAction, waitAction, destroyAction])), withKey: weather.name)
+            self.drawCloudEffect(duration: 14.0, interval: 0.0, index: 1)
+            self.drawCloudEffect(duration: 14.0, interval: 12.0, index: 2)
         default:
             break
         }
@@ -541,6 +549,11 @@ class URWeatherScene: SKScene, URNodeMovable {
 
         for weather in URWeatherType.all {
             self.removeAction(forKey: weather.name)
+
+            if weather == .cloudy {
+                self.removeAction(forKey: weather.name + "1")
+                self.removeAction(forKey: weather.name + "2")
+            }
         }
 
         for subNode in self.children {

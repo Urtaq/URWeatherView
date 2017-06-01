@@ -33,7 +33,7 @@ struct UREffectCloudOption {
     var movingAngle: CGFloat
     var textureScaleRatio: CGFloat = 0.3
     var movingDuration: TimeInterval = 5.0
-//    var maxCount: UInt32 = 10
+//    var makingCount: UInt32 = 10
 //    var isRandomCountInMax: Bool = true
 
     init(_ emittableArea: CGRect, angleInDegree: CGFloat, scaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
@@ -66,7 +66,7 @@ class UREffectCloudNode: SKSpriteNode {
 
         var realMakingCount: UInt32 = maxCount
         if isRandomCountInMax {
-            let minMakingCount: UInt32 = UInt32(floor(Double(maxCount) * 0.4))
+            let minMakingCount: UInt32 = UInt32(floor(Double(maxCount) * 0.6))
             realMakingCount = arc4random_uniform(maxCount)
             if realMakingCount < minMakingCount {
                 realMakingCount = minMakingCount
@@ -75,6 +75,7 @@ class UREffectCloudNode: SKSpriteNode {
         for i in 0 ..< realMakingCount {
             let rect: CGRect = CGRect(x: area.origin.x * scene.bounds.size.width, y: area.origin.y * scene.bounds.size.height, width: area.size.width * scene.bounds.size.width, height: area.size.height * scene.bounds.size.height)
             let cloud: UREffectCloudNode = UREffectCloudNode(rect, angleInRadian: movingAngleInRadian)
+            cloud.colorBlendFactor = pow(CGFloat(realMakingCount) / 30.0, 2.0)
             cloud.name = "cloud\(i)"
             clouds.append(cloud)
         }
@@ -119,21 +120,25 @@ class UREffectCloudNode: SKSpriteNode {
         let rangeY: CGFloat = self.option.emittableArea.origin.y + (CGFloat(arc4random_uniform(UInt32(self.option.emittableArea.height * 100.0))) / 100.0)
         self.emittingPosition = CGPoint(x: rangeX, y: rangeY)
         self.position = self.emittingPosition
+
+        self.color = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     }
 
     func makeStreamingAction(isRepeat: Bool = false) {
         let actionFadeOut: SKAction = SKAction.fadeOut(withDuration: 0.0)
         let actionFadeIn: SKAction = SKAction.fadeIn(withDuration: 0.5)
-        let actionWait: SKAction = SKAction.wait(forDuration: 0.5)
         let actionMoveToDestination: SKAction = SKAction.move(to: self.destinationPoint, duration: self.option.movingDuration)
+        let speedCoefficient: CGFloat = CGFloat(arc4random_uniform(3)) * 0.08
+        print("speedCoefficient ==========+> \(speedCoefficient)")
+        actionMoveToDestination.speed = 0.1 * speedCoefficient == 0.0 ? 0.1 : speedCoefficient
         let actionFadeOut2: SKAction = SKAction.fadeOut(withDuration: 0.5)
         let startPoint: CGPoint = self.emittingPosition
         let actionMoveToStarting: SKAction = SKAction.move(to: startPoint, duration: 0.0)
 
         if isRepeat {
-            self.run(SKAction.repeatForever(SKAction.sequence([actionFadeOut, actionFadeIn, actionWait, actionMoveToDestination, actionFadeOut2, actionMoveToStarting])))
+            self.run(SKAction.repeatForever(SKAction.sequence([actionFadeOut, actionFadeIn, actionMoveToDestination, actionFadeOut2, actionMoveToStarting])))
         } else {
-            self.run(SKAction.sequence([actionFadeOut, actionFadeIn, actionWait, actionMoveToDestination, actionFadeOut2, actionMoveToStarting]))
+            self.run(SKAction.sequence([actionFadeOut, actionFadeIn, actionMoveToDestination, actionFadeOut2, actionMoveToStarting]))
         }
     }
 
