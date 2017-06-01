@@ -32,21 +32,19 @@ struct UREffectCloudOption {
     var emittableArea: CGRect
     var movingAngle: CGFloat
     var textureScaleRatio: CGFloat = 0.3
+    var movingDuration: TimeInterval = 5.0
 //    var maxCount: UInt32 = 10
 //    var isRandomCountInMax: Bool = true
 
-    init(_ emittableArea: CGRect, angleInDegree: CGFloat, scaleRatio: CGFloat = 0.3) {
-        self.emittableArea = emittableArea
-        self.movingAngle = angleInDegree.degreesToRadians
-        self.textureScaleRatio = scaleRatio
-//        self.maxCount = maxCount
-//        self.isRandomCountInMax = isRandomCountInMax
+    init(_ emittableArea: CGRect, angleInDegree: CGFloat, scaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
+        self.init(emittableArea, angleInRadian: angleInDegree.degreesToRadians, scaleRatio: scaleRatio, movingDuration: movingDuration)
     }
 
-    init(_ emittableArea: CGRect, angleInRadian: CGFloat, scaleRatio: CGFloat = 0.3) {
+    init(_ emittableArea: CGRect, angleInRadian: CGFloat, scaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
         self.emittableArea = emittableArea
         self.movingAngle = angleInRadian
         self.textureScaleRatio = scaleRatio
+        self.movingDuration = movingDuration
 //        self.maxCount = maxCount
 //        self.isRandomCountInMax = isRandomCountInMax
     }
@@ -59,11 +57,11 @@ class UREffectCloudNode: SKSpriteNode {
                                              SKTexture(image: #imageLiteral(resourceName: "cloud_03")),
                                              SKTexture(image: #imageLiteral(resourceName: "cloud_04"))]
 
-    class func makeClouds(maxCount: UInt32, isRandomCountInMax: Bool, emittableAreaRatio area: CGRect, on scene: SKView, movingAngleInDegree: CGFloat) -> [UREffectCloudNode] {
+    class func makeClouds(maxCount: UInt32, isRandomCountInMax: Bool, emittableAreaRatio area: CGRect, on scene: SKView, movingAngleInDegree: CGFloat, movingDuration: TimeInterval = 5.0) -> [UREffectCloudNode] {
         return UREffectCloudNode.makeClouds(maxCount: maxCount, isRandomCountInMax: isRandomCountInMax, emittableAreaRatio: area, on: scene, movingAngleInRadian: movingAngleInDegree.degreesToRadians)
     }
 
-    class func makeClouds(maxCount: UInt32, isRandomCountInMax: Bool, emittableAreaRatio area: CGRect, on scene: SKView, movingAngleInRadian: CGFloat) -> [UREffectCloudNode] {
+    class func makeClouds(maxCount: UInt32, isRandomCountInMax: Bool, emittableAreaRatio area: CGRect, on scene: SKView, movingAngleInRadian: CGFloat, movingDuration: TimeInterval = 5.0) -> [UREffectCloudNode] {
         var clouds: [UREffectCloudNode] = [UREffectCloudNode]()
 
         var realMakingCount: UInt32 = maxCount
@@ -98,16 +96,16 @@ class UREffectCloudNode: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(_ emittableArea: CGRect, angleInDegree: CGFloat, textureScaleRatio: CGFloat = 0.3) {
+    convenience init(_ emittableArea: CGRect, angleInDegree: CGFloat, textureScaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
         self.init(texture: nil, color: .clear, size: .zero)
-        self.option = UREffectCloudOption(emittableArea, angleInDegree: angleInDegree, scaleRatio: textureScaleRatio)
+        self.option = UREffectCloudOption(emittableArea, angleInDegree: angleInDegree, scaleRatio: textureScaleRatio, movingDuration: movingDuration)
 
         self.initNode()
     }
 
-    convenience init(_ emittableArea: CGRect, angleInRadian: CGFloat, textureScaleRatio: CGFloat = 0.3) {
+    convenience init(_ emittableArea: CGRect, angleInRadian: CGFloat, textureScaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
         self.init(texture: nil, color: .clear, size: .zero)
-        self.option = UREffectCloudOption(emittableArea, angleInRadian: angleInRadian, scaleRatio: textureScaleRatio)
+        self.option = UREffectCloudOption(emittableArea, angleInRadian: angleInRadian, scaleRatio: textureScaleRatio, movingDuration: movingDuration)
 
         self.initNode()
     }
@@ -127,7 +125,7 @@ class UREffectCloudNode: SKSpriteNode {
         let actionFadeOut: SKAction = SKAction.fadeOut(withDuration: 0.0)
         let actionFadeIn: SKAction = SKAction.fadeIn(withDuration: 0.5)
         let actionWait: SKAction = SKAction.wait(forDuration: 0.5)
-        let actionMoveToDestination: SKAction = SKAction.move(to: self.destinationPoint, duration: 5.0)
+        let actionMoveToDestination: SKAction = SKAction.move(to: self.destinationPoint, duration: self.option.movingDuration)
         let actionFadeOut2: SKAction = SKAction.fadeOut(withDuration: 0.5)
         let startPoint: CGPoint = self.emittingPosition
         let actionMoveToStarting: SKAction = SKAction.move(to: startPoint, duration: 0.0)

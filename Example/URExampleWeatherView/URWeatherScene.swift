@@ -369,7 +369,7 @@ class URWeatherScene: SKScene, URNodeMovable {
             var cloudNodes: [UREffectCloudNode] = [UREffectCloudNode]()
 
             let makeAction = SKAction.run {
-                cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: 0.1, y: 0.5, width: 0.8, height: 0.4), on: self.view!, movingAngleInDegree: 30.0)
+                cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: 0.1, y: 0.5, width: 0.8, height: 0.4), on: self.view!, movingAngleInDegree: 30.0, movingDuration: 7.0)
                 cloudNodes = cloudNodes.sorted(by: >)
 
                 for cloudNode in cloudNodes {
