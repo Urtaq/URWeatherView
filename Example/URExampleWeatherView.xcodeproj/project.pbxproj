@@ -25,6 +25,8 @@
 		9716E1421EDCFA4A00372B48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1361EDCFA4A00372B48 /* QuartzCore.framework */; };
 		9716E1431EDCFA4A00372B48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1371EDCFA4A00372B48 /* SystemConfiguration.framework */; };
 		9716E1441EDCFA4A00372B48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1381EDCFA4A00372B48 /* UIKit.framework */; };
+		9716E1481EDEA94200372B48 /* UREffectCloudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716E1471EDEA94100372B48 /* UREffectCloudNode.swift */; };
+		9716E14C1EDEAFD600372B48 /* URNodeMovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716E14B1EDEAFD600372B48 /* URNodeMovable.swift */; };
 		97200B4D1ED7B8AB00955521 /* UREffectLightningNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97200B4C1ED7B8AB00955521 /* UREffectLightningNode.swift */; };
 		974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */; };
 		974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */; };
@@ -104,6 +106,8 @@
 		9716E1361EDCFA4A00372B48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9716E1371EDCFA4A00372B48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9716E1381EDCFA4A00372B48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9716E1471EDEA94100372B48 /* UREffectCloudNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectCloudNode.swift; sourceTree = "<group>"; };
+		9716E14B1EDEAFD600372B48 /* URNodeMovable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URNodeMovable.swift; sourceTree = "<group>"; };
 		97200B4C1ED7B8AB00955521 /* UREffectLightningNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectLightningNode.swift; sourceTree = "<group>"; };
 		974FFAF81EA9E77500B2A3E7 /* URExampleWeatherView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URExampleWeatherView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				974FFB7C1EAD8F1300B2A3E7 /* URWeatherScene.swift */,
+				9716E14B1EDEAFD600372B48 /* URNodeMovable.swift */,
 				974FFB761EAA0E0400B2A3E7 /* MyScene.sks */,
 				974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */,
 				974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */,
@@ -237,9 +242,18 @@
 			name = ToneCurve;
 			sourceTree = "<group>";
 		};
+		9716E1461EDEA92E00372B48 /* cloud */ = {
+			isa = PBXGroup;
+			children = (
+				9716E1471EDEA94100372B48 /* UREffectCloudNode.swift */,
+			);
+			name = cloud;
+			sourceTree = "<group>";
+		};
 		97200B4A1ED7B87B00955521 /* Effect */ = {
 			isa = PBXGroup;
 			children = (
+				9716E1461EDEA92E00372B48 /* cloud */,
 				97200B4B1ED7B88C00955521 /* lightning */,
 			);
 			name = Effect;
@@ -565,6 +579,7 @@
 				97BA91721ED7D94E0032B194 /* UREffectLightningBoltNode.swift in Sources */,
 				976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */,
 				9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */,
+				9716E1481EDEA94200372B48 /* UREffectCloudNode.swift in Sources */,
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
 				97200B4D1ED7B8AB00955521 /* UREffectLightningNode.swift in Sources */,
 				9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */,
@@ -577,6 +592,7 @@
 				9780EC0A1ECEFBE600F26C4C /* LOTAnimationView+Filter.swift in Sources */,
 				970E948E1EC44A5700DEEC86 /* URToneCurveGraphView.swift in Sources */,
 				9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */,
+				9716E14C1EDEAFD600372B48 /* URNodeMovable.swift in Sources */,
 				97BA91741ED8115E0032B194 /* UREffectLightningLineNode.swift in Sources */,
 				97DF1F941ECAD53000427CED /* URToneCurveUtil.swift in Sources */,
 			);
