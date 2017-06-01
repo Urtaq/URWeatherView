@@ -165,7 +165,7 @@ class UREffectLigthningNode: SKSpriteNode {
     }
 }
 
-fileprivate extension CGPoint {
+extension CGPoint {
     func rotateAround(point: CGPoint, degree: CGFloat) -> CGPoint {
         // translation to the zero point
         let translationToPoint = CGAffineTransform(translationX: -point.x, y: -point.y)

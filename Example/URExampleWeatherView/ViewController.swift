@@ -31,15 +31,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         self.skView = SKView(frame: self.mainView.frame)
-        self.weatherScene = URWeatherScene(size: self.skView.bounds.size)
 
         self.skView.backgroundColor = UIColor.clear
-        self.skView.presentScene(self.weatherScene)
         self.mainView.insertSubview(self.skView, belowSubview: self.mainUpperImageView)
 
         self.skView.translatesAutoresizingMaskIntoConstraints = false
         self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.skView]))
         self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.skView]))
+
+        self.mainView.layoutIfNeeded()
+        self.weatherScene = URWeatherScene(size: self.skView.bounds.size)
+        self.skView.presentScene(self.weatherScene)
 
         self.initMainAnimation()
     }
@@ -169,7 +171,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             cell.birthRateDidChange = { (birthRate) in
-                self.weatherScene.setBirthRate(rate: birthRate)
+                self.weatherScene.birthRate = birthRate
             }
 
             return cell
@@ -216,13 +218,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.rain)
                     self.changedMainState()
-                case .comet:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
-                        self.mainUpperImageView.image = backgroundImage
-                    }
-
-                    self.weatherScene.stopScene()
-                    self.weatherScene.startScene(.comet)
                 case .lightning:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.alpha = 0.0
@@ -250,6 +245,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
                     }
                     self.weatherScene.stopScene()
+                    self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.lightning, duration: duration, showTimes: lightningShowTimes)
                 case .hot:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
@@ -262,10 +258,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     }
 
                     if let filterValues = URWeatherType.hot.imageFilterValues {
+                        self.mainBackgroundImageView.applyToneCurveFilter(filterValues: filterValues)
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
                     }
                     self.weatherScene.stopScene()
+                    self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.hot)
+                case .cloudy:
+                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                        self.mainUpperImageView.image = backgroundImage
+                    }
+
+                    self.weatherScene.stopScene()
+                    self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
+                    self.weatherScene.startScene(.cloudy)
+                case .comet:
+                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                        self.mainUpperImageView.image = backgroundImage
+                    }
+
+                    self.weatherScene.stopScene()
+                    self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
+                    self.weatherScene.startScene(.comet)
                 default:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.image = backgroundImage
@@ -286,7 +300,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             cell.birthRateDidChange = { (birthRate) in
-                self.weatherScene.setBirthRate(rate: birthRate)
+                self.weatherScene.birthRate = birthRate
             }
 
             return cell

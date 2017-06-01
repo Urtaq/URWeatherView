@@ -183,6 +183,8 @@ enum URWeatherType: String {
             return 150.0
         case .dust, .dust2, .smoke:
             return 200.0
+        case .cloudy:
+            return 10.0
         case .comet:
             return 455.0
         default:
@@ -198,6 +200,8 @@ enum URWeatherType: String {
             return 1500.0
         case .dust, .dust2:
             return 300.0
+        case .cloudy:
+            return 30.0
         default:
             return 300.0
         }
@@ -239,11 +243,11 @@ struct URWeatherGroundEmitterOption {
     }
 }
 
-class URWeatherScene: SKScene {
-    private var emitter: SKEmitterNode!
-    private var subEmitter: SKEmitterNode!
-    private var groundEmitter: SKEmitterNode!
-    private var subGroundEmitters: [SKEmitterNode]!
+class URWeatherScene: SKScene, URNodeMovable {
+    fileprivate var emitter: SKEmitterNode!
+    fileprivate var subEmitter: SKEmitterNode!
+    fileprivate var groundEmitter: SKEmitterNode!
+    fileprivate var subGroundEmitters: [SKEmitterNode]!
     var subGroundEmitterOptions: [URWeatherGroundEmitterOption]! {
         didSet {
             self.stopGroundEmitter()
@@ -260,6 +264,14 @@ class URWeatherScene: SKScene {
     var isGraphicsDebugOptionEnabled: Bool = false
 
     var extraEffectBlock: ((UIImage?) -> Void)?
+
+    var lastLocation: CGPoint = .zero {
+        didSet {
+            self.updateNodePosition()
+        }
+    }
+    var touchedNode: SKNode!
+    lazy var movableNodes: [SKNode] = [SKNode]()
 
     override init(size: CGSize) {
         super.init(size: size)
@@ -284,18 +296,21 @@ class URWeatherScene: SKScene {
     }
 
     /// setter of the particle birth rate
-    func setBirthRate(rate: CGFloat) {
-        guard let _ = self.emitter else { return }
-        self.emitter.particleBirthRate = rate
+    var birthRate: CGFloat = 0.0 {
+        didSet {
+            if self.emitter != nil {
+                self.emitter.particleBirthRate = self.birthRate
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            if self.groundEmitter != nil {
-                self.groundEmitter.particleBirthRate = rate / 2.0
-            }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    if self.groundEmitter != nil {
+                        self.groundEmitter.particleBirthRate = self.birthRate / 2.0
+                    }
 
-            guard let _ = self.subGroundEmitters, self.subGroundEmitters.count > 0 else { return }
-            for subGroundEmitter in self.subGroundEmitters {
-                subGroundEmitter.particleBirthRate = rate / 13.0
+                    guard let _ = self.subGroundEmitters, self.subGroundEmitters.count > 0 else { return }
+                    for subGroundEmitter in self.subGroundEmitters {
+                        subGroundEmitter.particleBirthRate = self.birthRate / 13.0
+                    }
+                }
             }
         }
     }
@@ -330,7 +345,6 @@ class URWeatherScene: SKScene {
     func makeScene(weather: URWeatherType = .shiny, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
         switch weather {
         case .lightning:
-            self.timers = [Timer]()
             var actions = [SKAction]()
             for (index, time) in times.enumerated() {
                 var waiting: SKAction
@@ -351,6 +365,29 @@ class URWeatherScene: SKScene {
                 }
             }
             self.run(SKAction.repeatForever(SKAction.sequence(actions)), withKey: weather.name)
+        case .cloudy:
+            var cloudNodes: [UREffectCloudNode] = [UREffectCloudNode]()
+
+            let makeAction = SKAction.run {
+                cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: 0.1, y: 0.5, width: 0.8, height: 0.4), on: self.view!, movingAngleInDegree: 30.0)
+                cloudNodes = cloudNodes.sorted(by: >)
+
+                for cloudNode in cloudNodes {
+                    self.addChild(cloudNode)
+
+                    cloudNode.makeStreamingAction()
+
+//                    self.movableNodes.append(cloudNode)
+                }
+            }
+            let waitAction = SKAction.wait(forDuration: 5.5)
+            let destroyAction = SKAction.run {
+                for cloudNode in cloudNodes {
+                    cloudNode.removeFromParent()
+                }
+            }
+
+            self.run(SKAction.repeatForever(SKAction.sequence([makeAction, waitAction, destroyAction])), withKey: weather.name)
         default:
             break
         }
@@ -361,7 +398,7 @@ class URWeatherScene: SKScene {
         self.weatherType = weather
 
         switch weather {
-        case .shiny, .lightning, .hot:
+        case .lightning, .hot, .cloudy, .shiny:
             self.makeScene(weather: weather, duration: duration, showTimes: times)
         default:
             self.startEmitter(weather: weather)
@@ -457,11 +494,11 @@ class URWeatherScene: SKScene {
                 subGroundEmitter.zRotation = CGFloat(30.0).degreesToRadians
                 subGroundEmitter.numParticlesToEmit = 0
 
-                self.addChild(subGroundEmitter)
+                self.insertChild(subGroundEmitter, at: 0)
 
                 subGroundEmitter.run(SKAction.rotate(toAngle: self.subGroundEmitterOptions[i].angle, duration: 0.0))
 
-                self.subGroundEmitters.append(subGroundEmitter)
+                self.subGroundEmitters.insert(subGroundEmitter, at: 0)
             }
         case .rain:
             self.groundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)
@@ -476,11 +513,11 @@ class URWeatherScene: SKScene {
                 subGroundEmitter.targetNode = self
                 subGroundEmitter.particleBirthRate = self.emitter.particleBirthRate / 13.0
 
-                self.addChild(subGroundEmitter)
+                self.insertChild(subGroundEmitter, at: 0)
 
                 subGroundEmitter.run(SKAction.rotate(toAngle: self.subGroundEmitterOptions[i].angle, duration: 0.0))
 
-                self.subGroundEmitters.append(subGroundEmitter)
+                self.subGroundEmitters.insert(subGroundEmitter, at: 0)
             }
         default:
             self.groundEmitter = nil
@@ -494,7 +531,7 @@ class URWeatherScene: SKScene {
         self.groundEmitter.targetNode = self
         self.groundEmitter.particleBirthRate = self.emitter.particleBirthRate / 2.0
 
-        self.addChild(self.groundEmitter)
+        self.insertChild(self.groundEmitter, at: 0)
     }
 
     /// remove the whole scene
@@ -548,9 +585,26 @@ class URWeatherScene: SKScene {
         self.subGroundEmitters.removeAll()
         self.subGroundEmitters = nil
     }
+}
+
+extension URWeatherScene {
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.weatherType == .cloudy {
+            self.handleTouch(touches)
+        }
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.weatherType == .cloudy {
+            self.handleTouch(touches)
+        }
+    }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.weatherType == .comet {
+        if self.weatherType == .cloudy {
+            self.handleTouch(touches, isEnded: true)
+        } else if self.weatherType == .comet {
             if let _ = self.emitter.parent {
             } else {
                 self.addChild(self.emitter)

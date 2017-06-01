@@ -50,12 +50,8 @@ class URExampleWeatherTableViewCell: UITableViewCell {
         self.slBirthRate.value = Float(self.weather.defaultBirthRate)
         self.lbBirthRateCurrent.text = "\(self.slBirthRate.value)"
 
-        switch self.weather {
-        case .snow, .lightning, .hot:
-            guard let block = self.removeToneFilterBlock else { return }
+        if let block = self.removeToneFilterBlock {
             block()
-        default:
-            break
         }
 
         guard let block = self.stopWeatherBlock else { return }
