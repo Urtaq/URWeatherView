@@ -128,7 +128,7 @@ class UREffectCloudNode: SKSpriteNode {
 
         let actionMoveToDestination: SKAction = SKAction.move(to: self.destinationPoint, duration: self.option.movingDuration)
 
-        let speedCoefficient: CGFloat = CGFloat(arc4random_uniform(3)) * 0.08
+        let speedCoefficient: CGFloat = CGFloat(arc4random_uniform(3)) * 0.05
         actionMoveToDestination.speed = 0.1 * speedCoefficient == 0.0 ? 0.1 : speedCoefficient
         let actionFadeOut2: SKAction = SKAction.fadeOut(withDuration: 0.5)
 
@@ -143,7 +143,7 @@ class UREffectCloudNode: SKSpriteNode {
     }
 
     var destinationPoint: CGPoint {
-        let pointZeroAngleOnAxisY: CGPoint = CGPoint(x: self.emittingPosition.x + self.option.emittableArea.width * 0.5, y: self.emittingPosition.y)
+        let pointZeroAngleOnAxisY: CGPoint = CGPoint(x: self.emittingPosition.x + self.option.emittableArea.width, y: self.emittingPosition.y)
         let rotatedPoint: CGPoint = pointZeroAngleOnAxisY.rotateAround(point: self.emittingPosition, angle: self.option.movingAngle)
 
         return CGPoint(x: rotatedPoint.x + self.size.width * 0.2, y: rotatedPoint.y + self.size.height * 0.2)

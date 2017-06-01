@@ -271,7 +271,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
-                    self.weatherScene.startScene(.cloudy)
+                    self.weatherScene.startScene(.cloudy, duration: 63.0)
                 case .comet:
                     self.weatherScene.extraEffectBlock = { (backgroundImage) in
                         self.mainUpperImageView.image = backgroundImage
