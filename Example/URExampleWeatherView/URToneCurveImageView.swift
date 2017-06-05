@@ -140,6 +140,7 @@ extension URToneCurveAppliable where Self: UIImageView {
         let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
         let center: CIVector = CIVector(x: 0.5, y: 0.5)
         let radius: CIVector = CIVector(x: 0.5, y: 2.0)
+        let time: CGFloat = 1.0
         let color: CIColor = CIColor(red: 0.23, green: 0.56, blue: 0.34, alpha: 0.82)
         print("center : \(center), radius: \(radius)")
         let samplerROI = CGRect(x: 0, y: 0, width: red.extent.width, height: red.extent.height)
@@ -151,8 +152,9 @@ extension URToneCurveAppliable where Self: UIImageView {
         }
 
 //        guard let resultImage: CIImage = URToneCurveFilter.kernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, 0.5]) else {
-        guard let resultImage: CIImage = URToneCurveFilter.holeDistortionKernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, center, radius]) else {
+//        guard let resultImage: CIImage = URToneCurveFilter.holeDistortionKernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, center, radius]) else {
 //        guard let resultImage: CIImage = URToneCurveFilter.multiplyKernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, color]) else {
+        guard let resultImage: CIImage = URToneCurveFilter.swirlKernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, center, time]) else {
             fatalError("Filtered Image merging is failed!!")
         }
 

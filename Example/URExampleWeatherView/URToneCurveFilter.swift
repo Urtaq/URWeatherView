@@ -103,6 +103,32 @@ class URToneCurveFilter: CIFilter {
         "}"
     )!
 
+    public static let swirlKernel: CIKernel = CIKernel(string:
+        "kernel vec4 postFX(sampler tex, vec2 uv, float time)\n" +
+        "{\n" +
+            "float rt_w = samplerSize(tex).x;\n" +
+            "float rt_h = samplerSize(tex).y;\n" +
+            "vec2 center = vec2(400.0, 300.0);\n" +
+            "vec2 texSize = vec2(rt_w, rt_h);\n" +
+            "vec2 tc = uv * texSize;\n" +
+            "tc -= center;\n" +
+            "float dist = length(tc);\n" +
+            "if (dist < 200.0)\n" +
+            "{\n" +
+                "float percent = (200.0 - dist) / 200.0;\n" +
+                "float theta = percent * percent * 0.8 * 8.0;\n" +
+                "float s = sin(theta);\n" +
+                "float c = cos(theta);\n" +
+                "tc = vec2(dot(tc, vec2(c, -s)), dot(tc, vec2(s, c)));\n" +
+            "}\n" +
+            "tc += center;\n" +
+//            "vec3 color = texture(tex, tc / texSize).rgb;\n" +
+//            "return vec4(color, 1.0);" +
+//            "return sample (tex, samplerCoord (tex));" +
+            "    return sample (tex, samplerTransform (tex, tc / texSize));                   // 9\n" +
+        "}"
+    )!
+
     override init() {
         super.init()
     }
