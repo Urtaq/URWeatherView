@@ -430,10 +430,10 @@ class URWeatherScene: SKScene, URNodeMovable {
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
             let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
                 if self.emitter.particleBirthRate <= 40.0 {
-                    if self.emitter.xAcceleration == -10 {
-                        self.emitter.xAcceleration = 10
+                    if self.emitter.xAcceleration == -3 {
+                        self.emitter.xAcceleration = 3
                     } else {
-                        self.emitter.xAcceleration = -10
+                        self.emitter.xAcceleration = -3
                     }
                 } else {
                     self.emitter.xAcceleration = 0

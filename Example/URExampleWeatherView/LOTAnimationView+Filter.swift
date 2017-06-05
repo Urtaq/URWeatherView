@@ -41,7 +41,7 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
         if self.imageSolidLayers != nil {
             for (_, imageLayerDic) in self.imageSolidLayers.enumerated() {
                 guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
-                print("imageLayer before ====> \(imageLayer.contents!)")
+//                print("imageLayer before ====> \(imageLayer.contents!)")
                 let cgImage = imageLayer.contents as! CGImage
                 self.originals.rawImages.append(UIImage(cgImage: cgImage))
 
@@ -63,7 +63,7 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
                 }
                 imageLayer.contents = resultCGImage
                 self.replaceLayer(imageLayer, with: resultCGImage)
-                print("imageLayer after  ====> \(imageLayer.contents!)")
+//                print("imageLayer after  ====> \(imageLayer.contents!)")
             }
         }
     }
