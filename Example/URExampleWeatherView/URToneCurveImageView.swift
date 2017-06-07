@@ -36,7 +36,7 @@ public class URFilterAnimation {
     }
 }
 
-class URToneCurveImageView: UIImageView, URToneCurveAppliable {
+class URToneCurveImageView: UIImageView, URFilterAppliable {
     var originalImages: [UIImage]!
     var effectTimer: Timer!
 
@@ -51,7 +51,7 @@ class URToneCurveImageView: UIImageView, URToneCurveAppliable {
     }
 }
 
-extension URToneCurveAppliable where Self: UIImageView {
+extension URFilterAppliable where Self: UIImageView {
     func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval, userInfo: [String: Any]! = nil) {
         guard imageAssets.count >= 2 else { return }
         let layer1: CALayer = CALayer()
@@ -141,11 +141,9 @@ extension URToneCurveAppliable where Self: UIImageView {
         }
 
         if arguments.count == 4 {
-            guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: filteredImage.extent, arguments: arguments) else {
-                fatalError("Filtered Image merging is failed!!")
-            }
+            let rgbFilter = URRGBToneCurveFilter(frame: filteredImage.extent, imageView: self, inputValues: arguments)
 
-            self.image = UIImage(ciImage: resultImage)
+            self.image = UIImage(ciImage: rgbFilter.outputImage!)
         } else {
             self.image = UIImage(ciImage: filteredImage)
         }

@@ -6,38 +6,83 @@
 //  Copyright © 2017년 zigbang. All rights reserved.
 //
 
-import UIKit
-import CoreImage
+typealias URFilterShaderCode = String
+protocol URFilter: class {
+    var inputImage: CIImage? { get set }
+    var customKernel: CIKernel? { get set }
+    var customAttributes: [Any]? { get set }
+    var extent: CGRect { get set }
 
-public protocol URToneCurveAppliable: class {
-    var originalImages: [UIImage]! { get set }
-    var effectTimer: Timer! { get set }
-
-    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval)
-
-    func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!)
-    func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]?)
-    func removeToneCurveFilter()
-
-    func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage)
+    func applyFilter() -> CIImage
 }
 
-extension URToneCurveAppliable {
-    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval) {
+extension URFilter {
+
+    func loadCIKernel(from filename: String) {
+        let shaderCode = self.loadKernelShaderCode(filename)
+
+        self.customKernel = CIKernel(string: shaderCode)
     }
 
-    func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!) {
+    func loadCIColorKernel(from filename: String) {
+        let shaderCode = self.loadKernelShaderCode(filename)
+
+        self.customKernel = CIColorKernel(string: shaderCode)
     }
 
-    func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
+    private func loadKernelShaderCode(_ filename: String) -> URFilterShaderCode {
+        let bundle = Bundle(for: Self.self)
+        guard let path = bundle.path(forResource: filename, ofType: nil) else {
+            fatalError("\(Self.self) \(#function) \(#line) : Shader file is not found!!")
+        }
+
+        let shaderCode: String
+        do {
+            shaderCode = try String(contentsOfFile: path)
+        } catch {
+            fatalError("\(Self.self) \(#function) \(#line) : Shader file is failed to be CIKernel instance!!")
+        }
+
+        return shaderCode
     }
 
-    func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage) {
+    // MARK: - handler of Input Image
+    func extractInputImage(cgImage: CGImage) {
+        let ciImage = CIImage(cgImage: cgImage)
+        self.inputImage = ciImage
+    }
+
+    func extractInputImage(_ image: UIImage) {
+        if let ciImage = CIImage(image: image) {
+            self.inputImage = ciImage
+
+            return
+        }
+
+        if let ciImage = image.ciImage {
+            self.inputImage = ciImage
+
+            return
+        }
+
+        fatalError("Cannot get Core Image!!")
+    }
+
+    func extractInputImage(imageView: UIImageView) {
+        guard let rawImage = imageView.image else {
+            fatalError("The UIImageView must have image!!")
+        }
+        self.extractInputImage(rawImage)
     }
 }
 
-class URToneCurveFilter: CIFilter {
+public class URToneCurveFilter: CIFilter, URFilter {
     var inputImage: CIImage?
+    var customKernel: CIKernel?
+    var customAttributes: [Any]?
+
+    var extent: CGRect = .zero
+
     private var curveVectors: [CIVector]!
 
     public static let colorKernelForRGB: CIColorKernel = CIColorKernel(string:
@@ -215,7 +260,7 @@ class URToneCurveFilter: CIFilter {
         return self.applyFilter()
     }
 
-    private func applyFilter() -> CIImage {
+    func applyFilter() -> CIImage {
         var inputParameters: [String: Any] = [String: Any]()
         for (index, vector) in self.curveVectors.enumerated() {
             inputParameters["inputPoint\(index)"] = vector
@@ -234,34 +279,5 @@ class URToneCurveFilter: CIFilter {
         self.setDefaults()
 
         return self.outputImage!
-    }
-
-    // MARK: - handler of Input Image
-    func extractInputImage(cgImage: CGImage) {
-        let ciImage = CIImage(cgImage: cgImage)
-        self.inputImage = ciImage
-    }
-
-    func extractInputImage(_ image: UIImage) {
-        if let ciImage = CIImage(image: image) {
-            self.inputImage = ciImage
-
-            return
-        }
-
-        if let ciImage = image.ciImage {
-            self.inputImage = ciImage
-
-            return
-        }
-
-        fatalError("Cannot get Core Image!!")
-    }
-
-    func extractInputImage(imageView: UIImageView) {
-        guard let rawImage = imageView.image else {
-            fatalError("The UIImageView must have image!!")
-        }
-        self.extractInputImage(rawImage)
     }
 }

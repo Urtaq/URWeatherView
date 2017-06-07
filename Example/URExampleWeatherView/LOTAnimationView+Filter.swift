@@ -8,7 +8,7 @@
 
 import Lottie
 
-public class URLOTAnimationView: LOTAnimationView, URToneCurveAppliable {
+public class URLOTAnimationView: LOTAnimationView, URFilterAppliable {
     public var originalImages: [UIImage]!
     public var effectTimer: Timer!
 }
@@ -26,7 +26,7 @@ class URRawImages: NSObject {
     }
 }
 
-extension URToneCurveAppliable where Self: LOTAnimationView {
+extension URFilterAppliable where Self: LOTAnimationView {
     var originals: URRawImages {
         guard let originals = objc_getAssociatedObject(self, &AssociatedKey.extensionAddress) as? URRawImages else {
             let originals: URRawImages = URRawImages()
