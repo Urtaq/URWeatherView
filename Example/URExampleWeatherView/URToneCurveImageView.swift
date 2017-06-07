@@ -8,34 +8,6 @@
 
 import UIKit
 
-public typealias URFilterAnimationFireBlock = (Double) -> Void
-public class URFilterAnimation {
-    var displayLink: CADisplayLink!
-    var duration: TimeInterval = 1.0
-    var transitionStartTime: CFTimeInterval = CACurrentMediaTime()
-
-    @objc var timerFiredCallback: URFilterAnimationFireBlock
-
-    init(duration: TimeInterval, startTime: CFTimeInterval, fireBlock: @escaping URFilterAnimationFireBlock) {
-        self.duration = duration
-        self.transitionStartTime = startTime
-        self.timerFiredCallback = fireBlock
-
-        self.displayLink = CADisplayLink(target: self, selector: #selector(timerFired(_:)))
-        self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
-    }
-
-    @objc private func timerFired(_ displayLink : CADisplayLink) {
-        let progress = min((CACurrentMediaTime() - self.transitionStartTime) / self.duration, 1.0)
-        print("progress : \(progress), mediatime is \(CACurrentMediaTime()), self.transitionStartTime is \(self.transitionStartTime), duration : \(self.duration)")
-        self.timerFiredCallback(progress)
-
-        if progress == 1.0 {
-            displayLink.invalidate()
-        }
-    }
-}
-
 class URToneCurveImageView: UIImageView, URFilterAppliable {
     var originalImages: [UIImage]!
     var effectTimer: Timer!
@@ -163,7 +135,9 @@ extension URFilterAppliable where Self: UIImageView {
         let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
         let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
 
-        self.filterColorTone(red: red, green: green, blue: blue, originImage: cgImage)
+//        self.filterColorTone(red: red, green: green, blue: blue, originImage: cgImage)
+        let rgbFilter = URRGBToneCurveFilter(frame: red.extent, imageView: self, inputValues: [red, green, blue, CIImage(cgImage: cgImage)])
+        self.image = UIImage(ciImage: rgbFilter.outputImage!)
 
         self.testFilter()
     }
@@ -201,7 +175,6 @@ extension URFilterAppliable where Self: UIImageView {
 //        let center: CIVector = CIVector(x: 250.5, y: 300.5)
 //        let radius: CIVector = CIVector(x: 1.0 / 100.0, y: 100.0)
 //        self.filterHoleDistortion(extent, sampler: src, ROICallback: ROICallback, center: center, radius: radius)
-
 
 //        let center: CIVector = CIVector(x: 200.5, y: 100.5)
 //        let radiusF: CGFloat = 200.0

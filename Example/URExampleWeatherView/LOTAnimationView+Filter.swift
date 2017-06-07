@@ -61,28 +61,11 @@ extension URFilterAppliable where Self: LOTAnimationView {
         }
     }
 
-    public func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage) {
-        self.addRenewLayer(targetLayer, with: cgImage)
-
-        targetLayer.removeFromSuperlayer()
-    }
-
-    func addRenewLayer(_ targetLayer: CALayer, with cgImage: CGImage) {
-        guard let superLayer = targetLayer.superlayer else { return }
-        let newLayer: CALayer = CALayer()
-        newLayer.frame = targetLayer.frame
-        newLayer.masksToBounds = targetLayer.masksToBounds
-        newLayer.contents = cgImage
-        superLayer.addSublayer(newLayer)
-        superLayer.display()
-    }
-
     public func removeToneCurveFilter() {
         if self.imageSolidLayers != nil {
             for (index, imageLayerDic) in self.imageSolidLayers.enumerated() {
                 guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
-//                imageLayer.contents = self.originals.rawImages[index].cgImage
-                self.replaceLayer(imageLayer, with: self.originals.rawImages[index].cgImage!)
+                imageLayer.contents = self.originals.rawImages[index].cgImage
             }
         }
     }
@@ -125,8 +108,6 @@ extension URFilterAppliable where Self: LOTAnimationView {
             fatalError("Not able to make CGImage of the result Filtered Image!!")
         }
         imageLayer.contents = resultCGImage
-//        self.replaceLayer(imageLayer, with: resultCGImage)
-        self.addRenewLayer(imageLayer, with: resultCGImage)
     }
 
     public func applyFilterEffect(_ filterKernel: CIKernel, extent: CGRect, roiCallback: @escaping CIKernelROICallback, arguments: [Any], imageLayer: CALayer!) {
@@ -139,7 +120,5 @@ extension URFilterAppliable where Self: LOTAnimationView {
             fatalError("Not able to make CGImage of the result Filtered Image!!")
         }
         imageLayer.contents = resultCGImage
-        self.addRenewLayer(imageLayer, with: resultCGImage)
-        print(#function)
     }
 }

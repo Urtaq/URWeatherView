@@ -19,8 +19,6 @@ public protocol URFilterAppliable: class {
     func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]?)
     func removeToneCurveFilter()
 
-    func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage)
-
     func applyFilterEffect(_ filterKernel: CIColorKernel, extent: CGRect, arguments: [Any], imageLayer: CALayer!)
     func applyFilterEffect(_ filterKernel: CIKernel, extent: CGRect, roiCallback: @escaping CIKernelROICallback, arguments: [Any], imageLayer: CALayer!)
 }
@@ -33,9 +31,6 @@ extension URFilterAppliable {
     }
 
     public func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
-    }
-
-    func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage) {
     }
 }
 
@@ -61,13 +56,13 @@ extension URFilterAppliable {
     }
 
     func filterShockWaveDistortion(_ extent: CGRect, sampler: CISampler, ROICallback: @escaping CIKernelROICallback, center: CIVector, shockParams: CIVector, time: CGFloat, imageLayer: CALayer! = nil) {
-        _ = URFilterAnimation(duration: TimeInterval(time), startTime: CACurrentMediaTime(), fireBlock: { (progress) in
+        _ = URFilterAnimationManager(duration: TimeInterval(time), startTime: CACurrentMediaTime(), fireBlock: { (progress) in
             self.applyFilterEffect(URToneCurveFilter.shockWaveKernel, extent: extent, roiCallback: ROICallback, arguments: [sampler, center, shockParams, progress], imageLayer: imageLayer)
         })
     }
 
     func filterWaveWarpDistortion(_ extent: CGRect, sampler: CISampler, ROICallback: @escaping CIKernelROICallback, center: CIVector, shockParams: CIVector, time: CGFloat, imageLayer: CALayer! = nil) {
-        _ = URFilterAnimation(duration: TimeInterval(time), startTime: CACurrentMediaTime(), fireBlock: { (progress) in
+        _ = URFilterAnimationManager(duration: TimeInterval(time), startTime: CACurrentMediaTime(), fireBlock: { (progress) in
             self.applyFilterEffect(URToneCurveFilter.waveWarpKernel, extent: extent, roiCallback: ROICallback, arguments: [sampler, center, shockParams, progress], imageLayer: imageLayer)
         })
     }
