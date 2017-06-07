@@ -329,7 +329,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRC-6j-nVf">
                                         <rect key="frame" x="0.0" y="151" width="375" height="603"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="luP-hx-kZF" customClass="URToneCurveImageView" customModule="URExampleWeatherView" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_back" translatesAutoresizingMaskIntoConstraints="NO" id="luP-hx-kZF" customClass="URToneCurveImageView" customModule="URExampleWeatherView" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="15" width="345" height="229"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="luP-hx-kZF" secondAttribute="height" multiplier="360:239" id="vQc-7P-DFT"/>
@@ -447,7 +447,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img_5.png" width="720" height="478"/>
+        <image name="img_back" width="720" height="478"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Lse-aC-7Kn"/>

@@ -168,6 +168,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.removeToneFilterBlock = {
                 self.mainAnimationView.removeToneCurveFilter()
+                self.mainBackgroundImageView.removeToneCurveFilter()
             }
 
             cell.birthRateDidChange = { (birthRate) in
@@ -297,6 +298,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.removeToneFilterBlock = {
                 self.initMainAnimation()
+                self.mainBackgroundImageView.removeToneCurveFilter()
             }
 
             cell.birthRateDidChange = { (birthRate) in

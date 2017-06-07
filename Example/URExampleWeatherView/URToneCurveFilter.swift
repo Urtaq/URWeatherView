@@ -70,7 +70,7 @@ class URToneCurveFilter: CIFilter {
             "   return result;" +
         "}")!
 
-    public static let kernel: CIKernel = CIKernel(string:
+    public static let brightenKernel: CIKernel = CIKernel(string:
         "kernel vec4 brightenEffect (sampler src, float k)\n" +
         "{\n" +
         "    vec4 currentSource = sample (src, samplerCoord (src));         // 1\n" +
@@ -79,7 +79,7 @@ class URToneCurveFilter: CIFilter {
         "}")!
 
     public static let holeDistortionKernel: CIKernel = CIKernel(string:
-        "kernel vec4 holeDistortion (sampler src, vec2 center, vec2 params)   // 1\n" +
+        "kernel vec4 hole (sampler src, vec2 center, vec2 params)                // 1\n" +
         "{\n" +
         "    vec2 t1;\n" +
         "    float distance0, distance1;\n" +
@@ -104,36 +104,75 @@ class URToneCurveFilter: CIFilter {
     )!
 
     public static let swirlKernel: CIKernel = CIKernel(string:
-        "kernel vec4 postFX(sampler tex, vec2 uv, float time)\n" +
+        "kernel vec4 swirl(sampler src, vec2 center, float radius, float angle, float time)\n" +
         "{\n" +
-            "float rt_w = samplerSize(tex).x;\n" +
-            "float rt_h = samplerSize(tex).y;\n" +
-            "vec2 center = vec2(400.0, 300.0);\n" +
-            "vec2 texSize = vec2(rt_w, rt_h);\n" +
-            "vec2 tc = uv * texSize;\n" +
-            "tc -= center;\n" +
-            "float dist = length(tc);\n" +
-            "if (dist < 200.0)\n" +
+            "vec2 texSize = samplerSize(src);\n" +
+            "vec2 texure2D = samplerCoord(src) * texSize;\n" +
+            "texure2D -= center;\n" +
+            "float distance = length(texure2D);\n" +
+            "if (distance < radius)\n" +
             "{\n" +
-                "float percent = (200.0 - dist) / 200.0;\n" +
-                "float theta = percent * percent * 0.8 * 8.0;\n" +
+                "float percent = (radius - distance) / radius;\n" +
+                "float theta = percent * percent * angle * 8.0;\n" +
                 "float s = sin(theta);\n" +
                 "float c = cos(theta);\n" +
-                "tc = vec2(dot(tc, vec2(c, -s)), dot(tc, vec2(s, c)));\n" +
+                "texure2D = vec2(dot(texure2D, vec2(c, -s)), dot(texure2D, vec2(s, c)));\n" +
             "}\n" +
-            "tc += center;\n" +
-//            "vec3 color = texture(tex, tc / texSize).rgb;\n" +
-//            "return vec4(color, 1.0);" +
-//            "return sample (tex, samplerCoord (tex));" +
-            "    return sample (tex, samplerTransform (tex, tc / texSize));                   // 9\n" +
+            "texure2D += center;\n" +
+            "vec3 color = sample(src, texure2D / texSize).rgb;\n" +
+            "return vec4(color, 1.0);" +
         "}"
-    )!
+        )!
+
+    /// Shock Wave Effect
+    ///
+    /// - Parameters:
+    ///    - sampler: CISampler
+    ///    - center: CIVertor(vec2)
+    public static let shockWaveKernel: CIKernel = CIKernel(string:
+        "kernel vec4 shockWave(sampler src, vec2 center, vec3 shockParams, float time)\n" +
+            "{\n" +
+            "vec2 texture2D = samplerCoord(src);\n" +
+            "float distance = length(texture2D - center);\n" +
+            "if ( (distance <= (time + shockParams.z)) && (distance >= (time - shockParams.z)) )\n" +
+            "{\n" +
+                "float diff = (distance - time);\n" +
+                "float powDiff = 1.0 - pow(abs(diff * shockParams.x), shockParams.y);\n" +
+                "float diffTime = diff  * powDiff;\n" +
+                "vec2 diffUV = normalize(texture2D - center);\n" +
+                "texture2D = texture2D + (diffUV * diffTime);\n" +
+            "}\n" +
+            "return vec4(sample(src, texture2D).rgba);" +
+        "}"
+        )!
+
+    /// Wave Warp Effect
+    ///
+    /// - Parameters:
+    ///    - sampler: CISampler
+    ///    - center: CIVertor(vec2)
+    public static let waveWarpKernel: CIKernel = CIKernel(string:
+        "kernel vec4 waveWarp(sampler src, vec2 center, vec3 shockParams, float time)\n" +
+            "{\n" +
+            "vec2 texture2D = samplerCoord(src);\n" +
+            "float distance = length(texture2D - center);\n" +
+            "if ( (distance <= (time + shockParams.z)) && (distance >= (time - shockParams.z)) )\n" +
+            "{\n" +
+            "float diff = (distance - time);\n" +
+            "float powDiff = 1.0 - pow(abs(diff * shockParams.x), shockParams.y);\n" +
+            "float diffTime = diff  * powDiff;\n" +
+            "vec2 diffUV = normalize(texture2D - center);\n" +
+            "texture2D = texture2D + (diffUV * diffTime);\n" +
+            "}\n" +
+            "return vec4(sample(src, texture2D).rgba);" +
+        "}"
+        )!
 
     override init() {
         super.init()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -172,7 +211,7 @@ class URToneCurveFilter: CIFilter {
         }
     }
 
-    override var outputImage: CIImage? {
+    override public var outputImage: CIImage? {
         return self.applyFilter()
     }
 
@@ -197,6 +236,7 @@ class URToneCurveFilter: CIFilter {
         return self.outputImage!
     }
 
+    // MARK: - handler of Input Image
     func extractInputImage(cgImage: CGImage) {
         let ciImage = CIImage(cgImage: cgImage)
         self.inputImage = ciImage

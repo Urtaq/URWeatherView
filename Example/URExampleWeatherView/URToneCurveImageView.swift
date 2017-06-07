@@ -8,6 +8,34 @@
 
 import UIKit
 
+public typealias URFilterAnimationFireBlock = (Double) -> Void
+public class URFilterAnimation {
+    var displayLink: CADisplayLink!
+    var duration: TimeInterval = 1.0
+    var transitionStartTime: CFTimeInterval = CACurrentMediaTime()
+
+    @objc var timerFiredCallback: URFilterAnimationFireBlock
+
+    init(duration: TimeInterval, startTime: CFTimeInterval, fireBlock: @escaping URFilterAnimationFireBlock) {
+        self.duration = duration
+        self.transitionStartTime = startTime
+        self.timerFiredCallback = fireBlock
+
+        self.displayLink = CADisplayLink(target: self, selector: #selector(timerFired(_:)))
+        self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+    }
+
+    @objc private func timerFired(_ displayLink : CADisplayLink) {
+        let progress = min((CACurrentMediaTime() - self.transitionStartTime) / self.duration, 1.0)
+        print("progress : \(progress), mediatime is \(CACurrentMediaTime()), self.transitionStartTime is \(self.transitionStartTime), duration : \(self.duration)")
+        self.timerFiredCallback(progress)
+
+        if progress == 1.0 {
+            displayLink.invalidate()
+        }
+    }
+}
+
 class URToneCurveImageView: UIImageView, URToneCurveAppliable {
     var originalImages: [UIImage]!
     var effectTimer: Timer!
@@ -124,6 +152,7 @@ extension URToneCurveAppliable where Self: UIImageView {
     }
 
     func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
+
         if self.originalImages == nil {
             self.originalImages = [UIImage]()
             self.originalImages.append(self.image!)
@@ -136,14 +165,29 @@ extension URToneCurveAppliable where Self: UIImageView {
         let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
         let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
 
-//        guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: red.extent, arguments: [red, green, blue, CIImage(cgImage: cgImage)]) else {
-        let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
-        let center: CIVector = CIVector(x: 0.5, y: 0.5)
-        let radius: CIVector = CIVector(x: 0.5, y: 2.0)
-        let time: CGFloat = 1.0
-        let color: CIColor = CIColor(red: 0.23, green: 0.56, blue: 0.34, alpha: 0.82)
-        print("center : \(center), radius: \(radius)")
-        let samplerROI = CGRect(x: 0, y: 0, width: red.extent.width, height: red.extent.height)
+        self.filterColorTone(red: red, green: green, blue: blue, originImage: cgImage)
+
+        self.testFilter()
+    }
+
+    func removeToneCurveFilter() {
+        self.image = self.originalImages[0]
+    }
+
+    /// test about CIKernel
+    func testFilter() {
+        if self.originalImages == nil {
+            self.originalImages = [UIImage]()
+            self.originalImages.append(self.image!)
+        }
+
+        let cgImage = self.image!.cgImage
+
+        let extent: CGRect = CGRect(origin: .zero, size: self.image!.size)
+
+        let src: CISampler = (cgImage != nil) ? CISampler(image: CIImage(cgImage: cgImage!)) : CISampler(image: self.image!.ciImage!)
+
+        let samplerROI = CGRect(x: 0, y: 0, width: self.image!.size.width, height: self.image!.size.height)
         let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
             if samplerIndex == 2 {
                 return samplerROI
@@ -151,18 +195,40 @@ extension URToneCurveAppliable where Self: UIImageView {
             return destination
         }
 
-//        guard let resultImage: CIImage = URToneCurveFilter.kernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, 0.5]) else {
-//        guard let resultImage: CIImage = URToneCurveFilter.holeDistortionKernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, center, radius]) else {
-//        guard let resultImage: CIImage = URToneCurveFilter.multiplyKernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, color]) else {
-        guard let resultImage: CIImage = URToneCurveFilter.swirlKernel.apply(withExtent: red.extent, roiCallback: ROICallback, arguments: [src, center, time]) else {
+//        self.filterBrighten(extent, sampler: src, ROICallback: ROICallback, bright: 0.5)
+//
+//        let color: CIColor = CIColor(red: 0.23, green: 0.56, blue: 0.34, alpha: 0.82)
+//        self.filterMutiply(extent, sampler: src, ROICallback: ROICallback, color: color)
+
+//        let center: CIVector = CIVector(x: 250.5, y: 300.5)
+//        let radius: CIVector = CIVector(x: 1.0 / 100.0, y: 100.0)
+//        self.filterHoleDistortion(extent, sampler: src, ROICallback: ROICallback, center: center, radius: radius)
+
+
+//        let center: CIVector = CIVector(x: 200.5, y: 100.5)
+//        let radiusF: CGFloat = 200.0
+//        let angle: CGFloat = 0.8
+//        let time: CGFloat = 0.3
+//        self.filterSwirlDistortion(extent, sampler: src, ROICallback: ROICallback, center: center, radius: radiusF, angle: angle, time: time)
+
+        let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
+        let time: CGFloat = 2.0
+        self.filterShockWaveDistortion(extent, sampler: src, ROICallback: ROICallback, center: CIVector(x: 0.5, y: 0.5), shockParams: shockParams, time: time)
+    }
+
+    func applyFilterEffect(_ filterKernel: CIColorKernel, extent: CGRect, arguments: [Any], imageLayer: CALayer! = nil) {
+        guard let resultImage: CIImage = filterKernel.apply(withExtent: extent, arguments: arguments) else {
             fatalError("Filtered Image merging is failed!!")
         }
 
         self.image = UIImage(ciImage: resultImage)
     }
 
-    func removeToneCurveFilter() {
-        self.image = self.originalImages[0]
+    func applyFilterEffect(_ filterKernel: CIKernel, extent: CGRect, roiCallback: @escaping CIKernelROICallback, arguments: [Any], imageLayer: CALayer! = nil) {
+        guard let resultImage: CIImage = filterKernel.apply(withExtent: extent, roiCallback: roiCallback, arguments: arguments) else {
+            fatalError("Filtered Image merging is failed!!")
+        }
+
+        self.image = UIImage(ciImage: resultImage)
     }
 }
-
