@@ -60,18 +60,16 @@ class ViewController: UIViewController {
             self.mainAnimationView = nil
         }
 
-        if let animationView = URLOTAnimationView(name: "data") {
-            self.mainAnimationView = animationView
-            self.mainView.insertSubview(animationView, belowSubview: self.skView)
-            self.mainAnimationView.animationProgress = animationProgress
-            self.mainAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        self.mainAnimationView = URLOTAnimationView(name: "data")
+        self.mainView.insertSubview(self.mainAnimationView, belowSubview: self.skView)
+        self.mainAnimationView.animationProgress = animationProgress
+        self.mainAnimationView.translatesAutoresizingMaskIntoConstraints = false
 
-            self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
-            self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
+        self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
+        self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
 
-//            print("\(animationView.sceneModel)")
-//            print("\(animationView.imageSolidLayers)")
-        }
+//        print("\(self.mainAnimationView.sceneModel)")
+//        print("\(self.mainAnimationView.imageSolidLayers)")
     }
 
     override func didReceiveMemoryWarning() {
