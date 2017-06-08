@@ -26,7 +26,7 @@ class URRawImages: NSObject {
     }
 }
 
-extension URFilterAppliable where Self: LOTAnimationView {
+extension URFilterAppliable where Self: URLOTAnimationView {
     var originals: URRawImages {
         guard let originals = objc_getAssociatedObject(self, &AssociatedKey.extensionAddress) as? URRawImages else {
             let originals: URRawImages = URRawImages()
@@ -57,7 +57,7 @@ extension URFilterAppliable where Self: LOTAnimationView {
                 imageLayer.contents = rgbFilter.outputCGImage!
             }
 
-//            self.testFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
+            self.testFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
         }
     }
 
@@ -82,34 +82,10 @@ extension URFilterAppliable where Self: LOTAnimationView {
 
             let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
 
-            _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
-                let shockWaveFilter = URShockWaveFilter(frame: extent, cgImage: cgImage, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
-                imageLayer.contents = shockWaveFilter.outputCGImage
-            })
+//            _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
+//                let shockWaveFilter = URShockWaveFilter(frame: extent, cgImage: cgImage, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
+//                imageLayer.contents = shockWaveFilter.outputCGImage
+//            })
         }
-    }
-
-    public func applyFilterEffect(_ filterKernel: CIColorKernel, extent: CGRect, arguments: [Any], imageLayer: CALayer!) {
-        guard let resultImage: CIImage = filterKernel.apply(withExtent: extent, arguments: arguments) else {
-            fatalError("Filtered Image merging is failed!!")
-        }
-
-        let context = CIContext(options: nil)
-        guard let resultCGImage = context.createCGImage(resultImage, from: resultImage.extent) else {
-            fatalError("Not able to make CGImage of the result Filtered Image!!")
-        }
-        imageLayer.contents = resultCGImage
-    }
-
-    public func applyFilterEffect(_ filterKernel: CIKernel, extent: CGRect, roiCallback: @escaping CIKernelROICallback, arguments: [Any], imageLayer: CALayer!) {
-        guard let resultImage: CIImage = filterKernel.apply(withExtent: extent, roiCallback: roiCallback, arguments: arguments) else {
-            fatalError("Filtered Image merging is failed!!")
-        }
-
-        let context = CIContext(options: nil)
-        guard let resultCGImage = context.createCGImage(resultImage, from: resultImage.extent) else {
-            fatalError("Not able to make CGImage of the result Filtered Image!!")
-        }
-        imageLayer.contents = resultCGImage
     }
 }
