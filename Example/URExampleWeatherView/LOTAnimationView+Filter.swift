@@ -82,10 +82,20 @@ extension URFilterAppliable where Self: URLOTAnimationView {
 
             let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
 
-//            _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
-//                let shockWaveFilter = URShockWaveFilter(frame: extent, cgImage: cgImage, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
+            let animationManager = URFilterAnimationManager(duration: 0.8, fireBlock: { (progress) in
+                let shockWaveFilter = URShockWaveFilter(frame: extent, cgImage: cgImage, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
 //                imageLayer.contents = shockWaveFilter.outputCGImage
-//            })
+                return shockWaveFilter.outputCGImage!
+            })
+
+            animationManager.play({ (buffers) in
+                guard buffers.count > 0 else { return }
+                let anim = CAKeyframeAnimation(keyPath: "contents")
+                anim.values = buffers
+                anim.duration = 0.8
+
+                imageLayer.add(anim, forKey: "contents")
+            })
         }
     }
 }

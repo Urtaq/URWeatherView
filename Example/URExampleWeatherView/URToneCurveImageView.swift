@@ -141,7 +141,7 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         let rgbFilter = URRGBToneCurveFilter(frame: red.extent, imageView: self, inputValues: [red, green, blue, cgImage != nil ? CIImage(cgImage: cgImage!) : self.image!.ciImage!])
         self.image = UIImage(cgImage: rgbFilter.outputCGImage!)
 
-        self.testFilter()
+//        self.testFilter()
     }
 
     func removeToneCurveFilter() {
@@ -167,6 +167,8 @@ extension URFilterAppliable where Self: URToneCurveImageView {
 
             let rippleFilter = URRippleFilter(frame: extent, cgImage: cgImage!, inputValues: [src, progress])
             self.image = UIImage(ciImage: rippleFilter.outputImage!)
+
+            return nil
         })
         self.animationManager.isRepeatForever = true
         self.animationManager.play()
