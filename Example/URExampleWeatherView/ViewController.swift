@@ -194,12 +194,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                         })
                     }
 
-                    print("layers before ======= > \(self.mainAnimationView.imageSolidLayers)")
                     if let filterValues = URWeatherType.snow.imageFilterValues, let filterValuesSub = URWeatherType.snow.imageFilterValuesSub {
                         self.mainBackgroundImageView.applyToneCurveFilter(filterValues: filterValues)
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
                     }
-                    print("layers after ======= > \(self.mainAnimationView.imageSolidLayers)")
 
                     self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0

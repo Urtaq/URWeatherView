@@ -137,7 +137,7 @@ extension URFilterAppliable where Self: UIImageView {
 
 //        self.filterColorTone(red: red, green: green, blue: blue, originImage: cgImage)
         let rgbFilter = URRGBToneCurveFilter(frame: red.extent, imageView: self, inputValues: [red, green, blue, CIImage(cgImage: cgImage)])
-        self.image = UIImage(ciImage: rgbFilter.outputImage!)
+        self.image = UIImage(cgImage: rgbFilter.outputCGImage!)
 
         self.testFilter()
     }
@@ -159,13 +159,13 @@ extension URFilterAppliable where Self: UIImageView {
 
         let src: CISampler = (cgImage != nil) ? CISampler(image: CIImage(cgImage: cgImage!)) : CISampler(image: self.image!.ciImage!)
 
-        let samplerROI = CGRect(x: 0, y: 0, width: self.image!.size.width, height: self.image!.size.height)
-        let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
-            if samplerIndex == 2 {
-                return samplerROI
-            }
-            return destination
-        }
+//        let samplerROI = CGRect(x: 0, y: 0, width: self.image!.size.width, height: self.image!.size.height)
+//        let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
+//            if samplerIndex == 2 {
+//                return samplerROI
+//            }
+//            return destination
+//        }
 
 //        self.filterBrighten(extent, sampler: src, ROICallback: ROICallback, bright: 0.5)
 //
@@ -182,24 +182,13 @@ extension URFilterAppliable where Self: UIImageView {
 //        let time: CGFloat = 0.3
 //        self.filterSwirlDistortion(extent, sampler: src, ROICallback: ROICallback, center: center, radius: radiusF, angle: angle, time: time)
 
-        let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
-        let time: CGFloat = 2.0
-        self.filterShockWaveDistortion(extent, sampler: src, ROICallback: ROICallback, center: CIVector(x: 0.5, y: 0.5), shockParams: shockParams, time: time)
-    }
-
-    func applyFilterEffect(_ filterKernel: CIColorKernel, extent: CGRect, arguments: [Any], imageLayer: CALayer! = nil) {
-        guard let resultImage: CIImage = filterKernel.apply(withExtent: extent, arguments: arguments) else {
-            fatalError("Filtered Image merging is failed!!")
-        }
-
-        self.image = UIImage(ciImage: resultImage)
-    }
-
-    func applyFilterEffect(_ filterKernel: CIKernel, extent: CGRect, roiCallback: @escaping CIKernelROICallback, arguments: [Any], imageLayer: CALayer! = nil) {
-        guard let resultImage: CIImage = filterKernel.apply(withExtent: extent, roiCallback: roiCallback, arguments: arguments) else {
-            fatalError("Filtered Image merging is failed!!")
-        }
-
-        self.image = UIImage(ciImage: resultImage)
+//        let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
+//        let time: CGFloat = 0.8
+//        self.filterShockWaveDistortion(extent, sampler: src, ROICallback: ROICallback, center: CIVector(x: 0.5, y: 0.5), shockParams: shockParams, time: time)
+        _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
+            print(#file)
+            let shockWaveFilter = URShockWaveFilter(frame: extent, cgImage: cgImage!, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
+            self.image = UIImage(ciImage: shockWaveFilter.outputImage!)
+        })
     }
 }

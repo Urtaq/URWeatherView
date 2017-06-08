@@ -41,7 +41,6 @@ extension URFilterAppliable where Self: LOTAnimationView {
         if self.imageSolidLayers != nil {
             for imageLayerDic in self.imageSolidLayers {
                 guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
-                print("imageLayer before ====> \(imageLayer.contents!)")
                 let cgImage = imageLayer.contents as! CGImage
                 self.originals.rawImages.append(UIImage(cgImage: cgImage))
 
@@ -53,8 +52,9 @@ extension URFilterAppliable where Self: LOTAnimationView {
                 let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
                 let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
 
-                self.filterColorTone(red: red, green: green, blue: blue, originImage: cgImage, imageLayer: imageLayer)
-                print("imageLayer after  ====> \(imageLayer.contents!)")
+//                self.filterColorTone(red: red, green: green, blue: blue, originImage: cgImage, imageLayer: imageLayer)
+                let rgbFilter = URRGBToneCurveFilter(frame: red.extent, cgImage: cgImage, inputValues: [red, green, blue, CIImage(cgImage: cgImage)])
+                imageLayer.contents = rgbFilter.outputCGImage!
             }
 
             self.testFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
@@ -75,7 +75,6 @@ extension URFilterAppliable where Self: LOTAnimationView {
 
         for imageLayerDic in self.imageSolidLayers {
             guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
-            print("imageLayer before ====> \(imageLayer.contents!)")
             let cgImage = imageLayer.contents as! CGImage
             self.originals.rawImages.append(UIImage(cgImage: cgImage))
 
@@ -83,18 +82,22 @@ extension URFilterAppliable where Self: LOTAnimationView {
 
             let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
 
-            let samplerROI = CGRect(x: 0, y: 0, width: imageLayer.frame.size.width, height: imageLayer.frame.size.height)
-            let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
-                if samplerIndex == 2 {
-                    return samplerROI
-                }
-                return destination
-            }
+//            let samplerROI = CGRect(x: 0, y: 0, width: imageLayer.frame.size.width, height: imageLayer.frame.size.height)
+//            let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
+//                if samplerIndex == 2 {
+//                    return samplerROI
+//                }
+//                return destination
+//            }
 
-            let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
-            let time: CGFloat = 2.0
-            self.filterShockWaveDistortion(extent, sampler: src, ROICallback: ROICallback, center: CIVector(x: 0.5, y: 0.5), shockParams: shockParams, time: time, imageLayer: imageLayer)
-            print("imageLayer after  ====> \(imageLayer.contents!)")
+//            let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
+//            let time: CGFloat = 0.8
+//            self.filterShockWaveDistortion(extent, sampler: src, ROICallback: ROICallback, center: CIVector(x: 0.5, y: 0.5), shockParams: shockParams, time: time, imageLayer: imageLayer)
+            _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
+                print(#file)
+                let shockWaveFilter = URShockWaveFilter(frame: extent, cgImage: cgImage, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
+                imageLayer.contents = shockWaveFilter.outputCGImage
+            })
         }
     }
 

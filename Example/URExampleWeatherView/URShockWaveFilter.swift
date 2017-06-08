@@ -1,22 +1,24 @@
 //
-//  URRGBToneCurveFilter.swift
+//  URShockWaveFilter.swift
 //  URExampleWeatherView
 //
-//  Created by DongSoo Lee on 2017. 6. 7..
+//  Created by DongSoo Lee on 2017. 6. 8..
 //  Copyright © 2017년 zigbang. All rights reserved.
 //
 
 import Foundation
 
-let URKernelShaderRGBToneCurve: String = "URKernelShaderRGBToneCurve.cikernel"
+let URKernelShaderShockWave: String = "URKernelShaderShockWave.cikernel"
 
-public class URRGBToneCurveFilter: CIFilter, URFilter {
+public class URShockWaveFilter: CIFilter, URFilter {
     var inputImage: CIImage?
     var customKernel: CIKernel?
-    /// [red: CIImage, green: CIImage, blue: CIImage, CIImage(cgImage: cgImage)]
+    /// [sampler: CISampler, center: CIVector, shocksParams: CIVector, progress: TimeInterval]
     var customAttributes: [Any]?
 
     var extent: CGRect = .zero
+
+    let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
 
     override init() {
         super.init()
@@ -33,10 +35,11 @@ public class URRGBToneCurveFilter: CIFilter, URFilter {
 
         self.extractInputImage(cgImage: cgImage)
 
-        self.loadCIColorKernel(from: URKernelShaderRGBToneCurve)
+        self.loadCIKernel(from: URKernelShaderShockWave)
 
-        guard inputValues.count == 4 else { return }
+        guard inputValues.count == 3 else { return }
         self.customAttributes = inputValues
+        self.customAttributes?.append(self.shockParams)
     }
 
     convenience init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
@@ -46,10 +49,11 @@ public class URRGBToneCurveFilter: CIFilter, URFilter {
 
         self.extractInputImage(imageView: imageView)
 
-        self.loadCIColorKernel(from: URKernelShaderRGBToneCurve)
+        self.loadCIKernel(from: URKernelShaderShockWave)
 
-        guard inputValues.count >= 4 else { return }
+        guard inputValues.count == 3 else { return }
         self.customAttributes = inputValues
+        self.customAttributes?.append(self.shockParams)
     }
 
     override public var outputImage: CIImage? {
@@ -64,10 +68,17 @@ public class URRGBToneCurveFilter: CIFilter, URFilter {
     }
 
     func applyFilter() -> CIImage {
-        guard let resultImage: CIImage = (self.customKernel as! CIColorKernel).apply(withExtent: self.extent, arguments: self.customAttributes) else {
+        let samplerROI = CGRect(x: 0, y: 0, width: self.inputImage!.extent.width, height: self.inputImage!.extent.height)
+        let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
+            if samplerIndex == 2 {
+                return samplerROI
+            }
+            return destination
+        }
+        guard let resultImage: CIImage = self.customKernel?.apply(withExtent: self.extent, roiCallback: ROICallback, arguments: self.customAttributes) else {
             fatalError("Filtered Image merging is failed!!")
         }
-
+        
         return resultImage
     }
 }

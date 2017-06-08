@@ -13,6 +13,8 @@ protocol URFilter: class {
     var customAttributes: [Any]? { get set }
     var extent: CGRect { get set }
 
+    var outputCGImage: CGImage? { get }
+
     func applyFilter() -> CIImage
 }
 
@@ -258,6 +260,13 @@ public class URToneCurveFilter: CIFilter, URFilter {
 
     override public var outputImage: CIImage? {
         return self.applyFilter()
+    }
+
+    public var outputCGImage: CGImage? {
+        let context = CIContext(options: nil)
+        guard let output = self.outputImage, let resultCGImage = context.createCGImage(output, from: output.extent) else { return nil }
+
+        return resultCGImage
     }
 
     func applyFilter() -> CIImage {

@@ -16,6 +16,11 @@ public class URFilterAnimationManager {
 
     @objc var timerFiredCallback: URFilterAnimationFireBlock
 
+    init(duration: TimeInterval, fireBlock: @escaping URFilterAnimationFireBlock) {
+        self.duration = duration
+        self.timerFiredCallback = fireBlock
+    }
+
     init(duration: TimeInterval, startTime: CFTimeInterval, fireBlock: @escaping URFilterAnimationFireBlock) {
         self.duration = duration
         self.transitionStartTime = startTime
@@ -25,9 +30,16 @@ public class URFilterAnimationManager {
         self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
     }
 
+    func play() {
+        self.transitionStartTime = CACurrentMediaTime()
+
+        self.displayLink = CADisplayLink(target: self, selector: #selector(timerFired(_:)))
+        self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+    }
+
     @objc private func timerFired(_ displayLink : CADisplayLink) {
         let progress = min((CACurrentMediaTime() - self.transitionStartTime) / self.duration, 1.0)
-        print("progress : \(progress), mediatime is \(CACurrentMediaTime()), self.transitionStartTime is \(self.transitionStartTime), duration : \(self.duration)")
+        print("this is \(self.displayLink), displaylink is \(displayLink), progress : \(progress), mediatime is \(CACurrentMediaTime()), self.transitionStartTime is \(self.transitionStartTime), duration : \(self.duration)")
         self.timerFiredCallback(progress)
 
         if progress == 1.0 {
