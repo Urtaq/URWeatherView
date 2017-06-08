@@ -234,6 +234,18 @@ public class URToneCurveFilter: CIFilter, URFilter {
         }
     }
 
+    convenience init(ciImage: CIImage, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
+        self.init()
+
+        self.inputImage = ciImage
+
+        self.curveVectors = [CIVector]()
+        for point in curvePoints {
+            let vector = CIVector(cgPoint: point)
+            self.curveVectors.append(vector)
+        }
+    }
+
     convenience init(cgImage: CGImage, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
         self.init()
 

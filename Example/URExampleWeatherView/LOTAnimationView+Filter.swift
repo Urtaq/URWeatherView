@@ -57,7 +57,7 @@ extension URFilterAppliable where Self: LOTAnimationView {
                 imageLayer.contents = rgbFilter.outputCGImage!
             }
 
-            self.testFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
+//            self.testFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
         }
     }
 
@@ -82,19 +82,7 @@ extension URFilterAppliable where Self: LOTAnimationView {
 
             let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
 
-//            let samplerROI = CGRect(x: 0, y: 0, width: imageLayer.frame.size.width, height: imageLayer.frame.size.height)
-//            let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
-//                if samplerIndex == 2 {
-//                    return samplerROI
-//                }
-//                return destination
-//            }
-
-//            let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
-//            let time: CGFloat = 0.8
-//            self.filterShockWaveDistortion(extent, sampler: src, ROICallback: ROICallback, center: CIVector(x: 0.5, y: 0.5), shockParams: shockParams, time: time, imageLayer: imageLayer)
             _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
-                print(#file)
                 let shockWaveFilter = URShockWaveFilter(frame: extent, cgImage: cgImage, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
                 imageLayer.contents = shockWaveFilter.outputCGImage
             })

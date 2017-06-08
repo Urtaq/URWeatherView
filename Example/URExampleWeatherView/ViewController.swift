@@ -296,7 +296,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.removeToneFilterBlock = {
                 self.initMainAnimation()
-                self.mainBackgroundImageView.removeToneCurveFilter()
+                self.mainBackgroundImageView.stop({
+                    self.mainBackgroundImageView.removeToneCurveFilter()
+                })
             }
 
             cell.birthRateDidChange = { (birthRate) in
