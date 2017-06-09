@@ -13,12 +13,10 @@ let URKernelShaderkFrostedGlass: String = "URKernelShaderFrostedGlass.cikernel"
 public class URFrostedGlassFilter: CIFilter, URFilter {
     var inputImage: CIImage?
     var customKernel: CIKernel?
-    /// [sampler: CISampler, center: CIVector, shocksParams: CIVector, progress: TimeInterval]
+    /// [sampler: CISampler, center: CIVector, progress: TimeInterval]
     var customAttributes: [Any]?
 
     var extent: CGRect = .zero
-
-    let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
 
     override init() {
         super.init()
@@ -39,7 +37,6 @@ public class URFrostedGlassFilter: CIFilter, URFilter {
 
         guard inputValues.count == 3 else { return }
         self.customAttributes = inputValues
-        self.customAttributes?.append(self.shockParams)
     }
 
     convenience init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
@@ -53,7 +50,6 @@ public class URFrostedGlassFilter: CIFilter, URFilter {
 
         guard inputValues.count == 3 else { return }
         self.customAttributes = inputValues
-        self.customAttributes?.append(self.shockParams)
     }
 
     override public var outputImage: CIImage? {

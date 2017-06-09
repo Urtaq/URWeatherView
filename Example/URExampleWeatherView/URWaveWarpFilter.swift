@@ -13,12 +13,12 @@ let URKernelShaderkWaveWarp: String = "URKernelShaderWaveWarp.cikernel"
 public class URWaveWarpFilter: CIFilter, URFilter {
     var inputImage: CIImage?
     var customKernel: CIKernel?
-    /// [sampler: CISampler, center: CIVector, shocksParams: CIVector, progress: TimeInterval]
+    /// [sampler: CISampler, progress: TimeInterval, velocity: Double, wRatio: Double, hRatio: Double]
     var customAttributes: [Any]?
 
     var extent: CGRect = .zero
 
-    let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
+    var roiRatio: CGFloat = 1.0
 
     override init() {
         super.init()
@@ -28,32 +28,34 @@ public class URWaveWarpFilter: CIFilter, URFilter {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
+    convenience init(frame: CGRect, cgImage: CGImage, inputValues: [Any], roiRatio: CGFloat = 1.0) {
         self.init()
 
         self.extent = frame
+        self.roiRatio = roiRatio
 
         self.extractInputImage(cgImage: cgImage)
 
         self.loadCIKernel(from: URKernelShaderkWaveWarp)
 
-        guard inputValues.count == 3 else { return }
+        guard inputValues.count == 6 else { return }
         self.customAttributes = inputValues
-        self.customAttributes?.append(self.shockParams)
+        self.customAttributes?.append(Double.pi)
     }
 
-    convenience init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
+    convenience init(frame: CGRect, imageView: UIImageView, inputValues: [Any], roiRatio: CGFloat = 1.0) {
         self.init()
 
         self.extent = frame
+        self.roiRatio = roiRatio
 
         self.extractInputImage(imageView: imageView)
 
         self.loadCIKernel(from: URKernelShaderkWaveWarp)
 
-        guard inputValues.count == 3 else { return }
+        guard inputValues.count == 6 else { return }
         self.customAttributes = inputValues
-        self.customAttributes?.append(self.shockParams)
+        self.customAttributes?.append(Double.pi)
     }
 
     override public var outputImage: CIImage? {
@@ -68,11 +70,18 @@ public class URWaveWarpFilter: CIFilter, URFilter {
     }
 
     func applyFilter() -> CIImage {
+//        let inputWidth: CGFloat = self.inputImage!.extent.size.width;
+
+//        let k: CGFloat = inputWidth / ( 1.0 - 1.0 / UIScreen.main.scale )
+//        let center: CGFloat = self.inputImage!.extent.origin.x + inputWidth / 2.0;
+
         let samplerROI = CGRect(x: 0, y: 0, width: self.inputImage!.extent.width, height: self.inputImage!.extent.height)
         let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
-            if samplerIndex == 2 {
+            if samplerIndex == 1 {
                 return samplerROI
             }
+//            let destROI: CGRect = self.region(of: destination, center: center, k: k)
+//            return destROI
             return destination
         }
         guard let resultImage: CIImage = self.customKernel?.apply(withExtent: self.extent, roiCallback: ROICallback, arguments: self.customAttributes) else {

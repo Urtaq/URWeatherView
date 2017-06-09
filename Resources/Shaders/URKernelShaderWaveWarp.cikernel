@@ -1,14 +1,10 @@
-kernel vec4 waveWarp(sampler src, vec2 center, float time, vec3 shockParams)
-{
-    vec2 texture2D = samplerCoord(src);
-    float distance = length(texture2D - center);
-    if ( (distance <= (time + shockParams.z)) && (distance >= (time - shockParams.z)) )
-    {
-        float diff = (distance - time);
-        float powDiff = 1.0 - pow(abs(diff * shockParams.x), shockParams.y);
-        float diffTime = diff  * powDiff;
-        vec2 diffUV = normalize(texture2D - center);
-        texture2D = texture2D + (diffUV * diffTime);
-    }
-    return vec4(sample(src, texture2D).rgba);
+kernel vec4 waveWarp(sampler src, sampler src1, float time, float velocity, float wRatio, float hRatio, float pi) {
+    vec2 tc = samplerCoord(src);
+    vec2 p = vec2(-1.0 + 2.0 * tc.x, -1.0 + 2.0 * tc.y);
+    float len = length(p);
+//    float ratio = pow(pi, hRatio);
+//    vec2 uv = tc + cos((len - time) * velocity * 12.0 * pi * pi / 2.0 * ratio) * 0.003 * wRatio;
+    vec2 uv = tc + cos((len - time * velocity) * 12.0 * hRatio) * 0.003 * wRatio;
+    vec3 col = sample(src, vec2(uv.x, tc.y)).rgb;
+    return vec4(col.rgb, sample(src, tc).a);
 }

@@ -145,6 +145,7 @@ extension URFilterAppliable where Self: URToneCurveImageView {
     }
 
     func removeToneCurveFilter() {
+        guard self.originalImages != nil else { return }
         self.image = self.originalImages[0]
     }
 
@@ -162,11 +163,9 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         let src: CISampler = (cgImage != nil) ? CISampler(image: CIImage(cgImage: cgImage!)) : CISampler(image: self.image!.ciImage!)
 
         self.animationManager = URFilterAnimationManager(duration: 0.8, fireBlock: { (progress) in
-//            let shockWaveFilter = URWaveWarpFilter(frame: extent, cgImage: cgImage!, inputValues: [src, CIVector(x: 0.5, y: 0.0), progress])
-//            self.image = UIImage(ciImage: shockWaveFilter.outputImage!)
-
-            let rippleFilter = URRippleFilter(frame: extent, cgImage: cgImage!, inputValues: [src, progress])
-            self.image = UIImage(ciImage: rippleFilter.outputImage!)
+//            let filter = URShockWaveFilter(frame: extent, cgImage: cgImage!, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
+            let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage!, inputValues: [src, src, progress, 0.4, 0.3, 4.0], roiRatio: 0.8)
+            self.image = UIImage(ciImage: filter.outputImage!)
         })
         self.animationManager.isRepeatForever = true
         self.animationManager.play()

@@ -13,7 +13,7 @@ let URKernelShaderShockWave: String = "URKernelShaderShockWave.cikernel"
 public class URShockWaveFilter: CIFilter, URFilter {
     var inputImage: CIImage?
     var customKernel: CIKernel?
-    /// [sampler: CISampler, center: CIVector, shocksParams: CIVector, progress: TimeInterval]
+    /// [sampler: CISampler, center: CIVector, progress: TimeInterval, shocksParams: CIVector]
     var customAttributes: [Any]?
 
     var extent: CGRect = .zero

@@ -79,6 +79,7 @@
 		97DF1F901ECAC9D900427CED /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */; };
 		97DF1F921ECACA2C00427CED /* URToneCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97DF1F911ECACA2C00427CED /* URToneCurveView.xib */; };
 		97DF1F941ECAD53000427CED /* URToneCurveUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DF1F931ECAD53000427CED /* URToneCurveUtil.swift */; };
+		97EC3B841EEA6C0600B99B01 /* URFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EC3B831EEA6C0600B99B01 /* URFilter.swift */; };
 		97FE9ACA1EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FE9AC91EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +180,7 @@
 		97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveView.swift; sourceTree = "<group>"; };
 		97DF1F911ECACA2C00427CED /* URToneCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = URToneCurveView.xib; sourceTree = "<group>"; };
 		97DF1F931ECAD53000427CED /* URToneCurveUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveUtil.swift; sourceTree = "<group>"; };
+		97EC3B831EEA6C0600B99B01 /* URFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFilter.swift; sourceTree = "<group>"; };
 		97FE9AC91EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URRGBToneCurveFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +259,7 @@
 			children = (
 				9731BBE81EE7F11F0055D73D /* URFilterAppliable.swift */,
 				9731BBEA1EE7FF460055D73D /* URFilterAnimationManager.swift */,
+				97EC3B831EEA6C0600B99B01 /* URFilter.swift */,
 				979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */,
 				97FE9AC91EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift */,
 				974777B81EE8D5B500EE419E /* URShockWaveFilter.swift */,
@@ -654,6 +657,7 @@
 				97FE9ACA1EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift in Sources */,
 				974777B91EE8D5B600EE419E /* URShockWaveFilter.swift in Sources */,
 				9731BBE91EE7F11F0055D73D /* URFilterAppliable.swift in Sources */,
+				97EC3B841EEA6C0600B99B01 /* URFilter.swift in Sources */,
 				9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */,
 				9716E14C1EDEAFD600372B48 /* URNodeMovable.swift in Sources */,
 				97BA91741ED8115E0032B194 /* UREffectLightningLineNode.swift in Sources */,
