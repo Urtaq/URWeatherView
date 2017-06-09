@@ -21,6 +21,8 @@ public protocol URFilterAppliable: class {
 
     func applyFilterEffect(_ filterKernel: CIColorKernel, extent: CGRect, arguments: [Any], imageLayer: CALayer!)
     func applyFilterEffect(_ filterKernel: CIKernel, extent: CGRect, roiCallback: @escaping CIKernelROICallback, arguments: [Any], imageLayer: CALayer!)
+
+    func applyDistortionFilter()
 }
 
 extension URFilterAppliable {
@@ -34,11 +36,12 @@ extension URFilterAppliable {
     }
 
     public func applyFilterEffect(_ filterKernel: CIColorKernel, extent: CGRect, arguments: [Any], imageLayer: CALayer!) {
-
     }
 
     public func applyFilterEffect(_ filterKernel: CIKernel, extent: CGRect, roiCallback: @escaping CIKernelROICallback, arguments: [Any], imageLayer: CALayer!) {
+    }
 
+    public func applyDistortionFilter() {
     }
 }
 

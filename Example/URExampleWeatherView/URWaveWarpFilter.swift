@@ -38,7 +38,7 @@ public class URWaveWarpFilter: CIFilter, URFilter {
 
         self.loadCIKernel(from: URKernelShaderkWaveWarp)
 
-        guard inputValues.count == 6 else { return }
+        guard inputValues.count == 5 else { return }
         self.customAttributes = inputValues
         self.customAttributes?.append(Double.pi)
     }
@@ -53,7 +53,7 @@ public class URWaveWarpFilter: CIFilter, URFilter {
 
         self.loadCIKernel(from: URKernelShaderkWaveWarp)
 
-        guard inputValues.count == 6 else { return }
+        guard inputValues.count == 5 else { return }
         self.customAttributes = inputValues
         self.customAttributes?.append(Double.pi)
     }

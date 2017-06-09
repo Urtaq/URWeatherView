@@ -137,11 +137,8 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         let green = cgImage != nil ? URToneCurveFilter(cgImage: cgImage!, with: values["G"]!).outputImage! : URToneCurveFilter(ciImage: self.image!.ciImage!, with: values["G"]!).outputImage!
         let blue = cgImage != nil ? URToneCurveFilter(cgImage: cgImage!, with: values["B"]!).outputImage! : URToneCurveFilter(ciImage: self.image!.ciImage!, with: values["B"]!).outputImage!
 
-//        self.filterColorTone(red: red, green: green, blue: blue, originImage: cgImage)
         let rgbFilter = URRGBToneCurveFilter(frame: red.extent, imageView: self, inputValues: [red, green, blue, cgImage != nil ? CIImage(cgImage: cgImage!) : self.image!.ciImage!])
         self.image = UIImage(cgImage: rgbFilter.outputCGImage!)
-
-        self.testFilter()
     }
 
     func removeToneCurveFilter() {
@@ -149,8 +146,7 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         self.image = self.originalImages[0]
     }
 
-    /// test about CIKernel
-    func testFilter() {
+    func applyDistortionFilter() {
         if self.originalImages == nil {
             self.originalImages = [UIImage]()
             self.originalImages.append(self.image!)
@@ -163,13 +159,11 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         let src: CISampler = (cgImage != nil) ? CISampler(image: CIImage(cgImage: cgImage!)) : CISampler(image: self.image!.ciImage!)
 
         self.animationManager = URFilterAnimationManager(duration: 0.8, fireBlock: { (progress) in
-//            let filter = URShockWaveFilter(frame: extent, cgImage: cgImage!, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
-            let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage!, inputValues: [src, src, progress, 0.4, 0.3, 4.0], roiRatio: 0.8)
+            let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage!, inputValues: [src, progress, 0.4, 0.3, 4.0], roiRatio: 0.8)
             self.image = UIImage(ciImage: filter.outputImage!)
         })
         self.animationManager.isRepeatForever = true
         self.animationManager.play()
-
     }
 
     func stop(_ completion: (() -> Void)?) {

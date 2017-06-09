@@ -52,12 +52,9 @@ extension URFilterAppliable where Self: URLOTAnimationView {
                 let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
                 let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
 
-//                self.filterColorTone(red: red, green: green, blue: blue, originImage: cgImage, imageLayer: imageLayer)
                 let rgbFilter = URRGBToneCurveFilter(frame: red.extent, cgImage: cgImage, inputValues: [red, green, blue, CIImage(cgImage: cgImage)])
                 imageLayer.contents = rgbFilter.outputCGImage!
             }
-
-            self.testFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
         }
     }
 
@@ -70,8 +67,7 @@ extension URFilterAppliable where Self: URLOTAnimationView {
         }
     }
 
-    /// test about CIKernel
-    func testFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
+    public func applyDistortionFilter() {
 
         for imageLayerDic in self.imageSolidLayers {
             guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
@@ -83,8 +79,8 @@ extension URFilterAppliable where Self: URLOTAnimationView {
             let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
 
             _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
-                let shockWaveFilter = URShockWaveFilter(frame: extent, cgImage: cgImage, inputValues: [src, CIVector(x: 0.5, y: 0.5), progress])
-                imageLayer.contents = shockWaveFilter.outputCGImage
+                let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage, inputValues: [src, progress, 0.4, 0.3, 4.0], roiRatio: 0.8)
+                imageLayer.contents = filter.outputCGImage
             })
         }
     }

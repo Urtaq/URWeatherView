@@ -259,7 +259,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     if let filterValues = URWeatherType.hot.imageFilterValues {
                         self.mainBackgroundImageView.applyToneCurveFilter(filterValues: filterValues)
+                        self.mainBackgroundImageView.applyDistortionFilter()
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
+                        self.mainAnimationView.applyDistortionFilter()
                     }
                     self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0

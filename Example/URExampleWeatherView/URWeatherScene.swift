@@ -29,9 +29,10 @@ enum URWeatherType: String {
                                        .lightning,
                                        .hot,
                                        .cloudy,
-                                       .shiny,
-                                       .comet,
-                                       .smoke]
+                                       .comet
+//                                       .shiny,
+//                                       .smoke
+    ]
 
     var name: String {
         switch self {
