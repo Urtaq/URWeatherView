@@ -8,9 +8,11 @@
 
 import UIKit
 
-class URToneCurveImageView: UIImageView, URToneCurveAppliable {
+class URToneCurveImageView: UIImageView, URFilterAppliable {
     var originalImages: [UIImage]!
     var effectTimer: Timer!
+
+    var animationManager: URFilterAnimationManager!
 
     override var image: UIImage? {
         didSet {
@@ -23,7 +25,7 @@ class URToneCurveImageView: UIImageView, URToneCurveAppliable {
     }
 }
 
-extension URToneCurveAppliable where Self: UIImageView {
+extension URFilterAppliable where Self: URToneCurveImageView {
     func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval, userInfo: [String: Any]! = nil) {
         guard imageAssets.count >= 2 else { return }
         let layer1: CALayer = CALayer()
@@ -113,38 +115,63 @@ extension URToneCurveAppliable where Self: UIImageView {
         }
 
         if arguments.count == 4 {
-            guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: filteredImage.extent, arguments: arguments) else {
-                fatalError("Filtered Image merging is failed!!")
-            }
+            let rgbFilter = URRGBToneCurveFilter(frame: filteredImage.extent, imageView: self, inputValues: arguments)
 
-            self.image = UIImage(ciImage: resultImage)
+            self.image = UIImage(ciImage: rgbFilter.outputImage!)
         } else {
             self.image = UIImage(ciImage: filteredImage)
         }
     }
 
     func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
+
         if self.originalImages == nil {
             self.originalImages = [UIImage]()
             self.originalImages.append(self.image!)
         }
 
-        let cgImage = self.image!.cgImage!
+        let cgImage = self.image!.cgImage
 
         var values = filterValues
-        let red = URToneCurveFilter(cgImage: cgImage, with: values["R"]!).outputImage!
-        let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
-        let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
+        let red = cgImage != nil ? URToneCurveFilter(cgImage: cgImage!, with: values["R"]!).outputImage! : URToneCurveFilter(ciImage: self.image!.ciImage!, with: values["R"]!).outputImage!
+        let green = cgImage != nil ? URToneCurveFilter(cgImage: cgImage!, with: values["G"]!).outputImage! : URToneCurveFilter(ciImage: self.image!.ciImage!, with: values["G"]!).outputImage!
+        let blue = cgImage != nil ? URToneCurveFilter(cgImage: cgImage!, with: values["B"]!).outputImage! : URToneCurveFilter(ciImage: self.image!.ciImage!, with: values["B"]!).outputImage!
 
-        guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: red.extent, arguments: [red, green, blue, CIImage(cgImage: cgImage)]) else {
-            fatalError("Filtered Image merging is failed!!")
-        }
-
-        self.image = UIImage(ciImage: resultImage)
+        let rgbFilter = URRGBToneCurveFilter(frame: red.extent, imageView: self, inputValues: [red, green, blue, cgImage != nil ? CIImage(cgImage: cgImage!) : self.image!.ciImage!])
+        self.image = UIImage(cgImage: rgbFilter.outputCGImage!)
     }
 
     func removeToneCurveFilter() {
+        guard self.originalImages != nil else { return }
         self.image = self.originalImages[0]
     }
-}
 
+    func applyDistortionFilter() {
+        if self.originalImages == nil {
+            self.originalImages = [UIImage]()
+            self.originalImages.append(self.image!)
+        }
+
+        let cgImage = self.image!.cgImage
+
+        let extent: CGRect = CGRect(origin: .zero, size: self.image!.size)
+
+        let src: CISampler = (cgImage != nil) ? CISampler(image: CIImage(cgImage: cgImage!)) : CISampler(image: self.image!.ciImage!)
+
+        self.animationManager = URFilterAnimationManager(duration: 0.8, fireBlock: { (progress) in
+            let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage!, inputValues: [src, progress, 0.2, 0.3, 8.0], roiRatio: 0.8)
+            self.image = UIImage(ciImage: filter.outputImage!)
+        })
+        self.animationManager.isRepeatForever = true
+        self.animationManager.play()
+    }
+
+    func stop(_ completion: (() -> Void)?) {
+        if self.animationManager != nil {
+            self.animationManager.stop(completion)
+        }
+
+        guard let block = completion else { return }
+        block()
+    }
+}

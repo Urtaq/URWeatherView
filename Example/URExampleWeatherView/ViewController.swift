@@ -60,18 +60,16 @@ class ViewController: UIViewController {
             self.mainAnimationView = nil
         }
 
-        if let animationView = URLOTAnimationView(name: "data") {
-            self.mainAnimationView = animationView
-            self.mainView.insertSubview(animationView, belowSubview: self.skView)
-            self.mainAnimationView.animationProgress = animationProgress
-            self.mainAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        self.mainAnimationView = URLOTAnimationView(name: "data")
+        self.mainView.insertSubview(self.mainAnimationView, belowSubview: self.skView)
+        self.mainAnimationView.animationProgress = animationProgress
+        self.mainAnimationView.translatesAutoresizingMaskIntoConstraints = false
 
-            self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
-            self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
+        self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
+        self.mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view" : self.mainAnimationView]))
 
-//            print("\(animationView.sceneModel)")
-//            print("\(animationView.imageSolidLayers)")
-        }
+//        print("\(self.mainAnimationView.sceneModel)")
+//        print("\(self.mainAnimationView.imageSolidLayers)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,12 +126,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                 switch cell.weather {
                 case .dust, .dust2:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                    self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.alpha = 0.0
                         self.mainUpperImageView.image = backgroundImage
 
                         UIView.animate(withDuration: 1.0, animations: {
-                            self.mainUpperImageView.alpha = 1.0
+                            self.mainUpperImageView.alpha = opacity
                         })
                     }
 
@@ -168,6 +166,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.removeToneFilterBlock = {
                 self.mainAnimationView.removeToneCurveFilter()
+                self.mainBackgroundImageView.removeToneCurveFilter()
             }
 
             cell.birthRateDidChange = { (birthRate) in
@@ -181,36 +180,37 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.applyWeatherBlock = {
                 self.initMainAnimation()
+                self.mainBackgroundImageView.stop({
+                    self.mainBackgroundImageView.removeToneCurveFilter()
+                })
 
                 switch cell.weather {
                 case .snow:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                    self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.alpha = 0.0
                         self.mainUpperImageView.image = backgroundImage
 
                         UIView.animate(withDuration: 1.0, animations: {
-                            self.mainUpperImageView.alpha = 1.0
+                            self.mainUpperImageView.alpha = opacity
                         })
                     }
 
-                    print("layers before ======= > \(self.mainAnimationView.imageSolidLayers)")
                     if let filterValues = URWeatherType.snow.imageFilterValues, let filterValuesSub = URWeatherType.snow.imageFilterValuesSub {
                         self.mainBackgroundImageView.applyToneCurveFilter(filterValues: filterValues)
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
                     }
-                    print("layers after ======= > \(self.mainAnimationView.imageSolidLayers)")
 
                     self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene()
                     self.changedMainState()
                 case .rain:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                    self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.alpha = 0.0
                         self.mainUpperImageView.image = backgroundImage
 
                         UIView.animate(withDuration: 1.0, animations: {
-                            self.mainUpperImageView.alpha = 1.0
+                            self.mainUpperImageView.alpha = opacity
                         })
                     }
 
@@ -219,12 +219,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.startScene(.rain)
                     self.changedMainState()
                 case .lightning:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                    self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.alpha = 0.0
                         self.mainUpperImageView.image = backgroundImage
 
                         UIView.animate(withDuration: 1.0, animations: {
-                            self.mainUpperImageView.alpha = 1.0
+                            self.mainUpperImageView.alpha = opacity
                         })
                     }
 
@@ -248,24 +248,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.lightning, duration: duration, showTimes: lightningShowTimes)
                 case .hot:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                    self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.alpha = 0.0
                         self.mainUpperImageView.image = backgroundImage
 
                         UIView.animate(withDuration: 1.0, animations: {
-                            self.mainUpperImageView.alpha = 1.0
+                            self.mainUpperImageView.alpha = opacity
                         })
                     }
 
                     if let filterValues = URWeatherType.hot.imageFilterValues {
                         self.mainBackgroundImageView.applyToneCurveFilter(filterValues: filterValues)
+                        self.mainBackgroundImageView.applyDistortionFilter()
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
+                        self.mainAnimationView.applyDistortionFilter()
                     }
                     self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.hot)
                 case .cloudy:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                    self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.image = backgroundImage
                     }
 
@@ -273,7 +275,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.cloudy, duration: 63.0)
                 case .comet:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                    self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.image = backgroundImage
                     }
 
@@ -281,7 +283,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
                     self.weatherScene.startScene(.comet)
                 default:
-                    self.weatherScene.extraEffectBlock = { (backgroundImage) in
+                    self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.image = backgroundImage
                     }
 
@@ -297,6 +299,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.removeToneFilterBlock = {
                 self.initMainAnimation()
+                self.mainBackgroundImageView.stop({
+                    self.mainBackgroundImageView.removeToneCurveFilter()
+                })
             }
 
             cell.birthRateDidChange = { (birthRate) in

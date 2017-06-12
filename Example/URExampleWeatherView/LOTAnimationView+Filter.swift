@@ -8,9 +8,9 @@
 
 import Lottie
 
-class URLOTAnimationView: LOTAnimationView, URToneCurveAppliable {
-    var originalImages: [UIImage]!
-    var effectTimer: Timer!
+public class URLOTAnimationView: LOTAnimationView, URFilterAppliable {
+    public var originalImages: [UIImage]!
+    public var effectTimer: Timer!
 }
 
 struct AssociatedKey {
@@ -26,7 +26,7 @@ class URRawImages: NSObject {
     }
 }
 
-extension URToneCurveAppliable where Self: LOTAnimationView {
+extension URFilterAppliable where Self: URLOTAnimationView {
     var originals: URRawImages {
         guard let originals = objc_getAssociatedObject(self, &AssociatedKey.extensionAddress) as? URRawImages else {
             let originals: URRawImages = URRawImages()
@@ -37,11 +37,10 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
         return originals
     }
 
-    func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
+    public func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
         if self.imageSolidLayers != nil {
-            for (_, imageLayerDic) in self.imageSolidLayers.enumerated() {
+            for imageLayerDic in self.imageSolidLayers {
                 guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
-//                print("imageLayer before ====> \(imageLayer.contents!)")
                 let cgImage = imageLayer.contents as! CGImage
                 self.originals.rawImages.append(UIImage(cgImage: cgImage))
 
@@ -53,38 +52,36 @@ extension URToneCurveAppliable where Self: LOTAnimationView {
                 let green = URToneCurveFilter(cgImage: cgImage, with: values["G"]!).outputImage!
                 let blue = URToneCurveFilter(cgImage: cgImage, with: values["B"]!).outputImage!
 
-                guard let resultImage: CIImage = URToneCurveFilter.colorKernel.apply(withExtent: red.extent, arguments: [red, green, blue, CIImage(cgImage: cgImage)]) else {
-                    fatalError("Filtered Image merging is failed!!")
-                }
-
-                let context = CIContext(options: nil)
-                guard let resultCGImage = context.createCGImage(resultImage, from: resultImage.extent) else {
-                    fatalError("Not able to make CGImage of the result Filtered Image!!")
-                }
-                imageLayer.contents = resultCGImage
-                self.replaceLayer(imageLayer, with: resultCGImage)
-//                print("imageLayer after  ====> \(imageLayer.contents!)")
+                let rgbFilter = URRGBToneCurveFilter(frame: red.extent, cgImage: cgImage, inputValues: [red, green, blue, CIImage(cgImage: cgImage)])
+                imageLayer.contents = rgbFilter.outputCGImage!
             }
         }
     }
 
-    func replaceLayer(_ targetLayer: CALayer, with cgImage: CGImage) {
-        guard let superLayer = targetLayer.superlayer else { return }
-        let newLayer: CALayer = CALayer()
-        newLayer.frame = targetLayer.frame
-        newLayer.masksToBounds = targetLayer.masksToBounds
-        newLayer.contents = cgImage
-        superLayer.addSublayer(newLayer)
-        superLayer.display()
-    }
-
-    func removeToneCurveFilter() {
+    public func removeToneCurveFilter() {
         if self.imageSolidLayers != nil {
             for (index, imageLayerDic) in self.imageSolidLayers.enumerated() {
                 guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
-//                imageLayer.contents = self.originals.rawImages[index].cgImage
-                self.replaceLayer(imageLayer, with: self.originals.rawImages[index].cgImage!)
+                imageLayer.contents = self.originals.rawImages[index].cgImage
             }
+        }
+    }
+
+    public func applyDistortionFilter() {
+
+        for imageLayerDic in self.imageSolidLayers {
+            guard let imageLayer = imageLayerDic[kLOTImageSolidLayer] as? CALayer, imageLayer.contents != nil else { continue }
+            let cgImage = imageLayer.contents as! CGImage
+            self.originals.rawImages.append(UIImage(cgImage: cgImage))
+
+            let extent: CGRect = CGRect(origin: .zero, size: imageLayer.frame.size)
+
+            let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
+
+            _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
+                let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage, inputValues: [src, progress, 0.4, 0.3, 4.0], roiRatio: 0.8)
+                imageLayer.contents = filter.outputCGImage
+            })
         }
     }
 }

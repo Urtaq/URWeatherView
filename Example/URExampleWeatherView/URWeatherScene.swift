@@ -29,9 +29,10 @@ enum URWeatherType: String {
                                        .lightning,
                                        .hot,
                                        .cloudy,
-                                       .shiny,
-                                       .comet,
-                                       .smoke]
+                                       .comet
+//                                       .shiny,
+//                                       .smoke
+    ]
 
     var name: String {
         switch self {
@@ -164,6 +165,15 @@ enum URWeatherType: String {
         }
     }
 
+    var backgroundImageOpacity: CGFloat {
+        switch self {
+        case .hot:
+            return 0.85
+        default:
+            return 1.0
+        }
+    }
+
     var startBirthRate: CGFloat? {
         switch self {
         case .dust:
@@ -263,7 +273,7 @@ class URWeatherScene: SKScene, URNodeMovable {
     var particleColor: UIColor!
     var isGraphicsDebugOptionEnabled: Bool = false
 
-    var extraEffectBlock: ((UIImage?) -> Void)?
+    var extraEffectBlock: ((UIImage?, CGFloat) -> Void)?
 
     var lastLocation: CGPoint = .zero {
         didSet {
@@ -413,7 +423,7 @@ class URWeatherScene: SKScene, URNodeMovable {
         }
 
         guard let block = self.extraEffectBlock else { return }
-        block(self.weatherType.backgroundImage)
+        block(self.weatherType.backgroundImage, self.weatherType.backgroundImageOpacity)
     }
 
     /// start the particle effects by the weather type
