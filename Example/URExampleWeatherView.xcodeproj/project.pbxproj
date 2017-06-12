@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		970E948E1EC44A5700DEEC86 /* URToneCurveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E948D1EC44A5700DEEC86 /* URToneCurveGraphView.swift */; };
 		9716E1251EDCF94C00372B48 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1231EDCF94C00372B48 /* GoogleMaps.framework */; };
 		9716E1261EDCF94C00372B48 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1241EDCF94C00372B48 /* GoogleMapsCore.framework */; };
 		9716E1281EDCF97900372B48 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1271EDCF97900372B48 /* GoogleMapsBase.framework */; };
@@ -25,18 +24,6 @@
 		9716E1421EDCFA4A00372B48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1361EDCFA4A00372B48 /* QuartzCore.framework */; };
 		9716E1431EDCFA4A00372B48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1371EDCFA4A00372B48 /* SystemConfiguration.framework */; };
 		9716E1441EDCFA4A00372B48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1381EDCFA4A00372B48 /* UIKit.framework */; };
-		9716E1481EDEA94200372B48 /* UREffectCloudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716E1471EDEA94100372B48 /* UREffectCloudNode.swift */; };
-		9716E14C1EDEAFD600372B48 /* URNodeMovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716E14B1EDEAFD600372B48 /* URNodeMovable.swift */; };
-		97200B4D1ED7B8AB00955521 /* UREffectLightningNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97200B4C1ED7B8AB00955521 /* UREffectLightningNode.swift */; };
-		9731BBE61EE7DCAD0055D73D /* URKernelShaderRGBToneCurve.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9731BBE51EE7DCAD0055D73D /* URKernelShaderRGBToneCurve.cikernel */; };
-		9731BBE91EE7F11F0055D73D /* URFilterAppliable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731BBE81EE7F11F0055D73D /* URFilterAppliable.swift */; };
-		9731BBEB1EE7FF460055D73D /* URFilterAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9731BBEA1EE7FF460055D73D /* URFilterAnimationManager.swift */; };
-		974777B71EE8D53700EE419E /* URKernelShaderShockWave.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 974777B61EE8D53700EE419E /* URKernelShaderShockWave.cikernel */; };
-		974777B91EE8D5B600EE419E /* URShockWaveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974777B81EE8D5B500EE419E /* URShockWaveFilter.swift */; };
-		974777BB1EE9295B00EE419E /* URKernelShaderWaveWarp.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 974777BA1EE9295B00EE419E /* URKernelShaderWaveWarp.cikernel */; };
-		974777BD1EE9299B00EE419E /* URWaveWarpFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974777BC1EE9299B00EE419E /* URWaveWarpFilter.swift */; };
-		974777BF1EE92ABF00EE419E /* URKernelShaderFrostedGlass.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 974777BE1EE92ABF00EE419E /* URKernelShaderFrostedGlass.cikernel */; };
-		974777C21EE92DC400EE419E /* URFrostedGlassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974777C11EE92DC300EE419E /* URFrostedGlassFilter.swift */; };
 		974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */; };
 		974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */; };
 		974FFB011EA9E77500B2A3E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */; };
@@ -47,40 +34,16 @@
 		974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */; };
 		974FFB311EA9F81B00B2A3E7 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB301EA9F81B00B2A3E7 /* data.json */; };
 		974FFB401EAA017100B2A3E7 /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974FFB3F1EAA017100B2A3E7 /* RevealServer.framework */; };
-		974FFB771EAA0E0400B2A3E7 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB761EAA0E0400B2A3E7 /* MyScene.sks */; };
-		974FFB791EAA0E1200B2A3E7 /* MyParticleSnow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */; };
-		974FFB7B1EAA0E3800B2A3E7 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */; };
-		974FFB7D1EAD8F1300B2A3E7 /* URWeatherScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB7C1EAD8F1300B2A3E7 /* URWeatherScene.swift */; };
-		974FFB7F1EADA4BF00B2A3E7 /* MyParticleRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */; };
-		974FFB811EADA78F00B2A3E7 /* MyParticleSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */; };
-		974FFB8D1EAE01C300B2A3E7 /* MyParticleSnowGround.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */; };
-		974FFB8F1EAEE37D00B2A3E7 /* MyParticleRainGround.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */; };
-		974FFB911EAEE57C00B2A3E7 /* MyParticleBurningComet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */; };
-		974FFB931EAF148000B2A3E7 /* MyParticleDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */; };
 		9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4AF1EC0631400FCD463 /* PageViewController.swift */; };
 		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
-		976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */; };
-		977C71A91EE92F7300719F76 /* URKernelShaderRipple.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 977C71A81EE92F7300719F76 /* URKernelShaderRipple.cikernel */; };
-		977C71AB1EE9301000719F76 /* URRippleFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977C71AA1EE9301000719F76 /* URRippleFilter.swift */; };
-		9780EC001ECEBE9000F26C4C /* MyParticleDust2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */; };
-		9780EC0A1ECEFBE600F26C4C /* LOTAnimationView+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC091ECEFBE600F26C4C /* LOTAnimationView+Filter.swift */; };
 		9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */; };
 		9780EC101ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */; };
-		979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */; };
-		979BAE6B1EC55626003E9322 /* URToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */; };
 		97A555141ED57FEB00D3A624 /* img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A5550E1ED57FEB00D3A624 /* img_0.png */; };
 		97A555151ED57FEB00D3A624 /* img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A5550F1ED57FEB00D3A624 /* img_1.png */; };
 		97A555161ED57FEB00D3A624 /* img_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555101ED57FEB00D3A624 /* img_2.png */; };
 		97A555171ED57FEB00D3A624 /* img_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555111ED57FEB00D3A624 /* img_3.png */; };
 		97A555181ED57FEB00D3A624 /* img_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555121ED57FEB00D3A624 /* img_4.png */; };
 		97A555191ED57FEB00D3A624 /* img_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555131ED57FEB00D3A624 /* img_5.png */; };
-		97BA91721ED7D94E0032B194 /* UREffectLightningBoltNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA91711ED7D94E0032B194 /* UREffectLightningBoltNode.swift */; };
-		97BA91741ED8115E0032B194 /* UREffectLightningLineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA91731ED8115E0032B194 /* UREffectLightningLineNode.swift */; };
-		97DF1F901ECAC9D900427CED /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */; };
-		97DF1F921ECACA2C00427CED /* URToneCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97DF1F911ECACA2C00427CED /* URToneCurveView.xib */; };
-		97DF1F941ECAD53000427CED /* URToneCurveUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DF1F931ECAD53000427CED /* URToneCurveUtil.swift */; };
-		97EC3B841EEA6C0600B99B01 /* URFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EC3B831EEA6C0600B99B01 /* URFilter.swift */; };
-		97FE9ACA1EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FE9AC91EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +64,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		970E948D1EC44A5700DEEC86 /* URToneCurveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveGraphView.swift; sourceTree = "<group>"; };
 		9716E1231EDCF94C00372B48 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		9716E1241EDCF94C00372B48 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
 		9716E1271EDCF97900372B48 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
@@ -119,18 +81,6 @@
 		9716E1361EDCFA4A00372B48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9716E1371EDCFA4A00372B48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9716E1381EDCFA4A00372B48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9716E1471EDEA94100372B48 /* UREffectCloudNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectCloudNode.swift; sourceTree = "<group>"; };
-		9716E14B1EDEAFD600372B48 /* URNodeMovable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URNodeMovable.swift; sourceTree = "<group>"; };
-		97200B4C1ED7B8AB00955521 /* UREffectLightningNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectLightningNode.swift; sourceTree = "<group>"; };
-		9731BBE51EE7DCAD0055D73D /* URKernelShaderRGBToneCurve.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderRGBToneCurve.cikernel; path = ../../Resources/Shaders/URKernelShaderRGBToneCurve.cikernel; sourceTree = "<group>"; };
-		9731BBE81EE7F11F0055D73D /* URFilterAppliable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFilterAppliable.swift; sourceTree = "<group>"; };
-		9731BBEA1EE7FF460055D73D /* URFilterAnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFilterAnimationManager.swift; sourceTree = "<group>"; };
-		974777B61EE8D53700EE419E /* URKernelShaderShockWave.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderShockWave.cikernel; path = ../../Resources/Shaders/URKernelShaderShockWave.cikernel; sourceTree = "<group>"; };
-		974777B81EE8D5B500EE419E /* URShockWaveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URShockWaveFilter.swift; sourceTree = "<group>"; };
-		974777BA1EE9295B00EE419E /* URKernelShaderWaveWarp.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderWaveWarp.cikernel; path = ../../Resources/Shaders/URKernelShaderWaveWarp.cikernel; sourceTree = "<group>"; };
-		974777BC1EE9299B00EE419E /* URWaveWarpFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URWaveWarpFilter.swift; sourceTree = "<group>"; };
-		974777BE1EE92ABF00EE419E /* URKernelShaderFrostedGlass.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderFrostedGlass.cikernel; path = ../../Resources/Shaders/URKernelShaderFrostedGlass.cikernel; sourceTree = "<group>"; };
-		974777C11EE92DC300EE419E /* URFrostedGlassFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFrostedGlassFilter.swift; sourceTree = "<group>"; };
 		974FFAF81EA9E77500B2A3E7 /* URExampleWeatherView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URExampleWeatherView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,40 +98,16 @@
 		974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		974FFB301EA9F81B00B2A3E7 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		974FFB3F1EAA017100B2A3E7 /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
-		974FFB761EAA0E0400B2A3E7 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
-		974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnow.sks; sourceTree = "<group>"; };
-		974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyActions.sks; sourceTree = "<group>"; };
-		974FFB7C1EAD8F1300B2A3E7 /* URWeatherScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URWeatherScene.swift; sourceTree = "<group>"; };
-		974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleRain.sks; sourceTree = "<group>"; };
-		974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSmoke.sks; sourceTree = "<group>"; };
-		974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnowGround.sks; sourceTree = "<group>"; };
-		974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleRainGround.sks; sourceTree = "<group>"; };
-		974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleBurningComet.sks; sourceTree = "<group>"; };
-		974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust.sks; sourceTree = "<group>"; };
 		9754D4AF1EC0631400FCD463 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
-		976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveImageView.swift; sourceTree = "<group>"; };
-		977C71A81EE92F7300719F76 /* URKernelShaderRipple.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = URKernelShaderRipple.cikernel; path = ../../Resources/Shaders/URKernelShaderRipple.cikernel; sourceTree = "<group>"; };
-		977C71AA1EE9301000719F76 /* URRippleFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URRippleFilter.swift; sourceTree = "<group>"; };
-		9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust2.sks; sourceTree = "<group>"; };
-		9780EC091ECEFBE600F26C4C /* LOTAnimationView+Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LOTAnimationView+Filter.swift"; sourceTree = "<group>"; };
 		9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherTableViewCell2.swift; sourceTree = "<group>"; };
-		979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Interpolation.swift"; sourceTree = "<group>"; };
-		979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveFilter.swift; sourceTree = "<group>"; };
 		97A5550E1ED57FEB00D3A624 /* img_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_0.png; sourceTree = "<group>"; };
 		97A5550F1ED57FEB00D3A624 /* img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_1.png; sourceTree = "<group>"; };
 		97A555101ED57FEB00D3A624 /* img_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_2.png; sourceTree = "<group>"; };
 		97A555111ED57FEB00D3A624 /* img_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_3.png; sourceTree = "<group>"; };
 		97A555121ED57FEB00D3A624 /* img_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_4.png; sourceTree = "<group>"; };
 		97A555131ED57FEB00D3A624 /* img_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_5.png; sourceTree = "<group>"; };
-		97BA91711ED7D94E0032B194 /* UREffectLightningBoltNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectLightningBoltNode.swift; sourceTree = "<group>"; };
-		97BA91731ED8115E0032B194 /* UREffectLightningLineNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectLightningLineNode.swift; sourceTree = "<group>"; };
-		97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveView.swift; sourceTree = "<group>"; };
-		97DF1F911ECACA2C00427CED /* URToneCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = URToneCurveView.xib; sourceTree = "<group>"; };
-		97DF1F931ECAD53000427CED /* URToneCurveUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveUtil.swift; sourceTree = "<group>"; };
-		97EC3B831EEA6C0600B99B01 /* URFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFilter.swift; sourceTree = "<group>"; };
-		97FE9AC91EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URRGBToneCurveFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,84 +161,6 @@
 			name = PageView;
 			sourceTree = "<group>";
 		};
-		970E948B1EC449AB00DEEC86 /* SpriteKitAssets */ = {
-			isa = PBXGroup;
-			children = (
-				974FFB7C1EAD8F1300B2A3E7 /* URWeatherScene.swift */,
-				9716E14B1EDEAFD600372B48 /* URNodeMovable.swift */,
-				974FFB761EAA0E0400B2A3E7 /* MyScene.sks */,
-				974FFB781EAA0E1200B2A3E7 /* MyParticleSnow.sks */,
-				974FFB7E1EADA4BF00B2A3E7 /* MyParticleRain.sks */,
-				974FFB801EADA78F00B2A3E7 /* MyParticleSmoke.sks */,
-				974FFB8C1EAE01C300B2A3E7 /* MyParticleSnowGround.sks */,
-				974FFB8E1EAEE37D00B2A3E7 /* MyParticleRainGround.sks */,
-				974FFB901EAEE57C00B2A3E7 /* MyParticleBurningComet.sks */,
-				974FFB921EAF148000B2A3E7 /* MyParticleDust.sks */,
-				9780EBFF1ECEBE9000F26C4C /* MyParticleDust2.sks */,
-				974FFB7A1EAA0E3800B2A3E7 /* MyActions.sks */,
-			);
-			name = SpriteKitAssets;
-			sourceTree = "<group>";
-		};
-		970E948C1EC449ED00DEEC86 /* ToneCurve */ = {
-			isa = PBXGroup;
-			children = (
-				9731BBE81EE7F11F0055D73D /* URFilterAppliable.swift */,
-				9731BBEA1EE7FF460055D73D /* URFilterAnimationManager.swift */,
-				97EC3B831EEA6C0600B99B01 /* URFilter.swift */,
-				979BAE6A1EC55626003E9322 /* URToneCurveFilter.swift */,
-				97FE9AC91EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift */,
-				974777B81EE8D5B500EE419E /* URShockWaveFilter.swift */,
-				974777BC1EE9299B00EE419E /* URWaveWarpFilter.swift */,
-				974777C11EE92DC300EE419E /* URFrostedGlassFilter.swift */,
-				977C71AA1EE9301000719F76 /* URRippleFilter.swift */,
-				979BAE681EC46D33003E9322 /* UIBezierPath+Interpolation.swift */,
-				97DF1F931ECAD53000427CED /* URToneCurveUtil.swift */,
-				9731BBE71EE7EE9A0055D73D /* UI */,
-				97FE9AC81EE7D8640073AEE1 /* KernelShaders */,
-			);
-			name = ToneCurve;
-			sourceTree = "<group>";
-		};
-		9716E1461EDEA92E00372B48 /* cloud */ = {
-			isa = PBXGroup;
-			children = (
-				9716E1471EDEA94100372B48 /* UREffectCloudNode.swift */,
-			);
-			name = cloud;
-			sourceTree = "<group>";
-		};
-		97200B4A1ED7B87B00955521 /* Effect */ = {
-			isa = PBXGroup;
-			children = (
-				9716E1461EDEA92E00372B48 /* cloud */,
-				97200B4B1ED7B88C00955521 /* lightning */,
-			);
-			name = Effect;
-			sourceTree = "<group>";
-		};
-		97200B4B1ED7B88C00955521 /* lightning */ = {
-			isa = PBXGroup;
-			children = (
-				97200B4C1ED7B8AB00955521 /* UREffectLightningNode.swift */,
-				97BA91711ED7D94E0032B194 /* UREffectLightningBoltNode.swift */,
-				97BA91731ED8115E0032B194 /* UREffectLightningLineNode.swift */,
-			);
-			name = lightning;
-			sourceTree = "<group>";
-		};
-		9731BBE71EE7EE9A0055D73D /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				97DF1F8F1ECAC9D900427CED /* URToneCurveView.swift */,
-				97DF1F911ECACA2C00427CED /* URToneCurveView.xib */,
-				970E948D1EC44A5700DEEC86 /* URToneCurveGraphView.swift */,
-				976F641F1EC9992A009B02C1 /* URToneCurveImageView.swift */,
-				9780EC091ECEFBE600F26C4C /* LOTAnimationView+Filter.swift */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
 		974FFAEF1EA9E77500B2A3E7 = {
 			isa = PBXGroup;
 			children = (
@@ -338,16 +186,12 @@
 			isa = PBXGroup;
 			children = (
 				974FFB2F1EA9F80B00B2A3E7 /* animationAssets */,
-				970E948B1EC449AB00DEEC86 /* SpriteKitAssets */,
-				97200B4A1ED7B87B00955521 /* Effect */,
-				970E948C1EC449ED00DEEC86 /* ToneCurve */,
 				974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */,
 				974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */,
 				9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */,
 				9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */,
 				974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */,
 				970E948A1EC4499000DEEC86 /* PageView */,
-				97BA91751ED836170032B194 /* 3rdLibrary */,
 				974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */,
 				974FFB021EA9E77500B2A3E7 /* Assets.xcassets */,
 				974FFB041EA9E77500B2A3E7 /* LaunchScreen.storyboard */,
@@ -420,25 +264,6 @@
 				97A555131ED57FEB00D3A624 /* img_5.png */,
 			);
 			name = images;
-			sourceTree = "<group>";
-		};
-		97BA91751ED836170032B194 /* 3rdLibrary */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = 3rdLibrary;
-			sourceTree = "<group>";
-		};
-		97FE9AC81EE7D8640073AEE1 /* KernelShaders */ = {
-			isa = PBXGroup;
-			children = (
-				9731BBE51EE7DCAD0055D73D /* URKernelShaderRGBToneCurve.cikernel */,
-				974777B61EE8D53700EE419E /* URKernelShaderShockWave.cikernel */,
-				974777BA1EE9295B00EE419E /* URKernelShaderWaveWarp.cikernel */,
-				974777BE1EE92ABF00EE419E /* URKernelShaderFrostedGlass.cikernel */,
-				977C71A81EE92F7300719F76 /* URKernelShaderRipple.cikernel */,
-			);
-			name = KernelShaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -554,33 +379,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				974FFB771EAA0E0400B2A3E7 /* MyScene.sks in Resources */,
 				9716E12A1EDCF9C000372B48 /* GoogleMaps.bundle in Resources */,
 				974FFB061EA9E77500B2A3E7 /* LaunchScreen.storyboard in Resources */,
 				97A555191ED57FEB00D3A624 /* img_5.png in Resources */,
 				974FFB031EA9E77500B2A3E7 /* Assets.xcassets in Resources */,
-				974FFB911EAEE57C00B2A3E7 /* MyParticleBurningComet.sks in Resources */,
-				9731BBE61EE7DCAD0055D73D /* URKernelShaderRGBToneCurve.cikernel in Resources */,
 				974FFB011EA9E77500B2A3E7 /* Main.storyboard in Resources */,
-				974FFB7B1EAA0E3800B2A3E7 /* MyActions.sks in Resources */,
-				9780EC001ECEBE9000F26C4C /* MyParticleDust2.sks in Resources */,
-				974FFB8D1EAE01C300B2A3E7 /* MyParticleSnowGround.sks in Resources */,
 				97A555161ED57FEB00D3A624 /* img_2.png in Resources */,
-				977C71A91EE92F7300719F76 /* URKernelShaderRipple.cikernel in Resources */,
 				97A555141ED57FEB00D3A624 /* img_0.png in Resources */,
-				974FFB791EAA0E1200B2A3E7 /* MyParticleSnow.sks in Resources */,
 				974FFB311EA9F81B00B2A3E7 /* data.json in Resources */,
 				97A555181ED57FEB00D3A624 /* img_4.png in Resources */,
-				97DF1F921ECACA2C00427CED /* URToneCurveView.xib in Resources */,
 				97A555171ED57FEB00D3A624 /* img_3.png in Resources */,
-				974777B71EE8D53700EE419E /* URKernelShaderShockWave.cikernel in Resources */,
-				974FFB8F1EAEE37D00B2A3E7 /* MyParticleRainGround.sks in Resources */,
-				974777BB1EE9295B00EE419E /* URKernelShaderWaveWarp.cikernel in Resources */,
-				974FFB931EAF148000B2A3E7 /* MyParticleDust.sks in Resources */,
-				974FFB811EADA78F00B2A3E7 /* MyParticleSmoke.sks in Resources */,
 				97A555151ED57FEB00D3A624 /* img_1.png in Resources */,
-				974777BF1EE92ABF00EE419E /* URKernelShaderFrostedGlass.cikernel in Resources */,
-				974FFB7F1EADA4BF00B2A3E7 /* MyParticleRain.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,34 +444,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				977C71AB1EE9301000719F76 /* URRippleFilter.swift in Sources */,
-				974FFB7D1EAD8F1300B2A3E7 /* URWeatherScene.swift in Sources */,
-				97BA91721ED7D94E0032B194 /* UREffectLightningBoltNode.swift in Sources */,
-				976F64201EC9992A009B02C1 /* URToneCurveImageView.swift in Sources */,
 				9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */,
-				9716E1481EDEA94200372B48 /* UREffectCloudNode.swift in Sources */,
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
-				97200B4D1ED7B8AB00955521 /* UREffectLightningNode.swift in Sources */,
 				9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */,
-				979BAE691EC46D33003E9322 /* UIBezierPath+Interpolation.swift in Sources */,
 				9780EC101ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift in Sources */,
-				979BAE6B1EC55626003E9322 /* URToneCurveFilter.swift in Sources */,
 				974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */,
-				97DF1F901ECAC9D900427CED /* URToneCurveView.swift in Sources */,
 				974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */,
-				9780EC0A1ECEFBE600F26C4C /* LOTAnimationView+Filter.swift in Sources */,
-				970E948E1EC44A5700DEEC86 /* URToneCurveGraphView.swift in Sources */,
-				9731BBEB1EE7FF460055D73D /* URFilterAnimationManager.swift in Sources */,
-				974777BD1EE9299B00EE419E /* URWaveWarpFilter.swift in Sources */,
-				97FE9ACA1EE7D91F0073AEE1 /* URRGBToneCurveFilter.swift in Sources */,
-				974777B91EE8D5B600EE419E /* URShockWaveFilter.swift in Sources */,
-				9731BBE91EE7F11F0055D73D /* URFilterAppliable.swift in Sources */,
-				97EC3B841EEA6C0600B99B01 /* URFilter.swift in Sources */,
 				9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */,
-				9716E14C1EDEAFD600372B48 /* URNodeMovable.swift in Sources */,
-				97BA91741ED8115E0032B194 /* UREffectLightningLineNode.swift in Sources */,
-				97DF1F941ECAD53000427CED /* URToneCurveUtil.swift in Sources */,
-				974777C21EE92DC400EE419E /* URFrostedGlassFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

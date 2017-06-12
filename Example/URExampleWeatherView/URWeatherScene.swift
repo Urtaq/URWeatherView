@@ -9,7 +9,7 @@
 import SpriteKit
 
 /// weather type enumeration & each type's the setting options
-enum URWeatherType: String {
+public enum URWeatherType: String {
     case snow       = "MyParticleSnow.sks"
     case rain       = "MyParticleRain.sks"
     case dust       = "MyParticleDust.sks"

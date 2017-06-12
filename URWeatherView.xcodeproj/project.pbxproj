@@ -10,6 +10,43 @@
 		974FFB561EAA072E00B2A3E7 /* URWeatherView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974FFB4C1EAA072E00B2A3E7 /* URWeatherView.framework */; };
 		974FFB5B1EAA072E00B2A3E7 /* URWeatherViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */; };
 		974FFB5D1EAA072E00B2A3E7 /* URWeatherView.h in Headers */ = {isa = PBXBuildFile; fileRef = 974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		979725401EEE7362007BC0D9 /* URWeatherScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725141EEE7362007BC0D9 /* URWeatherScene.swift */; };
+		979725411EEE7362007BC0D9 /* URNodeMovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725151EEE7362007BC0D9 /* URNodeMovable.swift */; };
+		979725421EEE7362007BC0D9 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 979725161EEE7362007BC0D9 /* MyScene.sks */; };
+		979725431EEE7362007BC0D9 /* MyParticleSnow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 979725171EEE7362007BC0D9 /* MyParticleSnow.sks */; };
+		979725441EEE7362007BC0D9 /* MyParticleRain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 979725181EEE7362007BC0D9 /* MyParticleRain.sks */; };
+		979725451EEE7362007BC0D9 /* MyParticleSmoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 979725191EEE7362007BC0D9 /* MyParticleSmoke.sks */; };
+		979725461EEE7362007BC0D9 /* MyParticleSnowGround.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9797251A1EEE7362007BC0D9 /* MyParticleSnowGround.sks */; };
+		979725471EEE7362007BC0D9 /* MyParticleRainGround.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9797251B1EEE7362007BC0D9 /* MyParticleRainGround.sks */; };
+		979725481EEE7362007BC0D9 /* MyParticleBurningComet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9797251C1EEE7362007BC0D9 /* MyParticleBurningComet.sks */; };
+		979725491EEE7362007BC0D9 /* MyParticleDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9797251D1EEE7362007BC0D9 /* MyParticleDust.sks */; };
+		9797254A1EEE7362007BC0D9 /* MyParticleDust2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9797251E1EEE7362007BC0D9 /* MyParticleDust2.sks */; };
+		9797254B1EEE7362007BC0D9 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9797251F1EEE7362007BC0D9 /* MyActions.sks */; };
+		9797254C1EEE7362007BC0D9 /* UREffectCloudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725211EEE7362007BC0D9 /* UREffectCloudNode.swift */; };
+		9797254D1EEE7362007BC0D9 /* UREffectLightningNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725231EEE7362007BC0D9 /* UREffectLightningNode.swift */; };
+		9797254E1EEE7362007BC0D9 /* UREffectLightningBoltNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725241EEE7362007BC0D9 /* UREffectLightningBoltNode.swift */; };
+		9797254F1EEE7362007BC0D9 /* UREffectLightningLineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725251EEE7362007BC0D9 /* UREffectLightningLineNode.swift */; };
+		979725501EEE7362007BC0D9 /* URFilterAppliable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725281EEE7362007BC0D9 /* URFilterAppliable.swift */; };
+		979725511EEE7362007BC0D9 /* URFilterAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725291EEE7362007BC0D9 /* URFilterAnimationManager.swift */; };
+		979725521EEE7362007BC0D9 /* URFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9797252A1EEE7362007BC0D9 /* URFilter.swift */; };
+		979725531EEE7362007BC0D9 /* URToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9797252B1EEE7362007BC0D9 /* URToneCurveFilter.swift */; };
+		979725541EEE7362007BC0D9 /* URRGBToneCurveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9797252C1EEE7362007BC0D9 /* URRGBToneCurveFilter.swift */; };
+		979725551EEE7362007BC0D9 /* URShockWaveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9797252D1EEE7362007BC0D9 /* URShockWaveFilter.swift */; };
+		979725561EEE7362007BC0D9 /* URWaveWarpFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9797252E1EEE7362007BC0D9 /* URWaveWarpFilter.swift */; };
+		979725571EEE7362007BC0D9 /* URFrostedGlassFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9797252F1EEE7362007BC0D9 /* URFrostedGlassFilter.swift */; };
+		979725581EEE7362007BC0D9 /* URRippleFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725301EEE7362007BC0D9 /* URRippleFilter.swift */; };
+		979725591EEE7362007BC0D9 /* UIBezierPath+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725311EEE7362007BC0D9 /* UIBezierPath+Interpolation.swift */; };
+		9797255A1EEE7362007BC0D9 /* URToneCurveUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725321EEE7362007BC0D9 /* URToneCurveUtil.swift */; };
+		9797255B1EEE7362007BC0D9 /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725331EEE7362007BC0D9 /* URToneCurveView.swift */; };
+		9797255C1EEE7362007BC0D9 /* URToneCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 979725341EEE7362007BC0D9 /* URToneCurveView.xib */; };
+		9797255D1EEE7362007BC0D9 /* URToneCurveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725351EEE7362007BC0D9 /* URToneCurveGraphView.swift */; };
+		9797255E1EEE7362007BC0D9 /* URToneCurveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725361EEE7362007BC0D9 /* URToneCurveImageView.swift */; };
+		9797255F1EEE7362007BC0D9 /* LOTAnimationView+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725371EEE7362007BC0D9 /* LOTAnimationView+Filter.swift */; };
+		979725601EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */; };
+		979725611EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */; };
+		979725621EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */; };
+		979725631EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */; };
+		979725641EEE7362007BC0D9 /* URKernelShaderRipple.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +88,43 @@
 		974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URWeatherViewTests.swift; sourceTree = "<group>"; };
 		974FFB5C1EAA072E00B2A3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = URExampleWeatherView.xcodeproj; path = Example/URExampleWeatherView.xcodeproj; sourceTree = "<group>"; };
+		979725141EEE7362007BC0D9 /* URWeatherScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URWeatherScene.swift; sourceTree = "<group>"; };
+		979725151EEE7362007BC0D9 /* URNodeMovable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URNodeMovable.swift; sourceTree = "<group>"; };
+		979725161EEE7362007BC0D9 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
+		979725171EEE7362007BC0D9 /* MyParticleSnow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnow.sks; sourceTree = "<group>"; };
+		979725181EEE7362007BC0D9 /* MyParticleRain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleRain.sks; sourceTree = "<group>"; };
+		979725191EEE7362007BC0D9 /* MyParticleSmoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSmoke.sks; sourceTree = "<group>"; };
+		9797251A1EEE7362007BC0D9 /* MyParticleSnowGround.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleSnowGround.sks; sourceTree = "<group>"; };
+		9797251B1EEE7362007BC0D9 /* MyParticleRainGround.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleRainGround.sks; sourceTree = "<group>"; };
+		9797251C1EEE7362007BC0D9 /* MyParticleBurningComet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleBurningComet.sks; sourceTree = "<group>"; };
+		9797251D1EEE7362007BC0D9 /* MyParticleDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust.sks; sourceTree = "<group>"; };
+		9797251E1EEE7362007BC0D9 /* MyParticleDust2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticleDust2.sks; sourceTree = "<group>"; };
+		9797251F1EEE7362007BC0D9 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyActions.sks; sourceTree = "<group>"; };
+		979725211EEE7362007BC0D9 /* UREffectCloudNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectCloudNode.swift; sourceTree = "<group>"; };
+		979725231EEE7362007BC0D9 /* UREffectLightningNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectLightningNode.swift; sourceTree = "<group>"; };
+		979725241EEE7362007BC0D9 /* UREffectLightningBoltNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectLightningBoltNode.swift; sourceTree = "<group>"; };
+		979725251EEE7362007BC0D9 /* UREffectLightningLineNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UREffectLightningLineNode.swift; sourceTree = "<group>"; };
+		979725281EEE7362007BC0D9 /* URFilterAppliable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFilterAppliable.swift; sourceTree = "<group>"; };
+		979725291EEE7362007BC0D9 /* URFilterAnimationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFilterAnimationManager.swift; sourceTree = "<group>"; };
+		9797252A1EEE7362007BC0D9 /* URFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFilter.swift; sourceTree = "<group>"; };
+		9797252B1EEE7362007BC0D9 /* URToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveFilter.swift; sourceTree = "<group>"; };
+		9797252C1EEE7362007BC0D9 /* URRGBToneCurveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URRGBToneCurveFilter.swift; sourceTree = "<group>"; };
+		9797252D1EEE7362007BC0D9 /* URShockWaveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URShockWaveFilter.swift; sourceTree = "<group>"; };
+		9797252E1EEE7362007BC0D9 /* URWaveWarpFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URWaveWarpFilter.swift; sourceTree = "<group>"; };
+		9797252F1EEE7362007BC0D9 /* URFrostedGlassFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFrostedGlassFilter.swift; sourceTree = "<group>"; };
+		979725301EEE7362007BC0D9 /* URRippleFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URRippleFilter.swift; sourceTree = "<group>"; };
+		979725311EEE7362007BC0D9 /* UIBezierPath+Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Interpolation.swift"; sourceTree = "<group>"; };
+		979725321EEE7362007BC0D9 /* URToneCurveUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveUtil.swift; sourceTree = "<group>"; };
+		979725331EEE7362007BC0D9 /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveView.swift; sourceTree = "<group>"; };
+		979725341EEE7362007BC0D9 /* URToneCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = URToneCurveView.xib; sourceTree = "<group>"; };
+		979725351EEE7362007BC0D9 /* URToneCurveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveGraphView.swift; sourceTree = "<group>"; };
+		979725361EEE7362007BC0D9 /* URToneCurveImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveImageView.swift; sourceTree = "<group>"; };
+		979725371EEE7362007BC0D9 /* LOTAnimationView+Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LOTAnimationView+Filter.swift"; sourceTree = "<group>"; };
+		979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderRGBToneCurve.cikernel; path = ../../Resources/Shaders/URKernelShaderRGBToneCurve.cikernel; sourceTree = "<group>"; };
+		9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderShockWave.cikernel; path = ../../Resources/Shaders/URKernelShaderShockWave.cikernel; sourceTree = "<group>"; };
+		9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderWaveWarp.cikernel; path = ../../Resources/Shaders/URKernelShaderWaveWarp.cikernel; sourceTree = "<group>"; };
+		9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderFrostedGlass.cikernel; path = ../../Resources/Shaders/URKernelShaderFrostedGlass.cikernel; sourceTree = "<group>"; };
+		9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = URKernelShaderRipple.cikernel; path = ../../Resources/Shaders/URKernelShaderRipple.cikernel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +168,9 @@
 		974FFB4E1EAA072E00B2A3E7 /* URWeatherView */ = {
 			isa = PBXGroup;
 			children = (
+				979725201EEE7362007BC0D9 /* SpriteKitAssets */,
+				979725271EEE7362007BC0D9 /* Effect */,
+				9797253F1EEE7362007BC0D9 /* ToneCurve */,
 				974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */,
 				974FFB501EAA072E00B2A3E7 /* Info.plist */,
 			);
@@ -117,6 +194,99 @@
 				974FFB711EAA07CE00B2A3E7 /* URExampleWeatherViewUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		979725201EEE7362007BC0D9 /* SpriteKitAssets */ = {
+			isa = PBXGroup;
+			children = (
+				979725141EEE7362007BC0D9 /* URWeatherScene.swift */,
+				979725151EEE7362007BC0D9 /* URNodeMovable.swift */,
+				979725161EEE7362007BC0D9 /* MyScene.sks */,
+				979725171EEE7362007BC0D9 /* MyParticleSnow.sks */,
+				979725181EEE7362007BC0D9 /* MyParticleRain.sks */,
+				979725191EEE7362007BC0D9 /* MyParticleSmoke.sks */,
+				9797251A1EEE7362007BC0D9 /* MyParticleSnowGround.sks */,
+				9797251B1EEE7362007BC0D9 /* MyParticleRainGround.sks */,
+				9797251C1EEE7362007BC0D9 /* MyParticleBurningComet.sks */,
+				9797251D1EEE7362007BC0D9 /* MyParticleDust.sks */,
+				9797251E1EEE7362007BC0D9 /* MyParticleDust2.sks */,
+				9797251F1EEE7362007BC0D9 /* MyActions.sks */,
+			);
+			name = SpriteKitAssets;
+			path = ../Example/URExampleWeatherView;
+			sourceTree = "<group>";
+		};
+		979725221EEE7362007BC0D9 /* cloud */ = {
+			isa = PBXGroup;
+			children = (
+				979725211EEE7362007BC0D9 /* UREffectCloudNode.swift */,
+			);
+			name = cloud;
+			sourceTree = "<group>";
+		};
+		979725261EEE7362007BC0D9 /* lightning */ = {
+			isa = PBXGroup;
+			children = (
+				979725231EEE7362007BC0D9 /* UREffectLightningNode.swift */,
+				979725241EEE7362007BC0D9 /* UREffectLightningBoltNode.swift */,
+				979725251EEE7362007BC0D9 /* UREffectLightningLineNode.swift */,
+			);
+			name = lightning;
+			sourceTree = "<group>";
+		};
+		979725271EEE7362007BC0D9 /* Effect */ = {
+			isa = PBXGroup;
+			children = (
+				979725221EEE7362007BC0D9 /* cloud */,
+				979725261EEE7362007BC0D9 /* lightning */,
+			);
+			name = Effect;
+			path = ../Example/URExampleWeatherView;
+			sourceTree = "<group>";
+		};
+		979725381EEE7362007BC0D9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				979725331EEE7362007BC0D9 /* URToneCurveView.swift */,
+				979725341EEE7362007BC0D9 /* URToneCurveView.xib */,
+				979725351EEE7362007BC0D9 /* URToneCurveGraphView.swift */,
+				979725361EEE7362007BC0D9 /* URToneCurveImageView.swift */,
+				979725371EEE7362007BC0D9 /* LOTAnimationView+Filter.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		9797253E1EEE7362007BC0D9 /* KernelShaders */ = {
+			isa = PBXGroup;
+			children = (
+				979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */,
+				9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */,
+				9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */,
+				9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */,
+				9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */,
+			);
+			name = KernelShaders;
+			sourceTree = "<group>";
+		};
+		9797253F1EEE7362007BC0D9 /* ToneCurve */ = {
+			isa = PBXGroup;
+			children = (
+				979725281EEE7362007BC0D9 /* URFilterAppliable.swift */,
+				979725291EEE7362007BC0D9 /* URFilterAnimationManager.swift */,
+				9797252A1EEE7362007BC0D9 /* URFilter.swift */,
+				9797252B1EEE7362007BC0D9 /* URToneCurveFilter.swift */,
+				9797252C1EEE7362007BC0D9 /* URRGBToneCurveFilter.swift */,
+				9797252D1EEE7362007BC0D9 /* URShockWaveFilter.swift */,
+				9797252E1EEE7362007BC0D9 /* URWaveWarpFilter.swift */,
+				9797252F1EEE7362007BC0D9 /* URFrostedGlassFilter.swift */,
+				979725301EEE7362007BC0D9 /* URRippleFilter.swift */,
+				979725311EEE7362007BC0D9 /* UIBezierPath+Interpolation.swift */,
+				979725321EEE7362007BC0D9 /* URToneCurveUtil.swift */,
+				979725381EEE7362007BC0D9 /* UI */,
+				9797253E1EEE7362007BC0D9 /* KernelShaders */,
+			);
+			name = ToneCurve;
+			path = ../Example/URExampleWeatherView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +414,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				979725431EEE7362007BC0D9 /* MyParticleSnow.sks in Resources */,
+				9797254A1EEE7362007BC0D9 /* MyParticleDust2.sks in Resources */,
+				9797255C1EEE7362007BC0D9 /* URToneCurveView.xib in Resources */,
+				979725641EEE7362007BC0D9 /* URKernelShaderRipple.cikernel in Resources */,
+				979725601EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel in Resources */,
+				979725611EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel in Resources */,
+				979725441EEE7362007BC0D9 /* MyParticleRain.sks in Resources */,
+				979725481EEE7362007BC0D9 /* MyParticleBurningComet.sks in Resources */,
+				979725491EEE7362007BC0D9 /* MyParticleDust.sks in Resources */,
+				979725621EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel in Resources */,
+				9797254B1EEE7362007BC0D9 /* MyActions.sks in Resources */,
+				979725631EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel in Resources */,
+				979725471EEE7362007BC0D9 /* MyParticleRainGround.sks in Resources */,
+				979725421EEE7362007BC0D9 /* MyScene.sks in Resources */,
+				979725451EEE7362007BC0D9 /* MyParticleSmoke.sks in Resources */,
+				979725461EEE7362007BC0D9 /* MyParticleSnowGround.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +447,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				979725501EEE7362007BC0D9 /* URFilterAppliable.swift in Sources */,
+				9797255E1EEE7362007BC0D9 /* URToneCurveImageView.swift in Sources */,
+				979725541EEE7362007BC0D9 /* URRGBToneCurveFilter.swift in Sources */,
+				9797255F1EEE7362007BC0D9 /* LOTAnimationView+Filter.swift in Sources */,
+				979725561EEE7362007BC0D9 /* URWaveWarpFilter.swift in Sources */,
+				979725571EEE7362007BC0D9 /* URFrostedGlassFilter.swift in Sources */,
+				979725591EEE7362007BC0D9 /* UIBezierPath+Interpolation.swift in Sources */,
+				9797255B1EEE7362007BC0D9 /* URToneCurveView.swift in Sources */,
+				979725521EEE7362007BC0D9 /* URFilter.swift in Sources */,
+				979725511EEE7362007BC0D9 /* URFilterAnimationManager.swift in Sources */,
+				9797254D1EEE7362007BC0D9 /* UREffectLightningNode.swift in Sources */,
+				9797254E1EEE7362007BC0D9 /* UREffectLightningBoltNode.swift in Sources */,
+				9797255A1EEE7362007BC0D9 /* URToneCurveUtil.swift in Sources */,
+				9797255D1EEE7362007BC0D9 /* URToneCurveGraphView.swift in Sources */,
+				979725551EEE7362007BC0D9 /* URShockWaveFilter.swift in Sources */,
+				979725581EEE7362007BC0D9 /* URRippleFilter.swift in Sources */,
+				979725401EEE7362007BC0D9 /* URWeatherScene.swift in Sources */,
+				979725411EEE7362007BC0D9 /* URNodeMovable.swift in Sources */,
+				9797254F1EEE7362007BC0D9 /* UREffectLightningLineNode.swift in Sources */,
+				979725531EEE7362007BC0D9 /* URToneCurveFilter.swift in Sources */,
+				9797254C1EEE7362007BC0D9 /* UREffectCloudNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +632,7 @@
 		974FFB641EAA072E00B2A3E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 7AX2JZT3L8;
 				INFOPLIST_FILE = URWeatherViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -437,6 +645,7 @@
 		974FFB651EAA072E00B2A3E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 7AX2JZT3L8;
 				INFOPLIST_FILE = URWeatherViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
