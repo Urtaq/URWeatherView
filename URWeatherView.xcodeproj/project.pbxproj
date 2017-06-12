@@ -47,6 +47,7 @@
 		979725621EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */; };
 		979725631EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */; };
 		979725641EEE7362007BC0D9 /* URKernelShaderRipple.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */; };
+		9797256B1EEE7A83007BC0D9 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9797256A1EEE7A83007BC0D9 /* Lottie.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,27 +58,6 @@
 			remoteGlobalIDString = 974FFB4B1EAA072E00B2A3E7;
 			remoteInfo = URWeatherView;
 		};
-		974FFB6C1EAA07CE00B2A3E7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 974FFAF81EA9E77500B2A3E7;
-			remoteInfo = URExampleWeatherView;
-		};
-		974FFB6E1EAA07CE00B2A3E7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 974FFB0C1EA9E77500B2A3E7;
-			remoteInfo = URExampleWeatherViewTests;
-		};
-		974FFB701EAA07CE00B2A3E7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 974FFB171EA9E77600B2A3E7;
-			remoteInfo = URExampleWeatherViewUITests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +67,6 @@
 		974FFB551EAA072E00B2A3E7 /* URWeatherViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URWeatherViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URWeatherViewTests.swift; sourceTree = "<group>"; };
 		974FFB5C1EAA072E00B2A3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = URExampleWeatherView.xcodeproj; path = Example/URExampleWeatherView.xcodeproj; sourceTree = "<group>"; };
 		979725141EEE7362007BC0D9 /* URWeatherScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URWeatherScene.swift; sourceTree = "<group>"; };
 		979725151EEE7362007BC0D9 /* URNodeMovable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URNodeMovable.swift; sourceTree = "<group>"; };
 		979725161EEE7362007BC0D9 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
@@ -125,6 +104,7 @@
 		9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderWaveWarp.cikernel; path = ../../Resources/Shaders/URKernelShaderWaveWarp.cikernel; sourceTree = "<group>"; };
 		9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderFrostedGlass.cikernel; path = ../../Resources/Shaders/URKernelShaderFrostedGlass.cikernel; sourceTree = "<group>"; };
 		9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = URKernelShaderRipple.cikernel; path = ../../Resources/Shaders/URKernelShaderRipple.cikernel; sourceTree = "<group>"; };
+		9797256A1EEE7A83007BC0D9 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Lottie.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9797256B1EEE7A83007BC0D9 /* Lottie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +130,8 @@
 		974FFB421EAA072E00B2A3E7 = {
 			isa = PBXGroup;
 			children = (
-				974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */,
 				974FFB4E1EAA072E00B2A3E7 /* URWeatherView */,
+				979725691EEE7A63007BC0D9 /* Frameworks */,
 				974FFB591EAA072E00B2A3E7 /* URWeatherViewTests */,
 				974FFB4D1EAA072E00B2A3E7 /* Products */,
 			);
@@ -184,16 +165,6 @@
 				974FFB5C1EAA072E00B2A3E7 /* Info.plist */,
 			);
 			path = URWeatherViewTests;
-			sourceTree = "<group>";
-		};
-		974FFB671EAA07CE00B2A3E7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				974FFB6D1EAA07CE00B2A3E7 /* URExampleWeatherView.app */,
-				974FFB6F1EAA07CE00B2A3E7 /* URExampleWeatherViewTests.xctest */,
-				974FFB711EAA07CE00B2A3E7 /* URExampleWeatherViewUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		979725201EEE7362007BC0D9 /* SpriteKitAssets */ = {
@@ -289,6 +260,15 @@
 			path = ../Example/URExampleWeatherView;
 			sourceTree = "<group>";
 		};
+		979725691EEE7A63007BC0D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9797256A1EEE7A83007BC0D9 /* Lottie.framework */,
+			);
+			name = Frameworks;
+			path = URWeatherView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -311,6 +291,7 @@
 				974FFB481EAA072E00B2A3E7 /* Frameworks */,
 				974FFB491EAA072E00B2A3E7 /* Headers */,
 				974FFB4A1EAA072E00B2A3E7 /* Resources */,
+				9797256C1EEE7AA1007BC0D9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -371,12 +352,6 @@
 			mainGroup = 974FFB421EAA072E00B2A3E7;
 			productRefGroup = 974FFB4D1EAA072E00B2A3E7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 974FFB671EAA07CE00B2A3E7 /* Products */;
-					ProjectRef = 974FFB661EAA07CE00B2A3E7 /* URExampleWeatherView.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				974FFB4B1EAA072E00B2A3E7 /* URWeatherView */,
@@ -384,30 +359,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		974FFB6D1EAA07CE00B2A3E7 /* URExampleWeatherView.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = URExampleWeatherView.app;
-			remoteRef = 974FFB6C1EAA07CE00B2A3E7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		974FFB6F1EAA07CE00B2A3E7 /* URExampleWeatherViewTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = URExampleWeatherViewTests.xctest;
-			remoteRef = 974FFB6E1EAA07CE00B2A3E7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		974FFB711EAA07CE00B2A3E7 /* URExampleWeatherViewUITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = URExampleWeatherViewUITests.xctest;
-			remoteRef = 974FFB701EAA07CE00B2A3E7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		974FFB4A1EAA072E00B2A3E7 /* Resources */ = {
@@ -441,6 +392,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9797256C1EEE7AA1007BC0D9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		974FFB471EAA072E00B2A3E7 /* Sources */ = {
@@ -600,9 +567,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/URWeatherView",
+				);
 				INFOPLIST_FILE = URWeatherView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(SRC_ROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zigbang.URWeatherView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -619,9 +591,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/URWeatherView",
+				);
 				INFOPLIST_FILE = URWeatherView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(SRC_ROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zigbang.URWeatherView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
