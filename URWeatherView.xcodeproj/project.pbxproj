@@ -40,7 +40,7 @@
 		9797255B1EEE7362007BC0D9 /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725331EEE7362007BC0D9 /* URToneCurveView.swift */; };
 		9797255C1EEE7362007BC0D9 /* URToneCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 979725341EEE7362007BC0D9 /* URToneCurveView.xib */; };
 		9797255D1EEE7362007BC0D9 /* URToneCurveGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725351EEE7362007BC0D9 /* URToneCurveGraphView.swift */; };
-		9797255E1EEE7362007BC0D9 /* URToneCurveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725361EEE7362007BC0D9 /* URToneCurveImageView.swift */; };
+		9797255E1EEE7362007BC0D9 /* URFilterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725361EEE7362007BC0D9 /* URFilterImageView.swift */; };
 		9797255F1EEE7362007BC0D9 /* LOTAnimationView+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979725371EEE7362007BC0D9 /* LOTAnimationView+Filter.swift */; };
 		979725601EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */; };
 		979725611EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */; };
@@ -97,7 +97,7 @@
 		979725331EEE7362007BC0D9 /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveView.swift; sourceTree = "<group>"; };
 		979725341EEE7362007BC0D9 /* URToneCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = URToneCurveView.xib; sourceTree = "<group>"; };
 		979725351EEE7362007BC0D9 /* URToneCurveGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveGraphView.swift; sourceTree = "<group>"; };
-		979725361EEE7362007BC0D9 /* URToneCurveImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URToneCurveImageView.swift; sourceTree = "<group>"; };
+		979725361EEE7362007BC0D9 /* URFilterImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URFilterImageView.swift; sourceTree = "<group>"; };
 		979725371EEE7362007BC0D9 /* LOTAnimationView+Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LOTAnimationView+Filter.swift"; sourceTree = "<group>"; };
 		979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderRGBToneCurve.cikernel; path = ../../Resources/Shaders/URKernelShaderRGBToneCurve.cikernel; sourceTree = "<group>"; };
 		9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderShockWave.cikernel; path = ../../Resources/Shaders/URKernelShaderShockWave.cikernel; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			children = (
 				979725201EEE7362007BC0D9 /* SpriteKitAssets */,
 				979725271EEE7362007BC0D9 /* Effect */,
-				9797253F1EEE7362007BC0D9 /* ToneCurve */,
+				9797253F1EEE7362007BC0D9 /* Filter */,
 				974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */,
 				974FFB501EAA072E00B2A3E7 /* Info.plist */,
 			);
@@ -221,7 +221,7 @@
 				979725331EEE7362007BC0D9 /* URToneCurveView.swift */,
 				979725341EEE7362007BC0D9 /* URToneCurveView.xib */,
 				979725351EEE7362007BC0D9 /* URToneCurveGraphView.swift */,
-				979725361EEE7362007BC0D9 /* URToneCurveImageView.swift */,
+				979725361EEE7362007BC0D9 /* URFilterImageView.swift */,
 				979725371EEE7362007BC0D9 /* LOTAnimationView+Filter.swift */,
 			);
 			name = UI;
@@ -239,7 +239,7 @@
 			name = KernelShaders;
 			sourceTree = "<group>";
 		};
-		9797253F1EEE7362007BC0D9 /* ToneCurve */ = {
+		9797253F1EEE7362007BC0D9 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
 				979725281EEE7362007BC0D9 /* URFilterAppliable.swift */,
@@ -256,7 +256,7 @@
 				979725381EEE7362007BC0D9 /* UI */,
 				9797253E1EEE7362007BC0D9 /* KernelShaders */,
 			);
-			name = ToneCurve;
+			name = Filter;
 			path = ../Example/URExampleWeatherView;
 			sourceTree = "<group>";
 		};
@@ -415,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				979725501EEE7362007BC0D9 /* URFilterAppliable.swift in Sources */,
-				9797255E1EEE7362007BC0D9 /* URToneCurveImageView.swift in Sources */,
+				9797255E1EEE7362007BC0D9 /* URFilterImageView.swift in Sources */,
 				979725541EEE7362007BC0D9 /* URRGBToneCurveFilter.swift in Sources */,
 				9797255F1EEE7362007BC0D9 /* LOTAnimationView+Filter.swift in Sources */,
 				979725561EEE7362007BC0D9 /* URWaveWarpFilter.swift in Sources */,
