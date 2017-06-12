@@ -22,7 +22,7 @@ public enum URWeatherType: String {
     case smoke      = "MyParticleSmoke.sks"
     case none       = "None"
 
-    static let all: [URWeatherType] = [.snow,
+    public static let all: [URWeatherType] = [.snow,
                                        .rain,
                                        .dust,
                                        .dust2,
@@ -34,7 +34,7 @@ public enum URWeatherType: String {
 //                                       .smoke
     ]
 
-    var name: String {
+    public var name: String {
         switch self {
         case .snow:
             return "Snow"
@@ -72,7 +72,7 @@ public enum URWeatherType: String {
         }
     }
 
-    var imageFilterValues: [String: [CGPoint]]? {
+    public var imageFilterValues: [String: [CGPoint]]? {
         switch self {
         case .snow:
             let r: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
@@ -119,7 +119,7 @@ public enum URWeatherType: String {
         }
     }
 
-    var imageFilterValuesSub: [String: [CGPoint]]? {
+    public var imageFilterValuesSub: [String: [CGPoint]]? {
         switch self {
         case .snow:
             let r: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
@@ -146,7 +146,7 @@ public enum URWeatherType: String {
         }
     }
 
-    var backgroundImage: UIImage? {
+    public var backgroundImage: UIImage? {
         switch self {
         case .snow:
             return #imageLiteral(resourceName: "snow")
@@ -165,7 +165,7 @@ public enum URWeatherType: String {
         }
     }
 
-    var backgroundImageOpacity: CGFloat {
+    public var backgroundImageOpacity: CGFloat {
         switch self {
         case .hot:
             return 0.85
@@ -174,7 +174,7 @@ public enum URWeatherType: String {
         }
     }
 
-    var startBirthRate: CGFloat? {
+    public var startBirthRate: CGFloat? {
         switch self {
         case .dust:
             return 15.0
@@ -185,7 +185,7 @@ public enum URWeatherType: String {
         }
     }
 
-    var defaultBirthRate: CGFloat {
+    public var defaultBirthRate: CGFloat {
         switch self {
         case .snow:
             return 40.0
@@ -202,7 +202,7 @@ public enum URWeatherType: String {
         }
     }
 
-    var maxBirthRate: CGFloat {
+    public var maxBirthRate: CGFloat {
         switch self {
         case .snow:
             return 500.0
@@ -258,7 +258,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     fileprivate var subEmitter: SKEmitterNode!
     fileprivate var groundEmitter: SKEmitterNode!
     fileprivate var subGroundEmitters: [SKEmitterNode]!
-    var subGroundEmitterOptions: [URWeatherGroundEmitterOption]! {
+    public var subGroundEmitterOptions: [URWeatherGroundEmitterOption]! {
         didSet {
             self.stopGroundEmitter()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -269,11 +269,11 @@ public class URWeatherScene: SKScene, URNodeMovable {
 
     private lazy var timers: [Timer] = [Timer]()
 
-    var weatherType: URWeatherType = .none
+    public var weatherType: URWeatherType = .none
     var particleColor: UIColor!
-    var isGraphicsDebugOptionEnabled: Bool = false
+    public var isGraphicsDebugOptionEnabled: Bool = false
 
-    var extraEffectBlock: ((UIImage?, CGFloat) -> Void)?
+    public var extraEffectBlock: ((UIImage?, CGFloat) -> Void)?
 
     var lastLocation: CGPoint = .zero {
         didSet {
@@ -283,7 +283,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     var touchedNode: SKNode!
     lazy var movableNodes: [SKNode] = [SKNode]()
 
-    override init(size: CGSize) {
+    override public init(size: CGSize) {
         super.init(size: size)
 
         self.backgroundColor = UIColor.clear
@@ -294,7 +294,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     }
 
     /// switch the SpriteKit debug options
-    func enableDebugOptions(needToShow: Bool) {
+    public func enableDebugOptions(needToShow: Bool) {
         self.isGraphicsDebugOptionEnabled = needToShow
         guard self.emitter != nil else { return }
 
@@ -306,7 +306,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     }
 
     /// setter of the particle birth rate
-    var birthRate: CGFloat = 0.0 {
+    public var birthRate: CGFloat = 0.0 {
         didSet {
             if self.emitter != nil {
                 self.emitter.particleBirthRate = self.birthRate
@@ -412,7 +412,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     }
 
     /// start the whole weather scene
-    func startScene(_ weather: URWeatherType = .snow, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
+    public func startScene(_ weather: URWeatherType = .snow, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
         self.weatherType = weather
 
         switch weather {
@@ -553,7 +553,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     }
 
     /// remove the whole scene
-    func stopScene() {
+    public func stopScene() {
         self.weatherType = .none
         self.particleColor = nil
 

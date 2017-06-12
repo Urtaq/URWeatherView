@@ -35,23 +35,23 @@ public class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigat
         }
     }
 
-    var setImageBlock: ((UIImage) -> Void)?
-    var applyBlock: ((String) -> Void)?
-    var parentViewController: UIViewController!
+    public var setImageBlock: ((UIImage) -> Void)?
+    public var applyBlock: ((String) -> Void)?
+    public var parentViewController: UIViewController!
 
-    var vectorPoints: [CGPoint] {
+    public var vectorPoints: [CGPoint] {
         return self.graphView.curveRelativeVectorPoints
     }
 
-    var vectorPointsForRed: [CGPoint] {
+    public var vectorPointsForRed: [CGPoint] {
         return self.graphViewForRed.curveRelativeVectorPoints
     }
 
-    var vectorPointsForGreen: [CGPoint] {
+    public var vectorPointsForGreen: [CGPoint] {
         return self.graphViewForGreen.curveRelativeVectorPoints
     }
 
-    var vectorPointsForBlue: [CGPoint] {
+    public var vectorPointsForBlue: [CGPoint] {
         return self.graphViewForBlue.curveRelativeVectorPoints
     }
 
@@ -67,7 +67,7 @@ public class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigat
         self.selectedGraphView = self.graphView
     }
 
-    func initView() {
+    public func initView() {
         self.layoutIfNeeded()
 
         self.btnApply.layer.cornerRadius = 4.0

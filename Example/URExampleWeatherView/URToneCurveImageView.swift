@@ -26,7 +26,7 @@ public class URToneCurveImageView: UIImageView, URFilterAppliable {
 }
 
 extension URFilterAppliable where Self: URToneCurveImageView {
-    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval, userInfo: [String: Any]! = nil) {
+    public func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval, userInfo: [String: Any]! = nil) {
         guard imageAssets.count >= 2 else { return }
         let layer1: CALayer = CALayer()
         layer1.frame = self.bounds
@@ -166,7 +166,7 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         self.animationManager.play()
     }
 
-    func stop(_ completion: (() -> Void)?) {
+    public func stop(_ completion: (() -> Void)?) {
         if self.animationManager != nil {
             self.animationManager.stop(completion)
         }
