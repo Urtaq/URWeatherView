@@ -235,7 +235,7 @@ enum URWeatherGroundType: String {
     }
 }
 
-struct URWeatherGroundEmitterOption {
+public struct URWeatherGroundEmitterOption {
     var position: CGPoint
     var rangeRatio: CGFloat = 0.117
     var angle: CGFloat
@@ -253,7 +253,7 @@ struct URWeatherGroundEmitterOption {
     }
 }
 
-class URWeatherScene: SKScene, URNodeMovable {
+public class URWeatherScene: SKScene, URNodeMovable {
     fileprivate var emitter: SKEmitterNode!
     fileprivate var subEmitter: SKEmitterNode!
     fileprivate var groundEmitter: SKEmitterNode!
@@ -289,7 +289,7 @@ class URWeatherScene: SKScene, URNodeMovable {
         self.backgroundColor = UIColor.clear
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -612,19 +612,19 @@ class URWeatherScene: SKScene, URNodeMovable {
 
 extension URWeatherScene {
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.weatherType == .cloudy {
             self.handleTouch(touches)
         }
     }
 
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.weatherType == .cloudy {
             self.handleTouch(touches)
         }
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.weatherType == .cloudy {
             self.handleTouch(touches, isEnded: true)
         } else if self.weatherType == .comet {

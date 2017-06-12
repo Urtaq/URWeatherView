@@ -8,7 +8,7 @@
 
 import UIKit
 
-class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+public class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var view: UIView!
 
     @IBOutlet var graphView: URToneCurveGraphView!
@@ -55,7 +55,7 @@ class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigationCont
         return self.graphViewForBlue.curveRelativeVectorPoints
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         guard let _ = Bundle.main.loadNibNamed("URToneCurveView", owner: self, options: nil) else {
@@ -303,7 +303,7 @@ class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigationCont
     }
 
     // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("info is \(info)")
 
         defer {

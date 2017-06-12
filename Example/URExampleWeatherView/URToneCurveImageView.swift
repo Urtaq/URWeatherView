@@ -8,13 +8,13 @@
 
 import UIKit
 
-class URToneCurveImageView: UIImageView, URFilterAppliable {
-    var originalImages: [UIImage]!
-    var effectTimer: Timer!
+public class URToneCurveImageView: UIImageView, URFilterAppliable {
+    public var originalImages: [UIImage]!
+    public var effectTimer: Timer!
 
     var animationManager: URFilterAnimationManager!
 
-    override var image: UIImage? {
+    override public var image: UIImage? {
         didSet {
             if let effectLayers = self.layer.sublayers {
                 for sublayer in effectLayers {
@@ -64,7 +64,7 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         layer2.add(blinkAnimation, forKey: nil)
     }
 
-    func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]! = DefaultToneCurveInputs, pointsForGreen: [CGPoint]! = DefaultToneCurveInputs, pointsForBlue: [CGPoint]! = DefaultToneCurveInputs) {
+    public func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]! = DefaultToneCurveInputs, pointsForGreen: [CGPoint]! = DefaultToneCurveInputs, pointsForBlue: [CGPoint]! = DefaultToneCurveInputs) {
         if self.originalImages == nil {
             self.originalImages = [UIImage]()
             self.originalImages.append(self.image!)
@@ -123,7 +123,7 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         }
     }
 
-    func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
+    public func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]? = nil) {
 
         if self.originalImages == nil {
             self.originalImages = [UIImage]()
@@ -141,12 +141,12 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         self.image = UIImage(cgImage: rgbFilter.outputCGImage!)
     }
 
-    func removeToneCurveFilter() {
+    public func removeToneCurveFilter() {
         guard self.originalImages != nil else { return }
         self.image = self.originalImages[0]
     }
 
-    func applyDistortionFilter() {
+    public func applyDistortionFilter() {
         if self.originalImages == nil {
             self.originalImages = [UIImage]()
             self.originalImages.append(self.image!)
