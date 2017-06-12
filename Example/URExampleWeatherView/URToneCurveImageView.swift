@@ -159,7 +159,7 @@ extension URFilterAppliable where Self: URToneCurveImageView {
         let src: CISampler = (cgImage != nil) ? CISampler(image: CIImage(cgImage: cgImage!)) : CISampler(image: self.image!.ciImage!)
 
         self.animationManager = URFilterAnimationManager(duration: 0.8, fireBlock: { (progress) in
-            let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage!, inputValues: [src, progress, 0.4, 0.3, 4.0], roiRatio: 0.8)
+            let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage!, inputValues: [src, progress, 0.2, 0.3, 8.0], roiRatio: 0.8)
             self.image = UIImage(ciImage: filter.outputImage!)
         })
         self.animationManager.isRepeatForever = true
