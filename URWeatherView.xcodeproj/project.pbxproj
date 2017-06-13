@@ -48,7 +48,7 @@
 		979725631EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */; };
 		979725641EEE7362007BC0D9 /* URKernelShaderRipple.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */; };
 		9797256B1EEE7A83007BC0D9 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9797256A1EEE7A83007BC0D9 /* Lottie.framework */; };
-		979725CB1EEE9E65007BC0D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 979725CA1EEE9E65007BC0D9 /* Assets.xcassets */; };
+		979725F51EEFD60C007BC0D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 979725F41EEFD60C007BC0D9 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +106,7 @@
 		9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderFrostedGlass.cikernel; path = ../../Resources/Shaders/URKernelShaderFrostedGlass.cikernel; sourceTree = "<group>"; };
 		9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = URKernelShaderRipple.cikernel; path = ../../Resources/Shaders/URKernelShaderRipple.cikernel; sourceTree = "<group>"; };
 		9797256A1EEE7A83007BC0D9 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Lottie.framework; sourceTree = "<group>"; };
-		979725CA1EEE9E65007BC0D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		979725F41EEFD60C007BC0D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Resources/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,7 @@
 				9797253F1EEE7362007BC0D9 /* Filter */,
 				974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */,
 				974FFB501EAA072E00B2A3E7 /* Info.plist */,
-				979725CA1EEE9E65007BC0D9 /* Assets.xcassets */,
+				979725F41EEFD60C007BC0D9 /* Assets.xcassets */,
 			);
 			path = URWeatherView;
 			sourceTree = "<group>";
@@ -294,7 +294,6 @@
 				974FFB481EAA072E00B2A3E7 /* Frameworks */,
 				974FFB491EAA072E00B2A3E7 /* Headers */,
 				974FFB4A1EAA072E00B2A3E7 /* Resources */,
-				9797256C1EEE7AA1007BC0D9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -374,7 +373,7 @@
 				979725641EEE7362007BC0D9 /* URKernelShaderRipple.cikernel in Resources */,
 				979725601EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel in Resources */,
 				979725611EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel in Resources */,
-				979725CB1EEE9E65007BC0D9 /* Assets.xcassets in Resources */,
+				979725F51EEFD60C007BC0D9 /* Assets.xcassets in Resources */,
 				979725441EEE7362007BC0D9 /* MyParticleRain.sks in Resources */,
 				979725481EEE7362007BC0D9 /* MyParticleBurningComet.sks in Resources */,
 				979725491EEE7362007BC0D9 /* MyParticleDust.sks in Resources */,
@@ -396,22 +395,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		9797256C1EEE7AA1007BC0D9 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		974FFB471EAA072E00B2A3E7 /* Sources */ = {
