@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import URWeatherView
 
 class DetailViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var originalImageView: URToneCurveImageView!
+    @IBOutlet var originalImageView: URFilterImageView!
 //    @IBOutlet var graphView: URToneCurveGraphView!
     @IBOutlet var toneCurveView: URToneCurveView!
 

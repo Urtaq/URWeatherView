@@ -38,6 +38,8 @@
 		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
 		9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */; };
 		9780EC101ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */; };
+		9797260A1EEFDF20007BC0D9 /* URWeatherView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 979726091EEFDF20007BC0D9 /* URWeatherView.framework */; };
+		9797260B1EEFDF20007BC0D9 /* URWeatherView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 979726091EEFDF20007BC0D9 /* URWeatherView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		97A555141ED57FEB00D3A624 /* img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A5550E1ED57FEB00D3A624 /* img_0.png */; };
 		97A555151ED57FEB00D3A624 /* img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A5550F1ED57FEB00D3A624 /* img_1.png */; };
 		97A555161ED57FEB00D3A624 /* img_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555101ED57FEB00D3A624 /* img_2.png */; };
@@ -62,6 +64,20 @@
 			remoteInfo = URExampleWeatherView;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		979726081EEFDD11007BC0D9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9797260B1EEFDF20007BC0D9 /* URWeatherView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9716E1231EDCF94C00372B48 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -102,6 +118,7 @@
 		9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherTableViewCell2.swift; sourceTree = "<group>"; };
+		979726091EEFDF20007BC0D9 /* URWeatherView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = URWeatherView.framework; path = Carthage/Build/iOS/URWeatherView.framework; sourceTree = "<group>"; };
 		97A5550E1ED57FEB00D3A624 /* img_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_0.png; sourceTree = "<group>"; };
 		97A5550F1ED57FEB00D3A624 /* img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_1.png; sourceTree = "<group>"; };
 		97A555101ED57FEB00D3A624 /* img_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_2.png; sourceTree = "<group>"; };
@@ -118,6 +135,7 @@
 				9716E1391EDCFA4A00372B48 /* CoreData.framework in Frameworks */,
 				9716E13A1EDCFA4A00372B48 /* CoreGraphics.framework in Frameworks */,
 				9716E13B1EDCFA4A00372B48 /* CoreLocation.framework in Frameworks */,
+				9797260A1EEFDF20007BC0D9 /* URWeatherView.framework in Frameworks */,
 				9716E13C1EDCFA4A00372B48 /* CoreText.framework in Frameworks */,
 				9716E13D1EDCFA4A00372B48 /* GLKit.framework in Frameworks */,
 				9716E13E1EDCFA4A00372B48 /* ImageIO.framework in Frameworks */,
@@ -164,6 +182,7 @@
 		974FFAEF1EA9E77500B2A3E7 = {
 			isa = PBXGroup;
 			children = (
+				979726091EEFDF20007BC0D9 /* URWeatherView.framework */,
 				974FFAFA1EA9E77500B2A3E7 /* URExampleWeatherView */,
 				974FFB0F1EA9E77500B2A3E7 /* URExampleWeatherViewTests */,
 				974FFB1A1EA9E77600B2A3E7 /* URExampleWeatherViewUITests */,
@@ -278,6 +297,7 @@
 				974FFAF61EA9E77500B2A3E7 /* Resources */,
 				974FFB2C1EA9EF1500B2A3E7 /* ShellScript */,
 				974FFB411EAA01C900B2A3E7 /* ShellScript */,
+				979726081EEFDD11007BC0D9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

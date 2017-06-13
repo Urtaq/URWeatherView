@@ -9,6 +9,7 @@
 import UIKit
 import Lottie
 import SpriteKit
+import URWeatherView
 
 class ViewController: UIViewController {
 
@@ -19,7 +20,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var segment: UISegmentedControl!
 
-    @IBOutlet var mainBackgroundImageView: URToneCurveImageView!
+    @IBOutlet var mainBackgroundImageView: URFilterImageView!
     var mainAnimationView: URLOTAnimationView!
     var skView: SKView!
     var weatherScene: URWeatherScene!

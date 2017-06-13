@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import URWeatherView
 
 class URExampleWeatherTableViewCell2: URExampleWeatherTableViewCell {
     override func configCell(_ weather: URWeatherType) {

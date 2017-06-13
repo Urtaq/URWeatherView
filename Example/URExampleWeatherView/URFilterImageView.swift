@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class URFilterImageView: UIImageView, URFilterAppliable {
+open class URFilterImageView: UIImageView, URFilterAppliable {
     public var originalImages: [UIImage]!
     public var effectTimer: Timer!
 
     var animationManager: URFilterAnimationManager!
 
-    override public var image: UIImage? {
+    override open var image: UIImage? {
         didSet {
             if let effectLayers = self.layer.sublayers {
                 for sublayer in effectLayers {

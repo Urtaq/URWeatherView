@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import URWeatherView
 
 class URExampleWeatherTableViewCell: UITableViewCell {
     @IBOutlet var btnApplyWeather: UIButton!
