@@ -438,17 +438,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
         case .snow:
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
-            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
-                if self.emitter.particleBirthRate <= 40.0 {
-                    if self.emitter.xAcceleration == -3 {
-                        self.emitter.xAcceleration = 3
-                    } else {
-                        self.emitter.xAcceleration = -3
-                    }
-                } else {
-                    self.emitter.xAcceleration = 0
-                }
-            })
+            let timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(changeXAcceleration), userInfo: nil, repeats: true)
             self.timers.append(timer)
         case .comet:
             self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
@@ -467,13 +457,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
 
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: self.view!.bounds.height)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.midY)
-            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
-                if self.emitter.yAcceleration == -10 {
-                    self.emitter.yAcceleration = 10
-                } else {
-                    self.emitter.yAcceleration = -10
-                }
-            })
+            let timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(changeXAcceleration), userInfo: nil, repeats: true)
             self.timers.append(timer)
 
 //            self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
@@ -492,6 +476,29 @@ public class URWeatherScene: SKScene, URNodeMovable {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.startGroundEmitter()
+        }
+    }
+
+    @objc private func changeXAcceleration() {
+        switch self.weatherType {
+        case .snow:
+            if self.emitter.particleBirthRate <= 40.0 {
+                if self.emitter.xAcceleration == -3 {
+                    self.emitter.xAcceleration = 3
+                } else {
+                    self.emitter.xAcceleration = -3
+                }
+            } else {
+                self.emitter.xAcceleration = 0
+            }
+        case .dust, .dust2:
+            if self.emitter.yAcceleration == -10 {
+                self.emitter.yAcceleration = 10
+            } else {
+                self.emitter.yAcceleration = -10
+            }
+        default:
+            break
         }
     }
 
