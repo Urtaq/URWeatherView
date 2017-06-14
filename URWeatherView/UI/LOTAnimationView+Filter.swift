@@ -6,7 +6,7 @@
 //  Copyright © 2017년 zigbang. All rights reserved.
 //
 
-import Lottie
+import LottieEx
 
 open class URLOTAnimationView: LOTAnimationView, URFilterAppliable {
     open var originalImages: [UIImage]!
