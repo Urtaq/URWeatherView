@@ -7,7 +7,7 @@
 //
 
 open class URToneCurveFilter: CIFilter, URFilter {
-    var inputImage: CIImage?
+    open var inputImage: CIImage?
     var customKernel: CIKernel?
     var customAttributes: [Any]?
 
@@ -152,7 +152,7 @@ open class URToneCurveFilter: CIFilter, URFilter {
     }
 
     /// Must call the function "extractInputImage" on the instance, after calling this init method
-    convenience init(curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
+    convenience public init(curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
         self.init()
 
         self.curveVectors = [CIVector]()
@@ -162,7 +162,7 @@ open class URToneCurveFilter: CIFilter, URFilter {
         }
     }
 
-    convenience init(ciImage: CIImage, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
+    convenience public init(ciImage: CIImage, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
         self.init()
 
         self.inputImage = ciImage
@@ -174,7 +174,7 @@ open class URToneCurveFilter: CIFilter, URFilter {
         }
     }
 
-    convenience init(cgImage: CGImage, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
+    convenience public init(cgImage: CGImage, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
         self.init()
 
         self.extractInputImage(cgImage: cgImage)
@@ -186,7 +186,7 @@ open class URToneCurveFilter: CIFilter, URFilter {
         }
     }
 
-    convenience init(imageView: UIImageView, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
+    convenience public init(imageView: UIImageView, with curvePoints: [CGPoint] = [.zero, CGPoint(x: 1.0, y: 1.0)]) {
         self.init()
 
         self.extractInputImage(imageView: imageView)

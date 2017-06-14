@@ -11,7 +11,7 @@ import Foundation
 let URKernelShaderkFrostedGlass: String = "URKernelShaderFrostedGlass.cikernel"
 
 open class URFrostedGlassFilter: CIFilter, URFilter {
-    var inputImage: CIImage?
+    open var inputImage: CIImage?
     var customKernel: CIKernel?
     /// [sampler: CISampler, center: CIVector, progress: TimeInterval]
     var customAttributes: [Any]?
@@ -26,7 +26,7 @@ open class URFrostedGlassFilter: CIFilter, URFilter {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
+    convenience public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
         self.init()
 
         self.extent = frame
@@ -39,7 +39,7 @@ open class URFrostedGlassFilter: CIFilter, URFilter {
         self.customAttributes = inputValues
     }
 
-    convenience init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
+    convenience public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
         self.init()
 
         self.extent = frame

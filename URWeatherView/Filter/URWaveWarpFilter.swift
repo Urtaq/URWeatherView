@@ -11,7 +11,7 @@ import Foundation
 let URKernelShaderkWaveWarp: String = "URKernelShaderWaveWarp.cikernel"
 
 open class URWaveWarpFilter: CIFilter, URFilter {
-    var inputImage: CIImage?
+    open var inputImage: CIImage?
     var customKernel: CIKernel?
     /// [sampler: CISampler, progress: TimeInterval, velocity: Double, wRatio: Double, hRatio: Double]
     var customAttributes: [Any]?
@@ -28,7 +28,7 @@ open class URWaveWarpFilter: CIFilter, URFilter {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(frame: CGRect, cgImage: CGImage, inputValues: [Any], roiRatio: CGFloat = 1.0) {
+    convenience public init(frame: CGRect, cgImage: CGImage, inputValues: [Any], roiRatio: CGFloat = 1.0) {
         self.init()
 
         self.extent = frame
@@ -43,7 +43,7 @@ open class URWaveWarpFilter: CIFilter, URFilter {
         self.customAttributes?.append(Double.pi)
     }
 
-    convenience init(frame: CGRect, imageView: UIImageView, inputValues: [Any], roiRatio: CGFloat = 1.0) {
+    convenience public init(frame: CGRect, imageView: UIImageView, inputValues: [Any], roiRatio: CGFloat = 1.0) {
         self.init()
 
         self.extent = frame

@@ -11,7 +11,7 @@ import Foundation
 let URKernelShaderShockWave: String = "URKernelShaderShockWave.cikernel"
 
 open class URShockWaveFilter: CIFilter, URFilter {
-    var inputImage: CIImage?
+    open var inputImage: CIImage?
     var customKernel: CIKernel?
     /// [sampler: CISampler, center: CIVector, progress: TimeInterval, shocksParams: CIVector]
     var customAttributes: [Any]?
@@ -28,7 +28,7 @@ open class URShockWaveFilter: CIFilter, URFilter {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
+    convenience public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
         self.init()
 
         self.extent = frame
@@ -42,7 +42,7 @@ open class URShockWaveFilter: CIFilter, URFilter {
         self.customAttributes?.append(self.shockParams)
     }
 
-    convenience init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
+    convenience public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
         self.init()
 
         self.extent = frame

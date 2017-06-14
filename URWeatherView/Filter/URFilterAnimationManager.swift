@@ -13,18 +13,18 @@ open class URFilterAnimationManager {
     var displayLink: CADisplayLink!
     var duration: TimeInterval = 1.0
     var transitionStartTime: CFTimeInterval = CACurrentMediaTime()
-    var isRepeatForever: Bool = false
+    open var isRepeatForever: Bool = false
 
     @objc var timerFiredCallback: URFilterAnimationFireBlock
 
     var completionCallback: (() -> Void)?
 
-    init(duration: TimeInterval, fireBlock: @escaping URFilterAnimationFireBlock) {
+    public init(duration: TimeInterval, fireBlock: @escaping URFilterAnimationFireBlock) {
         self.duration = duration
         self.timerFiredCallback = fireBlock
     }
 
-    init(duration: TimeInterval, startTime: CFTimeInterval, fireBlock: @escaping URFilterAnimationFireBlock) {
+    public init(duration: TimeInterval, startTime: CFTimeInterval, fireBlock: @escaping URFilterAnimationFireBlock) {
         self.duration = duration
         self.transitionStartTime = startTime
         self.timerFiredCallback = fireBlock
@@ -33,14 +33,14 @@ open class URFilterAnimationManager {
         self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
     }
 
-    func play() {
+    open func play() {
         self.transitionStartTime = CACurrentMediaTime()
 
         self.displayLink = CADisplayLink(target: self, selector: #selector(timerFired(_:)))
         self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
     }
 
-    func stop(_ completion: (() -> Void)? = nil) {
+    open func stop(_ completion: (() -> Void)? = nil) {
         self.isRepeatForever = false
 
         guard let block = completion else { return }

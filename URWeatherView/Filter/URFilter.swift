@@ -51,12 +51,12 @@ extension URFilter {
     }
 
     // MARK: - handler of Input Image
-    func extractInputImage(cgImage: CGImage) {
+    public func extractInputImage(cgImage: CGImage) {
         let ciImage = CIImage(cgImage: cgImage)
         self.inputImage = ciImage
     }
 
-    func extractInputImage(_ image: UIImage) {
+    public func extractInputImage(_ image: UIImage) {
         if let ciImage = CIImage(image: image) {
             self.inputImage = ciImage
 
@@ -72,7 +72,7 @@ extension URFilter {
         fatalError("Cannot get Core Image!!")
     }
 
-    func extractInputImage(imageView: UIImageView) {
+    public func extractInputImage(imageView: UIImageView) {
         guard let rawImage = imageView.image else {
             fatalError("The UIImageView must have image!!")
         }
