@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C6A803BF185EE321324F99C /* Pods_URWeatherViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F9169AFB8FE347BC86822D /* Pods_URWeatherViewTests.framework */; };
 		974FFB561EAA072E00B2A3E7 /* URWeatherView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974FFB4C1EAA072E00B2A3E7 /* URWeatherView.framework */; };
 		974FFB5B1EAA072E00B2A3E7 /* URWeatherViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */; };
 		974FFB5D1EAA072E00B2A3E7 /* URWeatherView.h in Headers */ = {isa = PBXBuildFile; fileRef = 974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,6 +50,7 @@
 		97D6184E1EF0BF0600A55C00 /* URFilterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D618491EF0BF0600A55C00 /* URFilterImageView.swift */; };
 		97D6184F1EF0BF0600A55C00 /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6184A1EF0BF0600A55C00 /* URToneCurveView.swift */; };
 		97D618501EF0BF0600A55C00 /* URToneCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97D6184B1EF0BF0600A55C00 /* URToneCurveView.xib */; };
+		BA21FDD37596EE7F2D921952 /* Pods_URWeatherView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E610058287691C505923774 /* Pods_URWeatherView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27F9169AFB8FE347BC86822D /* Pods_URWeatherViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_URWeatherViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E610058287691C505923774 /* Pods_URWeatherView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_URWeatherView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F9D9D7C291EEC76BC1A83CD /* Pods-URWeatherViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URWeatherViewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-URWeatherViewTests/Pods-URWeatherViewTests.debug.xcconfig"; sourceTree = "<group>"; };
+		76C683C7430DE7BF7C161987 /* Pods-URWeatherViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URWeatherViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-URWeatherViewTests/Pods-URWeatherViewTests.release.xcconfig"; sourceTree = "<group>"; };
+		85F55D5F9154F6EB010DA6BD /* Pods-URWeatherView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URWeatherView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-URWeatherView/Pods-URWeatherView.debug.xcconfig"; sourceTree = "<group>"; };
 		974FFB4C1EAA072E00B2A3E7 /* URWeatherView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = URWeatherView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URWeatherView.h; sourceTree = "<group>"; };
 		974FFB501EAA072E00B2A3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +114,7 @@
 		97D618491EF0BF0600A55C00 /* URFilterImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URFilterImageView.swift; path = URWeatherView/UI/URFilterImageView.swift; sourceTree = SOURCE_ROOT; };
 		97D6184A1EF0BF0600A55C00 /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URToneCurveView.swift; path = URWeatherView/UI/URToneCurveView.swift; sourceTree = SOURCE_ROOT; };
 		97D6184B1EF0BF0600A55C00 /* URToneCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = URToneCurveView.xib; path = URWeatherView/UI/URToneCurveView.xib; sourceTree = SOURCE_ROOT; };
+		E1BBA62BE9723533987DC7C9 /* Pods-URWeatherView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URWeatherView.release.xcconfig"; path = "Pods/Target Support Files/Pods-URWeatherView/Pods-URWeatherView.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9797256B1EEE7A83007BC0D9 /* Lottie.framework in Frameworks */,
+				BA21FDD37596EE7F2D921952 /* Pods_URWeatherView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,12 +132,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				974FFB561EAA072E00B2A3E7 /* URWeatherView.framework in Frameworks */,
+				8C6A803BF185EE321324F99C /* Pods_URWeatherViewTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88267C82FDC35F2E0B4CF267 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85F55D5F9154F6EB010DA6BD /* Pods-URWeatherView.debug.xcconfig */,
+				E1BBA62BE9723533987DC7C9 /* Pods-URWeatherView.release.xcconfig */,
+				4F9D9D7C291EEC76BC1A83CD /* Pods-URWeatherViewTests.debug.xcconfig */,
+				76C683C7430DE7BF7C161987 /* Pods-URWeatherViewTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		974FFB421EAA072E00B2A3E7 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +157,7 @@
 				979725691EEE7A63007BC0D9 /* Frameworks */,
 				974FFB591EAA072E00B2A3E7 /* URWeatherViewTests */,
 				974FFB4D1EAA072E00B2A3E7 /* Products */,
+				88267C82FDC35F2E0B4CF267 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,6 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				9797256A1EEE7A83007BC0D9 /* Lottie.framework */,
+				2E610058287691C505923774 /* Pods_URWeatherView.framework */,
+				27F9169AFB8FE347BC86822D /* Pods_URWeatherViewTests.framework */,
 			);
 			name = Frameworks;
 			path = URWeatherView;
@@ -290,10 +314,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 974FFB601EAA072E00B2A3E7 /* Build configuration list for PBXNativeTarget "URWeatherView" */;
 			buildPhases = (
+				9C1E37F7941E8E3AC1C0DCAF /* [CP] Check Pods Manifest.lock */,
 				974FFB471EAA072E00B2A3E7 /* Sources */,
 				974FFB481EAA072E00B2A3E7 /* Frameworks */,
 				974FFB491EAA072E00B2A3E7 /* Headers */,
 				974FFB4A1EAA072E00B2A3E7 /* Resources */,
+				D6C6661C144B8F1ECDBA1A56 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,9 +334,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 974FFB631EAA072E00B2A3E7 /* Build configuration list for PBXNativeTarget "URWeatherViewTests" */;
 			buildPhases = (
+				6484FC4E29AEFE384F40E01F /* [CP] Check Pods Manifest.lock */,
 				974FFB511EAA072E00B2A3E7 /* Sources */,
 				974FFB521EAA072E00B2A3E7 /* Frameworks */,
 				974FFB531EAA072E00B2A3E7 /* Resources */,
+				A8EB1FA28034C7558C611DE1 /* [CP] Embed Pods Frameworks */,
+				AC182F9A4674FE4BC8869191 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -395,6 +424,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6484FC4E29AEFE384F40E01F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9C1E37F7941E8E3AC1C0DCAF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A8EB1FA28034C7558C611DE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-URWeatherViewTests/Pods-URWeatherViewTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC182F9A4674FE4BC8869191 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-URWeatherViewTests/Pods-URWeatherViewTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6C6661C144B8F1ECDBA1A56 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-URWeatherView/Pods-URWeatherView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		974FFB471EAA072E00B2A3E7 /* Sources */ = {
@@ -547,6 +654,7 @@
 		};
 		974FFB611EAA072E00B2A3E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85F55D5F9154F6EB010DA6BD /* Pods-URWeatherView.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -571,6 +679,7 @@
 		};
 		974FFB621EAA072E00B2A3E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1BBA62BE9723533987DC7C9 /* Pods-URWeatherView.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -595,6 +704,7 @@
 		};
 		974FFB641EAA072E00B2A3E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F9D9D7C291EEC76BC1A83CD /* Pods-URWeatherViewTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 7AX2JZT3L8;
@@ -608,6 +718,7 @@
 		};
 		974FFB651EAA072E00B2A3E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76C683C7430DE7BF7C161987 /* Pods-URWeatherViewTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 7AX2JZT3L8;

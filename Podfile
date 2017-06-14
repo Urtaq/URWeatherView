@@ -6,7 +6,7 @@ target 'URWeatherView' do
   use_frameworks!
 
   # Pods for URWeatherView
-  pod "lottie-ios", :git => "https://github.com/jegumhon/lottie-ios", :branch => "library"
+  pod "lottie-ios", :git => "https://github.com/jegumhon/lottie-ios", :branch => "patch"
 
   target 'URWeatherViewTests' do
     inherit! :search_paths
