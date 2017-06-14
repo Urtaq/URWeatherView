@@ -95,13 +95,16 @@ class ViewController: UIViewController {
             self.btnTwo.isSelected = true
 
             self.mainAnimationView.play()
-            Timer.scheduledTimer(withTimeInterval: 0.32, repeats: false) { (timer) in
-                self.mainAnimationView.pause()
-
-                self.changedMainState()
-            }
+            Timer.scheduledTimer(timeInterval: 0.32, target: self, selector: #selector(handleLottieAnimation), userInfo: nil, repeats: false)
         }
     }
+
+    func handleLottieAnimation() {
+        self.mainAnimationView.pause()
+
+        self.changedMainState()
+    }
+
     @IBAction func changeSpriteKitDebugOption(_ sender: Any) {
         if let segment = sender as? UISegmentedControl {
             let selected: Bool = segment.selectedSegmentIndex == 0

@@ -32,7 +32,7 @@ class URExampleWeatherTableViewCell: UITableViewCell {
         self.lbBirthRateMax.text = "\(self.slBirthRate.maximumValue)"
 
         switch weather {
-        case .lightning:
+        case .lightning, .hot:
             self.slBirthRate.isEnabled = false
         default:
             break

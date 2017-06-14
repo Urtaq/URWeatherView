@@ -29,6 +29,8 @@
 		979726221EF0BE5B007BC0D9 /* URNodeMovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979726161EF0BE5B007BC0D9 /* URNodeMovable.swift */; };
 		979726231EF0BE5B007BC0D9 /* URWeatherScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979726171EF0BE5B007BC0D9 /* URWeatherScene.swift */; };
 		979726251EF0BE79007BC0D9 /* UREffectCloudNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979726241EF0BE79007BC0D9 /* UREffectCloudNode.swift */; };
+		97B97A541EF1413E006B50B7 /* URSnowEmitterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B97A531EF1413E006B50B7 /* URSnowEmitterNode.swift */; };
+		97B97A561EF146DE006B50B7 /* URSnowGroundEmitterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B97A551EF146DE006B50B7 /* URSnowGroundEmitterNode.swift */; };
 		97D6182E1EF0BEAB00A55C00 /* UREffectLightningBoltNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6182B1EF0BEAB00A55C00 /* UREffectLightningBoltNode.swift */; };
 		97D6182F1EF0BEAB00A55C00 /* UREffectLightningLineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6182C1EF0BEAB00A55C00 /* UREffectLightningLineNode.swift */; };
 		97D618301EF0BEAB00A55C00 /* UREffectLightningNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6182D1EF0BEAB00A55C00 /* UREffectLightningNode.swift */; };
@@ -87,6 +89,8 @@
 		979726161EF0BE5B007BC0D9 /* URNodeMovable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URNodeMovable.swift; path = URWeatherView/SpriteAssets/URNodeMovable.swift; sourceTree = SOURCE_ROOT; };
 		979726171EF0BE5B007BC0D9 /* URWeatherScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URWeatherScene.swift; path = URWeatherView/SpriteAssets/URWeatherScene.swift; sourceTree = SOURCE_ROOT; };
 		979726241EF0BE79007BC0D9 /* UREffectCloudNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectCloudNode.swift; path = URWeatherView/Effect/UREffectCloudNode.swift; sourceTree = SOURCE_ROOT; };
+		97B97A531EF1413E006B50B7 /* URSnowEmitterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URSnowEmitterNode.swift; path = URWeatherView/SpriteAssets/URSnowEmitterNode.swift; sourceTree = SOURCE_ROOT; };
+		97B97A551EF146DE006B50B7 /* URSnowGroundEmitterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URSnowGroundEmitterNode.swift; path = URWeatherView/SpriteAssets/URSnowGroundEmitterNode.swift; sourceTree = SOURCE_ROOT; };
 		97D6182B1EF0BEAB00A55C00 /* UREffectLightningBoltNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectLightningBoltNode.swift; path = URWeatherView/Effect/UREffectLightningBoltNode.swift; sourceTree = SOURCE_ROOT; };
 		97D6182C1EF0BEAB00A55C00 /* UREffectLightningLineNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectLightningLineNode.swift; path = URWeatherView/Effect/UREffectLightningLineNode.swift; sourceTree = SOURCE_ROOT; };
 		97D6182D1EF0BEAB00A55C00 /* UREffectLightningNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectLightningNode.swift; path = URWeatherView/Effect/UREffectLightningNode.swift; sourceTree = SOURCE_ROOT; };
@@ -183,7 +187,9 @@
 				979726111EF0BE5B007BC0D9 /* MyParticleRainGround.sks */,
 				979726121EF0BE5B007BC0D9 /* MyParticleSmoke.sks */,
 				979726131EF0BE5B007BC0D9 /* MyParticleSnow.sks */,
+				97B97A531EF1413E006B50B7 /* URSnowEmitterNode.swift */,
 				979726141EF0BE5B007BC0D9 /* MyParticleSnowGround.sks */,
+				97B97A551EF146DE006B50B7 /* URSnowGroundEmitterNode.swift */,
 				979726151EF0BE5B007BC0D9 /* MyScene.sks */,
 			);
 			name = SpriteKitAssets;
@@ -436,9 +442,11 @@
 				97D618411EF0BEC900A55C00 /* URRGBToneCurveFilter.swift in Sources */,
 				97D6182E1EF0BEAB00A55C00 /* UREffectLightningBoltNode.swift in Sources */,
 				97D618301EF0BEAB00A55C00 /* UREffectLightningNode.swift in Sources */,
+				97B97A561EF146DE006B50B7 /* URSnowGroundEmitterNode.swift in Sources */,
 				979726231EF0BE5B007BC0D9 /* URWeatherScene.swift in Sources */,
 				97D6184E1EF0BF0600A55C00 /* URFilterImageView.swift in Sources */,
 				97D618441EF0BEC900A55C00 /* URToneCurveFilter.swift in Sources */,
+				97B97A541EF1413E006B50B7 /* URSnowEmitterNode.swift in Sources */,
 				97D618401EF0BEC900A55C00 /* URFrostedGlassFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

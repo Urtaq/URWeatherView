@@ -147,19 +147,20 @@ public enum URWeatherType: String {
     }
 
     public var backgroundImage: UIImage? {
+        let bundle = Bundle(for: URWeatherScene.self)
         switch self {
         case .snow:
-            return #imageLiteral(resourceName: "snow")
+            return UIImage(named: "snow", in: bundle, compatibleWith: nil)!
         case .rain:
-            return #imageLiteral(resourceName: "rain")
+            return UIImage(named: "rain", in: bundle, compatibleWith: nil)!
         case .dust:
-            return #imageLiteral(resourceName: "yellowDust2")
+            return UIImage(named: "yellowDust2", in: bundle, compatibleWith: nil)!
         case .dust2:
-            return #imageLiteral(resourceName: "dustFrame")
+            return UIImage(named: "dustFrame", in: bundle, compatibleWith: nil)!
         case .lightning:
-            return #imageLiteral(resourceName: "darkCloud_00000")
+            return UIImage(named: "darkCloud_00000", in: bundle, compatibleWith: nil)!
         case .hot:
-            return #imageLiteral(resourceName: "sunHot")
+            return UIImage(named: "sunHot", in: bundle, compatibleWith: nil)!
         default:
             return nil
         }
@@ -436,6 +437,7 @@ open class URWeatherScene: SKScene, URNodeMovable {
         }
         switch self.weatherType {
         case .snow:
+            self.emitter = URSnowEmitterNode()
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
             let timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(changeXAcceleration), userInfo: nil, repeats: true)
@@ -510,7 +512,8 @@ open class URWeatherScene: SKScene, URNodeMovable {
 
             self.subGroundEmitters = [SKEmitterNode]()
             for i in 0 ..< self.subGroundEmitterOptions.count {
-                let subGroundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)!
+//                let subGroundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)!
+                let subGroundEmitter = URSnowGroundEmitterNode()
 
                 subGroundEmitter.particlePositionRange = CGVector(dx: self.size.width * self.subGroundEmitterOptions[i].rangeRatio, dy: subGroundEmitter.particlePositionRange.dy)
                 subGroundEmitter.position = self.subGroundEmitterOptions[i].position

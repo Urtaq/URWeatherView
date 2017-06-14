@@ -15,15 +15,16 @@ enum UREffectCloudType: Int {
     case type04 = 4
 
     var texture: SKTexture {
+        let bundle = Bundle(for: UREffectCloudNode.self)
         switch self {
         case .type01:
-            return SKTexture(image: #imageLiteral(resourceName: "cloud_01"))
+            return SKTexture(image: UIImage(named: "cloud_01", in: bundle, compatibleWith: nil)!)
         case .type02:
-            return SKTexture(image: #imageLiteral(resourceName: "cloud_02"))
+            return SKTexture(image: UIImage(named: "cloud_02", in: bundle, compatibleWith: nil)!)
         case .type03:
-            return SKTexture(image: #imageLiteral(resourceName: "cloud_03"))
+            return SKTexture(image: UIImage(named: "cloud_03", in: bundle, compatibleWith: nil)!)
         case .type04:
-            return SKTexture(image: #imageLiteral(resourceName: "cloud_04"))
+            return SKTexture(image: UIImage(named: "cloud_04", in: bundle, compatibleWith: nil)!)
         }
     }
 }
