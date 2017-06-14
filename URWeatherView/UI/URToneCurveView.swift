@@ -55,12 +55,17 @@ open class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigatio
         return self.graphViewForBlue.curveRelativeVectorPoints
     }
 
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        guard let _ = Bundle.main.loadNibNamed("URToneCurveView", owner: self, options: nil) else {
-            fatalError("Loading Nib is failed!!")
-        }
+        let bundle = Bundle(for: self.classForCoder)
+        let nib = UINib(nibName: "URToneCurveView", bundle: bundle)
+        nib.instantiate(withOwner: self, options: nil)
+
         self.addSubview(self.view)
         self.view.frame = self.bounds
 

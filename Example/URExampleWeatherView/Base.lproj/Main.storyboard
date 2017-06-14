@@ -335,7 +335,7 @@
                                                     <constraint firstAttribute="width" secondItem="luP-hx-kZF" secondAttribute="height" multiplier="360:239" id="vQc-7P-DFT"/>
                                                 </constraints>
                                             </imageView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geO-1i-H92" customClass="URToneCurveView" customModule="URExampleWeatherView" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geO-1i-H92" customClass="URToneCurveView" customModule="URWeatherView">
                                                 <rect key="frame" x="15" y="15" width="345" height="317"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
@@ -450,6 +450,6 @@
         <image name="img_back" width="720" height="478"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lse-aC-7Kn"/>
+        <segue reference="Ms6-ze-dLR"/>
     </inferredMetricsTieBreakers>
 </document>
