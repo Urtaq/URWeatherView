@@ -8,9 +8,9 @@
 
 import Lottie
 
-public class URLOTAnimationView: LOTAnimationView, URFilterAppliable {
-    public var originalImages: [UIImage]!
-    public var effectTimer: Timer!
+open class URLOTAnimationView: LOTAnimationView, URFilterAppliable {
+    open var originalImages: [UIImage]!
+    open var effectTimer: Timer!
 }
 
 struct AssociatedKey {

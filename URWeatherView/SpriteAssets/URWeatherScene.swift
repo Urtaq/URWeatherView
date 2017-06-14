@@ -253,12 +253,12 @@ public struct URWeatherGroundEmitterOption {
     }
 }
 
-public class URWeatherScene: SKScene, URNodeMovable {
+open class URWeatherScene: SKScene, URNodeMovable {
     fileprivate var emitter: SKEmitterNode!
     fileprivate var subEmitter: SKEmitterNode!
     fileprivate var groundEmitter: SKEmitterNode!
     fileprivate var subGroundEmitters: [SKEmitterNode]!
-    public var subGroundEmitterOptions: [URWeatherGroundEmitterOption]! {
+    open var subGroundEmitterOptions: [URWeatherGroundEmitterOption]! {
         didSet {
             self.stopGroundEmitter()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -269,11 +269,11 @@ public class URWeatherScene: SKScene, URNodeMovable {
 
     private lazy var timers: [Timer] = [Timer]()
 
-    public var weatherType: URWeatherType = .none
+    open var weatherType: URWeatherType = .none
     var particleColor: UIColor!
-    public var isGraphicsDebugOptionEnabled: Bool = false
+    open var isGraphicsDebugOptionEnabled: Bool = false
 
-    public var extraEffectBlock: ((UIImage?, CGFloat) -> Void)?
+    open var extraEffectBlock: ((UIImage?, CGFloat) -> Void)?
 
     var lastLocation: CGPoint = .zero {
         didSet {
@@ -294,7 +294,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     }
 
     /// switch the SpriteKit debug options
-    public func enableDebugOptions(needToShow: Bool) {
+    open func enableDebugOptions(needToShow: Bool) {
         self.isGraphicsDebugOptionEnabled = needToShow
         guard self.emitter != nil else { return }
 
@@ -306,7 +306,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     }
 
     /// setter of the particle birth rate
-    public var birthRate: CGFloat = 0.0 {
+    open var birthRate: CGFloat = 0.0 {
         didSet {
             if self.emitter != nil {
                 self.emitter.particleBirthRate = self.birthRate
@@ -412,7 +412,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     }
 
     /// start the whole weather scene
-    public func startScene(_ weather: URWeatherType = .snow, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
+    open func startScene(_ weather: URWeatherType = .snow, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
         self.weatherType = weather
 
         switch weather {
@@ -438,17 +438,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
         case .snow:
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
-            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
-                if self.emitter.particleBirthRate <= 40.0 {
-                    if self.emitter.xAcceleration == -3 {
-                        self.emitter.xAcceleration = 3
-                    } else {
-                        self.emitter.xAcceleration = -3
-                    }
-                } else {
-                    self.emitter.xAcceleration = 0
-                }
-            })
+            let timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(changeXAcceleration), userInfo: nil, repeats: true)
             self.timers.append(timer)
         case .comet:
             self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
@@ -467,13 +457,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
 
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: self.view!.bounds.height)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.midY)
-            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { (timer) in
-                if self.emitter.yAcceleration == -10 {
-                    self.emitter.yAcceleration = 10
-                } else {
-                    self.emitter.yAcceleration = -10
-                }
-            })
+            let timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(changeXAcceleration), userInfo: nil, repeats: true)
             self.timers.append(timer)
 
 //            self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
@@ -492,6 +476,29 @@ public class URWeatherScene: SKScene, URNodeMovable {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.startGroundEmitter()
+        }
+    }
+
+    @objc private func changeXAcceleration() {
+        switch self.weatherType {
+        case .snow:
+            if self.emitter.particleBirthRate <= 40.0 {
+                if self.emitter.xAcceleration == -3 {
+                    self.emitter.xAcceleration = 3
+                } else {
+                    self.emitter.xAcceleration = -3
+                }
+            } else {
+                self.emitter.xAcceleration = 0
+            }
+        case .dust, .dust2:
+            if self.emitter.yAcceleration == -10 {
+                self.emitter.yAcceleration = 10
+            } else {
+                self.emitter.yAcceleration = -10
+            }
+        default:
+            break
         }
     }
 
@@ -553,7 +560,7 @@ public class URWeatherScene: SKScene, URNodeMovable {
     }
 
     /// remove the whole scene
-    public func stopScene() {
+    open func stopScene() {
         self.weatherType = .none
         self.particleColor = nil
 
@@ -612,19 +619,19 @@ public class URWeatherScene: SKScene, URNodeMovable {
 
 extension URWeatherScene {
 
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.weatherType == .cloudy {
             self.handleTouch(touches)
         }
     }
 
-    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.weatherType == .cloudy {
             self.handleTouch(touches)
         }
     }
 
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.weatherType == .cloudy {
             self.handleTouch(touches, isEnded: true)
         } else if self.weatherType == .comet {

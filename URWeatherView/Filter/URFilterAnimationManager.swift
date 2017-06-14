@@ -9,7 +9,7 @@
 import Foundation
 
 public typealias URFilterAnimationFireBlock = (Double) -> Void
-public class URFilterAnimationManager {
+open class URFilterAnimationManager {
     var displayLink: CADisplayLink!
     var duration: TimeInterval = 1.0
     var transitionStartTime: CFTimeInterval = CACurrentMediaTime()

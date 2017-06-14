@@ -10,7 +10,7 @@ import Foundation
 
 let URKernelShaderkWaveWarp: String = "URKernelShaderWaveWarp.cikernel"
 
-public class URWaveWarpFilter: CIFilter, URFilter {
+open class URWaveWarpFilter: CIFilter, URFilter {
     var inputImage: CIImage?
     var customKernel: CIKernel?
     /// [sampler: CISampler, progress: TimeInterval, velocity: Double, wRatio: Double, hRatio: Double]
@@ -58,11 +58,11 @@ public class URWaveWarpFilter: CIFilter, URFilter {
         self.customAttributes?.append(Double.pi)
     }
 
-    override public var outputImage: CIImage? {
+    override open var outputImage: CIImage? {
         return self.applyFilter()
     }
 
-    public var outputCGImage: CGImage? {
+    open var outputCGImage: CGImage? {
         let context = CIContext(options: nil)
         guard let output = self.outputImage, let resultCGImage = context.createCGImage(output, from: output.extent) else { return nil }
 

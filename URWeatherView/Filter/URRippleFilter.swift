@@ -10,7 +10,7 @@ import Foundation
 
 let URKernelShaderkRipple: String = "URKernelShaderRipple.cikernel"
 
-public class URRippleFilter: CIFilter, URFilter {
+open class URRippleFilter: CIFilter, URFilter {
     var inputImage: CIImage?
     var customKernel: CIKernel?
     /// [sampler: CISampler, time: TimeInterval]
@@ -52,11 +52,11 @@ public class URRippleFilter: CIFilter, URFilter {
         self.customAttributes = inputValues
     }
 
-    override public var outputImage: CIImage? {
+    override open var outputImage: CIImage? {
         return self.applyFilter()
     }
 
-    public var outputCGImage: CGImage? {
+    open var outputCGImage: CGImage? {
         let context = CIContext(options: nil)
         guard let output = self.outputImage, let resultCGImage = context.createCGImage(output, from: output.extent) else { return nil }
 

@@ -1,5 +1,5 @@
 //
-//  URToneCurveImageView.swift
+//  URFilterImageView.swift
 //  URExampleWeatherView
 //
 //  Created by DongSoo Lee on 2017. 5. 15..
@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class URToneCurveImageView: UIImageView, URFilterAppliable {
-    public var originalImages: [UIImage]!
-    public var effectTimer: Timer!
+open class URFilterImageView: UIImageView, URFilterAppliable {
+    open var originalImages: [UIImage]!
+    open var effectTimer: Timer!
 
     var animationManager: URFilterAnimationManager!
 
-    override public var image: UIImage? {
+    override open var image: UIImage? {
         didSet {
             if let effectLayers = self.layer.sublayers {
                 for sublayer in effectLayers {
@@ -25,7 +25,7 @@ public class URToneCurveImageView: UIImageView, URFilterAppliable {
     }
 }
 
-extension URFilterAppliable where Self: URToneCurveImageView {
+extension URFilterAppliable where Self: URFilterImageView {
     public func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval, userInfo: [String: Any]! = nil) {
         guard imageAssets.count >= 2 else { return }
         let layer1: CALayer = CALayer()

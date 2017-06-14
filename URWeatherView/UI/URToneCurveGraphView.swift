@@ -23,7 +23,7 @@ let DefaultToneCurveInputs: [CGPoint] = [.zero
     , CGPoint(x: 0.75, y: 0.75)
     , CGPoint(x: 1.0, y: 1.0)]
 
-public class URToneCurveGraphView: UIView {
+open class URToneCurveGraphView: UIView {
     enum URToneCurveColor {
         case `default`
         case red

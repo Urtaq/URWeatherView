@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+open class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet var view: UIView!
 
     @IBOutlet var graphView: URToneCurveGraphView!
@@ -35,23 +35,23 @@ public class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigat
         }
     }
 
-    public var setImageBlock: ((UIImage) -> Void)?
-    public var applyBlock: ((String) -> Void)?
-    public var parentViewController: UIViewController!
+    open var setImageBlock: ((UIImage) -> Void)?
+    open var applyBlock: ((String) -> Void)?
+    open var parentViewController: UIViewController!
 
-    public var vectorPoints: [CGPoint] {
+    open var vectorPoints: [CGPoint] {
         return self.graphView.curveRelativeVectorPoints
     }
 
-    public var vectorPointsForRed: [CGPoint] {
+    open var vectorPointsForRed: [CGPoint] {
         return self.graphViewForRed.curveRelativeVectorPoints
     }
 
-    public var vectorPointsForGreen: [CGPoint] {
+    open var vectorPointsForGreen: [CGPoint] {
         return self.graphViewForGreen.curveRelativeVectorPoints
     }
 
-    public var vectorPointsForBlue: [CGPoint] {
+    open var vectorPointsForBlue: [CGPoint] {
         return self.graphViewForBlue.curveRelativeVectorPoints
     }
 
@@ -67,7 +67,7 @@ public class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigat
         self.selectedGraphView = self.graphView
     }
 
-    public func initView() {
+    open func initView() {
         self.layoutIfNeeded()
 
         self.btnApply.layer.cornerRadius = 4.0
@@ -303,7 +303,7 @@ public class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigat
     }
 
     // MARK: - UIImagePickerControllerDelegate
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    open func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("info is \(info)")
 
         defer {
