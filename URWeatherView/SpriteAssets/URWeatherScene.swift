@@ -240,13 +240,13 @@ public struct URWeatherGroundEmitterOption {
     var rangeRatio: CGFloat = 0.117
     var angle: CGFloat
 
-    init(position: CGPoint, rangeRatio: CGFloat = 0.117, degree: CGFloat = -29.0) {
+    public init(position: CGPoint, rangeRatio: CGFloat = 0.117, degree: CGFloat = -29.0) {
         self.position = position
         self.rangeRatio = rangeRatio
         self.angle = degree.degreesToRadians
     }
 
-    init(position: CGPoint, rangeRatio: CGFloat = 0.117, radian: CGFloat) {
+    public init(position: CGPoint, rangeRatio: CGFloat = 0.117, radian: CGFloat) {
         self.position = position
         self.rangeRatio = rangeRatio
         self.angle = radian
