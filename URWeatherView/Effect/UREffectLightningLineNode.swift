@@ -10,8 +10,8 @@ import SpriteKit
 
 /// draw the lightning line
 class UREffectLightningLineNode: SKNode {
-    static let textureLightningHalfCircle: SKTexture = SKTexture(image: #imageLiteral(resourceName: "lightning_half_circle"))
-    static let textureLightningSegment: SKTexture = SKTexture(image: #imageLiteral(resourceName: "lightning_segment"))
+    static let textureLightningHalfCircle: SKTexture = SKTexture(image: UIImage(named: "lightning_half_circle", in: Bundle(for: UREffectLigthningNode.self), compatibleWith: nil)!)
+    static let textureLightningSegment: SKTexture = SKTexture(image: UIImage(named: "lightning_segment", in: Bundle(for: UREffectLigthningNode.self), compatibleWith: nil)!)
 
     var startPoint: CGPoint = .zero
     var endPoint: CGPoint = .zero

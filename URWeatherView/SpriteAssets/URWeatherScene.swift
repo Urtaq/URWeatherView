@@ -357,7 +357,7 @@ open class URWeatherScene: SKScene, URNodeMovable {
         var cloudNodes: [UREffectCloudNode] = [UREffectCloudNode]()
 
         let makeAction = SKAction.run {
-            cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: -0.4, y: -0.2, width: 1.3, height: 0.15), on: self.view!, movingAngleInDegree: 30.0, movingDuration: duration)
+            cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: -0.8, y: -0.2, width: 1.7, height: 0.15), on: self.view!, movingAngleInDegree: 30.0, movingDuration: duration)
             cloudNodes = cloudNodes.sorted(by: >)
 
             for cloudNode in cloudNodes {
@@ -368,15 +368,15 @@ open class URWeatherScene: SKScene, URNodeMovable {
 //                    self.movableNodes.append(cloudNode)
             }
         }
-        let waitAction = SKAction.wait(forDuration: duration + 1.0)
-        let destroyAction = SKAction.run {
+        let waitAction = SKAction.wait(forDuration: duration * 2.0)
+        let fadeOutAction = SKAction.run {
             for cloudNode in cloudNodes {
-                cloudNode.removeFromParent()
+                cloudNode.run(SKAction.fadeOut(withDuration: 1.0))
             }
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-            self.run(SKAction.repeatForever(SKAction.sequence([makeAction, waitAction, destroyAction])), withKey: self.weatherType.name + "\(index)")
+            self.run(SKAction.repeatForever(SKAction.sequence([makeAction, waitAction, fadeOutAction])), withKey: self.weatherType.name + "\(index)")
         }
     }
 
@@ -406,7 +406,7 @@ open class URWeatherScene: SKScene, URNodeMovable {
             self.run(SKAction.repeatForever(SKAction.sequence(actions)), withKey: weather.name)
         case .cloudy:
             self.drawCloudEffect(duration: duration, interval: 0.0, index: 1)
-            self.drawCloudEffect(duration: duration, interval: duration * 0.6, index: 2)
+            self.drawCloudEffect(duration: duration, interval: duration + 0.5, index: 2)
         default:
             break
         }
@@ -474,6 +474,9 @@ open class URWeatherScene: SKScene, URNodeMovable {
             }
             self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
             self.subEmitter = SKEmitterNode(fileNamed: weatherType.rawValue)
+            if self.subEmitter == nil {
+                self.subEmitter = URBurningCometEmitterNode()
+            }
 
             self.subEmitter.position = CGPoint(x: self.view!.bounds.width, y: 0)
             self.subEmitter.emissionAngle = 330.0 * CGFloat.pi / 180.0
@@ -549,7 +552,7 @@ open class URWeatherScene: SKScene, URNodeMovable {
 
             self.subGroundEmitters = [SKEmitterNode]()
             for i in 0 ..< self.subGroundEmitterOptions.count {
-                let subGroundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)!
+                let subGroundEmitter = URRainGroundEmitterNode()
 
                 subGroundEmitter.particlePositionRange = CGVector(dx: self.size.width * self.subGroundEmitterOptions[i].rangeRatio, dy: 7.5)
                 subGroundEmitter.position = self.subGroundEmitterOptions[i].position

@@ -243,7 +243,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     let lightningShowTimes = [times[0] - 0.005, times[4] - 0.005, times[7] - 0.005, times[10] - 0.005, times[13] - 0.005, times[16] - 0.005, times[19] - 0.005, times[22] - 0.005]
                     let duration: TimeInterval = 6.0
-                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: [#imageLiteral(resourceName: "darkCity_00000"), #imageLiteral(resourceName: "darkCity2_00006")], duration: duration,
+                    let bundle = Bundle(for: URWeatherScene.self)
+                    let imageDark = UIImage(named: "darkCity_00000", in: bundle, compatibleWith: nil)!
+                    let imageLight = UIImage(named: "darkCity2_00006", in: bundle, compatibleWith: nil)!
+                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: [imageDark, imageLight], duration: duration,
                                                                        userInfo: ["times": times])
                     if let filterValues = URWeatherType.lightning.imageFilterValues {
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
@@ -277,7 +280,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     self.weatherScene.stopScene()
                     self.weatherScene.isGraphicsDebugOptionEnabled = self.segment.selectedSegmentIndex == 0
-                    self.weatherScene.startScene(.cloudy, duration: 63.0)
+                    self.weatherScene.startScene(.cloudy, duration: 33.0)
                 case .comet:
                     self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.image = backgroundImage

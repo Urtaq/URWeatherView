@@ -25,8 +25,8 @@ open class URBurningCometEmitterNode: SKEmitterNode {
         self.particleLifetimeRange = 0.0
         self.particlePositionRange = CGVector(dx: 5.0, dy: 5.0)
         self.zPosition = 0.0
-        self.emissionAngle = 150.0
-        self.emissionAngleRange = 20.054
+        self.emissionAngle = CGFloat(150.0 * .pi / 180.0)
+        self.emissionAngleRange = CGFloat(20.054 * .pi / 180.0)
         self.particleSpeed = 100.0
         self.particleSpeedRange = 50.0
         self.xAcceleration = 0.0

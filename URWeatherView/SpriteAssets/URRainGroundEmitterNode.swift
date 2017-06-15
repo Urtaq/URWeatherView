@@ -25,8 +25,8 @@ open class URRainGroundEmitterNode: SKEmitterNode {
         self.particleLifetimeRange = 0.0
         self.particlePositionRange = CGVector(dx: 363.44, dy: 0.0)
         self.zPosition = 0.0
-        self.emissionAngle = 269.863
-        self.emissionAngleRange = 22.918
+        self.emissionAngle = CGFloat(269.863 * .pi / 180.0)
+        self.emissionAngleRange = CGFloat(22.918 * .pi / 180.0)
         self.particleSpeed = 5.0
         self.particleSpeedRange = 5.0
         self.xAcceleration = 0.0

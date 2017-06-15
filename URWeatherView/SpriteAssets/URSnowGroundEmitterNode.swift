@@ -25,7 +25,7 @@ open class URSnowGroundEmitterNode: SKEmitterNode {
         self.particleLifetimeRange = 5.0
         self.particlePositionRange = CGVector(dx: 100.0, dy: 7.5)
         self.zPosition = 0.0
-        self.emissionAngle = -90.0
+        self.emissionAngle = CGFloat(-90.0 * .pi / 180.0)
         self.emissionAngleRange = 0.0
         self.particleSpeed = 0.1
         self.particleSpeedRange = 0.1
@@ -34,7 +34,7 @@ open class URSnowGroundEmitterNode: SKEmitterNode {
         self.particleAlpha = 0.1
         self.particleAlphaRange = 0.3
         self.particleAlphaSpeed = 0.3
-        self.particleScale = 0.1
+        self.particleScale = 0.06
         self.particleScaleRange = 0.1
         self.particleScaleSpeed = 0.0
         self.particleRotation = 0.0

@@ -30,10 +30,17 @@ enum UREffectCloudType: Int {
 }
 
 struct UREffectCloudOption {
+    /// emittable AreaRatio
     var emittableArea: CGRect
+
     var movingAngle: CGFloat
+
     var textureScaleRatio: CGFloat = 0.3
+
     var movingDuration: TimeInterval = 5.0
+
+    static let DefaultSpeedCoefficient: CGFloat = 0.009
+
 //    var makingCount: UInt32 = 10
 //    var isRandomCountInMax: Bool = true
 
@@ -53,11 +60,6 @@ struct UREffectCloudOption {
 
 /// create a sprite node of cloud which texture is random
 class UREffectCloudNode: SKSpriteNode {
-    static let textureClouds: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "cloud_01")),
-                                             SKTexture(image: #imageLiteral(resourceName: "cloud_02")),
-                                             SKTexture(image: #imageLiteral(resourceName: "cloud_03")),
-                                             SKTexture(image: #imageLiteral(resourceName: "cloud_04"))]
-
     class func makeClouds(maxCount: UInt32, isRandomCountInMax: Bool, emittableAreaRatio area: CGRect, on scene: SKView, movingAngleInDegree: CGFloat, movingDuration: TimeInterval = 5.0) -> [UREffectCloudNode] {
         return UREffectCloudNode.makeClouds(maxCount: maxCount, isRandomCountInMax: isRandomCountInMax, emittableAreaRatio: area, on: scene, movingAngleInRadian: movingAngleInDegree.degreesToRadians)
     }
@@ -127,19 +129,23 @@ class UREffectCloudNode: SKSpriteNode {
 
         let actionFadeIn: SKAction = SKAction.fadeIn(withDuration: 0.5)
 
-        let actionMoveToDestination: SKAction = SKAction.move(to: self.destinationPoint, duration: self.option.movingDuration)
+        let speedCoefficient: CGFloat = CGFloat(arc4random_uniform(5) + 4) * UREffectCloudOption.DefaultSpeedCoefficient
+        let actionMoveToDestination: SKAction = SKAction.move(to: self.destinationPoint, duration: self.option.movingDuration / Double(speedCoefficient * 10.0))
 
-        let speedCoefficient: CGFloat = CGFloat(arc4random_uniform(3)) * 0.05
-        actionMoveToDestination.speed = 0.1 * speedCoefficient == 0.0 ? 0.1 : speedCoefficient
+        actionMoveToDestination.speed = speedCoefficient
         let actionFadeOut2: SKAction = SKAction.fadeOut(withDuration: 0.5)
 
-        let startPoint: CGPoint = self.emittingPosition
-        let actionMoveToStarting: SKAction = SKAction.move(to: startPoint, duration: 0.0)
-
         if isRepeat {
+            let startPoint: CGPoint = self.emittingPosition
+            let actionMoveToStarting: SKAction = SKAction.move(to: startPoint, duration: 0.0)
+
             self.run(SKAction.repeatForever(SKAction.sequence([actionFadeOut, actionFadeIn, actionMoveToDestination, actionFadeOut2, actionMoveToStarting])))
         } else {
-            self.run(SKAction.sequence([actionFadeOut, actionFadeIn, actionMoveToDestination, actionFadeOut2, actionMoveToStarting]))
+            let actionDestroy: SKAction = SKAction.run {
+                self.removeFromParent()
+            }
+
+            self.run(SKAction.sequence([actionFadeOut, actionFadeIn, actionMoveToDestination, actionFadeOut2, actionDestroy]))
         }
     }
 

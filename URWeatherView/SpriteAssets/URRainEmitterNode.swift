@@ -25,7 +25,7 @@ open class URRainEmitterNode: SKEmitterNode {
         self.particleLifetimeRange = 0.0
         self.particlePositionRange = CGVector(dx: 600.0, dy: 0.0)
         self.zPosition = 0.0
-        self.emissionAngle = 240.0
+        self.emissionAngle = CGFloat(240.0 * .pi / 180.0)
         self.emissionAngleRange = 0.0
         self.particleSpeed = 200.0
         self.particleSpeedRange = 150.0
@@ -37,7 +37,7 @@ open class URRainEmitterNode: SKEmitterNode {
         self.particleScale = 0.1
         self.particleScaleRange = 0.05
         self.particleScaleSpeed = 0.0
-        self.particleRotation = -38.0
+        self.particleRotation = CGFloat(-38.0 * .pi / 180.0)
         self.particleRotationRange = 0.0
         self.particleRotationSpeed = 0.0
         self.particleColorBlendFactor = 0.0
