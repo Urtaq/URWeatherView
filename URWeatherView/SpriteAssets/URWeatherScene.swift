@@ -437,22 +437,27 @@ open class URWeatherScene: SKScene, URNodeMovable {
         }
         switch self.weatherType {
         case .snow:
-            self.emitter = URSnowEmitterNode()
+            if self.emitter == nil {
+                self.emitter = URSnowEmitterNode()
+            }
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
             let timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(changeXAcceleration), userInfo: nil, repeats: true)
             self.timers.append(timer)
-        case .comet:
-            self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
-            self.subEmitter = SKEmitterNode(fileNamed: weatherType.rawValue)
-
-            self.subEmitter.position = CGPoint(x: self.view!.bounds.width, y: 0)
-            self.subEmitter.emissionAngle = 330.0 * CGFloat.pi / 180.0
-            self.subEmitter.yAcceleration = -100
-
-            self.subEmitter.targetNode = self
-            self.addChild(self.subEmitter)
+        case .rain:
+            if self.emitter == nil {
+                self.emitter = URRainEmitterNode()
+            }
+            self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
+            self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
         case .dust, .dust2:
+            if self.emitter == nil {
+                if self.weatherType == .dust {
+                    self.emitter = URDustEmitterNode()
+                } else if self.weatherType == .dust2 {
+                    self.emitter = URDust2EmitterNode()
+                }
+            }
             if let startBirthRate = self.weatherType.startBirthRate {
                 self.emitter.particleBirthRate = startBirthRate
             }
@@ -463,6 +468,19 @@ open class URWeatherScene: SKScene, URNodeMovable {
             self.timers.append(timer)
 
 //            self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
+        case .comet:
+            if self.emitter == nil {
+                self.emitter = URBurningCometEmitterNode()
+            }
+            self.emitter.position = CGPoint(x: 0, y: self.view!.bounds.height)
+            self.subEmitter = SKEmitterNode(fileNamed: weatherType.rawValue)
+
+            self.subEmitter.position = CGPoint(x: self.view!.bounds.width, y: 0)
+            self.subEmitter.emissionAngle = 330.0 * CGFloat.pi / 180.0
+            self.subEmitter.yAcceleration = -100
+
+            self.subEmitter.targetNode = self
+            self.addChild(self.subEmitter)
         default:
             self.emitter.particlePositionRange = CGVector(dx: particlePositionRangeX, dy: 0)
             self.emitter.position = CGPoint(x: self.view!.bounds.midX, y: self.view!.bounds.height)
@@ -508,11 +526,8 @@ open class URWeatherScene: SKScene, URNodeMovable {
     func startGroundEmitter() {
         switch self.weatherType {
         case .snow:
-//            self.groundEmitter = SKEmitterNode(fileNamed: URWeatherGroundType.snow.rawValue)
-
             self.subGroundEmitters = [SKEmitterNode]()
             for i in 0 ..< self.subGroundEmitterOptions.count {
-//                let subGroundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)!
                 let subGroundEmitter = URSnowGroundEmitterNode()
 
                 subGroundEmitter.particlePositionRange = CGVector(dx: self.size.width * self.subGroundEmitterOptions[i].rangeRatio, dy: subGroundEmitter.particlePositionRange.dy)
@@ -529,7 +544,7 @@ open class URWeatherScene: SKScene, URNodeMovable {
                 self.subGroundEmitters.insert(subGroundEmitter, at: 0)
             }
         case .rain:
-            self.groundEmitter = SKEmitterNode(fileNamed: self.weatherType.ground.rawValue)
+            self.groundEmitter = URRainGroundEmitterNode()
             self.groundEmitter.particleScaleRange = 0.2
 
             self.subGroundEmitters = [SKEmitterNode]()

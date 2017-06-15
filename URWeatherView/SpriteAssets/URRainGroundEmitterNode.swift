@@ -1,14 +1,14 @@
 //
-//  URSnowGroundEmitterNode.swift
+//  URRainGroundEmitterNode.swift
 //  URWeatherView
 //
-//  Created by DongSoo Lee on 2017. 6. 14..
+//  Created by DongSoo Lee on 2017. 6. 15..
 //  Copyright © 2017년 zigbang. All rights reserved.
 //
 
 import SpriteKit
 
-open class URSnowGroundEmitterNode: SKEmitterNode {
+open class URRainGroundEmitterNode: SKEmitterNode {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -16,26 +16,26 @@ open class URSnowGroundEmitterNode: SKEmitterNode {
     public override init() {
         super.init()
 
-        let bundle = Bundle(for: URSnowGroundEmitterNode.self)
-        let particleImage = UIImage(named: "snow_typeB", in: bundle, compatibleWith: nil)!
+        let bundle = Bundle(for: URRainGroundEmitterNode.self)
+        let particleImage = UIImage(named: "spark", in: bundle, compatibleWith: nil)!
         self.particleTexture = SKTexture(image: particleImage)
         self.particleBirthRate = 100.0
 //        self.particleBirthRateMax?
-        self.particleLifetime = 2.0
-        self.particleLifetimeRange = 5.0
-        self.particlePositionRange = CGVector(dx: 100.0, dy: 7.5)
+        self.particleLifetime = 0.1
+        self.particleLifetimeRange = 0.0
+        self.particlePositionRange = CGVector(dx: 363.44, dy: 0.0)
         self.zPosition = 0.0
-        self.emissionAngle = -90.0
-        self.emissionAngleRange = 0.0
-        self.particleSpeed = 0.1
-        self.particleSpeedRange = 0.1
+        self.emissionAngle = 269.863
+        self.emissionAngleRange = 22.918
+        self.particleSpeed = 5.0
+        self.particleSpeedRange = 5.0
         self.xAcceleration = 0.0
         self.yAcceleration = 0.0
-        self.particleAlpha = 0.1
-        self.particleAlphaRange = 0.3
-        self.particleAlphaSpeed = 0.3
-        self.particleScale = 0.1
-        self.particleScaleRange = 0.1
+        self.particleAlpha = 0.8
+        self.particleAlphaRange = 0.2
+        self.particleAlphaSpeed = 0.0
+        self.particleScale = 0.0
+        self.particleScaleRange = 0.15
         self.particleScaleSpeed = 0.0
         self.particleRotation = 0.0
         self.particleRotationRange = 0.0
