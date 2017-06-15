@@ -357,7 +357,7 @@ open class URWeatherScene: SKScene, URNodeMovable {
         var cloudNodes: [UREffectCloudNode] = [UREffectCloudNode]()
 
         let makeAction = SKAction.run {
-            cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: -0.8, y: -0.2, width: 1.7, height: 0.15), on: self.view!, movingAngleInDegree: 30.0, movingDuration: duration)
+            cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, emittableAreaRatio: CGRect(x: -0.8, y: -0.2, width: 1.7, height: 0.3), on: self.view!, movingAngleInDegree: 30.0, movingDuration: duration)
             cloudNodes = cloudNodes.sorted(by: >)
 
             for cloudNode in cloudNodes {
@@ -369,14 +369,9 @@ open class URWeatherScene: SKScene, URNodeMovable {
             }
         }
         let waitAction = SKAction.wait(forDuration: duration * 2.0)
-        let fadeOutAction = SKAction.run {
-            for cloudNode in cloudNodes {
-                cloudNode.run(SKAction.fadeOut(withDuration: 1.0))
-            }
-        }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-            self.run(SKAction.repeatForever(SKAction.sequence([makeAction, waitAction, fadeOutAction])), withKey: self.weatherType.name + "\(index)")
+            self.run(SKAction.repeatForever(SKAction.sequence([makeAction, waitAction])), withKey: self.weatherType.name + "\(index)")
         }
     }
 

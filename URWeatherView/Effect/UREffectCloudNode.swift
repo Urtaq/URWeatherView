@@ -39,7 +39,7 @@ struct UREffectCloudOption {
 
     var movingDuration: TimeInterval = 5.0
 
-    static let DefaultSpeedCoefficient: CGFloat = 0.009
+    static let DefaultSpeedCoefficient: CGFloat = 0.01
 
 //    var makingCount: UInt32 = 10
 //    var isRandomCountInMax: Bool = true
@@ -129,7 +129,7 @@ class UREffectCloudNode: SKSpriteNode {
 
         let actionFadeIn: SKAction = SKAction.fadeIn(withDuration: 0.5)
 
-        let speedCoefficient: CGFloat = CGFloat(arc4random_uniform(5) + 4) * UREffectCloudOption.DefaultSpeedCoefficient
+        let speedCoefficient: CGFloat = CGFloat(arc4random_uniform(5) + 5) * UREffectCloudOption.DefaultSpeedCoefficient
         let actionMoveToDestination: SKAction = SKAction.move(to: self.destinationPoint, duration: self.option.movingDuration / Double(speedCoefficient * 10.0))
 
         actionMoveToDestination.speed = speedCoefficient
