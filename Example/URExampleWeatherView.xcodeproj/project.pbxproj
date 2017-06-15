@@ -46,6 +46,7 @@
 		97A555171ED57FEB00D3A624 /* img_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555111ED57FEB00D3A624 /* img_3.png */; };
 		97A555181ED57FEB00D3A624 /* img_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555121ED57FEB00D3A624 /* img_4.png */; };
 		97A555191ED57FEB00D3A624 /* img_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555131ED57FEB00D3A624 /* img_5.png */; };
+		97B97A641EF28D37006B50B7 /* LottieEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B97A631EF28D37006B50B7 /* LottieEx.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +111,6 @@
 		974FFB171EA9E77600B2A3E7 /* URExampleWeatherViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URExampleWeatherViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFB1B1EA9E77600B2A3E7 /* URExampleWeatherViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URExampleWeatherViewUITests.swift; sourceTree = "<group>"; };
 		974FFB1D1EA9E77600B2A3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		974FFB2A1EA9ECA800B2A3E7 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
 		974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		974FFB301EA9F81B00B2A3E7 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		974FFB3F1EAA017100B2A3E7 /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
@@ -125,6 +125,7 @@
 		97A555111ED57FEB00D3A624 /* img_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_3.png; sourceTree = "<group>"; };
 		97A555121ED57FEB00D3A624 /* img_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_4.png; sourceTree = "<group>"; };
 		97A555131ED57FEB00D3A624 /* img_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_5.png; sourceTree = "<group>"; };
+		97B97A631EF28D37006B50B7 /* LottieEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LottieEx.framework; path = Carthage/Build/iOS/LottieEx.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +146,7 @@
 				9716E1421EDCFA4A00372B48 /* QuartzCore.framework in Frameworks */,
 				9716E1431EDCFA4A00372B48 /* SystemConfiguration.framework in Frameworks */,
 				9716E1441EDCFA4A00372B48 /* UIKit.framework in Frameworks */,
+				97B97A641EF28D37006B50B7 /* LottieEx.framework in Frameworks */,
 				9716E12C1EDCFA0900372B48 /* Accelerate.framework in Frameworks */,
 				9716E1251EDCF94C00372B48 /* GoogleMaps.framework in Frameworks */,
 				9716E1281EDCF97900372B48 /* GoogleMapsBase.framework in Frameworks */,
@@ -182,7 +184,6 @@
 		974FFAEF1EA9E77500B2A3E7 = {
 			isa = PBXGroup;
 			children = (
-				979726091EEFDF20007BC0D9 /* URWeatherView.framework */,
 				974FFAFA1EA9E77500B2A3E7 /* URExampleWeatherView */,
 				974FFB0F1EA9E77500B2A3E7 /* URExampleWeatherViewTests */,
 				974FFB1A1EA9E77600B2A3E7 /* URExampleWeatherViewUITests */,
@@ -240,6 +241,8 @@
 		974FFB291EA9ECA800B2A3E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				97B97A631EF28D37006B50B7 /* LottieEx.framework */,
+				979726091EEFDF20007BC0D9 /* URWeatherView.framework */,
 				9716E12D1EDCFA4A00372B48 /* CoreData.framework */,
 				9716E12E1EDCFA4A00372B48 /* CoreGraphics.framework */,
 				9716E12F1EDCFA4A00372B48 /* CoreLocation.framework */,
@@ -258,7 +261,6 @@
 				9716E1231EDCF94C00372B48 /* GoogleMaps.framework */,
 				9716E1241EDCF94C00372B48 /* GoogleMapsCore.framework */,
 				974FFB3F1EAA017100B2A3E7 /* RevealServer.framework */,
-				974FFB2A1EA9ECA800B2A3E7 /* Lottie.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -436,7 +438,8 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework/",
+				"$(SRCROOT)/Carthage/Build/iOS/LottieEx.framework/",
+				"$(SRCROOT)/Carthage/Build/iOS/URWeatherView.framework/",
 			);
 			outputPaths = (
 			);

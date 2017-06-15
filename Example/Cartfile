@@ -1,2 +1,2 @@
 github "jegumhon/lottie-ios" "patch"
-git "/Users/dongsoolee/URWeatherView" "library"
+github "jegumhon/URWeatherView" "library"

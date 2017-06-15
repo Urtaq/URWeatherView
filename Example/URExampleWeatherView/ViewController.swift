@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Lottie
+import LottieEx
 import SpriteKit
 import URWeatherView
 
