@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "URWeatherView"
-  s.version      = "0.3.2"
+  s.version      = "0.3.3"
   s.summary      = "Show the various weather effects written in Swift3."
 
   # This description is used to generate tags and improve search results.
@@ -109,8 +109,8 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = ["Resources/**/*.cikernel", "URWeatherView/SpriteAssets/*.sks"]
-  s.resource_bundle = { 'URWeatherView' => ['Resources/Assets.xcassets', 'URWeatherView/**/*.xib'] } 
+  s.resources = ["Resources/**/*.cikernel", "URWeatherView/SpriteAssets/*.sks", 'Resources/Assets.xcassets', 'URWeatherView/**/*.xib']
+#  s.resource_bundle = { 'URWeatherView' => ['Resources/Assets.xcassets', 'URWeatherView/**/*.xib'] } 
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

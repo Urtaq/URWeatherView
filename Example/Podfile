@@ -6,7 +6,7 @@ target 'URExampleWeatherView' do
   use_frameworks!
 
   # Pods for URExampleWeatherView
-  pod 'URWeatherView', :path => '../'
+  pod 'URWeatherView'
 
   target 'URExampleWeatherViewTests' do
     inherit! :search_paths
