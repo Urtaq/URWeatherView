@@ -46,7 +46,7 @@
 		97A555171ED57FEB00D3A624 /* img_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555111ED57FEB00D3A624 /* img_3.png */; };
 		97A555181ED57FEB00D3A624 /* img_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555121ED57FEB00D3A624 /* img_4.png */; };
 		97A555191ED57FEB00D3A624 /* img_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555131ED57FEB00D3A624 /* img_5.png */; };
-		97B97A641EF28D37006B50B7 /* LottieEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B97A631EF28D37006B50B7 /* LottieEx.framework */; };
+		97B97A691EF3A942006B50B7 /* LottieEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B97A681EF3A942006B50B7 /* LottieEx.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +125,7 @@
 		97A555111ED57FEB00D3A624 /* img_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_3.png; sourceTree = "<group>"; };
 		97A555121ED57FEB00D3A624 /* img_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_4.png; sourceTree = "<group>"; };
 		97A555131ED57FEB00D3A624 /* img_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_5.png; sourceTree = "<group>"; };
-		97B97A631EF28D37006B50B7 /* LottieEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LottieEx.framework; path = Carthage/Build/iOS/LottieEx.framework; sourceTree = "<group>"; };
+		97B97A681EF3A942006B50B7 /* LottieEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LottieEx.framework; path = Carthage/Build/iOS/LottieEx.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 				9716E1421EDCFA4A00372B48 /* QuartzCore.framework in Frameworks */,
 				9716E1431EDCFA4A00372B48 /* SystemConfiguration.framework in Frameworks */,
 				9716E1441EDCFA4A00372B48 /* UIKit.framework in Frameworks */,
-				97B97A641EF28D37006B50B7 /* LottieEx.framework in Frameworks */,
+				97B97A691EF3A942006B50B7 /* LottieEx.framework in Frameworks */,
 				9716E12C1EDCFA0900372B48 /* Accelerate.framework in Frameworks */,
 				9716E1251EDCF94C00372B48 /* GoogleMaps.framework in Frameworks */,
 				9716E1281EDCF97900372B48 /* GoogleMapsBase.framework in Frameworks */,
@@ -241,7 +241,7 @@
 		974FFB291EA9ECA800B2A3E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97B97A631EF28D37006B50B7 /* LottieEx.framework */,
+				97B97A681EF3A942006B50B7 /* LottieEx.framework */,
 				979726091EEFDF20007BC0D9 /* URWeatherView.framework */,
 				9716E12D1EDCFA4A00372B48 /* CoreData.framework */,
 				9716E12E1EDCFA4A00372B48 /* CoreGraphics.framework */,
@@ -438,8 +438,8 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/LottieEx.framework/",
 				"$(SRCROOT)/Carthage/Build/iOS/URWeatherView.framework/",
+				"$(SRCROOT)/Carthage/Build/iOS/LottieEx.framework/",
 			);
 			outputPaths = (
 			);
