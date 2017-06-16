@@ -1,6 +1,6 @@
 //
 //  URFrostedGlassFilter.swift
-//  URExampleWeatherView
+//  URWeatherView
 //
 //  Created by DongSoo Lee on 2017. 6. 8..
 //  Copyright © 2017년 zigbang. All rights reserved.
@@ -10,41 +10,22 @@ import Foundation
 
 let URKernelShaderkFrostedGlass: String = "URKernelShaderFrostedGlass.cikernel"
 
-open class URFrostedGlassFilter: CIFilter, URFilter {
-    open var inputImage: CIImage?
-    var customKernel: CIKernel?
-    /// [sampler: CISampler, center: CIVector, progress: TimeInterval]
-    var customAttributes: [Any]?
-
-    var extent: CGRect = .zero
-
-    override init() {
-        super.init()
-    }
-
+open class URFrostedGlassFilter: URFilter {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
-        self.init()
-
-        self.extent = frame
-
-        self.extractInputImage(cgImage: cgImage)
-
-        self.loadCIKernel(from: URKernelShaderkFrostedGlass)
-
-        guard inputValues.count == 3 else { return }
-        self.customAttributes = inputValues
-    }
-
-    convenience public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
-        self.init()
-
-        self.extent = frame
-
-        self.extractInputImage(imageView: imageView)
+    /**
+     Initialize CIFilter with **CGImage** and CIKernel shader params
+     - parameters:
+        - frame: The frame rectangle for the input image, measured in points.
+        - cgImage: Core Image of the input image
+        - inputValues: attributes for CIKernel. The format is like below.
+     
+              [sampler: CISampler, center: CIVector, progress: TimeInterval]
+     */
+    required public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
+        super.init(frame: frame, cgImage: cgImage, inputValues: inputValues)
 
         self.loadCIKernel(from: URKernelShaderkFrostedGlass)
 
@@ -52,18 +33,25 @@ open class URFrostedGlassFilter: CIFilter, URFilter {
         self.customAttributes = inputValues
     }
 
-    override open var outputImage: CIImage? {
-        return self.applyFilter()
+    /**
+     Initialize CIFilter with **CGImage** and CIKernel shader params
+     - parameters:
+        - frame: The frame rectangle for the input image, measured in points.
+        - imageView: The UIImageView of the input image
+        - inputValues: attributes for CIKernel. The format is like below.
+
+              [sampler: CISampler, center: CIVector, progress: TimeInterval]
+     */
+    required public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
+        super.init(frame: frame, imageView: imageView, inputValues: inputValues)
+
+        self.loadCIKernel(from: URKernelShaderkFrostedGlass)
+
+        guard inputValues.count == 3 else { return }
+        self.customAttributes = inputValues
     }
 
-    open var outputCGImage: CGImage? {
-        let context = CIContext(options: nil)
-        guard let output = self.outputImage, let resultCGImage = context.createCGImage(output, from: output.extent) else { return nil }
-
-        return resultCGImage
-    }
-
-    func applyFilter() -> CIImage {
+    override func applyFilter() -> CIImage {
         let samplerROI = CGRect(x: 0, y: 0, width: self.inputImage!.extent.width, height: self.inputImage!.extent.height)
         let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
             if samplerIndex == 2 {

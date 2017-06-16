@@ -1,6 +1,6 @@
 //
 //  URWaveWarpFilter.swift
-//  URExampleWeatherView
+//  URWeatherView
 //
 //  Created by DongSoo Lee on 2017. 6. 8..
 //  Copyright © 2017년 zigbang. All rights reserved.
@@ -10,31 +10,35 @@ import Foundation
 
 let URKernelShaderkWaveWarp: String = "URKernelShaderWaveWarp.cikernel"
 
-open class URWaveWarpFilter: CIFilter, URFilter {
-    open var inputImage: CIImage?
-    var customKernel: CIKernel?
-    /// [sampler: CISampler, progress: TimeInterval, velocity: Double, wRatio: Double, hRatio: Double]
-    var customAttributes: [Any]?
-
-    var extent: CGRect = .zero
-
+open class URWaveWarpFilter: URFilter {
     var roiRatio: CGFloat = 1.0
-
-    override init() {
-        super.init()
-    }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience public init(frame: CGRect, cgImage: CGImage, inputValues: [Any], roiRatio: CGFloat = 1.0) {
-        self.init()
+    required public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
+        fatalError("init(frame:cgImage:inputValues:) has not been implemented")
+    }
 
-        self.extent = frame
+    required public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
+        fatalError("init(frame:imageView:inputValues:) has not been implemented")
+    }
+
+    /**
+     Initialize CIFilter with **CGImage** and CIKernel shader params
+     - parameters:
+        - frame: The frame rectangle for the input image, measured in points.
+        - cgImage: Core Image of the input image
+        - inputValues: attributes for CIKernel. The format is like below.
+
+              [sampler: CISampler, progress: TimeInterval, velocity: Double, wRatio: Double, hRatio: Double]
+        - roiRatio: Rect area ratio of Interest.
+     */
+    public init(frame: CGRect, cgImage: CGImage, inputValues: [Any], roiRatio: CGFloat = 1.0) {
+        super.init(frame: frame, cgImage: cgImage, inputValues: inputValues)
+
         self.roiRatio = roiRatio
-
-        self.extractInputImage(cgImage: cgImage)
 
         self.loadCIKernel(from: URKernelShaderkWaveWarp)
 
@@ -43,13 +47,20 @@ open class URWaveWarpFilter: CIFilter, URFilter {
         self.customAttributes?.append(Double.pi)
     }
 
-    convenience public init(frame: CGRect, imageView: UIImageView, inputValues: [Any], roiRatio: CGFloat = 1.0) {
-        self.init()
+    /**
+     Initialize CIFilter with **CGImage** and CIKernel shader params
+     - parameters:
+        - frame: The frame rectangle for the input image, measured in points.
+        - imageView: The UIImageView of the input image
+        - inputValues: attributes for CIKernel. The format is like below.
+     
+              [sampler: CISampler, progress: TimeInterval, velocity: Double, wRatio: Double, hRatio: Double]
+        - roiRatio: Rect area ratio of Interest.
+     */
+    public init(frame: CGRect, imageView: UIImageView, inputValues: [Any], roiRatio: CGFloat = 1.0) {
+        super.init(frame: frame, imageView: imageView, inputValues: inputValues)
 
-        self.extent = frame
         self.roiRatio = roiRatio
-
-        self.extractInputImage(imageView: imageView)
 
         self.loadCIKernel(from: URKernelShaderkWaveWarp)
 
@@ -58,18 +69,7 @@ open class URWaveWarpFilter: CIFilter, URFilter {
         self.customAttributes?.append(Double.pi)
     }
 
-    override open var outputImage: CIImage? {
-        return self.applyFilter()
-    }
-
-    open var outputCGImage: CGImage? {
-        let context = CIContext(options: nil)
-        guard let output = self.outputImage, let resultCGImage = context.createCGImage(output, from: output.extent) else { return nil }
-
-        return resultCGImage
-    }
-
-    func applyFilter() -> CIImage {
+    override func applyFilter() -> CIImage {
 //        let inputWidth: CGFloat = self.inputImage!.extent.size.width;
 
 //        let k: CGFloat = inputWidth / ( 1.0 - 1.0 / UIScreen.main.scale )

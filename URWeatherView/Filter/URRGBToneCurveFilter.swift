@@ -1,6 +1,6 @@
 //
 //  URRGBToneCurveFilter.swift
-//  URExampleWeatherView
+//  URWeatherView
 //
 //  Created by DongSoo Lee on 2017. 6. 7..
 //  Copyright © 2017년 zigbang. All rights reserved.
@@ -10,28 +10,22 @@ import Foundation
 
 let URKernelShaderRGBToneCurve: String = "URKernelShaderRGBToneCurve.cikernel"
 
-open class URRGBToneCurveFilter: CIFilter, URFilter {
-    open var inputImage: CIImage?
-    var customKernel: CIKernel?
-    /// [red: CIImage, green: CIImage, blue: CIImage, CIImage(cgImage: cgImage)]
-    var customAttributes: [Any]?
-
-    var extent: CGRect = .zero
-
-    override init() {
-        super.init()
-    }
-
+open class URRGBToneCurveFilter: URFilter {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
-        self.init()
-
-        self.extent = frame
-
-        self.extractInputImage(cgImage: cgImage)
+    /**
+     Initialize CIFilter with **CGImage** and CIKernel shader params
+     - parameters:
+         - frame: The frame rectangle for the input image, measured in points.
+         - cgImage: Core Image of the input image
+         - inputValues: attributes for CIKernel. The format is like below.
+     
+               [red: CIImage, green: CIImage, blue: CIImage, original: CIImage]
+     */
+    required public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
+        super.init(frame: frame, cgImage: cgImage, inputValues: inputValues)
 
         self.loadCIColorKernel(from: URKernelShaderRGBToneCurve)
 
@@ -39,12 +33,17 @@ open class URRGBToneCurveFilter: CIFilter, URFilter {
         self.customAttributes = inputValues
     }
 
-    convenience public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
-        self.init()
-
-        self.extent = frame
-
-        self.extractInputImage(imageView: imageView)
+    /**
+     Initialize CIFilter with **CGImage** and CIKernel shader params
+     - parameters:
+        - frame: The frame rectangle for the input image, measured in points.
+        - imageView: The UIImageView of the input image
+        - inputValues: attributes for CIKernel. The format is like below.
+     
+              [red: CIImage, green: CIImage, blue: CIImage, original: CIImage]
+     */
+    required public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
+        super.init(frame: frame, imageView: imageView, inputValues: inputValues)
 
         self.loadCIColorKernel(from: URKernelShaderRGBToneCurve)
 
@@ -52,18 +51,7 @@ open class URRGBToneCurveFilter: CIFilter, URFilter {
         self.customAttributes = inputValues
     }
 
-    override open var outputImage: CIImage? {
-        return self.applyFilter()
-    }
-
-    open var outputCGImage: CGImage? {
-        let context = CIContext(options: nil)
-        guard let output = self.outputImage, let resultCGImage = context.createCGImage(output, from: output.extent) else { return nil }
-
-        return resultCGImage
-    }
-
-    func applyFilter() -> CIImage {
+    override func applyFilter() -> CIImage {
         guard let resultImage: CIImage = (self.customKernel as! CIColorKernel).apply(withExtent: self.extent, arguments: self.customAttributes) else {
             fatalError("Filtered Image merging is failed!!")
         }

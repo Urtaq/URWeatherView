@@ -33,6 +33,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIScrollViewDe
             self.txtResultCurve.text = resultString
         }
         self.toneCurveView.setImageBlock = { (image) in
+            self.originalImageView.originalImages = nil
             self.originalImageView.image = image
         }
         self.toneCurveView.parentViewController = self

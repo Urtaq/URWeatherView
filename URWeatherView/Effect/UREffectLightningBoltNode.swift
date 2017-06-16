@@ -1,6 +1,6 @@
 //
 //  UREffectLightningBoltNode.swift
-//  URExampleWeatherView
+//  URWeatherView
 //
 //  Created by DongSoo Lee on 2017. 5. 26..
 //  Copyright © 2017년 zigbang. All rights reserved.

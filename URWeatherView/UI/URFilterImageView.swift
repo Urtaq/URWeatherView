@@ -1,6 +1,6 @@
 //
 //  URFilterImageView.swift
-//  URExampleWeatherView
+//  URWeatherView
 //
 //  Created by DongSoo Lee on 2017. 5. 15..
 //  Copyright © 2017년 zigbang. All rights reserved.

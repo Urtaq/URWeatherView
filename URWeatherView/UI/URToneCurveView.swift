@@ -1,6 +1,6 @@
 //
 //  URToneCurveView.swift
-//  URExampleWeatherView
+//  URWeatherView
 //
 //  Created by DongSoo Lee on 2017. 5. 16..
 //  Copyright © 2017년 zigbang. All rights reserved.
@@ -184,11 +184,11 @@ open class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigatio
         }
 
         DispatchQueue.main.async {
-            self.lbInput0.text = URToneCurveUtil.pointToString(point: points[0])
-            self.lbInput1.text = URToneCurveUtil.pointToString(point: points[1])
-            self.lbInput2.text = URToneCurveUtil.pointToString(point: points[2])
-            self.lbInput3.text = URToneCurveUtil.pointToString(point: points[3])
-            self.lbInput4.text = URToneCurveUtil.pointToString(point: points[4])
+            self.lbInput0.text = URFilterUtil.pointToString(point: points[0])
+            self.lbInput1.text = URFilterUtil.pointToString(point: points[1])
+            self.lbInput2.text = URFilterUtil.pointToString(point: points[2])
+            self.lbInput3.text = URFilterUtil.pointToString(point: points[3])
+            self.lbInput4.text = URFilterUtil.pointToString(point: points[4])
         }
     }
 

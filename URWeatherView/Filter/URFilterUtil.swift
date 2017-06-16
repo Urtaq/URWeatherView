@@ -1,6 +1,6 @@
 //
-//  URToneCurveUtil.swift
-//  URExampleWeatherView
+//  URFilterUtil.swift
+//  URWeatherView
 //
 //  Created by DongSoo Lee on 2017. 5. 16..
 //  Copyright © 2017년 zigbang. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct URToneCurveUtil {
+struct URFilterUtil {
 
     static func roundUp(_ value: Double, roundUpPosition: Int) -> Double {
         let roundUpPositionBy10 = pow(10.0, Double(roundUpPosition))
@@ -16,6 +16,6 @@ struct URToneCurveUtil {
     }
 
     static func pointToString(point: CGPoint) -> String {
-        return "\(URToneCurveUtil.roundUp(Double(point.x), roundUpPosition: 2)), \(URToneCurveUtil.roundUp(Double(point.y), roundUpPosition: 2))"
+        return "\(URFilterUtil.roundUp(Double(point.x), roundUpPosition: 2)), \(URFilterUtil.roundUp(Double(point.y), roundUpPosition: 2))"
     }
 }

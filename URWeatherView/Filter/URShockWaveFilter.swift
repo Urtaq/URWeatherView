@@ -1,6 +1,6 @@
 //
 //  URShockWaveFilter.swift
-//  URExampleWeatherView
+//  URWeatherView
 //
 //  Created by DongSoo Lee on 2017. 6. 8..
 //  Copyright © 2017년 zigbang. All rights reserved.
@@ -10,44 +10,25 @@ import Foundation
 
 let URKernelShaderShockWave: String = "URKernelShaderShockWave.cikernel"
 
-open class URShockWaveFilter: CIFilter, URFilter {
-    open var inputImage: CIImage?
-    var customKernel: CIKernel?
-    /// [sampler: CISampler, center: CIVector, progress: TimeInterval, shocksParams: CIVector]
-    var customAttributes: [Any]?
-
-    var extent: CGRect = .zero
+open class URShockWaveFilter: URFilter {
 
     let shockParams: CIVector = CIVector(x: 10.0, y: 0.8, z: 0.1)
-
-    override init() {
-        super.init()
-    }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
-        self.init()
+    /**
+     Initialize CIFilter with **CGImage** and CIKernel shader params
+     - parameters:
+        - frame: The frame rectangle for the input image, measured in points.
+        - cgImage: Core Image of the input image
+        - inputValues: attributes for CIKernel. The format is like below.
 
-        self.extent = frame
-
-        self.extractInputImage(cgImage: cgImage)
-
-        self.loadCIKernel(from: URKernelShaderShockWave)
-
-        guard inputValues.count == 3 else { return }
-        self.customAttributes = inputValues
-        self.customAttributes?.append(self.shockParams)
-    }
-
-    convenience public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
-        self.init()
-
-        self.extent = frame
-
-        self.extractInputImage(imageView: imageView)
+              [sampler: CISampler, center: CIVector, progress: TimeInterval, shocksParams: CIVector]
+    */
+    required public init(frame: CGRect, cgImage: CGImage, inputValues: [Any]) {
+        super.init(frame: frame, cgImage: cgImage, inputValues: inputValues)
 
         self.loadCIKernel(from: URKernelShaderShockWave)
 
@@ -56,18 +37,26 @@ open class URShockWaveFilter: CIFilter, URFilter {
         self.customAttributes?.append(self.shockParams)
     }
 
-    override open var outputImage: CIImage? {
-        return self.applyFilter()
+    /**
+     Initialize CIFilter with **UIImageView** and CIKernel shader params
+     - parameters:
+        - frame: The frame rectangle for the input image, measured in points.
+        - imageView: The UIImageView of the input image
+        - inputValues: attributes for CIKernel. The format is like below.
+
+              [sampler: CISampler, center: CIVector, progress: TimeInterval, shocksParams: CIVector]
+     */
+    required public init(frame: CGRect, imageView: UIImageView, inputValues: [Any]) {
+        super.init(frame: frame, imageView: imageView, inputValues: inputValues)
+
+        self.loadCIKernel(from: URKernelShaderShockWave)
+
+        guard inputValues.count == 3 else { return }
+        self.customAttributes = inputValues
+        self.customAttributes?.append(self.shockParams)
     }
 
-    open var outputCGImage: CGImage? {
-        let context = CIContext(options: nil)
-        guard let output = self.outputImage, let resultCGImage = context.createCGImage(output, from: output.extent) else { return nil }
-
-        return resultCGImage
-    }
-
-    func applyFilter() -> CIImage {
+    override func applyFilter() -> CIImage {
         let samplerROI = CGRect(x: 0, y: 0, width: self.inputImage!.extent.width, height: self.inputImage!.extent.height)
         let ROICallback: (Int32, CGRect) -> CGRect = { (samplerIndex, destination) in
             if samplerIndex == 2 {
