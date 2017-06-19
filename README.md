@@ -60,7 +60,7 @@ Add the following to your `Podfile`.
 
 Add the following to your `Cartfile`.
 
-    github "jegumhon/URWeatherView", "library"
+    github "jegumhon/URWeatherView"
     
 #### Dependency
 
@@ -71,6 +71,9 @@ Add the following to your `Cartfile`.
 
 See the `Example` folder.  
 Run `pod install` and open the .xcworkspace.  
+(The Example source is made for using Carthage.  
+So, you remove linked framework in `General` of the project settings.  
+And then, you remove the run script of Carthage in `Build Phases` of the project settings.)  
 or  
 Run `carthage update` and open the .xcodeproj.
 
