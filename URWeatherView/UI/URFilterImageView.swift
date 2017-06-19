@@ -175,3 +175,44 @@ extension URFilterAppliable where Self: URFilterImageView {
         block()
     }
 }
+
+extension UIImageView {
+    public func makeGradientMask(startPoint: CGPoint, endPoint: CGPoint, locations: [CGFloat]) -> CALayer {
+        self.layoutIfNeeded()
+        let screenScale = UIScreen.main.scale
+        let selfBounds = self.bounds
+
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        gradientLayer.shouldRasterize = true
+        gradientLayer.rasterizationScale = screenScale
+        gradientLayer.contentsScale = screenScale
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: selfBounds.width, height: selfBounds.height * (startPoint.y + 0.5))
+//        gradientLayer.bounds = CGRect(origin: .zero, size: CGSize(width: self.bounds.width * screenScale, height: self.bounds.height * screenScale))
+
+        var colors: [CGColor] = [CGColor]()
+        for location in locations {
+            colors.append(UIColor(white: 0.0, alpha: 1.0 - location).cgColor)
+        }
+
+        gradientLayer.locations = locations as [NSNumber]
+        gradientLayer.colors = colors
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
+
+        return gradientLayer
+    }
+
+    public func applyGradientMask(startPoint: CGPoint, endPoint: CGPoint, locations: [CGFloat]) -> UIImage? {
+        let gradientMask = self.makeGradientMask(startPoint: startPoint, endPoint: endPoint, locations: locations)
+
+        self.layer.mask = gradientMask
+        
+        return self.image
+    }
+
+    public func removeGradientMask() {
+        if let mask = self.layer.mask, mask is CAGradientLayer {
+            self.layer.mask = nil
+        }
+    }
+}

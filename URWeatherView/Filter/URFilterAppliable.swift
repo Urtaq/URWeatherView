@@ -13,7 +13,7 @@ public protocol URFilterAppliable: class {
     var originalImages: [UIImage]! { get set }
     var effectTimer: Timer! { get set }
 
-    func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval)
+    func applyBackgroundEffect(imageAssets: [UIImage]?, duration: TimeInterval, userInfo: [String: Any]!)
 
     func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!)
     func applyToneCurveFilter(filterValues: [String: [CGPoint]], filterValuesSub: [String: [CGPoint]]?)
@@ -26,7 +26,7 @@ public protocol URFilterAppliable: class {
 }
 
 extension URFilterAppliable {
-    public func applyBackgroundEffect(imageAssets: [UIImage], duration: TimeInterval) {
+    public func applyBackgroundEffect(imageAssets: [UIImage]?, duration: TimeInterval, userInfo: [String: Any]!) {
     }
 
     public func setFilteredImage(curvePoints: [CGPoint], pointsForRed: [CGPoint]!, pointsForGreen: [CGPoint]!, pointsForBlue: [CGPoint]!) {

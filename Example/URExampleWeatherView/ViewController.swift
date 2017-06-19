@@ -169,8 +169,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             cell.removeToneFilterBlock = {
-                self.mainAnimationView.removeToneCurveFilter()
-                self.mainBackgroundImageView.removeToneCurveFilter()
+                self.initMainAnimation()
+                self.mainBackgroundImageView.stop({
+                    self.mainBackgroundImageView.removeToneCurveFilter()
+                    self.mainBackgroundImageView.layer.mask = nil
+                })
             }
 
             cell.birthRateDidChange = { (birthRate) in
@@ -243,10 +246,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
                     let lightningShowTimes = [times[0] - 0.005, times[4] - 0.005, times[7] - 0.005, times[10] - 0.005, times[13] - 0.005, times[16] - 0.005, times[19] - 0.005, times[22] - 0.005]
                     let duration: TimeInterval = 6.0
-                    let bundle = Bundle(for: URWeatherScene.self)
-                    let imageDark = UIImage(named: "darkCity_00000", in: bundle, compatibleWith: nil)!
-                    let imageLight = UIImage(named: "darkCity2_00006", in: bundle, compatibleWith: nil)!
-                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: [imageDark, imageLight], duration: duration,
+//                    let bundle = Bundle(for: URWeatherScene.self)
+//                    let imageDark = UIImage(named: "darkCity_00000", in: bundle, compatibleWith: nil)!
+//                    let imageLight = UIImage(named: "darkCity2_00006", in: bundle, compatibleWith: nil)!
+//                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: [imageDark, imageLight], duration: duration,
+//                                                                       userInfo: ["times": times])
+                    let backgroundImages = self.weatherScene.makeLightningBackgroundEffect(imageView: self.mainBackgroundImageView)
+                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: backgroundImages, duration: duration,
                                                                        userInfo: ["times": times])
                     if let filterValues = URWeatherType.lightning.imageFilterValues {
                         self.mainAnimationView.applyToneCurveFilter(filterValues: filterValues)
@@ -308,6 +314,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 self.initMainAnimation()
                 self.mainBackgroundImageView.stop({
                     self.mainBackgroundImageView.removeToneCurveFilter()
+                    self.mainBackgroundImageView.removeGradientMask()
                 })
             }
 

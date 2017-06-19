@@ -352,6 +352,31 @@ open class URWeatherScene: SKScene, URNodeMovable {
         lightningNode2.startLightning()
     }
 
+    open func makeLightningBackgroundEffect(imageView: UIImageView) -> [UIImage] {
+        guard let maskedImage = imageView.applyGradientMask(startPoint: CGPoint(x: 0.0, y: 0.3), endPoint: CGPoint(x: 0.0, y: 1.0), locations: [0.25, 0.5, 0.75, 1.0]) else {
+            return [imageView.image!, imageView.image!]
+        }
+        let cgImage = maskedImage.cgImage!
+
+        var rgb: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
+                              CGPoint(x: 0.311631917953491, y: 0.177777817670037),
+                              CGPoint(x: 0.512152751286825, y: 0.624836641199449),
+                              CGPoint(x: 0.730902751286825, y: 0.997385660807292),
+                              CGPoint(x: 1.0, y: 1.0)]
+
+        let foreCGImage = URToneCurveFilter(cgImage: cgImage, with: rgb).outputCGImage!
+
+        rgb =               [CGPoint(x: 0.0998263756434123, y: 0.0),
+                             CGPoint(x: 0.467013875643412, y: 0.0549019607843138),
+                             CGPoint(x: 0.714409708976746, y: 0.159477144129136),
+                             CGPoint(x: 0.885416666666667, y: 0.355555575501685),
+                             CGPoint(x: 1.0, y: 0.661437928442862)]
+
+        let backCGImage = URToneCurveFilter(cgImage: cgImage, with: rgb).outputCGImage!
+
+        return [UIImage(cgImage: backCGImage), UIImage(cgImage: foreCGImage)]
+    }
+
     /// draw clouds
     func drawCloudEffect(duration: TimeInterval, interval: TimeInterval = 0.0, index: Int) {
         var cloudNodes: [UREffectCloudNode] = [UREffectCloudNode]()
