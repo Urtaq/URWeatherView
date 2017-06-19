@@ -195,7 +195,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 case .snow:
                     self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.alpha = 0.0
-                        self.mainUpperImageView.image = backgroundImage
+                        self.mainUpperImageView.image = #imageLiteral(resourceName: "snow")
 
                         UIView.animate(withDuration: 1.0, animations: {
                             self.mainUpperImageView.alpha = opacity
@@ -214,7 +214,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 case .rain:
                     self.weatherScene.extraEffectBlock = { (backgroundImage, opacity) in
                         self.mainUpperImageView.alpha = 0.0
-                        self.mainUpperImageView.image = backgroundImage
+                        self.mainUpperImageView.image = #imageLiteral(resourceName: "rain")
 
                         UIView.animate(withDuration: 1.0, animations: {
                             self.mainUpperImageView.alpha = opacity

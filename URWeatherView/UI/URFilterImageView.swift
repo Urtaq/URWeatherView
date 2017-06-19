@@ -30,13 +30,13 @@ extension URFilterAppliable where Self: URFilterImageView {
         guard imageAssets.count >= 2 else { return }
         let layer1: CALayer = CALayer()
         layer1.frame = self.bounds
-        layer1.contents = imageAssets[0].cgImage
+        layer1.contents = imageAssets[0].applyGradientMask(startPoint: CGPoint(x: 0.0, y: 0.2), endPoint: CGPoint(x: 0.0, y: 1.0), locations: [0.25, 0.5, 0.75, 1.0])
 
         self.layer.addSublayer(layer1)
 
         let layer2: CALayer = CALayer()
         layer2.frame = self.bounds
-        layer2.contents = imageAssets[1].cgImage
+        layer2.contents = imageAssets[1].applyGradientMask(startPoint: CGPoint(x: 0.0, y: 0.2), endPoint: CGPoint(x: 0.0, y: 1.0), locations: [0.25, 0.5, 0.75, 1.0])
         layer2.opacity = 0.0
 
         self.layer.addSublayer(layer2)
@@ -214,5 +214,51 @@ extension UIImageView {
         if let mask = self.layer.mask, mask is CAGradientLayer {
             self.layer.mask = nil
         }
+    }
+}
+
+extension UIImage {
+    public func applyGradientMask(startPoint: CGPoint, endPoint: CGPoint, locations: [CGFloat]) -> CGImage? {
+
+        let colorSpaceGray = CGColorSpaceCreateDeviceGray()
+        guard let context = CGContext.init(data: nil, width: self.cgImage!.width, height: self.cgImage!.height, bitsPerComponent: 8, bytesPerRow: 0, space: colorSpaceGray, bitmapInfo: CGImageAlphaInfo.none.rawValue) else { return nil }
+
+        context.translateBy(x: 0.0, y: self.size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+
+        context.setFillColor(UIColor.white.cgColor)
+        context.fill(CGRect(x: 0.0, y: 0.0, width: self.size.width, height: self.size.height * (startPoint.y + 0.5)))
+
+        var colors: [CGColor] = [CGColor]()
+        for location in locations {
+            colors.append(UIColor(white: 0.0, alpha: location).cgColor)
+        }
+
+        guard let gradient = CGGradient(colorsSpace: colorSpaceGray, colors: colors as CFArray, locations: locations) else { return nil }
+
+        let startPointInImage = CGPoint(x: startPoint.x * self.size.width, y: startPoint.y * (startPoint.y + 0.5) * self.size.height)
+        let endPointInImage = CGPoint(x: endPoint.x * self.size.width, y: (startPoint.y + 0.5) * self.size.height)
+        context.drawLinearGradient(gradient, start: startPointInImage, end: endPointInImage, options: CGGradientDrawingOptions.drawsBeforeStartLocation)
+
+        guard let gradientCGImage = context.makeImage() else { return nil }
+
+        let gradientImage = UIImage(cgImage: gradientCGImage)   // for debugging
+
+//        guard let mask = CGImage(maskWidth: gradientCGImage.width, height: gradientCGImage.height, bitsPerComponent: gradientCGImage.bitsPerComponent, bitsPerPixel: gradientCGImage.bitsPerPixel, bytesPerRow: gradientCGImage.bytesPerRow, provider: gradientCGImage.dataProvider!, decode: nil, shouldInterpolate: false) else { return nil }
+
+//        let maskedCGImage = self.cgImage!.masking(mask)
+
+        let colorSpaceRGB = CGColorSpaceCreateDeviceRGB()
+        guard let maskingContext = CGContext.init(data: nil, width: self.cgImage!.width, height: self.cgImage!.height, bitsPerComponent: 8, bytesPerRow: 0, space: colorSpaceRGB, bitmapInfo: CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue) else { return nil }
+
+        maskingContext.clip(to: CGRect(origin: .zero, size: self.size), mask: gradientCGImage)
+
+        maskingContext.draw(self.cgImage!, in: CGRect(origin: .zero, size: self.size))
+
+        guard let maskedCGImage = maskingContext.makeImage() else { return nil }
+
+        let maskedImage = UIImage(cgImage: maskedCGImage)   // for debugging
+
+        return maskedCGImage
     }
 }

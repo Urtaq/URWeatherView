@@ -149,10 +149,6 @@ public enum URWeatherType: String {
     public var backgroundImage: UIImage? {
         let bundle = Bundle(for: URWeatherScene.self)
         switch self {
-        case .snow:
-            return UIImage(named: "snow", in: bundle, compatibleWith: nil)!
-        case .rain:
-            return UIImage(named: "rain", in: bundle, compatibleWith: nil)!
         case .dust:
             return UIImage(named: "yellowDust2", in: bundle, compatibleWith: nil)!
         case .dust2:
@@ -353,10 +349,7 @@ open class URWeatherScene: SKScene, URNodeMovable {
     }
 
     open func makeLightningBackgroundEffect(imageView: UIImageView) -> [UIImage] {
-        guard let maskedImage = imageView.applyGradientMask(startPoint: CGPoint(x: 0.0, y: 0.3), endPoint: CGPoint(x: 0.0, y: 1.0), locations: [0.25, 0.5, 0.75, 1.0]) else {
-            return [imageView.image!, imageView.image!]
-        }
-        let cgImage = maskedImage.cgImage!
+        let cgImage = imageView.image!.cgImage!
 
         var rgb: [CGPoint] = [CGPoint(x: 0.0, y: 0.0),
                               CGPoint(x: 0.311631917953491, y: 0.177777817670037),
