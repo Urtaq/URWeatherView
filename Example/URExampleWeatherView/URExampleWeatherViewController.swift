@@ -132,7 +132,12 @@ extension URExampleWeatherViewController: UITableViewDelegate, UITableViewDataSo
                 case .lightning, .hot, .comet:
                     self.mainView.startWeatherSceneBulk(cell.weather, debugOption: self.segment.selectedSegmentIndex == 0)
                 case .cloudy:
-                    self.mainView.startWeatherSceneBulk(cell.weather, duration: 33.0, debugOption: self.segment.selectedSegmentIndex == 0)
+//                    self.mainView.startWeatherSceneBulk(cell.weather, duration: 33.0, debugOption: self.segment.selectedSegmentIndex == 0)
+
+                    self.mainView.initWeather()
+                    self.mainView.setUpperImageEffect(customImage: nil)
+                    let option = UREffectCloudOption(CGRect(x: -0.8, y: -0.2, width: 1.7, height: 0.3), angleInDegree: 30.0, movingDuration: 33.0)
+                    self.mainView.startWeatherScene(cell.weather, duration: 33.0, userInfo: [URWeatherKeyCloudOption: option])
                 default:
                     self.mainView.setUpperImageEffect()
 
