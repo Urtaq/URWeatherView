@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import LottieEx
-import SpriteKit
 import URWeatherView
 
 class URExampleWeatherViewController: UIViewController {

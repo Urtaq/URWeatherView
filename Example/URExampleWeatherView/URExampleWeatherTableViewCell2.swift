@@ -12,6 +12,11 @@ import URWeatherView
 class URExampleWeatherTableViewCell2: URExampleWeatherTableViewCell {
     override func configCell(_ weather: URWeatherType) {
         super.configCell(weather)
+
+        if weather == .dust {
+            self.btnDustColor1.isSelected = true
+            self.btnDustColor2.isSelected = false
+        }
     }
 
     @IBOutlet var btnDustColor1: UIButton!
