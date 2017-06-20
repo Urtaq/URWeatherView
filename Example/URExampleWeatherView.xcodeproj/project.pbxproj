@@ -47,6 +47,7 @@
 		97A555181ED57FEB00D3A624 /* img_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555121ED57FEB00D3A624 /* img_4.png */; };
 		97A555191ED57FEB00D3A624 /* img_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A555131ED57FEB00D3A624 /* img_5.png */; };
 		97B97A691EF3A942006B50B7 /* LottieEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B97A681EF3A942006B50B7 /* LottieEx.framework */; };
+		97B97A7D1EF7D057006B50B7 /* URExampleWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B97A7C1EF7D057006B50B7 /* URExampleWeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		97A555121ED57FEB00D3A624 /* img_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_4.png; sourceTree = "<group>"; };
 		97A555131ED57FEB00D3A624 /* img_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_5.png; sourceTree = "<group>"; };
 		97B97A681EF3A942006B50B7 /* LottieEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LottieEx.framework; path = Carthage/Build/iOS/LottieEx.framework; sourceTree = "<group>"; };
+		97B97A7C1EF7D057006B50B7 /* URExampleWeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URExampleWeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				974FFB2F1EA9F80B00B2A3E7 /* animationAssets */,
 				974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */,
 				974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */,
+				97B97A7C1EF7D057006B50B7 /* URExampleWeatherViewController.swift */,
 				9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */,
 				9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */,
 				974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */,
@@ -468,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */,
+				97B97A7D1EF7D057006B50B7 /* URExampleWeatherViewController.swift in Sources */,
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
 				9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */,
 				9780EC101ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift in Sources */,
