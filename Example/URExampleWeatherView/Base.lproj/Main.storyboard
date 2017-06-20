@@ -30,9 +30,6 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4K-zh-kHC">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
-                                        <connections>
-                                            <segue destination="Wbm-VK-7SN" kind="embed" id="Ms6-ze-dLR"/>
-                                        </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRC-6j-nVf">
                                         <rect key="frame" x="0.0" y="151" width="375" height="603"/>
@@ -115,7 +112,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="10" navigationOrientation="horizontal" spineLocation="none" id="Wbm-VK-7SN" customClass="PageViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCt-od-q7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2447" y="477"/>
+            <point key="canvasLocation" x="2425" y="393"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="cHU-35-Md6">
@@ -416,7 +413,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jph-uz-KBU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fTg-m7-HEd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fTg-m7-HEd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -433,7 +430,4 @@
     <resources>
         <image name="img_back" width="720" height="478"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="sJu-JN-DMh"/>
-    </inferredMetricsTieBreakers>
 </document>
