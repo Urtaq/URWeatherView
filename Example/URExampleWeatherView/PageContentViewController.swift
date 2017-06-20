@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 
+// TODO: Trying to integrate the real weather as where the user or device is...
 class PageContentViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     var index: Int = 0 {
         didSet {
