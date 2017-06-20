@@ -25,7 +25,6 @@
 		9716E1431EDCFA4A00372B48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1371EDCFA4A00372B48 /* SystemConfiguration.framework */; };
 		9716E1441EDCFA4A00372B48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9716E1381EDCFA4A00372B48 /* UIKit.framework */; };
 		974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */; };
-		974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */; };
 		974FFB011EA9E77500B2A3E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 974FFAFF1EA9E77500B2A3E7 /* Main.storyboard */; };
 		974FFB031EA9E77500B2A3E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB021EA9E77500B2A3E7 /* Assets.xcassets */; };
 		974FFB061EA9E77500B2A3E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB041EA9E77500B2A3E7 /* LaunchScreen.storyboard */; };
@@ -101,7 +100,6 @@
 		9716E1381EDCFA4A00372B48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		974FFAF81EA9E77500B2A3E7 /* URExampleWeatherView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URExampleWeatherView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		974FFB001EA9E77500B2A3E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		974FFB021EA9E77500B2A3E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		974FFB051EA9E77500B2A3E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 			children = (
 				974FFB2F1EA9F80B00B2A3E7 /* animationAssets */,
 				974FFAFB1EA9E77500B2A3E7 /* AppDelegate.swift */,
-				974FFAFD1EA9E77500B2A3E7 /* ViewController.swift */,
 				97B97A7C1EF7D057006B50B7 /* URExampleWeatherViewController.swift */,
 				9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */,
 				9780EC0F1ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift */,
@@ -475,7 +472,6 @@
 				974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */,
 				9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */,
 				9780EC101ED2C0AF00F26C4C /* URExampleWeatherTableViewCell2.swift in Sources */,
-				974FFAFE1EA9E77500B2A3E7 /* ViewController.swift in Sources */,
 				974FFAFC1EA9E77500B2A3E7 /* AppDelegate.swift in Sources */,
 				9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */,
 			);

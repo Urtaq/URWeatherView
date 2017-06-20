@@ -13,298 +13,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B3F-Uc-pi5" customClass="URFilterImageView" customModule="URWeatherView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="223"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zD2-F1-gQb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="223"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aIo-DS-ws4">
-                                <rect key="frame" x="0.0" y="64" width="375" height="223"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keu-1I-nTM">
-                                <rect key="frame" x="0.0" y="64" width="187.5" height="223"/>
-                                <connections>
-                                    <action selector="tabOne:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a1h-0a-9kQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMf-a9-sDE">
-                                <rect key="frame" x="187.5" y="64" width="187.5" height="223"/>
-                                <connections>
-                                    <action selector="tabTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eVi-lI-jpg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mN-ga-vgi">
-                                <rect key="frame" x="0.0" y="287" width="187.5" height="30"/>
-                                <state key="normal" title="1st"/>
-                                <connections>
-                                    <action selector="tabOne:" destination="BYZ-38-t0r" eventType="touchUpInside" id="isd-Lk-7Vi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imE-5t-NZw">
-                                <rect key="frame" x="187.5" y="287" width="187.5" height="30"/>
-                                <state key="normal" title="2nd"/>
-                                <connections>
-                                    <action selector="tabTwo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PaD-rw-HWu"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MMG-0D-fJP">
-                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="effectCell1" id="5bI-lS-aTe" customClass="URExampleWeatherTableViewCell" customModule="URExampleWeatherView" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="64"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5bI-lS-aTe" id="uEu-G3-izq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eat-Ud-AeB">
-                                                    <rect key="frame" x="12" y="17" width="38" height="30"/>
-                                                    <state key="normal" title="Snow"/>
-                                                    <connections>
-                                                        <action selector="tapApplyWeather:" destination="5bI-lS-aTe" eventType="touchUpInside" id="Rwc-PH-X5v"/>
-                                                    </connections>
-                                                </button>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="aig-oO-GoX">
-                                                    <rect key="frame" x="92" y="17" width="237" height="31"/>
-                                                    <connections>
-                                                        <action selector="changeBirthRate:" destination="5bI-lS-aTe" eventType="valueChanged" id="1Pw-wH-GWB"/>
-                                                    </connections>
-                                                </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7f-QF-aF9">
-                                                    <rect key="frame" x="94" y="36" width="24" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lix-y4-7Lv">
-                                                    <rect key="frame" x="198.5" y="36" width="24" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKO-fI-6ON">
-                                                    <rect key="frame" x="303" y="36" width="24" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQA-0W-RJO">
-                                                    <rect key="frame" x="333" y="17" width="30" height="30"/>
-                                                    <state key="normal" title="Init"/>
-                                                    <connections>
-                                                        <action selector="tapWeatherInit:" destination="5bI-lS-aTe" eventType="touchUpInside" id="Jo6-Le-yWv"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Eat-Ud-AeB" firstAttribute="centerY" secondItem="uEu-G3-izq" secondAttribute="centerY" id="I57-sJ-ngd"/>
-                                                <constraint firstItem="aig-oO-GoX" firstAttribute="centerY" secondItem="Eat-Ud-AeB" secondAttribute="centerY" id="K4P-wv-2BV"/>
-                                                <constraint firstItem="lix-y4-7Lv" firstAttribute="centerX" secondItem="aig-oO-GoX" secondAttribute="centerX" id="Nmd-vK-nBg"/>
-                                                <constraint firstItem="l7f-QF-aF9" firstAttribute="leading" secondItem="aig-oO-GoX" secondAttribute="leading" id="PJ8-Wp-Y04"/>
-                                                <constraint firstItem="OQA-0W-RJO" firstAttribute="centerY" secondItem="aig-oO-GoX" secondAttribute="centerY" id="UZm-bZ-Tqf"/>
-                                                <constraint firstItem="MKO-fI-6ON" firstAttribute="trailing" secondItem="aig-oO-GoX" secondAttribute="trailing" id="V2U-X1-hgb"/>
-                                                <constraint firstAttribute="trailing" secondItem="OQA-0W-RJO" secondAttribute="trailing" constant="12" id="VWv-lh-LRA"/>
-                                                <constraint firstItem="OQA-0W-RJO" firstAttribute="leading" secondItem="MKO-fI-6ON" secondAttribute="trailing" constant="6" id="Yhh-Td-JIS"/>
-                                                <constraint firstItem="MKO-fI-6ON" firstAttribute="centerY" secondItem="l7f-QF-aF9" secondAttribute="centerY" id="fXZ-at-kYb"/>
-                                                <constraint firstItem="lix-y4-7Lv" firstAttribute="centerY" secondItem="l7f-QF-aF9" secondAttribute="centerY" id="gcb-rg-Ga2"/>
-                                                <constraint firstItem="l7f-QF-aF9" firstAttribute="bottom" secondItem="aig-oO-GoX" secondAttribute="bottom" constant="10" id="jWI-yA-tk6"/>
-                                                <constraint firstItem="aig-oO-GoX" firstAttribute="leading" secondItem="uEu-G3-izq" secondAttribute="leadingMargin" constant="86" id="l1L-EF-Qwv"/>
-                                                <constraint firstItem="Eat-Ud-AeB" firstAttribute="leading" secondItem="uEu-G3-izq" secondAttribute="leading" constant="12" id="mkN-N5-5Lc"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="btnApplyWeather" destination="Eat-Ud-AeB" id="Kfs-SO-66j"/>
-                                            <outlet property="lbBirthRateCurrent" destination="lix-y4-7Lv" id="nQg-hG-WFH"/>
-                                            <outlet property="lbBirthRateMax" destination="MKO-fI-6ON" id="zdD-aK-wP8"/>
-                                            <outlet property="slBirthRate" destination="aig-oO-GoX" id="qO1-Up-tXo"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="effectCell2" id="zUs-pb-ouP" customClass="URExampleWeatherTableViewCell2" customModule="URExampleWeatherView" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="64"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zUs-pb-ouP" id="yIf-QN-M53">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lT-Rd-DjO">
-                                                    <rect key="frame" x="12" y="17" width="32" height="30"/>
-                                                    <state key="normal" title="Dust"/>
-                                                    <connections>
-                                                        <action selector="tapApplyWeather:" destination="zUs-pb-ouP" eventType="touchUpInside" id="h68-TQ-v5c"/>
-                                                    </connections>
-                                                </button>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="fNR-gr-gIH">
-                                                    <rect key="frame" x="92" y="17" width="157" height="31"/>
-                                                    <connections>
-                                                        <action selector="changeBirthRate:" destination="zUs-pb-ouP" eventType="valueChanged" id="9SJ-hJ-TEa"/>
-                                                    </connections>
-                                                </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAk-rT-RnJ">
-                                                    <rect key="frame" x="94" y="36" width="24" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ne-nf-fDw">
-                                                    <rect key="frame" x="158.5" y="36" width="24" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bi-Y9-jV4">
-                                                    <rect key="frame" x="223" y="36" width="24" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-V0-iBd">
-                                                    <rect key="frame" x="333" y="17" width="30" height="30"/>
-                                                    <state key="normal" title="Init"/>
-                                                    <connections>
-                                                        <action selector="tapWeatherInit:" destination="zUs-pb-ouP" eventType="touchUpInside" id="Ofc-Gk-Zky"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T35-TM-6XG">
-                                                    <rect key="frame" x="259" y="17" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="0.37254901959999998" green="0.33333333329999998" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <connections>
-                                                        <action selector="tapDustColor:" destination="zUs-pb-ouP" eventType="touchUpInside" id="Lkh-am-X3l"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQl-xx-yHk">
-                                                    <rect key="frame" x="297" y="17" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="0.80784313730000001" green="0.56470588239999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <connections>
-                                                        <action selector="tapDustColor:" destination="zUs-pb-ouP" eventType="touchUpInside" id="v02-bi-UGS"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="5ne-nf-fDw" firstAttribute="centerX" secondItem="fNR-gr-gIH" secondAttribute="centerX" id="2Cs-h7-I1R"/>
-                                                <constraint firstItem="PAk-rT-RnJ" firstAttribute="bottom" secondItem="fNR-gr-gIH" secondAttribute="bottom" constant="10" id="Ca4-SJ-Nzc"/>
-                                                <constraint firstItem="mtC-V0-iBd" firstAttribute="leading" secondItem="LQl-xx-yHk" secondAttribute="trailing" constant="6" id="E6O-83-9bT"/>
-                                                <constraint firstItem="8lT-Rd-DjO" firstAttribute="leading" secondItem="yIf-QN-M53" secondAttribute="leading" constant="12" id="Ii7-NF-j5o"/>
-                                                <constraint firstItem="2bi-Y9-jV4" firstAttribute="trailing" secondItem="fNR-gr-gIH" secondAttribute="trailing" id="M4p-jd-2AL"/>
-                                                <constraint firstItem="PAk-rT-RnJ" firstAttribute="leading" secondItem="fNR-gr-gIH" secondAttribute="leading" id="OpS-aJ-Klx"/>
-                                                <constraint firstItem="fNR-gr-gIH" firstAttribute="leading" secondItem="yIf-QN-M53" secondAttribute="leadingMargin" constant="86" id="P76-EK-7bN"/>
-                                                <constraint firstItem="mtC-V0-iBd" firstAttribute="centerY" secondItem="fNR-gr-gIH" secondAttribute="centerY" id="XwD-5N-8N1"/>
-                                                <constraint firstItem="LQl-xx-yHk" firstAttribute="leading" secondItem="T35-TM-6XG" secondAttribute="trailing" constant="8" id="fIc-If-Qgr"/>
-                                                <constraint firstItem="2bi-Y9-jV4" firstAttribute="centerY" secondItem="PAk-rT-RnJ" secondAttribute="centerY" id="kFT-ka-PNx"/>
-                                                <constraint firstItem="8lT-Rd-DjO" firstAttribute="centerY" secondItem="yIf-QN-M53" secondAttribute="centerY" id="mnc-YX-8mX"/>
-                                                <constraint firstItem="5ne-nf-fDw" firstAttribute="centerY" secondItem="PAk-rT-RnJ" secondAttribute="centerY" id="q84-29-wT5"/>
-                                                <constraint firstAttribute="trailing" secondItem="mtC-V0-iBd" secondAttribute="trailing" constant="12" id="sCi-Rz-8E3"/>
-                                                <constraint firstItem="fNR-gr-gIH" firstAttribute="centerY" secondItem="8lT-Rd-DjO" secondAttribute="centerY" id="thR-vi-CqB"/>
-                                                <constraint firstItem="LQl-xx-yHk" firstAttribute="centerY" secondItem="T35-TM-6XG" secondAttribute="centerY" id="wsG-C0-Lly"/>
-                                                <constraint firstItem="T35-TM-6XG" firstAttribute="leading" secondItem="fNR-gr-gIH" secondAttribute="trailing" constant="12" id="xqj-jT-W8h"/>
-                                                <constraint firstItem="mtC-V0-iBd" firstAttribute="centerY" secondItem="LQl-xx-yHk" secondAttribute="centerY" id="zdE-RX-Ixb"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="btnApplyWeather" destination="8lT-Rd-DjO" id="Tsa-Me-axB"/>
-                                            <outlet property="btnDustColor1" destination="T35-TM-6XG" id="lVy-hz-aJO"/>
-                                            <outlet property="btnDustColor2" destination="LQl-xx-yHk" id="f89-PQ-Qxr"/>
-                                            <outlet property="lbBirthRateCurrent" destination="5ne-nf-fDw" id="bX0-oS-Irl"/>
-                                            <outlet property="lbBirthRateMax" destination="2bi-Y9-jV4" id="m7T-oJ-9Bi"/>
-                                            <outlet property="slBirthRate" destination="fNR-gr-gIH" id="Z8T-6K-h8f"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="t0h-Un-Nav"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PYY-zr-arI"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="keu-1I-nTM" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="top" id="0lE-H1-ppr"/>
-                            <constraint firstItem="aIo-DS-ws4" firstAttribute="leading" secondItem="zD2-F1-gQb" secondAttribute="leading" id="1aW-vE-JHT"/>
-                            <constraint firstItem="B3F-Uc-pi5" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="top" id="1bi-wh-H8f"/>
-                            <constraint firstItem="MMG-0D-fJP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1kW-vm-oc4"/>
-                            <constraint firstAttribute="trailing" secondItem="zD2-F1-gQb" secondAttribute="trailing" id="3hB-iO-67S"/>
-                            <constraint firstItem="UMf-a9-sDE" firstAttribute="width" secondItem="keu-1I-nTM" secondAttribute="width" id="7zd-Et-vFP"/>
-                            <constraint firstItem="7mN-ga-vgi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8C3-BL-IZi"/>
-                            <constraint firstItem="aIo-DS-ws4" firstAttribute="bottom" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="8Uq-ow-vs4"/>
-                            <constraint firstItem="7mN-ga-vgi" firstAttribute="width" secondItem="imE-5t-NZw" secondAttribute="width" id="9tJ-F4-Ikj"/>
-                            <constraint firstItem="keu-1I-nTM" firstAttribute="leading" secondItem="zD2-F1-gQb" secondAttribute="leading" id="EqB-tk-zaT"/>
-                            <constraint firstItem="UMf-a9-sDE" firstAttribute="bottom" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="FML-Ok-tOT"/>
-                            <constraint firstItem="zD2-F1-gQb" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:3" id="GgK-RO-bne"/>
-                            <constraint firstItem="B3F-Uc-pi5" firstAttribute="leading" secondItem="zD2-F1-gQb" secondAttribute="leading" id="KUo-Pv-Vk0"/>
-                            <constraint firstItem="imE-5t-NZw" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="Nk0-LF-mAN"/>
-                            <constraint firstItem="UMf-a9-sDE" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="top" id="PiV-va-iae"/>
-                            <constraint firstAttribute="trailing" secondItem="imE-5t-NZw" secondAttribute="trailing" id="S07-XE-V3Y"/>
-                            <constraint firstItem="aIo-DS-ws4" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="top" id="UIO-LB-wgc"/>
-                            <constraint firstAttribute="trailing" secondItem="MMG-0D-fJP" secondAttribute="trailing" id="YJE-eI-UkB"/>
-                            <constraint firstItem="UMf-a9-sDE" firstAttribute="trailing" secondItem="zD2-F1-gQb" secondAttribute="trailing" id="atJ-ME-pdc"/>
-                            <constraint firstItem="zD2-F1-gQb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="azB-rr-0qx"/>
-                            <constraint firstItem="UMf-a9-sDE" firstAttribute="leading" secondItem="keu-1I-nTM" secondAttribute="trailing" id="b1K-31-Xdg"/>
-                            <constraint firstItem="B3F-Uc-pi5" firstAttribute="bottom" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="dPj-iO-yiY"/>
-                            <constraint firstItem="zD2-F1-gQb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jJa-2F-ZM9"/>
-                            <constraint firstItem="7mN-ga-vgi" firstAttribute="top" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="m2V-Y5-2NJ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MMG-0D-fJP" secondAttribute="bottom" id="nMD-4f-I7I"/>
-                            <constraint firstItem="MMG-0D-fJP" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:2" id="nym-Y3-geb"/>
-                            <constraint firstItem="keu-1I-nTM" firstAttribute="bottom" secondItem="zD2-F1-gQb" secondAttribute="bottom" id="s1D-xK-X0G"/>
-                            <constraint firstItem="imE-5t-NZw" firstAttribute="leading" secondItem="7mN-ga-vgi" secondAttribute="trailing" id="seF-Is-xIb"/>
-                            <constraint firstItem="aIo-DS-ws4" firstAttribute="trailing" secondItem="zD2-F1-gQb" secondAttribute="trailing" id="tcG-kq-2BP"/>
-                            <constraint firstItem="B3F-Uc-pi5" firstAttribute="trailing" secondItem="zD2-F1-gQb" secondAttribute="trailing" id="utr-gH-Sqf"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="vhE-ah-iPe">
-                        <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="HKt-cV-lAb">
-                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="On"/>
-                                <segment title="Off"/>
-                            </segments>
-                            <connections>
-                                <action selector="changeSpriteKitDebugOption:" destination="BYZ-38-t0r" eventType="valueChanged" id="eB9-Mv-hax"/>
-                            </connections>
-                        </segmentedControl>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Detail" id="OL0-BB-hpr">
-                                <connections>
-                                    <action selector="tabDetail:" destination="BYZ-38-t0r" id="fzp-lg-s8Q"/>
-                                    <segue destination="V8J-aU-o6v" kind="show" id="11k-xp-bD5"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="??" id="cBB-X4-Ked">
-                                <connections>
-                                    <segue destination="Wbm-VK-7SN" kind="show" id="Lse-aC-7Kn"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="btnOne" destination="7mN-ga-vgi" id="MSY-sV-bbG"/>
-                        <outlet property="btnTwo" destination="imE-5t-NZw" id="QHg-zn-rrb"/>
-                        <outlet property="effectTableView" destination="MMG-0D-fJP" id="Yc9-Ip-abN"/>
-                        <outlet property="mainBackgroundImageView" destination="B3F-Uc-pi5" id="wO3-qY-Opo"/>
-                        <outlet property="mainUpperImageView" destination="aIo-DS-ws4" id="52s-7z-cz7"/>
-                        <outlet property="mainView" destination="zD2-F1-gQb" id="4fO-8h-11j"/>
-                        <outlet property="segment" destination="HKt-cV-lAb" id="iZA-0s-jED"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1020" y="-508"/>
-        </scene>
         <!--Detail View Controller-->
         <scene sceneID="6hE-Pr-Eur">
             <objects>
@@ -399,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfb-eA-yIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138" y="-461"/>
+            <point key="canvasLocation" x="2409" y="-278"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="K5r-lu-t0x">
@@ -407,7 +115,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="10" navigationOrientation="horizontal" spineLocation="none" id="Wbm-VK-7SN" customClass="PageViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCt-od-q7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2500" y="240.62968515742131"/>
+            <point key="canvasLocation" x="2447" y="477"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="cHU-35-Md6">
@@ -426,24 +134,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrD-1j-Xan" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3292" y="228.93553223388307"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dbO-oa-3ns">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sEg-t2-ZA0" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eRb-dY-ilf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iqC-oo-TYv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AlM-Na-4zO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="228" y="-509"/>
         </scene>
         <!--Example Weather View Controller-->
         <scene sceneID="oKS-UF-EZo">
@@ -726,7 +416,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jph-uz-KBU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fTg-m7-HEd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fTg-m7-HEd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -744,7 +434,6 @@
         <image name="img_back" width="720" height="478"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="11k-xp-bD5"/>
-        <segue reference="Lse-aC-7Kn"/>
+        <segue reference="sJu-JN-DMh"/>
     </inferredMetricsTieBreakers>
 </document>
