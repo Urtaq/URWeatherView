@@ -136,7 +136,7 @@ extension URExampleWeatherViewController: UITableViewDelegate, UITableViewDataSo
 
                     self.mainView.initWeather()
                     self.mainView.setUpperImageEffect(customImage: nil)
-                    let option = UREffectCloudOption(CGRect(x: -0.8, y: -0.2, width: 1.7, height: 0.3), angleInDegree: 30.0, movingDuration: 33.0)
+                    let option = UREffectCloudOption(CGRect(x: 0.0, y: 0.5, width: 1.0, height: 0.5), angleInDegree: 0.0, movingDuration: 33.0)
                     self.mainView.startWeatherScene(cell.weather, duration: 33.0, userInfo: [URWeatherKeyCloudOption: option])
                 default:
                     self.mainView.setUpperImageEffect()
