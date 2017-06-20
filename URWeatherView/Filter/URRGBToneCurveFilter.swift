@@ -8,7 +8,7 @@
 
 import Foundation
 
-let URKernelShaderRGBToneCurve: String = "URKernelShaderRGBToneCurve.cikernel"
+let URKernelShaderRGBToneCurve: String = "URKernelShaderRGBToneCurve.cikernel.fsh"
 
 open class URRGBToneCurveFilter: URFilter {
     required public init?(coder aDecoder: NSCoder) {

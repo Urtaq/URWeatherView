@@ -8,7 +8,7 @@
 
 import Foundation
 
-let URKernelShaderkRipple: String = "URKernelShaderRipple.cikernel"
+let URKernelShaderkRipple: String = "URKernelShaderRipple.cikernel.fsh"
 
 open class URRippleFilter: URFilter {
     required public init?(coder aDecoder: NSCoder) {

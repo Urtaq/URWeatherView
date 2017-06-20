@@ -8,7 +8,7 @@
 
 import Foundation
 
-let URKernelShaderkFrostedGlass: String = "URKernelShaderFrostedGlass.cikernel"
+let URKernelShaderkFrostedGlass: String = "URKernelShaderFrostedGlass.cikernel.fsh"
 
 open class URFrostedGlassFilter: URFilter {
     required public init?(coder aDecoder: NSCoder) {

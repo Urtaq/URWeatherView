@@ -8,7 +8,7 @@
 
 import Foundation
 
-let URKernelShaderShockWave: String = "URKernelShaderShockWave.cikernel"
+let URKernelShaderShockWave: String = "URKernelShaderShockWave.cikernel.fsh"
 
 open class URShockWaveFilter: URFilter {
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-let URKernelShaderkWaveWarp: String = "URKernelShaderWaveWarp.cikernel"
+let URKernelShaderkWaveWarp: String = "URKernelShaderWaveWarp.cikernel.fsh"
 
 open class URWaveWarpFilter: URFilter {
     var roiRatio: CGFloat = 1.0
