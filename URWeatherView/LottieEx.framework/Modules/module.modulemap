@@ -1,0 +1,6 @@
+framework module LottieEx {
+  umbrella header "LottieEx.h"
+
+  export *
+  module * { export * }
+}

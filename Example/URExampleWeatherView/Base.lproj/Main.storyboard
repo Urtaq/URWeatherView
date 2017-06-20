@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sEg-t2-ZA0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Jph-uz-KBU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -399,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfb-eA-yIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1796" y="-510"/>
+            <point key="canvasLocation" x="2138" y="-461"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="K5r-lu-t0x">
@@ -407,7 +407,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="10" navigationOrientation="horizontal" spineLocation="none" id="Wbm-VK-7SN" customClass="PageViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCt-od-q7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="241"/>
+            <point key="canvasLocation" x="2500" y="240.62968515742131"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="cHU-35-Md6">
@@ -425,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RrD-1j-Xan" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2353" y="229"/>
+            <point key="canvasLocation" x="3292" y="228.93553223388307"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dbO-oa-3ns">
@@ -445,11 +445,306 @@
             </objects>
             <point key="canvasLocation" x="228" y="-509"/>
         </scene>
+        <!--Example Weather View Controller-->
+        <scene sceneID="oKS-UF-EZo">
+            <objects>
+                <viewController id="hEU-Tc-bxE" customClass="URExampleWeatherViewController" customModule="URExampleWeatherView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n1B-bZ-mGj"/>
+                        <viewControllerLayoutGuide type="bottom" id="2pZ-u9-GjL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KPe-Xz-AR6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e84-cC-bsL" customClass="URWeatherView" customModule="URWeatherView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="223"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIB-aG-E0b">
+                                <rect key="frame" x="0.0" y="64" width="187.5" height="223"/>
+                                <connections>
+                                    <action selector="tabOne:" destination="hEU-Tc-bxE" eventType="touchUpInside" id="OKd-gs-GS8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ApW-Ai-hRL">
+                                <rect key="frame" x="187.5" y="64" width="187.5" height="223"/>
+                                <connections>
+                                    <action selector="tabTwo:" destination="hEU-Tc-bxE" eventType="touchUpInside" id="SGe-b7-rDu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBs-Gu-seB">
+                                <rect key="frame" x="0.0" y="287" width="187.5" height="30"/>
+                                <state key="normal" title="1st"/>
+                                <connections>
+                                    <action selector="tabOne:" destination="hEU-Tc-bxE" eventType="touchUpInside" id="Swp-Ed-2FI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxy-1O-oSz">
+                                <rect key="frame" x="187.5" y="287" width="187.5" height="30"/>
+                                <state key="normal" title="2nd"/>
+                                <connections>
+                                    <action selector="tabTwo:" destination="hEU-Tc-bxE" eventType="touchUpInside" id="yiN-VI-bBN"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L7l-JG-pNP">
+                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="effectCell1" id="zO0-nT-CTk" customClass="URExampleWeatherTableViewCell" customModule="URExampleWeatherView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zO0-nT-CTk" id="e8u-jw-4t6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrk-bL-f4h">
+                                                    <rect key="frame" x="12" y="17" width="38" height="30"/>
+                                                    <state key="normal" title="Snow"/>
+                                                    <connections>
+                                                        <action selector="tapApplyWeather:" destination="zO0-nT-CTk" eventType="touchUpInside" id="3mH-7O-l7N"/>
+                                                    </connections>
+                                                </button>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="VUX-s8-AZM">
+                                                    <rect key="frame" x="92" y="17" width="237" height="31"/>
+                                                    <connections>
+                                                        <action selector="changeBirthRate:" destination="zO0-nT-CTk" eventType="valueChanged" id="RNp-SB-lJx"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aW-CU-2xd">
+                                                    <rect key="frame" x="94" y="36" width="24" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oh9-6K-eoO">
+                                                    <rect key="frame" x="198.5" y="36" width="24" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7G-YP-gaD">
+                                                    <rect key="frame" x="303" y="36" width="24" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmc-xK-r17">
+                                                    <rect key="frame" x="333" y="17" width="30" height="30"/>
+                                                    <state key="normal" title="Init"/>
+                                                    <connections>
+                                                        <action selector="tapWeatherInit:" destination="zO0-nT-CTk" eventType="touchUpInside" id="xIN-U7-4dS"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Mrk-bL-f4h" firstAttribute="centerY" secondItem="e8u-jw-4t6" secondAttribute="centerY" id="9JI-oD-b2S"/>
+                                                <constraint firstItem="L7G-YP-gaD" firstAttribute="trailing" secondItem="VUX-s8-AZM" secondAttribute="trailing" id="Nrr-Z9-hXV"/>
+                                                <constraint firstAttribute="trailing" secondItem="nmc-xK-r17" secondAttribute="trailing" constant="12" id="PQc-oT-XcD"/>
+                                                <constraint firstItem="nmc-xK-r17" firstAttribute="leading" secondItem="L7G-YP-gaD" secondAttribute="trailing" constant="6" id="Rru-pU-zqm"/>
+                                                <constraint firstItem="Oh9-6K-eoO" firstAttribute="centerX" secondItem="VUX-s8-AZM" secondAttribute="centerX" id="SMv-68-f4N"/>
+                                                <constraint firstItem="nmc-xK-r17" firstAttribute="centerY" secondItem="VUX-s8-AZM" secondAttribute="centerY" id="aG5-J5-6lL"/>
+                                                <constraint firstItem="VUX-s8-AZM" firstAttribute="leading" secondItem="e8u-jw-4t6" secondAttribute="leadingMargin" constant="86" id="dam-Ch-q1y"/>
+                                                <constraint firstItem="Mrk-bL-f4h" firstAttribute="leading" secondItem="e8u-jw-4t6" secondAttribute="leading" constant="12" id="edR-vz-Rpi"/>
+                                                <constraint firstItem="Oh9-6K-eoO" firstAttribute="centerY" secondItem="5aW-CU-2xd" secondAttribute="centerY" id="gwU-7z-VEq"/>
+                                                <constraint firstItem="5aW-CU-2xd" firstAttribute="leading" secondItem="VUX-s8-AZM" secondAttribute="leading" id="iP4-KY-JVH"/>
+                                                <constraint firstItem="L7G-YP-gaD" firstAttribute="centerY" secondItem="5aW-CU-2xd" secondAttribute="centerY" id="j7V-z9-b5P"/>
+                                                <constraint firstItem="5aW-CU-2xd" firstAttribute="bottom" secondItem="VUX-s8-AZM" secondAttribute="bottom" constant="10" id="mLG-MJ-RyX"/>
+                                                <constraint firstItem="VUX-s8-AZM" firstAttribute="centerY" secondItem="Mrk-bL-f4h" secondAttribute="centerY" id="rrt-vE-2Z7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnApplyWeather" destination="Mrk-bL-f4h" id="Zx6-eS-b5a"/>
+                                            <outlet property="lbBirthRateCurrent" destination="Oh9-6K-eoO" id="PU0-dc-SOr"/>
+                                            <outlet property="lbBirthRateMax" destination="L7G-YP-gaD" id="NrW-g9-8vw"/>
+                                            <outlet property="slBirthRate" destination="VUX-s8-AZM" id="cGP-tp-nxB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="effectCell2" id="3yW-Ne-9m6" customClass="URExampleWeatherTableViewCell2" customModule="URExampleWeatherView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3yW-Ne-9m6" id="0uQ-yd-kSW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W53-DN-CyH">
+                                                    <rect key="frame" x="12" y="17" width="32" height="30"/>
+                                                    <state key="normal" title="Dust"/>
+                                                    <connections>
+                                                        <action selector="tapApplyWeather:" destination="3yW-Ne-9m6" eventType="touchUpInside" id="jb3-ag-Cp2"/>
+                                                    </connections>
+                                                </button>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="40" minValue="0.0" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="VMC-Vl-efY">
+                                                    <rect key="frame" x="92" y="17" width="157" height="31"/>
+                                                    <connections>
+                                                        <action selector="changeBirthRate:" destination="3yW-Ne-9m6" eventType="valueChanged" id="9dE-LT-cDk"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihS-gT-CsU">
+                                                    <rect key="frame" x="94" y="36" width="24" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxy-iM-2dI">
+                                                    <rect key="frame" x="158.5" y="36" width="24" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rB0-cu-4Ni">
+                                                    <rect key="frame" x="223" y="36" width="24" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYI-18-5N5">
+                                                    <rect key="frame" x="333" y="17" width="30" height="30"/>
+                                                    <state key="normal" title="Init"/>
+                                                    <connections>
+                                                        <action selector="tapWeatherInit:" destination="3yW-Ne-9m6" eventType="touchUpInside" id="6MK-Wj-onF"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TI2-jF-hCI">
+                                                    <rect key="frame" x="259" y="17" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.37254901959999998" green="0.33333333329999998" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="tapDustColor:" destination="3yW-Ne-9m6" eventType="touchUpInside" id="BmQ-EP-2mF"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxa-yy-fVD">
+                                                    <rect key="frame" x="297" y="17" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.80784313730000001" green="0.56470588239999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="tapDustColor:" destination="3yW-Ne-9m6" eventType="touchUpInside" id="KDr-ab-TdY"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rB0-cu-4Ni" firstAttribute="trailing" secondItem="VMC-Vl-efY" secondAttribute="trailing" id="1cx-Ag-luM"/>
+                                                <constraint firstItem="TI2-jF-hCI" firstAttribute="leading" secondItem="VMC-Vl-efY" secondAttribute="trailing" constant="12" id="Bju-VO-hEX"/>
+                                                <constraint firstItem="zYI-18-5N5" firstAttribute="leading" secondItem="Xxa-yy-fVD" secondAttribute="trailing" constant="6" id="OKd-95-PA4"/>
+                                                <constraint firstItem="zYI-18-5N5" firstAttribute="centerY" secondItem="VMC-Vl-efY" secondAttribute="centerY" id="RdG-Ke-q4x"/>
+                                                <constraint firstItem="lxy-iM-2dI" firstAttribute="centerX" secondItem="VMC-Vl-efY" secondAttribute="centerX" id="RuG-K8-Agk"/>
+                                                <constraint firstItem="VMC-Vl-efY" firstAttribute="centerY" secondItem="W53-DN-CyH" secondAttribute="centerY" id="S8Z-nd-cGY"/>
+                                                <constraint firstItem="ihS-gT-CsU" firstAttribute="leading" secondItem="VMC-Vl-efY" secondAttribute="leading" id="UFb-Fn-6fs"/>
+                                                <constraint firstItem="lxy-iM-2dI" firstAttribute="centerY" secondItem="ihS-gT-CsU" secondAttribute="centerY" id="UaV-kK-lvp"/>
+                                                <constraint firstAttribute="trailing" secondItem="zYI-18-5N5" secondAttribute="trailing" constant="12" id="XNc-6t-scM"/>
+                                                <constraint firstItem="ihS-gT-CsU" firstAttribute="bottom" secondItem="VMC-Vl-efY" secondAttribute="bottom" constant="10" id="ZE2-nn-zIv"/>
+                                                <constraint firstItem="W53-DN-CyH" firstAttribute="centerY" secondItem="0uQ-yd-kSW" secondAttribute="centerY" id="fb5-44-3f9"/>
+                                                <constraint firstItem="W53-DN-CyH" firstAttribute="leading" secondItem="0uQ-yd-kSW" secondAttribute="leading" constant="12" id="hdz-8m-99n"/>
+                                                <constraint firstItem="rB0-cu-4Ni" firstAttribute="centerY" secondItem="ihS-gT-CsU" secondAttribute="centerY" id="our-gu-mCe"/>
+                                                <constraint firstItem="zYI-18-5N5" firstAttribute="centerY" secondItem="Xxa-yy-fVD" secondAttribute="centerY" id="rsf-lf-sE9"/>
+                                                <constraint firstItem="Xxa-yy-fVD" firstAttribute="centerY" secondItem="TI2-jF-hCI" secondAttribute="centerY" id="tRx-j8-D25"/>
+                                                <constraint firstItem="Xxa-yy-fVD" firstAttribute="leading" secondItem="TI2-jF-hCI" secondAttribute="trailing" constant="8" id="zeG-Xm-EDf"/>
+                                                <constraint firstItem="VMC-Vl-efY" firstAttribute="leading" secondItem="0uQ-yd-kSW" secondAttribute="leadingMargin" constant="86" id="zs0-UR-7KU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnApplyWeather" destination="W53-DN-CyH" id="OHJ-IC-dAI"/>
+                                            <outlet property="btnDustColor1" destination="TI2-jF-hCI" id="RR0-RG-JVC"/>
+                                            <outlet property="btnDustColor2" destination="Xxa-yy-fVD" id="bRu-VZ-oYa"/>
+                                            <outlet property="lbBirthRateCurrent" destination="lxy-iM-2dI" id="1Fd-7F-d8U"/>
+                                            <outlet property="lbBirthRateMax" destination="rB0-cu-4Ni" id="Bgd-06-e9A"/>
+                                            <outlet property="slBirthRate" destination="VMC-Vl-efY" id="ifx-WW-WEE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hEU-Tc-bxE" id="jav-Pp-z78"/>
+                                    <outlet property="delegate" destination="hEU-Tc-bxE" id="gEA-d8-6qr"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ApW-Ai-hRL" firstAttribute="width" secondItem="kIB-aG-E0b" secondAttribute="width" id="CCW-z6-RV2"/>
+                            <constraint firstItem="fBs-Gu-seB" firstAttribute="width" secondItem="cxy-1O-oSz" secondAttribute="width" id="KQY-HN-SNJ"/>
+                            <constraint firstItem="2pZ-u9-GjL" firstAttribute="top" secondItem="L7l-JG-pNP" secondAttribute="bottom" id="KnW-gx-37M"/>
+                            <constraint firstItem="kIB-aG-E0b" firstAttribute="leading" secondItem="e84-cC-bsL" secondAttribute="leading" id="SZU-zh-HjS"/>
+                            <constraint firstItem="kIB-aG-E0b" firstAttribute="bottom" secondItem="e84-cC-bsL" secondAttribute="bottom" id="U80-jG-uQ7"/>
+                            <constraint firstItem="L7l-JG-pNP" firstAttribute="leading" secondItem="KPe-Xz-AR6" secondAttribute="leading" id="VtM-bl-I2r"/>
+                            <constraint firstAttribute="trailing" secondItem="L7l-JG-pNP" secondAttribute="trailing" id="XvG-M9-0HN"/>
+                            <constraint firstItem="fBs-Gu-seB" firstAttribute="leading" secondItem="KPe-Xz-AR6" secondAttribute="leading" id="ZL2-iC-5EA"/>
+                            <constraint firstItem="cxy-1O-oSz" firstAttribute="top" secondItem="e84-cC-bsL" secondAttribute="bottom" id="a4j-M7-yGm"/>
+                            <constraint firstAttribute="trailing" secondItem="cxy-1O-oSz" secondAttribute="trailing" id="c3Q-wX-ypB"/>
+                            <constraint firstItem="ApW-Ai-hRL" firstAttribute="bottom" secondItem="e84-cC-bsL" secondAttribute="bottom" id="eAP-j7-PMI"/>
+                            <constraint firstItem="e84-cC-bsL" firstAttribute="top" secondItem="n1B-bZ-mGj" secondAttribute="bottom" id="elm-yC-K8S"/>
+                            <constraint firstItem="e84-cC-bsL" firstAttribute="leading" secondItem="KPe-Xz-AR6" secondAttribute="leading" id="hmH-7M-Em8"/>
+                            <constraint firstItem="ApW-Ai-hRL" firstAttribute="top" secondItem="e84-cC-bsL" secondAttribute="top" id="iE4-1t-3JM"/>
+                            <constraint firstItem="e84-cC-bsL" firstAttribute="height" secondItem="KPe-Xz-AR6" secondAttribute="height" multiplier="1:3" id="icP-bN-J00"/>
+                            <constraint firstItem="fBs-Gu-seB" firstAttribute="top" secondItem="e84-cC-bsL" secondAttribute="bottom" id="inz-qh-sQc"/>
+                            <constraint firstItem="ApW-Ai-hRL" firstAttribute="trailing" secondItem="e84-cC-bsL" secondAttribute="trailing" id="k1y-cm-q0u"/>
+                            <constraint firstItem="ApW-Ai-hRL" firstAttribute="leading" secondItem="kIB-aG-E0b" secondAttribute="trailing" id="kYp-s4-4fZ"/>
+                            <constraint firstAttribute="trailing" secondItem="e84-cC-bsL" secondAttribute="trailing" id="m61-Y9-4UD"/>
+                            <constraint firstItem="L7l-JG-pNP" firstAttribute="height" secondItem="KPe-Xz-AR6" secondAttribute="height" multiplier="1:2" id="pIs-xa-j1d"/>
+                            <constraint firstItem="kIB-aG-E0b" firstAttribute="top" secondItem="e84-cC-bsL" secondAttribute="top" id="s1a-aB-4sZ"/>
+                            <constraint firstItem="cxy-1O-oSz" firstAttribute="leading" secondItem="fBs-Gu-seB" secondAttribute="trailing" id="tjZ-3z-puv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rao-Cb-GeY">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="xW5-Lv-KtN">
+                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="On"/>
+                                <segment title="Off"/>
+                            </segments>
+                            <connections>
+                                <action selector="changeSpriteKitDebugOption:" destination="hEU-Tc-bxE" eventType="valueChanged" id="T3G-Wu-rwz"/>
+                            </connections>
+                        </segmentedControl>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Detail" id="0ev-qa-8VI">
+                                <connections>
+                                    <action selector="tabDetail:" destination="hEU-Tc-bxE" id="ynD-Cy-BQa"/>
+                                    <segue destination="V8J-aU-o6v" kind="show" id="10h-eT-cMT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="??" id="rLJ-bs-VYF">
+                                <connections>
+                                    <segue destination="Wbm-VK-7SN" kind="show" action="showDetailViewController:sender:" id="sJu-JN-DMh"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnOne" destination="fBs-Gu-seB" id="ucq-O9-0la"/>
+                        <outlet property="btnTwo" destination="cxy-1O-oSz" id="ZvN-BK-fjf"/>
+                        <outlet property="effectTableView" destination="L7l-JG-pNP" id="m9s-R0-gLU"/>
+                        <outlet property="mainView" destination="e84-cC-bsL" id="Y9E-Yp-ity"/>
+                        <outlet property="segment" destination="xW5-Lv-KtN" id="reK-ur-Lg5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qbJ-mz-Ciu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1263" y="202"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0P8-st-0eo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jph-uz-KBU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fTg-m7-HEd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hEU-Tc-bxE" kind="relationship" relationship="rootViewController" id="8AU-o4-nAK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WJ6-Nb-ZZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="484" y="202"/>
+        </scene>
     </scenes>
     <resources>
         <image name="img_back" width="720" height="478"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ms6-ze-dLR"/>
+        <segue reference="11k-xp-bD5"/>
+        <segue reference="Lse-aC-7Kn"/>
     </inferredMetricsTieBreakers>
 </document>

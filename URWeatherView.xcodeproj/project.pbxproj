@@ -37,6 +37,8 @@
 		97B97A601EF2542E006B50B7 /* URDust2EmitterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B97A5F1EF2542E006B50B7 /* URDust2EmitterNode.swift */; };
 		97B97A621EF25527006B50B7 /* URBurningCometEmitterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B97A611EF25527006B50B7 /* URBurningCometEmitterNode.swift */; };
 		97B97A661EF3733B006B50B7 /* URFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B97A651EF3733B006B50B7 /* URFilter.swift */; };
+		97B97A7B1EF7BD7E006B50B7 /* URWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B97A7A1EF7BD7E006B50B7 /* URWeatherView.swift */; };
+		97B97A871EF8BEC8006B50B7 /* LottieEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B97A861EF8BEC8006B50B7 /* LottieEx.framework */; };
 		97D6182E1EF0BEAB00A55C00 /* UREffectLightningBoltNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6182B1EF0BEAB00A55C00 /* UREffectLightningBoltNode.swift */; };
 		97D6182F1EF0BEAB00A55C00 /* UREffectLightningLineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6182C1EF0BEAB00A55C00 /* UREffectLightningLineNode.swift */; };
 		97D618301EF0BEAB00A55C00 /* UREffectLightningNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6182D1EF0BEAB00A55C00 /* UREffectLightningNode.swift */; };
@@ -56,7 +58,6 @@
 		97D6184E1EF0BF0600A55C00 /* URFilterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D618491EF0BF0600A55C00 /* URFilterImageView.swift */; };
 		97D6184F1EF0BF0600A55C00 /* URToneCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6184A1EF0BF0600A55C00 /* URToneCurveView.swift */; };
 		97D618501EF0BF0600A55C00 /* URToneCurveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97D6184B1EF0BF0600A55C00 /* URToneCurveView.xib */; };
-		97D618661EF1210400A55C00 /* LottieEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D618651EF1210400A55C00 /* LottieEx.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		97B97A5F1EF2542E006B50B7 /* URDust2EmitterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URDust2EmitterNode.swift; path = URWeatherView/SpriteAssets/URDust2EmitterNode.swift; sourceTree = SOURCE_ROOT; };
 		97B97A611EF25527006B50B7 /* URBurningCometEmitterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URBurningCometEmitterNode.swift; path = URWeatherView/SpriteAssets/URBurningCometEmitterNode.swift; sourceTree = SOURCE_ROOT; };
 		97B97A651EF3733B006B50B7 /* URFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URFilter.swift; path = URWeatherView/Filter/URFilter.swift; sourceTree = SOURCE_ROOT; };
+		97B97A7A1EF7BD7E006B50B7 /* URWeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URWeatherView.swift; sourceTree = "<group>"; };
+		97B97A861EF8BEC8006B50B7 /* LottieEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LottieEx.framework; sourceTree = "<group>"; };
 		97D6182B1EF0BEAB00A55C00 /* UREffectLightningBoltNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectLightningBoltNode.swift; path = URWeatherView/Effect/UREffectLightningBoltNode.swift; sourceTree = SOURCE_ROOT; };
 		97D6182C1EF0BEAB00A55C00 /* UREffectLightningLineNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectLightningLineNode.swift; path = URWeatherView/Effect/UREffectLightningLineNode.swift; sourceTree = SOURCE_ROOT; };
 		97D6182D1EF0BEAB00A55C00 /* UREffectLightningNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectLightningNode.swift; path = URWeatherView/Effect/UREffectLightningNode.swift; sourceTree = SOURCE_ROOT; };
@@ -122,7 +125,6 @@
 		97D618491EF0BF0600A55C00 /* URFilterImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URFilterImageView.swift; path = URWeatherView/UI/URFilterImageView.swift; sourceTree = SOURCE_ROOT; };
 		97D6184A1EF0BF0600A55C00 /* URToneCurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URToneCurveView.swift; path = URWeatherView/UI/URToneCurveView.swift; sourceTree = SOURCE_ROOT; };
 		97D6184B1EF0BF0600A55C00 /* URToneCurveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = URToneCurveView.xib; path = URWeatherView/UI/URToneCurveView.xib; sourceTree = SOURCE_ROOT; };
-		97D618651EF1210400A55C00 /* LottieEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LottieEx.framework; path = Carthage/Build/iOS/LottieEx.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97D618661EF1210400A55C00 /* LottieEx.framework in Frameworks */,
+				97B97A871EF8BEC8006B50B7 /* LottieEx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +175,7 @@
 				974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */,
 				974FFB501EAA072E00B2A3E7 /* Info.plist */,
 				979725F41EEFD60C007BC0D9 /* Assets.xcassets */,
+				97B97A7A1EF7BD7E006B50B7 /* URWeatherView.swift */,
 			);
 			path = URWeatherView;
 			sourceTree = "<group>";
@@ -290,7 +293,7 @@
 		979725691EEE7A63007BC0D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97D618651EF1210400A55C00 /* LottieEx.framework */,
+				97B97A861EF8BEC8006B50B7 /* LottieEx.framework */,
 			);
 			name = Frameworks;
 			path = URWeatherView;
@@ -461,6 +464,7 @@
 				97B97A581EF23B77006B50B7 /* URRainEmitterNode.swift in Sources */,
 				97B97A661EF3733B006B50B7 /* URFilter.swift in Sources */,
 				97D6184D1EF0BF0600A55C00 /* URToneCurveGraphView.swift in Sources */,
+				97B97A7B1EF7BD7E006B50B7 /* URWeatherView.swift in Sources */,
 				97D6182F1EF0BEAB00A55C00 /* UREffectLightningLineNode.swift in Sources */,
 				97D618451EF0BEC900A55C00 /* URFilterUtil.swift in Sources */,
 				97D618411EF0BEC900A55C00 /* URRGBToneCurveFilter.swift in Sources */,

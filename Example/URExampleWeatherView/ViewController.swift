@@ -189,6 +189,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 self.initMainAnimation()
                 self.mainBackgroundImageView.stop({
                     self.mainBackgroundImageView.removeToneCurveFilter()
+                    self.mainBackgroundImageView.removeGradientMask()
                 })
 
                 switch cell.weather {
