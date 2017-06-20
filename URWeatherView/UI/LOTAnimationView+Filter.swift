@@ -78,8 +78,8 @@ extension URFilterAppliable where Self: URLOTAnimationView {
 
             let src: CISampler = CISampler(image: CIImage(cgImage: cgImage))
 
-            _ = URFilterAnimationManager(duration: 0.8, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
-                let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage, inputValues: [src, progress, 0.4, 0.3, 4.0], roiRatio: 0.8)
+            _ = URFilterAnimationManager(duration: 4.0, startTime: CACurrentMediaTime(), fireBlock: { (progress) in
+                let filter = URWaveWarpFilter(frame: extent, cgImage: cgImage, inputValues: [src, progress, 0.2, 0.3, 0.625], roiRatio: 0.8)
                 imageLayer.contents = filter.outputCGImage
             })
         }
