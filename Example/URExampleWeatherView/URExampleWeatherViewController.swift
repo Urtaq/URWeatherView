@@ -81,29 +81,23 @@ extension URExampleWeatherViewController: UITableViewDelegate, UITableViewDataSo
             cell.configCell(URWeatherType.all[indexPath.row])
 
             cell.applyWeatherBlock = {
-                self.mainView.initWeather()
-
                 switch cell.weather {
                 case .dust, .dust2:
-                    self.mainView.setUpperImageEffect()
-
-                    self.mainView.stop()
-                    self.mainView.enableDebugOption = self.segment.selectedSegmentIndex == 0
                     if cell.btnDustColor1.isSelected {
-
-                        self.mainView.startWeatherScene(.dust)
-                        if let startBirthRate = URWeatherType.dust.startBirthRate {
-                            cell.slBirthRate.value = Float(startBirthRate)
-                            cell.changeBirthRate(cell.slBirthRate)
-                        }
+                        self.mainView.startWeatherSceneBulk(.dust, debugOption: self.segment.selectedSegmentIndex == 0, additionalTask: {
+                            if let startBirthRate = cell.weather.startBirthRate {
+                                cell.slBirthRate.value = Float(startBirthRate)
+                                cell.changeBirthRate(cell.slBirthRate)
+                            }
+                        })
                     }
                     if cell.btnDustColor2.isSelected {
-
-                        self.mainView.startWeatherScene(.dust2)
-                        if let startBirthRate = URWeatherType.dust2.startBirthRate {
-                            cell.slBirthRate.value = Float(startBirthRate)
-                            cell.changeBirthRate(cell.slBirthRate)
-                        }
+                        self.mainView.startWeatherSceneBulk(.dust2, debugOption: self.segment.selectedSegmentIndex == 0, additionalTask: {
+                            if let startBirthRate = cell.weather.startBirthRate {
+                                cell.slBirthRate.value = Float(startBirthRate)
+                                cell.changeBirthRate(cell.slBirthRate)
+                            }
+                        })
                     }
                 default:
                     break
@@ -111,12 +105,7 @@ extension URExampleWeatherViewController: UITableViewDelegate, UITableViewDataSo
             }
 
             cell.stopWeatherBlock = {
-                self.mainView.stopWeatherScene()
-            }
-
-            cell.removeToneFilterBlock = {
-                self.mainView.initWeather()
-                self.mainView.stopBackgroundEffect()
+                self.mainView.stop()
             }
 
             cell.birthRateDidChange = { (birthRate) in
@@ -151,12 +140,7 @@ extension URExampleWeatherViewController: UITableViewDelegate, UITableViewDataSo
             }
 
             cell.stopWeatherBlock = {
-                self.mainView.stopWeatherScene()
-            }
-
-            cell.removeToneFilterBlock = {
-                self.mainView.initWeather()
-                self.mainView.stopBackgroundEffect()
+                self.mainView.stop()
             }
 
             cell.birthRateDidChange = { (birthRate) in

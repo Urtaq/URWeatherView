@@ -305,18 +305,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
 
-            cell.stopWeatherBlock = {
-                self.mainUpperImageView.image = nil
-
-                self.weatherScene.stopScene()
-            }
-
             cell.removeToneFilterBlock = {
                 self.initMainAnimation()
                 self.mainBackgroundImageView.stop({
                     self.mainBackgroundImageView.removeToneCurveFilter()
                     self.mainBackgroundImageView.removeGradientMask()
                 })
+            }
+
+            cell.stopWeatherBlock = {
+                self.mainUpperImageView.image = nil
+
+                self.weatherScene.stopScene()
             }
 
             cell.birthRateDidChange = { (birthRate) in

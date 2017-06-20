@@ -49,7 +49,6 @@ open class URFilterAnimationManager {
 
     @objc private func timerFired(_ displayLink : CADisplayLink) {
         let progress = min((CACurrentMediaTime() - self.transitionStartTime) / self.duration, 1.0)
-        print("this is \(self.displayLink), displaylink is \(displayLink), progress : \(progress), mediatime is \(CACurrentMediaTime()), self.transitionStartTime is \(self.transitionStartTime), duration : \(self.duration)")
         self.timerFiredCallback(progress)
 
         if progress == 1.0 {
