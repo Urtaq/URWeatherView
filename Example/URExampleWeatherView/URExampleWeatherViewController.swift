@@ -24,7 +24,9 @@ class URExampleWeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.mainView.initView(dataNameOfLottie: "data", backgroundImage: #imageLiteral(resourceName: "img_back"))
+//        self.mainView.initView(dataNameOfLottie: "data", backgroundImage: #imageLiteral(resourceName: "img_back"))
+
+        self.mainView.initView(mainWeatherImage: #imageLiteral(resourceName: "buildings"), backgroundImage: #imageLiteral(resourceName: "bluesky.en"))
     }
 
     override func didReceiveMemoryWarning() {

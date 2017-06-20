@@ -12,7 +12,8 @@ open class URWeatherView: UIView {
     var backgroundImageView: URFilterImageView!
     var backgroundDefaultImage: UIImage!
 
-    var mainImageView: UIImageView!
+    var mainImageView: URFilterImageView!
+    var mainDefaultImage: UIImage!
     var mainLOTAnimationView: URLOTAnimationView!
     var mainLOTJSONDataName: String!
 
@@ -49,12 +50,13 @@ open class URWeatherView: UIView {
         self.initView(dataNameOfLottie: data, backgroundImage: backgroundImage)
     }
 
-    open func initView(mainWeatherImage data: UIImage, backgroundImage: UIImage?) {
+    open func initView(mainWeatherImage mainImage: UIImage, backgroundImage: UIImage?) {
 
         self.configMain()
 
-        self.mainImageView = UIImageView(frame: frame)
-        self.insertSubview(self.mainImageView, belowSubview: self.upperImageView)
+        self.mainDefaultImage = mainImage
+        self.mainImageView = URFilterImageView(image: mainImage)
+        self.insertSubview(self.mainImageView, belowSubview: self.skView)
         self.mainImageView.addConstraintEdgesToSuper()
 
         self.backgroundDefaultImage = backgroundImage
@@ -97,6 +99,9 @@ open class URWeatherView: UIView {
     }
 
     open func initWeather(backgroundImage: UIImage? = nil, data: String? = nil) {
+        if self.mainImageView != nil {
+            self.mainImageView.image = self.mainDefaultImage
+        }
         if self.backgroundDefaultImage != nil {
             self.backgroundImageView.image = self.backgroundDefaultImage
         }
@@ -170,24 +175,28 @@ open class URWeatherView: UIView {
         case .snow:
             if let filterValues = URWeatherType.snow.imageFilterValues, let filterValuesSub = URWeatherType.snow.imageFilterValuesSub {
                 self.backgroundImageView.applyToneCurveFilter(filterValues: filterValues)
-                self.mainLOTAnimationView.applyToneCurveFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
+                if self.mainLOTAnimationView != nil {
+                    self.mainLOTAnimationView.applyToneCurveFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
+                } else {
+                    self.mainImageView.applyToneCurveFilter(filterValues: filterValues, filterValuesSub: filterValuesSub)
+                }
             }
-            self.startWeatherScene(.snow)
+            self.startWeatherScene(weather)
             if let task = additionalTask {
                 task()
             }
         case .rain:
-            self.startWeatherScene(.rain)
+            self.startWeatherScene(weather)
             if let task = additionalTask {
                 task()
             }
         case .dust:
-            self.startWeatherScene(.dust)
+            self.startWeatherScene(weather)
             if let task = additionalTask {
                 task()
             }
         case .dust2:
-            self.startWeatherScene(.dust)
+            self.startWeatherScene(weather)
             if let task = additionalTask {
                 task()
             }
@@ -203,30 +212,27 @@ open class URWeatherView: UIView {
 
             let lightningShowTimes = [times[0] - 0.005, times[4] - 0.005, times[7] - 0.005, times[10] - 0.005, times[13] - 0.005, times[16] - 0.005, times[19] - 0.005, times[22] - 0.005]
             let duration: TimeInterval = 6.0
-//                    let bundle = Bundle(for: URWeatherScene.self)
-//                    let imageDark = UIImage(named: "darkCity_00000", in: bundle, compatibleWith: nil)!
-//                    let imageLight = UIImage(named: "darkCity2_00006", in: bundle, compatibleWith: nil)!
-//                    self.mainBackgroundImageView.applyBackgroundEffect(imageAssets: [imageDark, imageLight], duration: duration,
-//                                                                       userInfo: ["times": times])
             let backgroundImages = self.weatherScene.makeLightningBackgroundEffect(imageView: self.backgroundImageView)
             self.backgroundImageView.applyBackgroundEffect(imageAssets: backgroundImages, duration: duration,
                                                                userInfo: ["times": times])
-            if let filterValues = URWeatherType.lightning.imageFilterValues {
-                self.mainLOTAnimationView.applyToneCurveFilter(filterValues: filterValues)
-            }
-            self.startWeatherScene(.lightning, duration: duration, showTimes: lightningShowTimes)
+            self.startWeatherScene(weather, duration: duration, showTimes: lightningShowTimes)
         case .hot:
             if let filterValues = URWeatherType.hot.imageFilterValues {
                 self.backgroundImageView.applyToneCurveFilter(filterValues: filterValues)
                 self.backgroundImageView.applyDistortionFilter()
-                self.mainLOTAnimationView.applyToneCurveFilter(filterValues: filterValues)
-                self.mainLOTAnimationView.applyDistortionFilter()
+                if self.mainLOTAnimationView != nil {
+                    self.mainLOTAnimationView.applyToneCurveFilter(filterValues: filterValues)
+                    self.mainLOTAnimationView.applyDistortionFilter()
+                } else {
+                    self.mainImageView.applyToneCurveFilter(filterValues: filterValues)
+                    self.mainImageView.applyDistortionFilter()
+                }
             }
-            self.startWeatherScene(.hot)
+            self.startWeatherScene(weather)
         case .cloudy:
-            self.startWeatherScene(.cloudy, duration: 33.0)
+            self.startWeatherScene(weather, duration: 33.0)
         case .comet:
-            self.startWeatherScene(.comet)
+            self.startWeatherScene(weather)
         default:
             break
         }
@@ -234,13 +240,25 @@ open class URWeatherView: UIView {
 
     open func stop() {
         self.stopWeatherScene()
-        self.configMainLOTAnimation(data: self.mainLOTJSONDataName)
+        self.stopMainEffect()
         self.stopBackgroundEffect()
     }
 
     open func stopWeatherScene() {
         self.upperImageView.image = nil
         self.weatherScene.stopScene()
+    }
+
+    open func stopMainEffect() {
+        if self.mainImageView != nil {
+            self.mainImageView.stop {
+                self.mainImageView.removeToneCurveFilter()
+                self.mainImageView.removeGradientMask()
+            }
+        }
+        if self.mainLOTAnimationView != nil {
+            self.configMainLOTAnimation(data: self.mainLOTJSONDataName)
+        }
     }
 
     open func stopBackgroundEffect() {
@@ -274,13 +292,17 @@ open class URWeatherView: UIView {
     }
 
     open func play(eventHandler: (() -> Void)? = nil) {
-        self.mainLOTAnimationView.play()
+        if self.mainLOTAnimationView != nil {
+            self.mainLOTAnimationView.play()
+        }
         guard let handler = eventHandler else { return }
         handler()
     }
 
     open func pause() {
-        self.mainLOTAnimationView.pause()
+        if self.mainLOTAnimationView != nil {
+            self.mainLOTAnimationView.pause()
+        }
     }
 }
 
