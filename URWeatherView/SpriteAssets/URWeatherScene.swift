@@ -604,6 +604,8 @@ open class URWeatherScene: SKScene, URNodeMovable {
             if weather == .cloudy {
                 self.removeAction(forKey: weather.name + "1")
                 self.removeAction(forKey: weather.name + "2")
+
+                self.removeAllActions()
             }
         }
 
