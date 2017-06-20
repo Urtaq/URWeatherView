@@ -10,25 +10,25 @@ To show the vector animation made by After Effect, [Lottie](http://airbnb.design
 ### Usable Weather Effects
 
 #### 1. Snow
-![sample](https://github.com/jegumhon/URWeatherView/blob/master/Resources/parallaxScrolling+PullToRefresh1.gif?raw=true)
+![sample](https://github.com/jegumhon/URWeatherView/blob/master/Artwork/URWeather_snow.gif?raw=true)
 
 #### 2. Rain
-![sample](https://github.com/jegumhon/URWeatherView/blob/master/Resources/parallaxScrolling+PullToRefresh1.gif?raw=true)
+![sample](https://github.com/jegumhon/URWeatherView/blob/master/Artwork/URWeather_rain.gif?raw=true)
 
 #### 3. Dust
   * #1  
-![sample](https://github.com/jegumhon/URWeatherView/blob/master/Resources/parallaxScrolling+PullToRefresh1.gif?raw=true)
+![sample_dust1](https://github.com/jegumhon/URWeatherView/blob/master/Artwork/URWeather_dust1.gif?raw=true)
   * #2  
-![sample](https://github.com/jegumhon/URWeatherView/blob/master/Resources/parallaxScrolling+PullToRefresh1.gif?raw=true)
+![sample_dust2](https://github.com/jegumhon/URWeatherView/blob/master/Artwork/URWeather_dust2.gif?raw=true)
 
 #### 4. Lightning
-![sample](https://github.com/jegumhon/URWeatherView/blob/master/Resources/parallaxScrolling+PullToRefresh1.gif?raw=true)
+![sample_lightning](https://github.com/jegumhon/URWeatherView/blob/master/Artwork/URWeather_lightning.gif?raw=true)
 
 #### 5. Hot
-![sample](https://github.com/jegumhon/URWeatherView/blob/master/Resources/parallaxScrolling+PullToRefresh1.gif?raw=true)
+![sample_hot](https://github.com/jegumhon/URWeatherView/blob/master/Artwork/URWeather_hot_with_wavewarp.gif?raw=true)
 
 #### 6. Cloudy
-![sample](https://github.com/jegumhon/URWeatherView/blob/master/Resources/parallaxScrolling+PullToRefresh1.gif?raw=true)
+![sample_cloudy](https://github.com/jegumhon/URWeatherView/blob/master/Artwork/URWeather_cloudy.gif?raw=true)
 
 ## Used library stack
 #### [SpriteKit](https://developer.apple.com/spritekit/)  
