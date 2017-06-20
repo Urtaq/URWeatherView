@@ -122,11 +122,11 @@ extension URExampleWeatherViewController: UITableViewDelegate, UITableViewDataSo
             cell.applyWeatherBlock = {
                 switch cell.weather {
                 case .snow:
-                    self.mainView.startWeatherSceneBulk(cell.weather, upperImage: #imageLiteral(resourceName: "snow"), debugOption: self.segment.selectedSegmentIndex == 0, additionalTask: {
+                    self.mainView.startWeatherSceneBulk(cell.weather, debugOption: self.segment.selectedSegmentIndex == 0, additionalTask: {
                         self.changedMainState()
                     })
                 case .rain:
-                    self.mainView.startWeatherSceneBulk(cell.weather, upperImage: #imageLiteral(resourceName: "rain"), debugOption: self.segment.selectedSegmentIndex == 0, additionalTask: {
+                    self.mainView.startWeatherSceneBulk(cell.weather, debugOption: self.segment.selectedSegmentIndex == 0, additionalTask: {
                         self.changedMainState()
                     })
                 case .lightning, .hot, .comet:
