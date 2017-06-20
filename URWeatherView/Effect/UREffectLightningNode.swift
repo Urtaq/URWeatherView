@@ -44,7 +44,7 @@ enum UREffectLigthningPosition {
     }
 }
 
-struct UREffectLightningOption {
+public struct UREffectLightningOption: UREffectOption {
     var timeIntervalBetweenLightning = 0.15
 
     var lightningLifetimeCoefficient = 0.1
@@ -62,7 +62,7 @@ struct UREffectLightningOption {
     // Make bigger if you want bigger line lenght and vice versa
     let lineRangeCoefficient = 1.8
 
-    init(lineThickness: Double = 1.3) {
+    public init(lineThickness: Double = 1.3) {
         self.lineThickness = lineThickness
     }
 }

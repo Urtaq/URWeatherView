@@ -159,8 +159,8 @@ open class URWeatherView: UIView {
         }
     }
 
-    open func startWeatherScene(_ weather: URWeatherType, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
-        self.weatherScene.startScene(weather, duration: duration, showTimes: times)
+    open func startWeatherScene(_ weather: URWeatherType, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil, userInfo: [String: UREffectOption]! = nil) {
+        self.weatherScene.startScene(weather, duration: duration, showTimes: times, userInfo: userInfo)
     }
 
     open func startWeatherSceneBulk(_ weather: URWeatherType, upperImage: UIImage? = nil, duration: TimeInterval = 0.0, debugOption: Bool = false, additionalTask: (() -> Void)? = nil) {
@@ -230,7 +230,8 @@ open class URWeatherView: UIView {
             }
             self.startWeatherScene(weather)
         case .cloudy:
-            self.startWeatherScene(weather, duration: 33.0)
+            let option = UREffectCloudOption(CGRect(x: -0.8, y: -0.2, width: 1.7, height: 0.3), angleInDegree: 30.0, movingDuration: 33.0)
+            self.startWeatherScene(weather, duration: 33.0, userInfo: [URWeatherKeyCloudOption: option])
         case .comet:
             self.startWeatherScene(weather)
         default:

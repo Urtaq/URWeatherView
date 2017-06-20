@@ -29,7 +29,7 @@ enum UREffectCloudType: Int {
     }
 }
 
-struct UREffectCloudOption {
+public struct UREffectCloudOption: UREffectOption {
     /// emittable AreaRatio
     var emittableArea: CGRect
 
@@ -44,11 +44,11 @@ struct UREffectCloudOption {
 //    var makingCount: UInt32 = 10
 //    var isRandomCountInMax: Bool = true
 
-    init(_ emittableArea: CGRect, angleInDegree: CGFloat, scaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
+    public init(_ emittableArea: CGRect, angleInDegree: CGFloat, scaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
         self.init(emittableArea, angleInRadian: angleInDegree.degreesToRadians, scaleRatio: scaleRatio, movingDuration: movingDuration)
     }
 
-    init(_ emittableArea: CGRect, angleInRadian: CGFloat, scaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
+    public init(_ emittableArea: CGRect, angleInRadian: CGFloat, scaleRatio: CGFloat = 0.3, movingDuration: TimeInterval = 5.0) {
         self.emittableArea = emittableArea
         self.movingAngle = angleInRadian
         self.textureScaleRatio = scaleRatio
@@ -60,6 +60,10 @@ struct UREffectCloudOption {
 
 /// create a sprite node of cloud which texture is random
 class UREffectCloudNode: SKSpriteNode {
+    class func makeClouds(maxCount: UInt32, isRandomCountInMax: Bool, cloudOption option: UREffectCloudOption, on scene: SKView) -> [UREffectCloudNode] {
+        return UREffectCloudNode.makeClouds(maxCount: maxCount, isRandomCountInMax: isRandomCountInMax, emittableAreaRatio: option.emittableArea, on: scene, movingAngleInRadian: option.movingAngle, movingDuration: option.movingDuration)
+    }
+
     class func makeClouds(maxCount: UInt32, isRandomCountInMax: Bool, emittableAreaRatio area: CGRect, on scene: SKView, movingAngleInDegree: CGFloat, movingDuration: TimeInterval = 5.0) -> [UREffectCloudNode] {
         return UREffectCloudNode.makeClouds(maxCount: maxCount, isRandomCountInMax: isRandomCountInMax, emittableAreaRatio: area, on: scene, movingAngleInRadian: movingAngleInDegree.degreesToRadians)
     }

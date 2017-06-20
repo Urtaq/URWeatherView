@@ -10,6 +10,7 @@
 		974FFB561EAA072E00B2A3E7 /* URWeatherView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974FFB4C1EAA072E00B2A3E7 /* URWeatherView.framework */; };
 		974FFB5B1EAA072E00B2A3E7 /* URWeatherViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */; };
 		974FFB5D1EAA072E00B2A3E7 /* URWeatherView.h in Headers */ = {isa = PBXBuildFile; fileRef = 974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9761C90F1EF900C1000B1829 /* UREffectOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9761C90E1EF900C1000B1829 /* UREffectOption.swift */; };
 		979725601EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */; };
 		979725611EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */; };
 		979725621EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */; };
@@ -77,6 +78,7 @@
 		974FFB551EAA072E00B2A3E7 /* URWeatherViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URWeatherViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URWeatherViewTests.swift; sourceTree = "<group>"; };
 		974FFB5C1EAA072E00B2A3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9761C90E1EF900C1000B1829 /* UREffectOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectOption.swift; path = URWeatherView/Effect/UREffectOption.swift; sourceTree = SOURCE_ROOT; };
 		979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderRGBToneCurve.cikernel; path = ../../Resources/Shaders/URKernelShaderRGBToneCurve.cikernel; sourceTree = "<group>"; };
 		9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderShockWave.cikernel; path = ../../Resources/Shaders/URKernelShaderShockWave.cikernel; sourceTree = "<group>"; };
 		9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderWaveWarp.cikernel; path = ../../Resources/Shaders/URKernelShaderWaveWarp.cikernel; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		979725271EEE7362007BC0D9 /* Effect */ = {
 			isa = PBXGroup;
 			children = (
+				9761C90E1EF900C1000B1829 /* UREffectOption.swift */,
 				979725221EEE7362007BC0D9 /* cloud */,
 				979725261EEE7362007BC0D9 /* lightning */,
 			);
@@ -448,6 +451,7 @@
 			files = (
 				97D618431EF0BEC900A55C00 /* URShockWaveFilter.swift in Sources */,
 				97D6183F1EF0BEC900A55C00 /* URFilterAppliable.swift in Sources */,
+				9761C90F1EF900C1000B1829 /* UREffectOption.swift in Sources */,
 				97B97A5E1EF251E9006B50B7 /* URRainGroundEmitterNode.swift in Sources */,
 				97D618421EF0BEC900A55C00 /* URRippleFilter.swift in Sources */,
 				97B97A601EF2542E006B50B7 /* URDust2EmitterNode.swift in Sources */,

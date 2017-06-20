@@ -250,6 +250,9 @@ public struct URWeatherGroundEmitterOption {
     }
 }
 
+public let URWeatherKeyCloudOption: String     = "URWeatherCloudOption"
+public let URWeatherKeyLightningOption: String = "URWeatherLightningOption"
+
 open class URWeatherScene: SKScene, URNodeMovable {
     fileprivate var emitter: SKEmitterNode!
     fileprivate var subEmitter: SKEmitterNode!
@@ -382,8 +385,6 @@ open class URWeatherScene: SKScene, URNodeMovable {
                 self.addChild(cloudNode)
 
                 cloudNode.makeStreamingAction()
-
-//                    self.movableNodes.append(cloudNode)
             }
         }
         let waitAction = SKAction.wait(forDuration: duration * 2.0)
@@ -393,8 +394,29 @@ open class URWeatherScene: SKScene, URNodeMovable {
         }
     }
 
+    /// draw clouds
+    func drawCloudEffect(cloudOption option: UREffectCloudOption, interval: TimeInterval = 0.0, index: Int) {
+        var cloudNodes: [UREffectCloudNode] = [UREffectCloudNode]()
+
+        let makeAction = SKAction.run {
+            cloudNodes = UREffectCloudNode.makeClouds(maxCount: UInt32(self.birthRate), isRandomCountInMax: true, cloudOption: option, on: self.view!)
+            cloudNodes = cloudNodes.sorted(by: >)
+
+            for cloudNode in cloudNodes {
+                self.addChild(cloudNode)
+
+                cloudNode.makeStreamingAction()
+            }
+        }
+        let waitAction = SKAction.wait(forDuration: option.movingDuration * 2.0)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
+            self.run(SKAction.repeatForever(SKAction.sequence([makeAction, waitAction])), withKey: self.weatherType.name + "\(index)")
+        }
+    }
+
     /// make the weather effect scene
-    func makeScene(weather: URWeatherType = .shiny, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
+    func makeScene(weather: URWeatherType = .shiny, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil, userInfo: [String: UREffectOption]! = nil) {
         switch weather {
         case .lightning:
             var actions = [SKAction]()
@@ -418,20 +440,25 @@ open class URWeatherScene: SKScene, URNodeMovable {
             }
             self.run(SKAction.repeatForever(SKAction.sequence(actions)), withKey: weather.name)
         case .cloudy:
-            self.drawCloudEffect(duration: duration, interval: 0.0, index: 1)
-            self.drawCloudEffect(duration: duration, interval: duration + 0.5, index: 2)
+//            self.drawCloudEffect(duration: duration, interval: 0.0, index: 1)
+//            self.drawCloudEffect(duration: duration, interval: duration + 0.5, index: 2)
+
+            if let option = userInfo[URWeatherKeyCloudOption] as? UREffectCloudOption {
+                self.drawCloudEffect(cloudOption: option, index: 1)
+                self.drawCloudEffect(cloudOption: option, interval: option.movingDuration, index: 2)
+            }
         default:
             break
         }
     }
 
     /// start the whole weather scene
-    open func startScene(_ weather: URWeatherType = .snow, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil) {
+    open func startScene(_ weather: URWeatherType = .snow, duration: TimeInterval = 0.0, showTimes times: [Double]! = nil, userInfo: [String: UREffectOption]! = nil) {
         self.weatherType = weather
 
         switch weather {
         case .lightning, .hot, .cloudy, .shiny:
-            self.makeScene(weather: weather, duration: duration, showTimes: times)
+            self.makeScene(weather: weather, duration: duration, showTimes: times, userInfo: userInfo)
         default:
             self.startEmitter(weather: weather)
         }
