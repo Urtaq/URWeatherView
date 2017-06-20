@@ -8,6 +8,16 @@ This code style is the **`Protocol Oriented Programming`**.
 
 To show the vector animation made by After Effect, [Lottie](http://airbnb.design/lottie/) can be used instead of UIImageView.
 
+## Before using URWeatherView, Which resources do you need?
+#### 1. main image or main lottie resource (Required)
+ - The weather effect's main target
+ - apply tone curve filter or gradient mask
+#### 2. backgroundImage of main (Optional)
+ - The weather effect's background Image
+#### 3. upperImage of main (Optional)
+ - The weather effect's upper Image
+ - If you want extra effect, you can use it.
+
 ### Usable Weather Effects
 
 #### 1. Snow
