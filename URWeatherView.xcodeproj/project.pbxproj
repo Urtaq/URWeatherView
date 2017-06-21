@@ -11,11 +11,11 @@
 		974FFB5B1EAA072E00B2A3E7 /* URWeatherViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */; };
 		974FFB5D1EAA072E00B2A3E7 /* URWeatherView.h in Headers */ = {isa = PBXBuildFile; fileRef = 974FFB4F1EAA072E00B2A3E7 /* URWeatherView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9761C90F1EF900C1000B1829 /* UREffectOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9761C90E1EF900C1000B1829 /* UREffectOption.swift */; };
-		979725601EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */; };
-		979725611EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */; };
-		979725621EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */; };
-		979725631EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */; };
-		979725641EEE7362007BC0D9 /* URKernelShaderRipple.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = 9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */; };
+		9761C9171EF9FBAE000B1829 /* URKernelShaderWaveWarp.cikernel.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9761C9121EF9FBAE000B1829 /* URKernelShaderWaveWarp.cikernel.fsh */; };
+		9761C9181EF9FBAE000B1829 /* URKernelShaderFrostedGlass.cikernel.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9761C9131EF9FBAE000B1829 /* URKernelShaderFrostedGlass.cikernel.fsh */; };
+		9761C9191EF9FBAE000B1829 /* URKernelShaderRGBToneCurve.cikernel.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9761C9141EF9FBAE000B1829 /* URKernelShaderRGBToneCurve.cikernel.fsh */; };
+		9761C91A1EF9FBAE000B1829 /* URKernelShaderRipple.cikernel.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9761C9151EF9FBAE000B1829 /* URKernelShaderRipple.cikernel.fsh */; };
+		9761C91B1EF9FBAE000B1829 /* URKernelShaderShockWave.cikernel.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9761C9161EF9FBAE000B1829 /* URKernelShaderShockWave.cikernel.fsh */; };
 		979725F51EEFD60C007BC0D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 979725F41EEFD60C007BC0D9 /* Assets.xcassets */; };
 		979726181EF0BE5B007BC0D9 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9797260C1EF0BE5B007BC0D9 /* MyActions.sks */; };
 		979726191EF0BE5B007BC0D9 /* MyParticleBurningComet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9797260D1EF0BE5B007BC0D9 /* MyParticleBurningComet.sks */; };
@@ -79,11 +79,11 @@
 		974FFB5A1EAA072E00B2A3E7 /* URWeatherViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URWeatherViewTests.swift; sourceTree = "<group>"; };
 		974FFB5C1EAA072E00B2A3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9761C90E1EF900C1000B1829 /* UREffectOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UREffectOption.swift; path = URWeatherView/Effect/UREffectOption.swift; sourceTree = SOURCE_ROOT; };
-		979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderRGBToneCurve.cikernel; path = ../../Resources/Shaders/URKernelShaderRGBToneCurve.cikernel; sourceTree = "<group>"; };
-		9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderShockWave.cikernel; path = ../../Resources/Shaders/URKernelShaderShockWave.cikernel; sourceTree = "<group>"; };
-		9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderWaveWarp.cikernel; path = ../../Resources/Shaders/URKernelShaderWaveWarp.cikernel; sourceTree = "<group>"; };
-		9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; name = URKernelShaderFrostedGlass.cikernel; path = ../../Resources/Shaders/URKernelShaderFrostedGlass.cikernel; sourceTree = "<group>"; };
-		9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = URKernelShaderRipple.cikernel; path = ../../Resources/Shaders/URKernelShaderRipple.cikernel; sourceTree = "<group>"; };
+		9761C9121EF9FBAE000B1829 /* URKernelShaderWaveWarp.cikernel.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = URKernelShaderWaveWarp.cikernel.fsh; sourceTree = "<group>"; };
+		9761C9131EF9FBAE000B1829 /* URKernelShaderFrostedGlass.cikernel.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = URKernelShaderFrostedGlass.cikernel.fsh; sourceTree = "<group>"; };
+		9761C9141EF9FBAE000B1829 /* URKernelShaderRGBToneCurve.cikernel.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = URKernelShaderRGBToneCurve.cikernel.fsh; sourceTree = "<group>"; };
+		9761C9151EF9FBAE000B1829 /* URKernelShaderRipple.cikernel.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = URKernelShaderRipple.cikernel.fsh; sourceTree = "<group>"; };
+		9761C9161EF9FBAE000B1829 /* URKernelShaderShockWave.cikernel.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = URKernelShaderShockWave.cikernel.fsh; sourceTree = "<group>"; };
 		979725F41EEFD60C007BC0D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Resources/Assets.xcassets; sourceTree = "<group>"; };
 		9797260C1EF0BE5B007BC0D9 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MyActions.sks; path = URWeatherView/SpriteAssets/MyActions.sks; sourceTree = SOURCE_ROOT; };
 		9797260D1EF0BE5B007BC0D9 /* MyParticleBurningComet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MyParticleBurningComet.sks; path = URWeatherView/SpriteAssets/MyParticleBurningComet.sks; sourceTree = SOURCE_ROOT; };
@@ -262,11 +262,11 @@
 		9797253E1EEE7362007BC0D9 /* KernelShaders */ = {
 			isa = PBXGroup;
 			children = (
-				979725391EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel */,
-				9797253A1EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel */,
-				9797253B1EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel */,
-				9797253C1EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel */,
-				9797253D1EEE7362007BC0D9 /* URKernelShaderRipple.cikernel */,
+				9761C9121EF9FBAE000B1829 /* URKernelShaderWaveWarp.cikernel.fsh */,
+				9761C9131EF9FBAE000B1829 /* URKernelShaderFrostedGlass.cikernel.fsh */,
+				9761C9141EF9FBAE000B1829 /* URKernelShaderRGBToneCurve.cikernel.fsh */,
+				9761C9151EF9FBAE000B1829 /* URKernelShaderRipple.cikernel.fsh */,
+				9761C9161EF9FBAE000B1829 /* URKernelShaderShockWave.cikernel.fsh */,
 			);
 			name = KernelShaders;
 			sourceTree = "<group>";
@@ -400,21 +400,21 @@
 			files = (
 				9797261B1EF0BE5B007BC0D9 /* MyParticleDust2.sks in Resources */,
 				9797261A1EF0BE5B007BC0D9 /* MyParticleDust.sks in Resources */,
-				979725641EEE7362007BC0D9 /* URKernelShaderRipple.cikernel in Resources */,
+				9761C91A1EF9FBAE000B1829 /* URKernelShaderRipple.cikernel.fsh in Resources */,
 				9797261D1EF0BE5B007BC0D9 /* MyParticleRainGround.sks in Resources */,
+				9761C9191EF9FBAE000B1829 /* URKernelShaderRGBToneCurve.cikernel.fsh in Resources */,
+				9761C9171EF9FBAE000B1829 /* URKernelShaderWaveWarp.cikernel.fsh in Resources */,
 				979726191EF0BE5B007BC0D9 /* MyParticleBurningComet.sks in Resources */,
-				979725601EEE7362007BC0D9 /* URKernelShaderRGBToneCurve.cikernel in Resources */,
-				979725611EEE7362007BC0D9 /* URKernelShaderShockWave.cikernel in Resources */,
 				979725F51EEFD60C007BC0D9 /* Assets.xcassets in Resources */,
 				9797261E1EF0BE5B007BC0D9 /* MyParticleSmoke.sks in Resources */,
 				9797261F1EF0BE5B007BC0D9 /* MyParticleSnow.sks in Resources */,
-				979725621EEE7362007BC0D9 /* URKernelShaderWaveWarp.cikernel in Resources */,
-				979725631EEE7362007BC0D9 /* URKernelShaderFrostedGlass.cikernel in Resources */,
 				979726181EF0BE5B007BC0D9 /* MyActions.sks in Resources */,
 				979726201EF0BE5B007BC0D9 /* MyParticleSnowGround.sks in Resources */,
 				97D618501EF0BF0600A55C00 /* URToneCurveView.xib in Resources */,
+				9761C9181EF9FBAE000B1829 /* URKernelShaderFrostedGlass.cikernel.fsh in Resources */,
 				9797261C1EF0BE5B007BC0D9 /* MyParticleRain.sks in Resources */,
 				979726211EF0BE5B007BC0D9 /* MyScene.sks in Resources */,
+				9761C91B1EF9FBAE000B1829 /* URKernelShaderShockWave.cikernel.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
