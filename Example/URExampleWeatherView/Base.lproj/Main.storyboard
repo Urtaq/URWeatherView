@@ -385,13 +385,12 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Detail" id="0ev-qa-8VI">
                                 <connections>
-                                    <action selector="tabDetail:" destination="hEU-Tc-bxE" id="ynD-Cy-BQa"/>
                                     <segue destination="V8J-aU-o6v" kind="show" id="10h-eT-cMT"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="??" id="rLJ-bs-VYF">
                                 <connections>
-                                    <segue destination="Wbm-VK-7SN" kind="show" action="showDetailViewController:sender:" id="sJu-JN-DMh"/>
+                                    <segue destination="Wbm-VK-7SN" kind="show" id="EgN-xb-9JR"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -413,7 +412,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jph-uz-KBU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fTg-m7-HEd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fTg-m7-HEd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
