@@ -7,6 +7,7 @@ target 'URExampleWeatherView' do
 
   # Pods for URExampleWeatherView
   pod 'URWeatherView'
+  pod 'GoogleMaps'
 
   target 'URExampleWeatherViewTests' do
     inherit! :search_paths
