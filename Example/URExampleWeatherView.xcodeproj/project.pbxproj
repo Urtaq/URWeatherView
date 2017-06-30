@@ -15,7 +15,6 @@
 		974FFB1C1EA9E77600B2A3E7 /* URExampleWeatherViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB1B1EA9E77600B2A3E7 /* URExampleWeatherViewUITests.swift */; };
 		974FFB2E1EA9F24B00B2A3E7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FFB2D1EA9F24B00B2A3E7 /* DetailViewController.swift */; };
 		974FFB311EA9F81B00B2A3E7 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 974FFB301EA9F81B00B2A3E7 /* data.json */; };
-		974FFB401EAA017100B2A3E7 /* RevealServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 974FFB3F1EAA017100B2A3E7 /* RevealServer.framework */; };
 		9754D4B01EC0631400FCD463 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4AF1EC0631400FCD463 /* PageViewController.swift */; };
 		9754D4B21EC2BB6200FCD463 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9754D4B11EC2BB6200FCD463 /* PageContentViewController.swift */; };
 		9780EC0E1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9780EC0D1ED2C09B00F26C4C /* URExampleWeatherTableViewCell.swift */; };
@@ -101,7 +100,6 @@
 			files = (
 				9797260A1EEFDF20007BC0D9 /* URWeatherView.framework in Frameworks */,
 				97B97A691EF3A942006B50B7 /* LottieEx.framework in Frameworks */,
-				974FFB401EAA017100B2A3E7 /* RevealServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,12 +565,7 @@
 				);
 				INFOPLIST_FILE = URExampleWeatherView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-weak_framework",
-					RevealServer,
-					"$(inherited)",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ds.URExampleWeatherView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "URExampleWeatherView/URExampleWeatherView-Bridging-Header.h";
@@ -595,12 +588,7 @@
 				);
 				INFOPLIST_FILE = URExampleWeatherView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-weak_framework",
-					RevealServer,
-					"$(inherited)",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ds.URExampleWeatherView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "URExampleWeatherView/URExampleWeatherView-Bridging-Header.h";
