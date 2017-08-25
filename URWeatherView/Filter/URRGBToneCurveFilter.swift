@@ -52,7 +52,7 @@ open class URRGBToneCurveFilter: URFilter {
     }
 
     override func applyFilter() -> CIImage {
-        guard let resultImage: CIImage = (self.customKernel as! CIColorKernel).apply(withExtent: self.extent, arguments: self.customAttributes) else {
+        guard let resultImage: CIImage = (self.customKernel as! CIColorKernel).apply(extent: self.extent, arguments: self.customAttributes!) else {
             fatalError("Filtered Image merging is failed!!")
         }
 

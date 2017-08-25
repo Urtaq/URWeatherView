@@ -58,7 +58,7 @@ open class URToneCurveFilter: URFilter {
         }
         inputParameters[kCIInputImageKey] = self.inputImage!
 
-        return self.inputImage!.applyingFilter("CIToneCurve", withInputParameters: inputParameters)
+        return self.inputImage!.applyingFilter("CIToneCurve", parameters: inputParameters)
     }
 
     func rollbackFilter() -> CIImage {

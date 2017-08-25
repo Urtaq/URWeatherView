@@ -69,12 +69,12 @@ open class URFilter: CIFilter, URFilterBootLoading {
     }
 
     // MARK: - shaders
-    open static let colorKernelForRGB: CIColorKernel = CIColorKernel(string:
+    open static let colorKernelForRGB: CIColorKernel = CIColorKernel(source:
         "kernel vec4 combineRGBChannel(__sample rgb) {" +
             "   return vec4(rgb.rgb, 1.0);" +
         "}")!
 
-    open static let colorKernel: CIColorKernel = CIColorKernel(string:
+    open static let colorKernel: CIColorKernel = CIColorKernel(source:
         "kernel vec4 combineRGBChannel(__sample red, __sample green, __sample blue, __sample rgb) {" +
             "   vec4 result = vec4(red.r, green.g, blue.b, rgb.a);" +
             "   bool isTransparency = true;" +
@@ -99,7 +99,7 @@ open class URFilter: CIFilter, URFilterBootLoading {
             "   return result;" +
         "}")!
 
-    open static let brightenKernel: CIKernel = CIKernel(string:
+    open static let brightenKernel: CIKernel = CIKernel(source:
         "kernel vec4 brightenEffect (sampler src, float k)\n" +
             "{\n" +
             "    vec4 currentSource = sample (src, samplerCoord (src));         // 1\n" +
@@ -107,7 +107,7 @@ open class URFilter: CIFilter, URFilterBootLoading {
             "    return currentSource;                                          // 3\n" +
         "}")!
 
-    open static let holeDistortionKernel: CIKernel = CIKernel(string:
+    open static let holeDistortionKernel: CIKernel = CIKernel(source:
         "kernel vec4 hole (sampler src, vec2 center, vec2 params)                // 1\n" +
             "{\n" +
             "    vec2 t1;\n" +
@@ -125,14 +125,14 @@ open class URFilter: CIFilter, URFilterBootLoading {
         "}"
         )!
 
-    open static let multiplyKernel: CIKernel = CIKernel(string:
+    open static let multiplyKernel: CIKernel = CIKernel(source:
         "kernel vec4 multiplyEffect (sampler src, __color mul)\n" +
             "{\n" +
             "    return sample (src, samplerCoord (src)) * mul;\n" +
         "}"
         )!
 
-    open static let swirlKernel: CIKernel = CIKernel(string:
+    open static let swirlKernel: CIKernel = CIKernel(source:
         "kernel vec4 swirl(sampler src, vec2 center, float radius, float angle, float time)\n" +
             "{\n" +
             "vec2 texSize = samplerSize(src);\n" +
@@ -158,7 +158,7 @@ open class URFilter: CIFilter, URFilterBootLoading {
     /// - Parameters:
     ///    - sampler: CISampler
     ///    - center: CIVertor(vec2)
-    open static let shockWaveKernel: CIKernel = CIKernel(string:
+    open static let shockWaveKernel: CIKernel = CIKernel(source:
         "kernel vec4 shockWave(sampler src, vec2 center, vec3 shockParams, float time)\n" +
             "{\n" +
             "vec2 texture2D = samplerCoord(src);\n" +
@@ -180,7 +180,7 @@ open class URFilter: CIFilter, URFilterBootLoading {
     /// - Parameters:
     ///    - sampler: CISampler
     ///    - center: CIVertor(vec2)
-    open static let waveWarpKernel: CIKernel = CIKernel(string:
+    open static let waveWarpKernel: CIKernel = CIKernel(source:
         "kernel vec4 waveWarp(sampler src, vec2 center, vec3 shockParams, float time)\n" +
             "{\n" +
             "vec2 texture2D = samplerCoord(src);\n" +

@@ -17,7 +17,7 @@ enum URToneCurveGraphControlMode {
     case custom
 }
 
-let DefaultToneCurveInputs: [CGPoint] = [.zero
+public let DefaultToneCurveInputs: [CGPoint] = [.zero
     , CGPoint(x: 0.25, y: 0.25)
     , CGPoint(x: 0.5, y: 0.5)
     , CGPoint(x: 0.75, y: 0.75)
@@ -499,7 +499,7 @@ open class URToneCurveGraphView: UIView {
         self.layer.addSublayer(self.basicLine)
     }
 
-    func handleTap(_ gesture: UITapGestureRecognizer) {
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         print(#function)
 
         defer {
@@ -550,7 +550,7 @@ open class URToneCurveGraphView: UIView {
         dot.addGestureRecognizer(panGesture)
     }
 
-    func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
+    @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
         print(#function)
 
         defer {
@@ -588,7 +588,7 @@ open class URToneCurveGraphView: UIView {
     var preLocation: CGPoint = .zero
     var pointDidChanged: (() -> Void)?
 
-    func handlePan(_ gesture: UIPanGestureRecognizer) {
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
         print(#function)
 
         var position: CGPoint = .zero
