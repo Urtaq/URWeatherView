@@ -361,7 +361,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = zigbang;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					974FFB4B1EAA072E00B2A3E7 = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -371,7 +371,7 @@
 					};
 					974FFB541EAA072E00B2A3E7 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 7AX2JZT3L8;
+						DevelopmentTeam = PC6J6XU6ZT;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -677,7 +677,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 7AX2JZT3L8;
+				DEVELOPMENT_TEAM = PC6J6XU6ZT;
 				INFOPLIST_FILE = URWeatherViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zigbang.URWeatherViewTests;
@@ -691,7 +691,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 7AX2JZT3L8;
+				DEVELOPMENT_TEAM = PC6J6XU6ZT;
 				INFOPLIST_FILE = URWeatherViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zigbang.URWeatherViewTests;
