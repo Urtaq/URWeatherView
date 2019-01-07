@@ -29,13 +29,13 @@ extension URFilterBootLoading {
     func loadCIKernel(from filename: String) {
         let shaderCode = self.loadKernelShaderCode(filename)
 
-        self.customKernel = CIKernel(string: shaderCode)
+        self.customKernel = CIKernel(source: shaderCode)
     }
 
     func loadCIColorKernel(from filename: String) {
         let shaderCode = self.loadKernelShaderCode(filename)
 
-        self.customKernel = CIColorKernel(string: shaderCode)
+        self.customKernel = CIColorKernel(source: shaderCode)
     }
 
     private func loadKernelShaderCode(_ filename: String) -> URFilterShaderCode {

@@ -64,7 +64,7 @@ open class URShockWaveFilter: URFilter {
             }
             return destination
         }
-        guard let resultImage: CIImage = self.customKernel?.apply(withExtent: self.extent, roiCallback: ROICallback, arguments: self.customAttributes) else {
+        guard let resultImage: CIImage = self.customKernel?.apply(extent: self.extent, roiCallback: ROICallback, arguments: self.customAttributes!) else {
             fatalError("Filtered Image merging is failed!!")
         }
         

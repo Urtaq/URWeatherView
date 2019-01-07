@@ -20,7 +20,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
 
         let initialVC = self.viewControllers(at: 0)
 
-        self.setViewControllers([initialVC], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        self.setViewControllers([initialVC], direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
     }
 
     var backgroundColors: [UIColor] = [.red, .blue, .green, .yellow, .orange]

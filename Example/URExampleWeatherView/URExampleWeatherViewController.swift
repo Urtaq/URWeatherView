@@ -54,7 +54,7 @@ class URExampleWeatherViewController: UIViewController {
         }
     }
 
-    func handleLottieAnimation() {
+    @objc func handleLottieAnimation() {
         self.mainView.pause()
 
         self.changedMainState()
