@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "URWeatherView"
-  s.version      = "0.6.4"
-  s.summary      = "Show the various weather effects written in Swift3."
+  s.version      = "0.7.0"
+  s.summary      = "Show the various weather effects written in Swift4."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -63,7 +63,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "10.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
