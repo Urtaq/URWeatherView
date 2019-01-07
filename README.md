@@ -53,7 +53,7 @@ To show the vector animation made by After Effect, [Lottie](http://airbnb.design
 ## Requirements
 
 * iOS 10.0+
-* Swift 4.2+ (Swift 3.x version is v0.6.4)
+* Swift 4.2+ (Swift 3.x version is [v0.6.4](https://github.com/jegumhon/URWeatherView/tree/0.6.4))
 
 ## Installation
 
