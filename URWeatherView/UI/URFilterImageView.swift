@@ -242,11 +242,13 @@ extension UIImage {
 
         guard let gradientCGImage = context.makeImage() else { return nil }
 
+#if DEBUG
         let gradientImage = UIImage(cgImage: gradientCGImage)   // for debugging
 
 //        guard let mask = CGImage(maskWidth: gradientCGImage.width, height: gradientCGImage.height, bitsPerComponent: gradientCGImage.bitsPerComponent, bitsPerPixel: gradientCGImage.bitsPerPixel, bytesPerRow: gradientCGImage.bytesPerRow, provider: gradientCGImage.dataProvider!, decode: nil, shouldInterpolate: false) else { return nil }
 
 //        let maskedCGImage = self.cgImage!.masking(mask)
+#endif
 
         let colorSpaceRGB = CGColorSpaceCreateDeviceRGB()
         guard let maskingContext = CGContext.init(data: nil, width: self.cgImage!.width, height: self.cgImage!.height, bitsPerComponent: 8, bytesPerRow: 0, space: colorSpaceRGB, bitmapInfo: CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue) else { return nil }
@@ -257,7 +259,9 @@ extension UIImage {
 
         guard let maskedCGImage = maskingContext.makeImage() else { return nil }
 
+#if DEBUG
         let maskedImage = UIImage(cgImage: maskedCGImage)   // for debugging
+#endif
 
         return maskedCGImage
     }

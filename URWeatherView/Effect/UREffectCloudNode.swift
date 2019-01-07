@@ -162,19 +162,19 @@ class UREffectCloudNode: SKSpriteNode {
 }
 
 extension UREffectCloudNode: Comparable {
-    open static func <(lhs: UREffectCloudNode, rhs: UREffectCloudNode) -> Bool {
+    public static func <(lhs: UREffectCloudNode, rhs: UREffectCloudNode) -> Bool {
         return lhs.emittingPosition.y < rhs.emittingPosition.y
     }
 
-    open static func <=(lhs: UREffectCloudNode, rhs: UREffectCloudNode) -> Bool {
+    public static func <=(lhs: UREffectCloudNode, rhs: UREffectCloudNode) -> Bool {
         return lhs.emittingPosition.y <= rhs.emittingPosition.y
     }
 
-    open static func >=(lhs: UREffectCloudNode, rhs: UREffectCloudNode) -> Bool {
+    public static func >=(lhs: UREffectCloudNode, rhs: UREffectCloudNode) -> Bool {
         return lhs.emittingPosition.y >= rhs.emittingPosition.y
     }
 
-    open static func >(lhs: UREffectCloudNode, rhs: UREffectCloudNode) -> Bool {
+    public static func >(lhs: UREffectCloudNode, rhs: UREffectCloudNode) -> Bool {
         return lhs.emittingPosition.y > rhs.emittingPosition.y
     }
 }
