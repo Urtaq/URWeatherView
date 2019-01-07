@@ -1,9 +1,9 @@
 # URWeatherView
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Swift](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)](https://swift.org) [![podplatform](https://cocoapod-badges.herokuapp.com/p/URWeatherView/badge.png)](https://cocoapod-badges.herokuapp.com/p/URWeatherView/badge.png) [![pod](https://cocoapod-badges.herokuapp.com/v/URWeatherView/badge.png)](https://cocoapods.org/pods/URWeatherView) ![poddoc](https://img.shields.io/cocoapods/metrics/doc-percent/URWeatherView.svg) ![license](https://cocoapod-badges.herokuapp.com/l/URWeatherView/badge.png) [![CocoaPods compatible](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg?style=flat)](https://github.com/CocoaPods/CocoaPods) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjegumhon%2FURWeatherView.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjegumhon%2FURWeatherView?ref=badge_shield)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Swift](https://img.shields.io/badge/Swift-4.2%2B-orange.svg)](https://swift.org) [![podplatform](https://cocoapod-badges.herokuapp.com/p/URWeatherView/badge.png)](https://cocoapod-badges.herokuapp.com/p/URWeatherView/badge.png) [![pod](https://cocoapod-badges.herokuapp.com/v/URWeatherView/badge.png)](https://cocoapods.org/pods/URWeatherView) ![poddoc](https://img.shields.io/cocoapods/metrics/doc-percent/URWeatherView.svg) ![license](https://cocoapod-badges.herokuapp.com/l/URWeatherView/badge.png) [![CocoaPods compatible](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg?style=flat)](https://github.com/CocoaPods/CocoaPods) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjegumhon%2FURWeatherView.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjegumhon%2FURWeatherView?ref=badge_shield)
 <!-- ![travis](https://travis-ci.org/jegumhon/URWeatherView.svg?branch=master) [![codecov](https://codecov.io/gh/jegumhon/URWeatherView/branch/master/graph/badge.svg)](https://codecov.io/gh/jegumhon/URWeatherView) -->
 
 ## What is this for?
-Showing some kinds of the weather effect, written in **Swift3**.  
+Showing some kinds of the weather effect, written in **Swift4.2**.  
 
 This code style is the **`Protocol Oriented Programming`**.
 
@@ -52,8 +52,8 @@ To show the vector animation made by After Effect, [Lottie](http://airbnb.design
 
 ## Requirements
 
-* iOS 9.0+
-* Swift 3.0+
+* iOS 10.0+
+* Swift 4.2+ (Swift 3.x version is v0.6.4)
 
 ## Installation
 
