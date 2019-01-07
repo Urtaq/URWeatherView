@@ -87,7 +87,7 @@ extension URFilterBootLoading {
     func destToSource(x: CGFloat, center: CGFloat, k: CGFloat) -> CGFloat {
         var sourceX: CGFloat = x
         sourceX -= center
-        sourceX = sourceX / (1.0 + fabs(sourceX / k))
+        sourceX = sourceX / (1.0 + abs(sourceX / k))
         sourceX += center
 
         return sourceX

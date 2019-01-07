@@ -36,7 +36,7 @@ class UREffectLightningBoltNode: SKNode {
         // Dynamically calculating displace
         let xRange = endPoint.x - startPoint.x
         let yRange = endPoint.y - startPoint.y
-        let hypotenuse = hypot(fabs(xRange), fabs(yRange))
+        let hypotenuse = hypot(abs(xRange), abs(yRange))
 
         let displace = Double(hypotenuse) * self.option.displaceCoefficient
         self.createBoltPath(start: startPoint, end: endPoint, displace: displace)

@@ -38,7 +38,7 @@ class UREffectLightningLineNode: SKNode {
         let endPointInNode = self.convert(self.endPoint, from: self.parent!)
 
         let angle = atan2(endPointInNode.y - startPointInNode.y, endPointInNode.x - startPointInNode.x)
-        let length = hypot(fabs(endPointInNode.x - startPointInNode.x), fabs(endPointInNode.y - startPointInNode.y))
+        let length = hypot(abs(endPointInNode.x - startPointInNode.x), abs(endPointInNode.y - startPointInNode.y))
 
         let halfCircleFront = SKSpriteNode(texture: UREffectLightningLineNode.textureLightningHalfCircle)
         halfCircleFront.anchorPoint = CGPoint(x: 1.0, y: 0.5)
