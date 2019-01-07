@@ -315,7 +315,7 @@ extension UIView {
     func addConstraintEdgesToSuper() {
         guard let parent = self.superview else { return }
         self.translatesAutoresizingMaskIntoConstraints = false
-        parent.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: ["view" : self]))
-        parent.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: ["view" : self]))
+        parent.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions.alignAllCenterY, metrics: nil, views: ["view" : self]))
+        parent.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: ["view" : self]))
     }
 }

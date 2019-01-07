@@ -30,14 +30,14 @@ open class URFilterAnimationManager {
         self.timerFiredCallback = fireBlock
 
         self.displayLink = CADisplayLink(target: self, selector: #selector(timerFired(_:)))
-        self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+        self.displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
     }
 
     open func play() {
         self.transitionStartTime = CACurrentMediaTime()
 
         self.displayLink = CADisplayLink(target: self, selector: #selector(timerFired(_:)))
-        self.displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+        self.displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
     }
 
     open func stop(_ completion: (() -> Void)? = nil) {

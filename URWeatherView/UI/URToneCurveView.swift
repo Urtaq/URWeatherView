@@ -216,10 +216,10 @@ open class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigatio
 //        self.graphViewForGreen.isHidden = true
 //        self.graphViewForBlue.isHidden = true
 
-        self.view.sendSubview(toBack: self.graphViewForBlue)
-        self.view.sendSubview(toBack: self.graphViewForGreen)
-        self.view.sendSubview(toBack: self.graphViewForRed)
-        self.view.bringSubview(toFront: self.graphView)
+        self.view.sendSubviewToBack(self.graphViewForBlue)
+        self.view.sendSubviewToBack(self.graphViewForGreen)
+        self.view.sendSubviewToBack(self.graphViewForRed)
+        self.view.bringSubviewToFront(self.graphView)
 
         self.selectedGraphView = self.graphView
     }
@@ -235,10 +235,10 @@ open class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigatio
 //        self.graphViewForGreen.isHidden = true
 //        self.graphViewForBlue.isHidden = true
 
-        self.view.sendSubview(toBack: self.graphViewForBlue)
-        self.view.sendSubview(toBack: self.graphViewForGreen)
-        self.view.bringSubview(toFront: self.graphViewForRed)
-        self.view.sendSubview(toBack: self.graphView)
+        self.view.sendSubviewToBack(self.graphViewForBlue)
+        self.view.sendSubviewToBack(self.graphViewForGreen)
+        self.view.bringSubviewToFront(self.graphViewForRed)
+        self.view.sendSubviewToBack(self.graphView)
 
         self.selectedGraphView = self.graphViewForRed
     }
@@ -254,10 +254,10 @@ open class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigatio
         self.graphViewForGreen.isHidden = false
 //        self.graphViewForBlue.isHidden = true
 
-        self.view.sendSubview(toBack: self.graphViewForBlue)
-        self.view.bringSubview(toFront: self.graphViewForGreen)
-        self.view.sendSubview(toBack: self.graphViewForRed)
-        self.view.sendSubview(toBack: self.graphView)
+        self.view.sendSubviewToBack(self.graphViewForBlue)
+        self.view.bringSubviewToFront(self.graphViewForGreen)
+        self.view.sendSubviewToBack(self.graphViewForRed)
+        self.view.sendSubviewToBack(self.graphView)
 
         self.selectedGraphView = self.graphViewForGreen
     }
@@ -273,10 +273,10 @@ open class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigatio
 //        self.graphViewForGreen.isHidden = true
         self.graphViewForBlue.isHidden = false
 
-        self.view.bringSubview(toFront: self.graphViewForBlue)
-        self.view.sendSubview(toBack: self.graphViewForGreen)
-        self.view.sendSubview(toBack: self.graphViewForRed)
-        self.view.sendSubview(toBack: self.graphView)
+        self.view.bringSubviewToFront(self.graphViewForBlue)
+        self.view.sendSubviewToBack(self.graphViewForGreen)
+        self.view.sendSubviewToBack(self.graphViewForRed)
+        self.view.sendSubviewToBack(self.graphView)
 
         self.selectedGraphView = self.graphViewForBlue
     }
@@ -308,14 +308,12 @@ open class URToneCurveView: UIView, UIImagePickerControllerDelegate, UINavigatio
     }
 
     // MARK: - UIImagePickerControllerDelegate
-    open func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print("info is \(info)")
-
+    open func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         defer {
             picker.dismiss(animated: true, completion: nil)
         }
 
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         guard let block = self.setImageBlock else { return }
         block(image)
     }

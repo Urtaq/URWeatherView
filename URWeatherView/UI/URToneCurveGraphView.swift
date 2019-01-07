@@ -89,37 +89,37 @@ open class URToneCurveGraphView: UIView {
         }
 
         func initDotConstraints() {
-            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.3, constant: 0.0))
-            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.3, constant: 0.0))
+            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.3, constant: 0.0))
+            self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.3, constant: 0.0))
 
             switch self.dotPosition {
             case .topLeft:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
             case .topCenter:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
             case .topRight:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
             case .centerLeft:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
             case .centerRight:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
             case .bottomLeft:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
             case .bottomCenter:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
             case .bottomRight:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
             default:
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutAttribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+                self.addConstraint(NSLayoutConstraint(item: self.dotView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
             }
         }
 
